@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. The HTTP RESTful API &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="next" title="5. API - The Request" href="request.html" />
+    <link rel="prev" title="3. The Eva BotKit" href="botkit.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">4. The HTTP RESTful API</a><ul>
+<li><a class="reference internal" href="#location-ids">4.1. Location IDs</a></li>
+<li><a class="reference internal" href="#json">4.2. JSON</a></li>
+<li><a class="reference internal" href="#url-encoding">4.3. URL Encoding</a></li>
+<li><a class="reference internal" href="#versions">4.4. Versions</a><ul>
+<li><a class="reference internal" href="#v1-0">4.4.1. v1.0</a></li>
+<li><a class="reference internal" href="#v1-1">4.4.2. v1.1</a></li>
+<li><a class="reference internal" href="#from-future">4.4.3. From Future</a><ul>
+<li><a class="reference internal" href="#ffi-chains">4.4.3.1. ffi_chains</a></li>
+<li><a class="reference internal" href="#ffi-statement">4.4.3.2. ffi_statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a><ul>
+<li><a class="reference internal" href="#stateless">4.5.1. Stateless</a></li>
+<li><a class="reference internal" href="#statefull">4.5.2. Statefull</a></li>
+<li><a class="reference internal" href="#meta-sessions">4.5.3. Meta-Sessions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flow">4.6. Flow</a></li>
+<li><a class="reference internal" href="#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="botkit.html" title="Previous Chapter: 3. The Eva BotKit"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. The Eva Bo...</span>
+    </a>
+  </li>
+  <li>
+    <a href="request.html" title="Next Chapter: 5. API - The Request"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. API - The ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="the-http-restful-api">
+<span id="rest-api"></span><h1>4. The HTTP RESTful API<a class="headerlink" href="#the-http-restful-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="location-ids">
+<h2>4.1. Location IDs<a class="headerlink" href="#location-ids" title="Permalink to this headline">¶</a></h2>
+<p>Locations returned by Eva are identified using the <a class="reference external" href="http://www.geonames.org/about.html">Geonames</a> tagging system.
+Geoname IDs are integers.</p>
+<p>Eva also provides a list of prioritized airports for each location in the API reply.
+Airports are identified by their
+<a class="reference external" href="http://en.wikipedia.org/wiki/International_Air_Transport_Association_airport_code">IATA code</a>.</p>
+<p>Other identification schemes as well as customer specific codes are available on demand.</p>
+</div>
+<div class="section" id="json">
+<h2>4.2. JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p>The web service reply is <a class="reference external" href="http://en.wikipedia.org/wiki/Json">JSON</a> (an acronym for JavaScript Object Notation) encoded.</p>
+</div>
+<div class="section" id="url-encoding">
+<h2>4.3. URL Encoding<a class="headerlink" href="#url-encoding" title="Permalink to this headline">¶</a></h2>
+<p>The parameters for the web service have to be both UTF-8 and URL encoded.
+If you call the web service with &#8220;New York&#8221; you have to URL encode &#8220;New York&#8221;, otherwise our service
+will search for &#8220;New&#8221; and the rest of the sentence, as well as all the other parameters will be lost.
+When URL encoding, &#8220;New York&#8221; becomes &#8220;New+York&#8221;. With UTF-8 encoding ö becomes %C3%B6.</p>
+<p>URL Encoding replaces spaces with &#8220;+&#8221; signs, and unsafe ASCII characters with &#8220;%&#8221; followed by their hex equivalent.
+Safe characters are defined in RFC2396.
+They are the 7-bit ASCII alphanumerics and the mark characters &#8220;-_.!~*&#8217;()&#8221;.</p>
+</div>
+<div class="section" id="versions">
+<h2>4.4. Versions<a class="headerlink" href="#versions" title="Permalink to this headline">¶</a></h2>
+<p>API versions are specified via the URL in the following manner:
+<a class="reference external" href="http://freeapi.evature.com/v1.0?site_code=123&amp;api_key=456&amp;input_text=chicago">http://freeapi.evature.com/v1.0?input_text=chicago</a></p>
+<span class="target" id="module-core.api_versions"></span><p>These are the currently supported API versions:</p>
+<div class="section" id="v1-0">
+<h3>4.4.1. v1.0<a class="headerlink" href="#v1-0" title="Permalink to this headline">¶</a></h3>
+<p>Base commercial API version.</p>
+</div>
+<div class="section" id="v1-1">
+<h3>4.4.2. v1.1<a class="headerlink" href="#v1-1" title="Permalink to this headline">¶</a></h3>
+<p>This version is under active development,
+yet you can (and should!) preview it on a feature by feature basis by using the <a class="reference internal" href="#from-future">From Future</a> flags</p>
+</div>
+<div class="section" id="from-future">
+<h3>4.4.3. From Future<a class="headerlink" href="#from-future" title="Permalink to this headline">¶</a></h3>
+<p>To preview and easily integrate with the latest API, the developer has access to &#8220;from future&#8221; flags,
+using which she can turn the various changes in the next release on / off one by one.
+Example:</p>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.0?site_code=123&amp;api_key=456&amp;input_text=chicago&amp;ffi_statement">evature.com/v1.0?input_text=chicago&amp;ffi_statement</a>.</p>
+<p>Here is the list of features that are implemented in the V1.1 release, yet you may (and should!) use in the V1.0 release:</p>
+<div class="section" id="ffi-chains">
+<h4>4.4.3.1. ffi_chains<a class="headerlink" href="#ffi-chains" title="Permalink to this headline">¶</a></h4>
+<p>In V1.0 the understanding of a hotel chain looked like this:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Looking for a hilton&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Hotel Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;Chain&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+      <span class="p">},</span> 
+      <span class="p">{</span>
+        <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Get Accommodation&quot;</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton hotel&quot;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The actual chain value is a simple String.</p>
+<p>In V1.1, or when using ffi_chains hotel chains are returned like this:</p>
+<div class="literal-block-wrapper container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+      <span class="p">},</span> 
+      <span class="p">{</span>
+        <span class="s2">&quot;Hotel Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;Chain&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;gds_code&quot;</span><span class="o">:</span> <span class="s2">&quot;HH&quot;</span><span class="p">,</span> 
+              <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span><span class="p">,</span> 
+              <span class="s2">&quot;eva_code&quot;</span><span class="o">:</span> <span class="s2">&quot;EPC-47&quot;</span><span class="p">,</span> 
+              <span class="s2">&quot;simple_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Get Accommodation&quot;</span>
+        <span class="p">],</span> 
+      <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton hotel&quot;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ffi-statement">
+<h4>4.4.3.2. ffi_statement<a class="headerlink" href="#ffi-statement" title="Permalink to this headline">¶</a></h4>
+<p>In V1.0 the reply to:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Hello&quot;
+</pre></div>
+</div>
+<p>looked like this:</p>
+<div class="literal-block-wrapper container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Informative&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;QuestionSubCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Chat&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello to you too. How may I help?&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;Chat&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;Hello&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In V1.1, or when using ffi_statement Eva added a new Flow Action called a Statement. Now the reply to the above looks like this:</p>
+<div class="literal-block-wrapper container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;StatementType&quot;</span><span class="o">:</span> <span class="s2">&quot;Chat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello, nice to meet you. How may I help?&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Chat&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;Hello&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="maintaining-state-sessions-and-meta-sessions">
+<span id="maintaining-state"></span><h2>4.5. Maintaining State - Sessions and Meta-Sessions<a class="headerlink" href="#maintaining-state-sessions-and-meta-sessions" title="Permalink to this headline">¶</a></h2>
+<p>The Eva web service provides two modes of operation - <a class="reference internal" href="#stateless">Stateless</a> and <a class="reference internal" href="#statefull">Statefull</a>.
+The mobile SDKs automatically maintain state.</p>
+<div class="section" id="stateless">
+<h3>4.5.1. Stateless<a class="headerlink" href="#stateless" title="Permalink to this headline">¶</a></h3>
+<p>In Stateless mode, Eva provides the best understanding of the input regardless of missing information and ambiguity.
+Since there in no state there cannot be any Discourse and Eva cannot ask questions.
+To invoke Eva in Stateless mode, simply omit the session_id parameter.
+Example:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;one way flight from JFK&quot;
+</pre></div>
+</div>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK">http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK</a></p>
+<div class="literal-block-wrapper container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;One way flights from John F Kennedy International Airport New York&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RelatedLocations&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="mi">0</span><span class="p">,</span>
+          <span class="mi">1</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;&#39;JFK&#39; = John F Kennedy Intl, US&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Request Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;Transport Type&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Airplane&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Get There&quot;</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Flight Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;One-Way&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Basically, what Eva is telling the application is that the end user is requesting a flight from JFK airport heading &#8220;somewhere&#8221;.</p>
+</div>
+<div class="section" id="statefull">
+<h3>4.5.2. Statefull<a class="headerlink" href="#statefull" title="Permalink to this headline">¶</a></h3>
+<p>To initiate a new session add a session_id request parameter with a value of &#8216;1&#8217;. Example:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;one way flight from JFK&quot;
+</pre></div>
+</div>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK&amp;session_id=1">http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK&amp;session_id=1</a></p>
+<p>In this case, the API reply will change. Eva instructs the application using the Flow mechanism to ask the user
+where he wants to fly to.</p>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;session_id&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-78fa-94ba0740-8acf-22000bd848a8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flight Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;One-Way&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Where would you like to fly to?&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;&#39;JFK&#39; = John F Kennedy Intl, US&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Request Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;Transport Type&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Airplane&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Get There&quot;</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>You will also notice that Eva returns a new session_id.
+Use this session_id in subsequent requests to continue the session.
+If, for example the user replies with:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;SFO&quot;
+</pre></div>
+</div>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8">http://freeapi.evature.com/v1.0?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8</a></p>
+<p>Eva will continue the dialog:</p>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;session_id&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-78fa-94ba0740-8acf-22000bd848a8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;QuestionAnswered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;Flight Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;One-Way&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Please specify, When would you like to depart from John F Kennedy International Airport New York to San Francisco International Airport California?&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;&#39;JFK&#39; = John F Kennedy Intl, US&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Request Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;Transport Type&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Airplane&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="s2">&quot;SFO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;&#39;SFO&#39; = San Francisco International, US&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Get There&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is an example of accumulating state:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Hotels in Los Angeles tomorrow for 2 nights&quot;
+ - Eva instructs the application to show a list of hotels in Los Angeles
+User: &quot;3 stars&quot;
+ - Eva instructs the application to show a filtered list of 3 stars hotels in Los Angeles
+</pre></div>
+</div>
+</div>
+<div class="section" id="meta-sessions">
+<span id="metasessions"></span><h3>4.5.3. Meta-Sessions<a class="headerlink" href="#meta-sessions" title="Permalink to this headline">¶</a></h3>
+<p>Sessions may expire by the server due to inactivity so the developer needs to be prepared to save
+the latest <em>session_id</em> returned from Eva, which may be different from the <em>session_id</em> that was sent.</p>
+<p>Eva may also start a new session if the end user specifically said &#8220;start over&#8221; (or similar request).</p>
+<p>Furthermore, the developer may force a session reset by sending a <em>session_id</em> with a value of &#8216;1&#8217; at any time,
+for example if the end user requested to start over by clicking on a trash-can icon in the GUI.</p>
+<p>In order for Eva to better understand and adapt to the end users by maintaining history on a per-end-user basis across sessions,
+as well as better statistics gathering and reporting,
+the developer needs to add a globally unique <em>uid</em> parameter to each request. See <a class="reference internal" href="request.html#uid"><span class="std std-ref">uid</span></a> for details.</p>
+</div>
+</div>
+<div class="section" id="flow">
+<h2>4.6. Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<p>Eva manages the conversation with the end users automatically, asking questions and even handling chit-chat as needed.
+When using the raw API directly (not via the SDK) Eva instructs the application to do things on her behalf,
+such as asking the user a question, or performing a cruise-search.
+The instructions to the application are gathered in a section of the reply called the Flow.
+The Flow is a list of Flow Actions, such as:</p>
+<div class="literal-block-wrapper container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;RelatedLocations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="mi">0</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;QuestionSubCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Departure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ActionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Missing Date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Please specify, When would you like to depart from John F Kennedy International Airport New York to San Francisco International Airport California?&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The Flow is the main integration point for the application with the Eva API reply.</p>
+<p>Internally, the Flow is created by the following Eva logic blocks:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Utterance Classifier</strong></p>
+<p>Analyzes the input utterances and classifies them into various categories
+such as a &#8216;Hotel Search&#8217;, &#8216;Rental Car Search&#8217;, &#8216;Flight Search&#8217;,
+as well as &#8216;Chat&#8217;, &#8216;Itinerary Request&#8217;, &#8216;Question&#8217;, &#8216;Answer&#8217; or a combination of the above.
+For example, an input of &#8220;3 nights in NY&#8221; would be classified as a Hotel Search,
+while an input of &#8220;United Airlines to Boston&#8221; would be classified as a Flight Search.
+The utterance classification is the key input to Eva&#8217;s Desires (motivational state and applicative objective).
+Other inputs to the classification are the utterance metadata, such as <a class="reference internal" href="request.html#context"><span class="std std-ref">context</span></a>.
+For example, the user might say &#8220;Chicago&#8221; when looking at the hotel search page in the application,
+and this utterance would be categorizes as a Hotel Search,
+while the same utterance would be categorized as a Rental Car Search if the end user is looking at the rental cars page.</p>
+</li>
+<li><p class="first"><strong>Desire Manager</strong></p>
+<p>Desires represent Eva&#8217;s motivational state.
+They represent objectives that Eva would like to accomplish or bring about. Examples of desires may be:</p>
+<ul class="simple">
+<li>Flight Search</li>
+<li>Hotel Search</li>
+<li>Rental Car Search</li>
+</ul>
+<p>There may be multiple desires in a single session (e.g. &#8220;Chicago flights and hotel&#8221;),
+however Eva maintains a single Goal in the Dialog Manager as it goes through the desires until they are met.
+This is consistent with the behavior of a human Travel Agent, which usually anchors the flights and then
+moves on to finding accommodations and ground transportation.
+Desires are maintained in the server session state to allow for Dialog.</p>
+</li>
+<li><p class="first"><strong>Belief Manager</strong></p>
+<p>Manages Eva&#8217;s beliefs inside the session state with respect to the predefined abilities and requirements of the application
+and the Travel search engine.
+Using the term <cite>belief</cite> rather than <cite>knowledge</cite> recognizes that what Eva believes in may not necessarily be true
+(and in fact may change in future utterances).
+This is especially important when using Voice input as Eva may have heard the user incorrectly,
+but is also valid with Text input in case of spelling mistakes or input ambiguity.</p>
+<p><strong>Example of disambiguation</strong>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Hotel in Arlington&quot;
+Eva:  &quot;Which &quot;Arlington&quot; did you mean?&quot;
+User: &quot;Kentucky&quot;
+ - Eva instructs the application to show a list of hotels in Arlington Kentucky
+</pre></div>
+</div>
+<p><strong>Example of correction</strong>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Hotel in Paris&quot;
+ - Eva instructs the application to show a list of hotels in Paris, France
+User: &quot;I meant Paris Texas&quot;
+ - Eva instructs the application to show a list of hotels in Paris, Texas
+</pre></div>
+</div>
+<p>Based on the classification of the input, Eva may realize that key information is missing to achieve the Goal.
+Examples of missing information pieces are &#8216;Missing Date&#8217;, &#8216;Missing Location&#8217; and &#8216;Missing Duration&#8217;.
+For example, let&#8217;s assume the booking engine needs an explicit Duration for hotel searches
+and the user requested &#8220;Hotel in Madrid tomorrow&#8221;.
+The Belief Manager will identify the Duration as a missing requirement, which leads to the:</p>
+</li>
+<li><p class="first"><strong>Dialog Manager</strong></p>
+<p>Facilitates a non-linear state-full dialog with the user for clarifications, questions and answers, disambiguation and so on.
+The Dialog manager chooses a Goal (a single active Desire) and reviews the Beliefs related to achieving this goal,
+asking questions when necessary and reviewing the received information.</p>
+<p><strong>Example of questions</strong>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Flights to NY&quot;
+(Assuming the belief engine identifies a missing departure time)
+Eva:  &quot;When would you like to depart from Chicago, Illinois?&quot;
+User: &quot;Tomorrow night&quot;
+- Eva instructs the application to show a list of flights from Chicago to New York departing July 2nd at 8:00PM
+</pre></div>
+</div>
+<p>Linearity is not mandated, for example:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Flight to SFO&quot;
+Eva: &quot;Where would you like to fly from?&quot; (assumes no GPS or related metadata)
+User: &quot;One way from Chicago on the 23rd&quot;
+- Eva instructs the application to show a list of one-way flights from Chicago to SFO departing July 23rd
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Flow Engine</strong></p>
+<p>Orchestrates the Utterance Classifier, the Desire and Belief Managers and the Dialog Manager to returns a Flow of Actions.
+This Actions Flow is ordered by &#8220;Travel Logic&#8221; (for example, search for flights first, hotels later).</p>
+<p>The Flow Actions can be &#8216;Answer&#8217;, &#8216;Question&#8217;, &#8216;Greeting&#8217;, &#8216;Statement&#8217;, &#8216;Hotel&#8217;, &#8216;Car&#8217;, &#8216;Flight&#8217;.
+The Flow Actions are a simple Todo list for the application to implement, e.g.:</p>
+<ul class="simple">
+<li>Search for flights from Boston to New York City</li>
+<li>Ask the user how many days he wants to stay at his New York hotel?</li>
+<li>Search for a hotel in New York City</li>
+<li>Show the boarding pass</li>
+</ul>
+<p>Each Action has its own SayIt to feed into the Text-to-Speech engine.</p>
+</li>
+</ol>
+<p>See <a class="reference internal" href="response.html#flow"><span class="std std-ref">Flow</span></a> for details.</p>
+</div>
+<div class="section" id="multiple-input-texts">
+<span id="multiple-input-text"></span><h2>4.7. Multiple Input Texts<a class="headerlink" href="#multiple-input-texts" title="Permalink to this headline">¶</a></h2>
+<p>When the end-user text originates from a Speech Recognition engine, there are often several probable hypotheses.
+Eva implements a rescorring mechanism which is domain-specific and context aware.
+This feature significantly improves the quality of the speech recognition engine by fully utilizing its response.
+Speech recognition engines are usually generic (not trained specifically in the Travel domain).
+Moreover, they are missing the context of the conversation, as for example they would not be aware that
+the user was asked a question, such as When she would like to stay at the hotel,
+thus have no way of prioritizing &#8220;Today&#8221; over &#8220;Two Day&#8221;, especially as many users enunciate their speech.</p>
+<ul class="simple">
+<li>Use the following endpoint for the Eva service: <a class="reference external" href="https://vproxy.evaws.com">https://vproxy.evaws.com</a></li>
+<li>Add all the input_text query parameters to the request URL <strong>in the order returned by the speech recognition engine</strong>.</li>
+<li>Don&#8217;t forget to add <a class="reference internal" href="request.html#from-speech"><span class="std std-ref">from_speech</span></a>, <a class="reference internal" href="request.html#scope"><span class="std std-ref">scope</span></a>, <a class="reference internal" href="request.html#context"><span class="std std-ref">context</span></a> as usual.</li>
+<li>The chosen input text might be different than the one you currently display
+(which is usually first result from the speech recognition engine).
+This will need to be corrected in case Eva selects a different input when Eva replies.</li>
+</ul>
+<p>For example, assume the speech recognition engine returned these results:</p>
+<ul class="simple">
+<li>&#8220;flint to roston&#8221;</li>
+<li>&#8220;flight to boston&#8221;</li>
+<li>&#8220;slight to horton&#8221;</li>
+</ul>
+<p>This is the resulting URL:</p>
+<p><a class="reference external" href="https://vproxy.evaws.com/v1.0?site_code=123&amp;api_key=456&amp;scope=fhc&amp;session_id=1&amp;input_text=flint+from+jail+aviv+to+roston&amp;input_text=flight+from+tel+aviv+to+boston&amp;input_text=slight+from+beit+achziv+to+horton">vproxy.evaws.com/v1.0?input_text=flint+to+roston&amp;input_text=flight+to+boston&amp;input_text=slight+to+horton</a></p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

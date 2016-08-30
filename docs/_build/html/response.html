@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. API - The Response &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="prev" title="5. API - The Request" href="request.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">6. API - The Response</a><ul>
+<li><a class="reference internal" href="#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li><a class="reference internal" href="#top-level-response">6.2. Top Level Response</a></li>
+<li><a class="reference internal" href="#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li><a class="reference internal" href="#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li><a class="reference internal" href="#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li><a class="reference internal" href="#flow">6.6. Flow</a><ul>
+<li><a class="reference internal" href="#flight">6.6.1. Flight</a></li>
+<li><a class="reference internal" href="#car">6.6.2. Car</a></li>
+<li><a class="reference internal" href="#hotel">6.6.3. Hotel</a></li>
+<li><a class="reference internal" href="#cruise">6.6.4. Cruise</a></li>
+<li><a class="reference internal" href="#train">6.6.5. Train</a></li>
+<li><a class="reference internal" href="#reply">6.6.6. Reply</a></li>
+<li><a class="reference internal" href="#statement">6.6.7. Statement</a></li>
+<li><a class="reference internal" href="#question">6.6.8. Question</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#money">6.7. Money</a></li>
+<li><a class="reference internal" href="#chat">6.8. Chat</a></li>
+<li><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a><ul>
+<li><a class="reference internal" href="#chain">6.9.1. Chain</a></li>
+<li><a class="reference internal" href="#board">6.9.2. Board</a></li>
+<li><a class="reference internal" href="#quality">6.9.3. Quality</a></li>
+<li><a class="reference internal" href="#numeric-rating">6.9.4. Numeric Rating</a></li>
+<li><a class="reference internal" href="#rating">6.9.5. Rating</a></li>
+<li><a class="reference internal" href="#child-free">6.9.6. Child Free</a></li>
+<li><a class="reference internal" href="#business">6.9.7. Business</a></li>
+<li><a class="reference internal" href="#airport-shuttle">6.9.8. Airport Shuttle</a></li>
+<li><a class="reference internal" href="#casino">6.9.9. Casino</a></li>
+<li><a class="reference internal" href="#fishing">6.9.10. Fishing</a></li>
+<li><a class="reference internal" href="#snow-conditions">6.9.11. Snow Conditions</a></li>
+<li><a class="reference internal" href="#snorkeling">6.9.12. Snorkeling</a></li>
+<li><a class="reference internal" href="#diving">6.9.13. Diving</a></li>
+<li><a class="reference internal" href="#activity">6.9.14. Activity</a></li>
+<li><a class="reference internal" href="#ski">6.9.15. Ski</a></li>
+<li><a class="reference internal" href="#ski-in-out">6.9.16. Ski In/Out</a></li>
+<li><a class="reference internal" href="#golf">6.9.17. Golf</a></li>
+<li><a class="reference internal" href="#kids-for-free">6.9.18. Kids for free</a></li>
+<li><a class="reference internal" href="#city">6.9.19. City</a></li>
+<li><a class="reference internal" href="#family">6.9.20. Family</a></li>
+<li><a class="reference internal" href="#pet-friendly">6.9.21. Pet Friendly</a></li>
+<li><a class="reference internal" href="#romantic">6.9.22. Romantic</a></li>
+<li><a class="reference internal" href="#adventure">6.9.23. Adventure</a></li>
+<li><a class="reference internal" href="#designer">6.9.24. Designer:</a></li>
+<li><a class="reference internal" href="#gym">6.9.25. Gym</a></li>
+<li><a class="reference internal" href="#quiet">6.9.26. Quiet</a></li>
+<li><a class="reference internal" href="#pool">6.9.27. Pool</a></li>
+<li><a class="reference internal" href="#meeting-room">6.9.28. Meeting Room</a></li>
+<li><a class="reference internal" href="#accommodation-type">6.9.29. Accommodation Type</a></li>
+<li><a class="reference internal" href="#restaurant">6.9.30. Restaurant</a></li>
+<li><a class="reference internal" href="#gourmet">6.9.31. Gourmet</a></li>
+<li><a class="reference internal" href="#only">6.9.32. Only</a></li>
+<li><a class="reference internal" href="#disabled">6.9.33. Disabled</a></li>
+<li><a class="reference internal" href="#spa">6.9.34. Spa</a></li>
+<li><a class="reference internal" href="#parking">6.9.35. Parking</a></li>
+<li><a class="reference internal" href="#castle">6.9.36. Castle</a></li>
+<li><a class="reference internal" href="#sport">6.9.37. Sport</a></li>
+<li><a class="reference internal" href="#countryside">6.9.38. Countryside</a></li>
+<li><a class="reference internal" href="#rooms">6.9.39. Rooms</a></li>
+<li><a class="reference internal" href="#loyalty">6.9.40. Loyalty</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a><ul>
+<li><a class="reference internal" href="#redeye">6.10.1. Redeye</a></li>
+<li><a class="reference internal" href="#nonstop">6.10.2. Nonstop</a></li>
+<li><a class="reference internal" href="#food">6.10.3. Food</a></li>
+<li><a class="reference internal" href="#seat">6.10.4. Seat</a></li>
+<li><a class="reference internal" href="#airline">6.10.5. Airline</a></li>
+<li><a class="reference internal" href="#alliance">6.10.6. Alliance</a></li>
+<li><a class="reference internal" href="#seat-class">6.10.7. Seat Class</a></li>
+<li><a class="reference internal" href="#one-way">6.10.8. One-Way</a></li>
+<li><a class="reference internal" href="#two-way">6.10.9. Two-Way</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a><ul>
+<li><a class="reference internal" href="#last-minute-deals">6.11.1. Last Minute Deals</a></li>
+<li><a class="reference internal" href="#low-deposit">6.11.2. Low Deposit</a></li>
+<li><a class="reference internal" href="#transport-type">6.11.3. Transport Type</a></li>
+<li><a class="reference internal" href="#fares">6.11.4. Fares</a></li>
+<li><a class="reference internal" href="#corporate-fares">6.11.5. Corporate Fares</a></li>
+<li><a class="reference internal" href="#travel-agent-rates">6.11.6. Travel Agent Rates</a></li>
+<li><a class="reference internal" href="#convention-rates">6.11.7. Convention Rates</a></li>
+<li><a class="reference internal" href="#military-rates">6.11.8. Military Rates</a></li>
+<li><a class="reference internal" href="#government-rates">6.11.9. Government Rates</a></li>
+<li><a class="reference internal" href="#reservation-id">6.11.10. Reservation ID</a></li>
+<li><a class="reference internal" href="#refundable">6.11.11. Refundable</a></li>
+<li><a class="reference internal" href="#flexible-dates">6.11.12. Flexible Dates</a></li>
+<li><a class="reference internal" href="#scope">6.11.13. Scope</a></li>
+<li><a class="reference internal" href="#sort">6.11.14. Sort</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a><ul>
+<li><a class="reference internal" href="#winter-sun">6.12.1. Winter Sun</a></li>
+<li><a class="reference internal" href="#mountains">6.12.2. Mountains</a></li>
+<li><a class="reference internal" href="#hot-location">6.12.3. Hot Location</a></li>
+<li><a class="reference internal" href="#cold-location">6.12.4. Cold Location</a></li>
+<li><a class="reference internal" href="#sunny-location">6.12.5. Sunny Location</a></li>
+<li><a class="reference internal" href="#island">6.12.6. Island</a></li>
+<li><a class="reference internal" href="#nearby">6.12.7. Nearby</a></li>
+<li><a class="reference internal" href="#distance">6.12.8. Distance</a></li>
+<li><a class="reference internal" href="#center">6.12.9. Center</a></li>
+<li><a class="reference internal" href="#downtown">6.12.10. Downtown</a></li>
+<li><a class="reference internal" href="#beach">6.12.11. Beach</a></li>
+<li><a class="reference internal" href="#nowhere">6.12.12. Nowhere</a></li>
+<li><a class="reference internal" href="#around-the-world">6.12.13. Around the World</a></li>
+<li><a class="reference internal" href="#airport">6.12.14. Airport</a></li>
+<li><a class="reference internal" href="#office">6.12.15. Office</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a><ul>
+<li><a class="reference internal" href="#cruiseline">6.13.1. Cruiseline</a></li>
+<li><a class="reference internal" href="#cruiseship">6.13.2. Cruiseship</a></li>
+<li><a class="reference internal" href="#cabin">6.13.3. Cabin</a></li>
+<li><a class="reference internal" href="#id3">6.13.4. Pool</a></li>
+<li><a class="reference internal" href="#id4">6.13.5. Family</a></li>
+<li><a class="reference internal" href="#id5">6.13.6. Romantic</a></li>
+<li><a class="reference internal" href="#id6">6.13.7. Adventure</a></li>
+<li><a class="reference internal" href="#id7">6.13.8. Board</a></li>
+<li><a class="reference internal" href="#id8">6.13.9. Quality</a></li>
+<li><a class="reference internal" href="#id9">6.13.10. Child Free</a></li>
+<li><a class="reference internal" href="#yacht">6.13.11. Yacht</a></li>
+<li><a class="reference internal" href="#barge">6.13.12. Barge</a></li>
+<li><a class="reference internal" href="#sailing-ship">6.13.13. Sailing Ship</a></li>
+<li><a class="reference internal" href="#river-cruise">6.13.14. River Cruise</a></li>
+<li><a class="reference internal" href="#ship-size">6.13.15. Ship Size</a></li>
+<li><a class="reference internal" href="#for-singles">6.13.16. For Singles</a></li>
+<li><a class="reference internal" href="#for-gays">6.13.17. For Gays</a></li>
+<li><a class="reference internal" href="#steamboat">6.13.18. Steamboat</a></li>
+<li><a class="reference internal" href="#id10">6.13.19. Pet Friendly</a></li>
+<li><a class="reference internal" href="#yoga">6.13.20. Yoga</a></li>
+<li><a class="reference internal" href="#land-tour">6.13.21. Land Tour</a></li>
+<li><a class="reference internal" href="#id11">6.13.22. One-Way</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a><ul>
+<li><a class="reference internal" href="#car-rental-vendor">6.14.1. Car Rental Vendor</a></li>
+<li><a class="reference internal" href="#car-rental-program">6.14.2. Car Rental Program</a></li>
+<li><a class="reference internal" href="#gps">6.14.3. GPS</a></li>
+<li><a class="reference internal" href="#snow-tires">6.14.4. Snow Tires</a></li>
+<li><a class="reference internal" href="#hybrid">6.14.5. Hybrid</a></li>
+<li><a class="reference internal" href="#green">6.14.6. Green</a></li>
+<li><a class="reference internal" href="#transmission">6.14.7. Transmission</a></li>
+<li><a class="reference internal" href="#car-type">6.14.8. Car Type</a></li>
+<li><a class="reference internal" href="#air-conditioning">6.14.9. Air Conditioning</a></li>
+<li><a class="reference internal" href="#car-doors">6.14.10. Car Doors</a></li>
+<li><a class="reference internal" href="#skoking">6.14.11. Skoking</a></li>
+<li><a class="reference internal" href="#satellite-radio">6.14.12. Satellite Radio</a></li>
+<li><a class="reference internal" href="#fuel-efficient">6.14.13. Fuel Efficient</a></li>
+<li><a class="reference internal" href="#abs">6.14.14. ABS</a></li>
+<li><a class="reference internal" href="#ski-rack">6.14.15. Ski Rack</a></li>
+<li><a class="reference internal" href="#roadside-assistance">6.14.16. Roadside Assistance</a></li>
+<li><a class="reference internal" href="#car-child-seat">6.14.17. Car Child Seat</a></li>
+<li><a class="reference internal" href="#tranmission-type">6.14.18. Tranmission Type</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a><ul>
+<li><a class="reference internal" href="#ski-hire">6.16.1. Ski Hire</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-core.warning">6.17. Warnings</a><ul>
+<li><a class="reference internal" href="#api-warning">6.17.1. API Warning</a></li>
+<li><a class="reference internal" href="#time-warning">6.17.2. Time Warning</a></li>
+<li><a class="reference internal" href="#parse-warning">6.17.3. Parse Warning</a></li>
+<li><a class="reference internal" href="#home-warning">6.17.4. Home Warning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="request.html" title="Previous Chapter: 5. API - The Request"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. API - The ...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="api-the-response">
+<h1>6. API - The Response<a class="headerlink" href="#api-the-response" title="Permalink to this headline">¶</a></h1>
+<p>The response of the Eva Web API is a JSON encoded.</p>
+<div class="section" id="module-core.eva_return_codes">
+<span id="http-status-codes"></span><h2>6.1. HTTP Status Codes<a class="headerlink" href="#module-core.eva_return_codes" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of the codes Eva returns:</p>
+<ul>
+<li><p class="first">200 OK = The request has succeeded.</p>
+</li>
+<li><p class="first">400 BAD REQUEST = faulty values in the request parameters. Most often returned when the input_text field is empty.</p>
+</li>
+<li><p class="first">401 UNAUTHORIZED = The request requires user authentication, which failed.
+Please check your <a class="reference internal" href="request.html#site-code-and-api-key"><span class="std std-ref">credentials</span></a>.</p>
+</li>
+<li><p class="first">404 NOT FOUND = The server has not found anything at your requested URL.</p>
+</li>
+<li><p class="first">405 METHOD NOT ALLOWED =  Eva text end-points currently supports only &#8220;HTTP GET&#8221; requests.</p>
+</li>
+<li><p class="first">429 TOO MANY REQUESTS = The site_code quota has been exceeded.  See <a class="reference external" href="http://tools.ietf.org/html/rfc6585#section-4">http://tools.ietf.org/html/rfc6585#section-4</a></p>
+<p>Please contact us!</p>
+</li>
+<li><p class="first">500 INTERNAL SERVER ERROR = A bug escaped us. Sorry. We are on it.</p>
+</li>
+</ul>
+<p>Please make sure your application can handle these return codes.</p>
+</div>
+<div class="section" id="top-level-response">
+<h2>6.2. Top Level Response<a class="headerlink" href="#top-level-response" title="Permalink to this headline">¶</a></h2>
+<p>The response always includes the following elements:</p>
+<dl class="docutils">
+<dt><strong>status</strong></dt>
+<dd>A boolean parameter specifying whether or not the request was successfully handled.
+<em>status</em> does <strong>not</strong> indicate any level of text understanding
+but instead expresses that the Eva processing logic was implemented correctly.</dd>
+<dt><strong>input_text</strong></dt>
+<dd><p class="first">The selected input text copied from the request. see: <a class="reference internal" href="api.html#multiple-input-text"><span class="std std-ref">Multiple Input Texts</span></a>.</p>
+<p class="last">To semantic-highlight the input text you need to use the <em>ProcessedText</em> field inside
+the <a class="reference internal" href="#api-reply"><span class="std std-ref">api_reply field</span></a>.
+There are situations, such as spelling correction, in which the returned input text is different
+from the original input text, for which case the <em>ProcessedText</em> field is provided.</p>
+</dd>
+<dt><strong>message</strong></dt>
+<dd><p class="first">Human readable status messages, most of which are self explanatory.</p>
+<p>Here are some of the more common responses:</p>
+<ul class="simple">
+<li><em>Site-Code / API-Key invalid</em></li>
+<li><em>No Site Code</em></li>
+</ul>
+<p>See <a class="reference internal" href="request.html#site-code-and-api-key"><span class="std std-ref">credentials</span></a>.</p>
+<ul class="simple">
+<li><em>You have reached the daily API limit. Please contact info&#64;evature.com</em></li>
+</ul>
+<p>Please do!</p>
+<ul class="simple">
+<li><em>Unsupported Language</em></li>
+</ul>
+<p>Eva is currently trained in English. Please contact us for additional language support.</p>
+<ul class="simple">
+<li><em>Partial Parse</em></li>
+<li><em>Successful Parse</em></li>
+</ul>
+<p>A natural language indication that Eva &#8220;understood&#8221; the input, before trying to apply business logic.
+It does not mean that the input makes sense.</p>
+<p>For example these would be considered a <em>Successful Parse</em>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span><span class="p">:</span> <span class="s2">&quot;Flight from Beverly Hills to Shiraz Iran for 2 kids for under $12 departing august 2020&quot;</span>
+<span class="n">User</span><span class="p">:</span> <span class="s2">&quot;Pet friendly cruise from the Eiffel tower to the Willis tower&quot;</span>
+</pre></div>
+</div>
+<p><em>Partial Parse</em> means that not all the input was Successfully Parsed,
+which indicates that one or more words were unrecognized, horribly misspelled or out of domain,
+possibly even the entire sentence!</p>
+<p>Note that Eva might completely overcome a <em>Partial Parse</em> and reply with a result that makes perfect sense,
+for example:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span><span class="p">:</span> <span class="s2">&quot;United Airlines zxczxczxc flight from JFK to SFO&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>message</strong> is intended to be consumed by humans.
+Please do not use it as an indication of the quality of the result.
+Instead, use the confidence field in the API reply.</p>
+</div>
+<dl class="docutils">
+<dt><strong>api_reply</strong></dt>
+<dd>Eva&#8217;s understanding of the user&#8217;s request in a detailed structured form. See <a class="reference internal" href="#api-reply-in-depth">api_reply - in depth</a>.</dd>
+<dt><strong>ver</strong></dt>
+<dd>Eva&#8217;s current software version.</dd>
+<dt><strong>rid</strong></dt>
+<dd>A user provided request ID number, returned to the user. Usage is deprecated.</dd>
+</dl>
+<dl class="docutils" id="transaction-key">
+<dt><strong>transaction_key</strong></dt>
+<dd><p class="first">Unique transaction identifier.</p>
+<p class="last">Each interaction with Eva is assigned a globally unique transaction key which is returned in the Eva JSON reply,
+such as</p>
+</dd>
+</dl>
+<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;transaction_key&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-60ea-df167fe3-8a1c-22000bda434f&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you come across any specific Eva problem which you would like to report back to the team,
+which can be either a speech recognition problem (Eva did not &#8220;hear&#8221; you correctly)
+or an understanding problem (Eva heard you correctly but did not quite &#8220;get&#8221; what you meant)
+please report it to us. The easiest and most effective way to do this is using a transaction_key.</p>
+<p class="last">We log everything.</p>
+</div>
+<dl class="docutils">
+<dt><strong>session_id</strong></dt>
+<dd>Unique session identifier. It is both an input to Eva and an output from Eva. See <a class="reference internal" href="request.html#session-id"><span class="std std-ref">session_id</span></a></dd>
+<dt><strong>confidence</strong></dt>
+<dd>The level of confidence Eva has in the reply reported both numerically and categorically
+per the last utterance and accumulating over the entire session.
+Numeric scope is is a float between 0.0 and 1.0,
+while categories are a string enumeration with values &#8216;Low&#8217;, &#8216;Medium&#8217; and &#8216;High&#8217;. For example:</dd>
+</dl>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;confidence&quot;</span><span class="o">:</span> <span class="p">{</span>
+   <span class="s2">&quot;accumulated&quot;</span><span class="o">:</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;last_utterance_score&quot;</span><span class="o">:</span> <span class="mf">0.5794277</span><span class="p">,</span>
+   <span class="s2">&quot;accumulated_score&quot;</span><span class="o">:</span> <span class="mf">0.98</span><span class="p">,</span>
+   <span class="s2">&quot;last_utterance&quot;</span><span class="o">:</span> <span class="s2">&quot;High&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="api-reply-in-depth">
+<span id="api-reply"></span><h2>6.3. api_reply - in depth<a class="headerlink" href="#api-reply-in-depth" title="Permalink to this headline">¶</a></h2>
+<p>The api_reply details the complete understanding of the user&#8217;s request, accumulating over the session.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Human Language is very broad, flexible and dynamic.
+Trying to capture the wealth of information in the user&#8217;s request in structured form
+led us to the following guidelines:</p>
+<ul class="last">
+<li><p class="first">keys in the <em>api_reply</em> object indicate they were applicable and specifically requested by the user.
+A missing key means the user did not specifically request it or that it is not applicable.</p>
+<p>For example: &#8220;Hotel in Madrid on Monday&#8221; would have an &#8220;Arrival&#8221; key but no &#8220;Departure&#8221; key
+for the Madrid Location in the reply,
+while &#8220;Flight from Madrid on Monday&#8221; would have a &#8220;Departure&#8221; key but no &#8220;Arrival&#8221; key
+for the Mardid location in the reply.</p>
+</li>
+<li><p class="first">Boolean attributes that are set to <em>false</em> mean the user specifically requested for them to be negative
+as opposed to not mentioning them at all.</p>
+</li>
+</ul>
+</div>
+<p>The top level api_reply can include the following keys:</p>
+<dl class="docutils">
+<dt><strong>Flow</strong></dt>
+<dd>Flow of Actions describing a simple to-do list for the application</dd>
+<dt><strong>Locations</strong></dt>
+<dd><p class="first">Information about the locations included in the trip as specified by the user
+(countries, cities, areas, airports, properties) and their related information (including all <strong>time</strong> information).</p>
+<p class="last">Note: All the attributes described bellow <strong>may</strong> appear within a location if the attribute
+is related specifically to a particular location.
+Example &#8220;Center of Chicago&#8221; - the Geo Attribute &#8220;Center&#8221; will appear under Chicago and not in the global context.</p>
+</dd>
+<dt><strong>Alt Locations</strong></dt>
+<dd><p class="first">Structured the same as Locations, but includes alternate locations specifically requested for by the user,
+referencing locations with similar indices in the <em>Locations</em> key.</p>
+<p class="last">Example: &#8220;vacation in Italy or France&#8221; will place &#8220;France&#8221; in Locations while Italy in &#8220;Alt Locations&#8221;
+while both would share the same <em>Index</em>.</p>
+</dd>
+<dt><strong>Travelers</strong></dt>
+<dd>Information about the travelers number and age.</dd>
+<dt><strong>Geo Attributes</strong></dt>
+<dd><p class="first">Attributes representing locations.</p>
+<p class="last">Example: &#8220;vacations somewhere hot&#8221;</p>
+</dd>
+<dt><strong>Hotel Attributes</strong></dt>
+<dd><p class="first">Attributes representing properties.</p>
+<p class="last">Example: &#8220;hotel with a pool&#8221;</p>
+</dd>
+<dt><strong>Flight Attributes</strong></dt>
+<dd><p class="first">Attributes representing flights.</p>
+<p class="last">Example: &#8220;Red eye flights&#8221;</p>
+</dd>
+<dt><strong>Activity Attributes</strong></dt>
+<dd><p class="first">Attributes representing activities.</p>
+<p class="last">Example: &#8220;Scuba Diving in Australia&#8221;</p>
+</dd>
+<dt><strong>Request Attributes</strong></dt>
+<dd><p class="first">Attributes representing the type of deal being sought.</p>
+<p class="last">Example: &#8220;Last minute deals to Egypt&#8221;</p>
+</dd>
+<dt><strong>Money</strong></dt>
+<dd><p class="first">Information about money.</p>
+<p class="last">Example: &#8220;vacations in Italy for less than $500&#8221;</p>
+</dd>
+<dt><strong>Chat</strong></dt>
+<dd><p class="first">Attempts to chat with Eva.</p>
+<p class="last">Example: &#8220;Hello, how are you?&#8221;</p>
+</dd>
+<dt><strong>Warnings</strong></dt>
+<dd><p class="first">Various warnings provided by the system.</p>
+<p class="last">The format is a list made of warning type, warning value and if the warning relates to a particular part of the text, a dictionary with the related text and its position in the input.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="locations-alt-locations">
+<h2>6.4. Locations (Alt Locations)<a class="headerlink" href="#locations-alt-locations" title="Permalink to this headline">¶</a></h2>
+<p>A list of locations representing the trip requested. Each location item may have the following keys:</p>
+<dl class="docutils">
+<dt><strong>Index</strong></dt>
+<dd><p class="first">A number representing the location index in the trip. Index numbers usually progress with the duration of the trip (so a location with index 11 is visited before a location with index 21).</p>
+<p>An index number is unique for a locations in Locations (unless the same location visited multiple times, for example home location at start and end of trip will have the same index) but &#8220;Alt Locations&#8221; may have multiple locations with the same index, indicating alternatives for the same part of a trip.</p>
+<p>Index numbers are not serial, so indexes can be (0,1,11,21,22, etc.).</p>
+<p class="last">Index number &#8216;0&#8217; is unique and always represents the home location.</p>
+</dd>
+<dt><strong>Next</strong></dt>
+<dd>The index number of the location in a trip, if known.</dd>
+<dt><strong>Geoid</strong></dt>
+<dd><dl class="first last docutils">
+<dt>A global identifier for the location. IATA code for airports and Geoname ID for other locations.</dt>
+<dd>Note: if Geoname ID is not defined for a location, a string representing the name of the location will be given in as value instead. The format of this name is currently not set and MAY CHANGE. If you plan to use this field, please contact us.</dd>
+</dl>
+</dd>
+<dt><strong>Country</strong></dt>
+<dd>The ISO code for the country of the location (not present in case of continents and cross country regions).</dd>
+<dt><strong>Name</strong></dt>
+<dd>The location name. Mostly for debug purposes. Locations should be accessed with Geoid.</dd>
+<dt><strong>Type</strong></dt>
+<dd>The location type. Example values: Continent, Country, City, Island, Airport.</dd>
+<dt><strong>Longitude</strong></dt>
+<dd>The Location longitude.</dd>
+<dt><strong>Latitude</strong></dt>
+<dd>The location latitude.</dd>
+<dt><strong>Derived From</strong></dt>
+<dd><p class="first">Exists only at certain locations.</p>
+<p>Currently it will always appear in the 1st location (Home)
+and sometimes in the 2nd location (which is the 1st destination) to represent a case where the user is at the destination.</p>
+<p>Text - Location is defined in the text. Example: &#8220;fly from NY to LA&#8221;</p>
+<p>Request - The defined location in the request (for example - &#8220;home&#8221; value).</p>
+<p>Bias - The defined location in the request &#8220;bias&#8221; value.</p>
+<p>IP - Based on the IP address - as provided in the request.</p>
+<p>GPS - Based on longitude and latitude coordinates - as provided in the request.</p>
+<p>Default - Default location (for example - default Home).</p>
+<p class="last">Example: &#8220;Hotel tonight&#8221; will assume that IP or GPS information is referring to the location where the hotel is searched for (the destination).
+Location 1 will still be the Home, only the user is currently not there.</p>
+</dd>
+<dt><strong>Ambiguity</strong></dt>
+<dd>True if the location did not have a clear meaning (Example: &#8220;Arlington&#8221; - there are many and its unclear which one was meant).
+The list of location options would appear under &#8220;Possible Locations&#8221;.</dd>
+<dt><strong>PossibleLocations</strong></dt>
+<dd>A list of possible locations in case of ambiguity. The list includes: Name, Country, Longitude, Latitude, Type, and Geoid.</dd>
+<dt><strong>Home</strong></dt>
+<dd>Applicable only to the 1st (Home) location on the list. Defines the source of the information about the home location.
+It appears in v1.0 and a copy of &#8220;Derived From&#8221; value. It will become obsolete in v1.1</dd>
+<dt><strong>Arrival</strong></dt>
+<dd>Time of arrival to location (see Time key explained bellow).</dd>
+<dt><strong>Departure</strong></dt>
+<dd>Time of departure to location (see Time key explained bellow).</dd>
+<dt><strong>Stay</strong></dt>
+<dd>Stay time in the location (see Time key explained bellow).
+Note: this is specific stay time, example: &#8220;hotel in NY for 3 nights&#8221;. Arrival and Departure may also implicitly define stay, but it will not appear in the Stay key, for example: &#8220;arrive in NY on Monday and depart to LA on Thursday.</dd>
+<dt><strong>Pickup Car</strong></dt>
+<dd>Time for rental car pickup (see Time key explained bellow).</dd>
+<dt><strong>Return Car</strong></dt>
+<dd>Time for rental car return (see Time key explained bellow).</dd>
+<dt><strong>Actions</strong></dt>
+<dd>Provides a list of actions requested for this location. Actions can include the following values:
+&#8216;Get There&#8217; (request any way to be transported there, mostly flights but can be train, bus etc.), &#8216;Get Accommodation&#8217;, &#8216;Get Car&#8217;.</dd>
+<dt><strong>Purpose</strong></dt>
+<dd>Provides a list of purpose items if known. Values can include:
+&#8216;Meeting&#8217;, &#8216;Pleasure&#8217;, &#8216;Business&#8217;, &#8216;Convention&#8217;, &#8216;Medical&#8217;, &#8216;Transit&#8217;, &#8216;Home&#8217;.
+Example: &#8220;fly to NY. My home is Tokyo&#8221;</dd>
+<dt><strong>Airports</strong></dt>
+<dd>If a location is not an airport, this key provides 5 recommended airports for this location.
+Airports are named by their IATA code.</dd>
+<dt><strong>All Airports Code</strong></dt>
+<dd>Will be present in cities that have an &#8220;all airports&#8221; IATA code (e.g. San Francisco, New York, etc.).</dd>
+<dt><strong>Keys</strong></dt>
+<dd>Provide the location/property key based on a particular customer&#8217;s data.</dd>
+</dl>
+</div>
+<div class="section" id="time-key-arrival-departure-stay">
+<h2>6.5. Time key (Arrival, Departure, Stay)<a class="headerlink" href="#time-key-arrival-departure-stay" title="Permalink to this headline">¶</a></h2>
+<p>Time is defined with the following keys: Date, Time, Delta, Restriction</p>
+<dl class="docutils">
+<dt><strong>Date, Time</strong></dt>
+<dd><p class="first">Represent a specific date and time if given.</p>
+<p class="last">Example: &#8220;fly to ny 3/4/2010 at 10am&#8221; results: &#8220;date&#8221;: &#8220;2010-04-03&#8221;, &#8220;time&#8221;: &#8220;10:00:00&#8221;.</p>
+</dd>
+<dt><strong>Delta</strong></dt>
+<dd><dl class="first last docutils">
+<dt>May represent:</dt>
+<dd><p class="first">A range starting from Date/Time. Example: &#8220;next week&#8221; results: &#8220;date&#8221;: &#8220;2010-10-25&#8221;, &#8220;delta&#8221;: &#8220;days=+6&#8221;</p>
+<p class="last">A duration without an anchor date. Example: &#8220;hotel for a week&#8221; results: &#8220;delta&#8221;: &#8220;days=+7&#8221;</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Restriction</strong></dt>
+<dd><p class="first">A restriction on the date/time requirement. Values can be:
+&#8216;no_earlier&#8217;, &#8216;no_later&#8217;, &#8216;no_more&#8217;, &#8216;no_less&#8217;, &#8216;latest&#8217;, &#8216;earliest&#8217;</p>
+<p class="last">Example: &#8220;depart NY no later than 10am&#8221; results: &#8220;restriction&#8221;: &#8220;no_later&#8221;, &#8220;time&#8221;: &#8220;10:00:00&#8221;</p>
+</dd>
+<dt><strong>Calculated</strong></dt>
+<dd>A boolean flag representing that a particular time has been calculated from other times,
+and not directly derived from the input text.
+In most cases if an arrival time to a location is specified, the departure time from the previous location is calculated.</dd>
+<dt><strong>ProcessedText</strong></dt>
+<dd>A cleaned up version of the input text which may be used for client-side semantic highlighting based on
+character positioning within the string (which may be different from the input_text.
+Example: if there is a warning that &#8220;blahblah&#8221; was misunderstood at position 17,
+This position is the 17th character in <em>ProcessedText</em></dd>
+</dl>
+</div>
+<div class="section" id="flow">
+<span id="id2"></span><h2>6.6. Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-core.dialog.eva_flow_docs"></span><p>Flow is a high level API reply element, describing the to-do list for the application developers.
+It consists of a List of Actions, ordered by &#8220;Travel Logic&#8221; (for example, search for flights first, hotels later).
+There are several possible Flow Actions, identified by a Type.</p>
+<p>Each Flow Action is a Dictionary object containing the following keys:</p>
+<p><strong>Type</strong> - an enumeration that describes the scope of the flow action. <a class="reference internal" href="#flow-action-hotel"><span class="std std-ref">Hotel</span></a>, <a class="reference internal" href="#flow-action-car"><span class="std std-ref">Car</span></a>, <a class="reference internal" href="#flow-action-flight"><span class="std std-ref">Flight</span></a>, <a class="reference internal" href="#flow-action-cruise"><span class="std std-ref">Cruise</span></a> or <a class="reference internal" href="#flow-action-question"><span class="std std-ref">Reply</span></a>.</p>
+<p><strong>RelatedLocations</strong> - a list of integer location indexes in the <em>api_reply/Locations</em> list for use in the specific Flow Action. Note this key will be returned only if applicable.</p>
+<p><strong>SayIt</strong> - A string with the textual description of the specific flow action, to be used for chat and Text-to-Speech</p>
+<div class="section" id="flight">
+<span id="flow-action-flight"></span><h3>6.6.1. Flight<a class="headerlink" href="#flight" title="Permalink to this headline">¶</a></h3>
+<p>A flow action of type <code class="docutils literal"><span class="pre">Flight</span></code> indicates that there is a flight request in the user&#8217;s input.
+The related locations contains the indexes of locations between origin and destination of a flight (including transit locations).
+A list of [1,2] means a flight from location #1 to location #2 in the Locations list (the first element is index #0).</p>
+<p>Round trip flights have an additional key:</p>
+<dl class="docutils">
+<dt><strong>ReturnTrip</strong> - a dictionary with the following keys:</dt>
+<dd><p class="first"><strong>ActionIndex</strong> - a 0-indexed integer pointing to the return trip flow action in the <em>api_reply/Flow</em> list.</p>
+<p class="last"><strong>SayIt</strong> - A string with the textual description of the specific round trip flight action, to be used for chat and Text-to-Speech</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="car">
+<span id="flow-action-car"></span><h3>6.6.2. Car<a class="headerlink" href="#car" title="Permalink to this headline">¶</a></h3>
+<p>A flow action of type <code class="docutils literal"><span class="pre">Car</span></code> indicates that there is a car rental request in the user&#8217;s input.
+Related locations is a list of the relevant location indexes. It can contain:</p>
+<ol class="arabic simple">
+<li>A single location, in case the car is to be picked up and returned at the same location</li>
+<li>Two locations, in which case the car is to be picked up in the first location and dropped off at the second</li>
+</ol>
+</div>
+<div class="section" id="hotel">
+<span id="flow-action-hotel"></span><h3>6.6.3. Hotel<a class="headerlink" href="#hotel" title="Permalink to this headline">¶</a></h3>
+<p>A flow action of type <code class="docutils literal"><span class="pre">Hotel</span></code> indicates that there is an accommodation request in the user&#8217;s input.
+The related locations list contains a single location index where an accommodation is requested.</p>
+</div>
+<div class="section" id="cruise">
+<span id="flow-action-cruise"></span><h3>6.6.4. Cruise<a class="headerlink" href="#cruise" title="Permalink to this headline">¶</a></h3>
+<p>A flow action of type <code class="docutils literal"><span class="pre">Cruise</span></code> indicates that there is a cruise request in the user&#8217;s input.
+The related locations list is similar to the related locations list in the Car Flow Action.</p>
+</div>
+<div class="section" id="train">
+<h3>6.6.5. Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h3>
+<p>A flow action of type <code class="docutils literal"><span class="pre">Train</span></code> indicates that there is a train request in the user&#8217;s input.
+The related locations list is similar to the related locations list in the Car Flow Action.</p>
+</div>
+<div class="section" id="reply">
+<span id="flow-action-question"></span><h3>6.6.6. Reply<a class="headerlink" href="#reply" title="Permalink to this headline">¶</a></h3>
+<p>flow action of type <code class="docutils literal"><span class="pre">Reply</span></code>  indicates that the end user requested an applicative reply.
+This happens when the user asks a question such as &#8220;How do I contact customer service?&#8221; (Service Attributes)</p>
+<p><strong>AttributeType</strong> - the type of the attribute such as: &#8220;Service Attributes&#8221;, &#8220;Request Attributes&#8221; etc.
+<strong>AttributeKey</strong> - the key of the attribute that triggers the reply such as: &#8220;Call Support&#8221;.</p>
+</div>
+<div class="section" id="statement">
+<h3>6.6.7. Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h3>
+<p>flow action <code class="docutils literal"><span class="pre">Statement</span></code> indicates that there is some information to the end user. (activated using &#8216;ffi_statement&#8217; in the query string)</p>
+<dl class="docutils">
+<dt><strong>StatementType</strong></dt>
+<dd><ul class="first last simple">
+<li>Understanding - Eva did not understand the input.</li>
+<li>Chat          - A dialog with the end-user.</li>
+<li>Unsupported   - The requested travel search category is unsupported based on site_code definition and the &#8216;scope&#8217; query parameter.</li>
+<li>Unknown Expression - Eva did not understand the expression</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="question">
+<h3>6.6.8. Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h3>
+<p>When the Dialog Engine is configured (per site code), Flow Actions of type <code class="docutils literal"><span class="pre">Question</span></code> may appear in the flow.
+Questions help Eva understand the user&#8217;s request.
+In addition to the above keys, Question Flow Actions contain:</p>
+<dl class="docutils">
+<dt><strong>QuestionType</strong> - The type of question. An enumeration with the following string values:</dt>
+<dd><ul class="first last simple">
+<li>&#8220;Open&#8221;             - defines an open question</li>
+<li>&#8220;Multiple Choice&#8221;  - defines a multi-choice question, in which case an additional <em>QuestionChoices</em> key will appear.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>ActionType</strong> - The type of the related action. For example &#8216;Hotel&#8217;, &#8216;Flight&#8217;, etc...</p>
+<dl class="docutils">
+<dt><strong>QuestionCategory</strong> - The purpose of the question. An enumeration with the following string values:</dt>
+<dd><ul class="first last simple">
+<li>Location Ambiguity  - The location cannot be uniquely identified, e.g. &#8220;arlington&#8221;</li>
+<li>Missing Date        - There is a required but missing date in the input that cannot be derived from the text.</li>
+<li>Missing Duration    - There is a required but missing duration in the input that cannot be derived from the text.</li>
+<li>Missing Location    - There is a required but missing location in the text, e.g. &#8220;flights on Monday&#8221;.</li>
+<li>Informative         - A question containing some information to the end user</li>
+<li>Missing Action      - There is a missing action for a location e.g. &#8220;ny&#8221;</li>
+<li>Missing Travelers   - There is a required but missing travelers (adults, children or infants) that cannot be derived from text.</li>
+<li>Missing Direction   - if location mentioned and it cannot be uniquely identified whether the location is an origin or target location.</li>
+</ul>
+</dd>
+<dt><strong>QuestionSubCategory</strong> - Additional key describing the sub category of the question.</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>For the Missing Date Category the following sub categories exist:</dt>
+<dd><ul class="first last simple">
+<li>Pickup Car    - missing date of pickup car.</li>
+<li>Return Car    - missing date of return car.</li>
+<li>Arrival       - missing date of arrival.</li>
+<li>Departure     - missing date of departure.</li>
+<li>Return Date   - missing return date.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For the Informative Category the following sub categories exist:</dt>
+<dd><ul class="first last simple">
+<li>Understanding - Eva did not understand the input.</li>
+<li>Chat          - A dialog with the end-user.</li>
+<li>Unsupported   - The requested travel search category is unsupported based on site_code definition and the &#8216;scope&#8217; query parameter.</li>
+<li>Unknown Expression - Eva did not understand the expression</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For the Missing Duration Category the following sub categories exist:</dt>
+<dd><ul class="first last simple">
+<li>Stay - missing duration of stay, relevant to accommodation requests.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>QuestionChoices</strong> - A list of possible string answers for responding to multiple choice questions.
+The developer may wish to implement a dialog GUI, presenting this list to the end user.
+If the user selects from this list the response needs to be sent back to Eva as a <code class="docutils literal"><span class="pre">dialog_repsonse</span></code> request parameter.</p>
+<p><strong>Flow Engine reply examples:</strong></p>
+<p>input_text: &#8220;hotel in arlington&#8221;</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Location Ambiguity&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RelatedLocations&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="mi">1</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Which Arlington did you mean?&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is a more complex example:</p>
+<p>input_text: &#8220;hotel and flight to ny from Boston tomorrow night&#8221;</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;RelatedLocations&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mi">0</span><span class="p">,</span>
+                    <span class="mi">1</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Flights from Boston, Massachusetts to New York City, New York, departing July 2nd, 2013, at 09:00PM&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;QuestionSubCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Stay&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Missing Duration&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;How many nights would you like to stay in New York City, New York?&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;RelatedLocations&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="mi">1</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The above Flow has 2 actions: First, search for flights. When the flight search is resolved, ask about the Missing Duration.</p>
+</div>
+</div>
+<div class="section" id="money">
+<h2>6.7. Money<a class="headerlink" href="#money" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Includes the following keys:</dt>
+<dd><ul class="first last simple">
+<li><strong>Amount</strong>: the amount of money.</li>
+<li><strong>Currency</strong>: the currency used, per <a class="reference external" href="http://www.iso.org/iso/support/faqs/faqs_widely_used_standards/widely_used_standards_other/currency_codes/currency_codes_list-1.htm">ISO 4217 codes</a></li>
+<li><strong>Restriction</strong>: restrictions can have the following values: &#8216;<strong>Less</strong>&#8216;, &#8216;<strong>More</strong>&#8216;, &#8216;<strong>Least</strong>&#8216;, &#8216;<strong>Most</strong>&#8216;, &#8216;<strong>Medium</strong>&#8216;</li>
+<li><strong>Per Person</strong>: boolean to indicate whether or not the price is per-person.</li>
+</ul>
+</dd>
+</dl>
+<p>Example: &#8220;hotel for less than $500 pp&#8221;</p>
+<p>results: &#8220;Currency&#8221;: &#8220;USD&#8221;, &#8220;Amount&#8221;: &#8220;500&#8221;, &#8220;Per Person&#8221;: True</p>
+</div>
+<div class="section" id="chat">
+<h2>6.8. Chat<a class="headerlink" href="#chat" title="Permalink to this headline">¶</a></h2>
+<p>An attempt to chat with Eva or a request that may require a chat reply as opposed to going straight to search.</p>
+<dl class="docutils">
+<dt>Chat values may include:</dt>
+<dd><ul class="first last simple">
+<li><strong>Hello</strong>: Example: &#8220;hello&#8221;</li>
+<li><strong>Who/What</strong>: Example: &#8220;Who are you?&#8221;</li>
+<li><strong>Name</strong>: Example: &#8220;My name is Joe&#8221;</li>
+<li><strong>How are you</strong>: Example: &#8220;How are you?&#8221;</li>
+<li><strong>Bookings</strong>: Identified a previous booking number. Example:&#8221;XBS-23452&#8221;. Note - this is identified based per site.</li>
+<li><strong>Cancellations</strong>: A request to cancel a previous order. Example:&#8221;Cancel my order&#8221;</li>
+<li><strong>Yes</strong>: Some variant of an affirmative reply, usually as a response to a question.</li>
+<li><strong>No</strong>: Some variant of a negative reply, usually as a response to a question.</li>
+</ul>
+</dd>
+</dl>
+<p>If a chat type has value, the value will be given (Example: &#8220;my name is Joe&#8221; results in &#8220;Name&#8221;: &#8220;Joe&#8221;) otherwise
+the value will be <em>true</em> (Example: &#8220;hello&#8221; results in &#8220;Hello&#8221;: true).</p>
+</div>
+<div class="section" id="module-core.attributes.hotel">
+<span id="hotel-attributes"></span><h2>6.9. Hotel Attributes<a class="headerlink" href="#module-core.attributes.hotel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chain">
+<h3>6.9.1. Chain<a class="headerlink" href="#chain" title="Permalink to this headline">¶</a></h3>
+<p>The chain of the hotel (e.g. Sheraton)</p>
+</div>
+<div class="section" id="board">
+<h3>6.9.2. Board<a class="headerlink" href="#board" title="Permalink to this headline">¶</a></h3>
+<p>The hotel board, with the following potential values:</p>
+<ul class="simple">
+<li>Self Catering</li>
+<li>Bed and Breakfast</li>
+<li>Half Board</li>
+<li>Full Board</li>
+<li>All Inclusive</li>
+<li>Drinks Inclusive</li>
+</ul>
+<p>The value is an Array of the above options (e.g. &#8220;half or full board&#8221;)</p>
+</div>
+<div class="section" id="quality">
+<h3>6.9.3. Quality<a class="headerlink" href="#quality" title="Permalink to this headline">¶</a></h3>
+<p>The quality of the hotel, measure in Stars.
+The return value is a Array with 2 numbers (or null):</p>
+<ul class="simple">
+<li>Min Stars  = integer from 0 to 6</li>
+<li>Max Stars  = integer from 0 to 6</li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li>&#8220;2 to 3 stars&#8221;     -&gt; [2, 3]</li>
+<li>&#8220;At least 4 stars&#8221; -&gt; [4, null]</li>
+<li>&#8220;1 star&#8221;           -&gt; [1, 1]</li>
+</ul>
+</div>
+<div class="section" id="numeric-rating">
+<h3>6.9.4. Numeric Rating<a class="headerlink" href="#numeric-rating" title="Permalink to this headline">¶</a></h3>
+<p>The hotel ratings, with values as floats.
+This is the result of expressions such as &#8221;...with a review score of 7.6 or more&#8221;.</p>
+</div>
+<div class="section" id="rating">
+<h3>6.9.5. Rating<a class="headerlink" href="#rating" title="Permalink to this headline">¶</a></h3>
+<p>The hotel ratings, with the following potential values (normalized to the values in TripAdvisor):</p>
+<ul class="simple">
+<li>Excellent</li>
+<li>Very Good</li>
+<li>Average</li>
+<li>Poor</li>
+<li>Terrible</li>
+</ul>
+</div>
+<div class="section" id="child-free">
+<h3>6.9.6. Child Free<a class="headerlink" href="#child-free" title="Permalink to this headline">¶</a></h3>
+<p>A Child free hotel (adults only) - Boolean attribute</p>
+</div>
+<div class="section" id="business">
+<h3>6.9.7. Business<a class="headerlink" href="#business" title="Permalink to this headline">¶</a></h3>
+<p>A Business hotel - Boolean attribute</p>
+</div>
+<div class="section" id="airport-shuttle">
+<h3>6.9.8. Airport Shuttle<a class="headerlink" href="#airport-shuttle" title="Permalink to this headline">¶</a></h3>
+<p>Airport Shuttle services - Boolean attribute</p>
+</div>
+<div class="section" id="casino">
+<h3>6.9.9. Casino<a class="headerlink" href="#casino" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has a casino (or is located next to a casino) - Boolean attribute</p>
+</div>
+<div class="section" id="fishing">
+<h3>6.9.10. Fishing<a class="headerlink" href="#fishing" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has fishing facilities (or is located next to fishing facilities) - Boolean attribute</p>
+</div>
+<div class="section" id="snow-conditions">
+<h3>6.9.11. Snow Conditions<a class="headerlink" href="#snow-conditions" title="Permalink to this headline">¶</a></h3>
+<p>The area has good snow conditions - Boolean attribute</p>
+</div>
+<div class="section" id="snorkeling">
+<h3>6.9.12. Snorkeling<a class="headerlink" href="#snorkeling" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has snorkeling facilities (or is located next to snorkeling facilities) - Boolean attribute</p>
+</div>
+<div class="section" id="diving">
+<h3>6.9.13. Diving<a class="headerlink" href="#diving" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has diving facilities (or is located next to diving facilities) - Boolean attribute</p>
+</div>
+<div class="section" id="activity">
+<h3>6.9.14. Activity<a class="headerlink" href="#activity" title="Permalink to this headline">¶</a></h3>
+<p>An Activity hotel - Boolean attribute</p>
+</div>
+<div class="section" id="ski">
+<h3>6.9.15. Ski<a class="headerlink" href="#ski" title="Permalink to this headline">¶</a></h3>
+<p>A Ski hotel - Boolean attribute</p>
+</div>
+<div class="section" id="ski-in-out">
+<h3>6.9.16. Ski In/Out<a class="headerlink" href="#ski-in-out" title="Permalink to this headline">¶</a></h3>
+<p>A Ski In / Ski Out accommodation - Boolean attribute</p>
+</div>
+<div class="section" id="golf">
+<h3>6.9.17. Golf<a class="headerlink" href="#golf" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has golf facilities, or is situated by a golf course - Boolean attribute</p>
+</div>
+<div class="section" id="kids-for-free">
+<h3>6.9.18. Kids for free<a class="headerlink" href="#kids-for-free" title="Permalink to this headline">¶</a></h3>
+<p>Kids are free in parent&#8217;s room - Boolean attribute</p>
+</div>
+<div class="section" id="city">
+<h3>6.9.19. City<a class="headerlink" href="#city" title="Permalink to this headline">¶</a></h3>
+<p>A City hotel - Boolean attribute</p>
+</div>
+<div class="section" id="family">
+<h3>6.9.20. Family<a class="headerlink" href="#family" title="Permalink to this headline">¶</a></h3>
+<p>A family friendly hotel - Boolean attribute</p>
+</div>
+<div class="section" id="pet-friendly">
+<h3>6.9.21. Pet Friendly<a class="headerlink" href="#pet-friendly" title="Permalink to this headline">¶</a></h3>
+<p>A pet friendly hotel - Boolean attribute</p>
+</div>
+<div class="section" id="romantic">
+<h3>6.9.22. Romantic<a class="headerlink" href="#romantic" title="Permalink to this headline">¶</a></h3>
+<p>A Romantic hotel - Boolean attribute</p>
+</div>
+<div class="section" id="adventure">
+<h3>6.9.23. Adventure<a class="headerlink" href="#adventure" title="Permalink to this headline">¶</a></h3>
+<p>A hotel with an Adventure motif - Boolean attribute</p>
+</div>
+<div class="section" id="designer">
+<h3>6.9.24. Designer:<a class="headerlink" href="#designer" title="Permalink to this headline">¶</a></h3>
+<p>A Designer / Boutique hotel - Boolean attribute</p>
+</div>
+<div class="section" id="gym">
+<h3>6.9.25. Gym<a class="headerlink" href="#gym" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has a gym - Boolean attribute</p>
+</div>
+<div class="section" id="quiet">
+<h3>6.9.26. Quiet<a class="headerlink" href="#quiet" title="Permalink to this headline">¶</a></h3>
+<p>A request for quiet accommodations - Boolean attribute</p>
+</div>
+<div class="section" id="pool">
+<h3>6.9.27. Pool<a class="headerlink" href="#pool" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has a swimming pool - an enumerated attribute:</p>
+<ul class="simple">
+<li>&#8216;Any&#8217;     - The hotel needs to have a pool</li>
+<li>&#8216;Indoor&#8217;  - The hotel needs to have an indoor pool</li>
+<li>&#8216;Outdoor&#8217; - The hotel needs to have a outdoor pool</li>
+</ul>
+</div>
+<div class="section" id="meeting-room">
+<h3>6.9.28. Meeting Room<a class="headerlink" href="#meeting-room" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has meeting rooms - Boolean attribute</p>
+</div>
+<div class="section" id="accommodation-type">
+<h3>6.9.29. Accommodation Type<a class="headerlink" href="#accommodation-type" title="Permalink to this headline">¶</a></h3>
+<p>The type of the requested accommodation - an enumerated attribute:</p>
+<ul class="simple">
+<li>Chalet</li>
+<li>Villa</li>
+<li>Apartment</li>
+<li>Motel</li>
+<li>Camping</li>
+<li>Hostel</li>
+<li>Mobile Home</li>
+<li>Guest House</li>
+<li>Holiday Village</li>
+<li>Hotel Residence</li>
+<li>Guest Accommodations</li>
+<li>Resort</li>
+<li>Hotel</li>
+<li>Zimmer</li>
+<li>Farm</li>
+<li>Youth Hostel</li>
+<li>Bungalow</li>
+<li>Inn</li>
+</ul>
+</div>
+<div class="section" id="restaurant">
+<h3>6.9.30. Restaurant<a class="headerlink" href="#restaurant" title="Permalink to this headline">¶</a></h3>
+<p>The hotel has a restaurant - Boolean attribute</p>
+</div>
+<div class="section" id="gourmet">
+<h3>6.9.31. Gourmet<a class="headerlink" href="#gourmet" title="Permalink to this headline">¶</a></h3>
+<p>A Gourmet hotel - Boolean attribute</p>
+</div>
+<div class="section" id="only">
+<h3>6.9.32. Only<a class="headerlink" href="#only" title="Permalink to this headline">¶</a></h3>
+<p>The request is specifically asking for just-a-hotel (and no flight, car etc.) - Boolean attribute</p>
+</div>
+<div class="section" id="disabled">
+<h3>6.9.33. Disabled<a class="headerlink" href="#disabled" title="Permalink to this headline">¶</a></h3>
+<p>Handicapped friendly establishment - Boolean attribute</p>
+</div>
+<div class="section" id="spa">
+<h3>6.9.34. Spa<a class="headerlink" href="#spa" title="Permalink to this headline">¶</a></h3>
+<p>The establishment has a spa - Boolean attribute</p>
+</div>
+<div class="section" id="parking">
+<h3>6.9.35. Parking<a class="headerlink" href="#parking" title="Permalink to this headline">¶</a></h3>
+<p>Parking facilities, contains these attributes:</p>
+<ul class="simple">
+<li>Facilities - Boolean attribute</li>
+<li>Valet      - Boolean attribute</li>
+<li>Free       - Boolean attribute</li>
+</ul>
+</div>
+<div class="section" id="castle">
+<h3>6.9.36. Castle<a class="headerlink" href="#castle" title="Permalink to this headline">¶</a></h3>
+<p>Hotel in a Castle - Boolean attributes</p>
+</div>
+<div class="section" id="sport">
+<h3>6.9.37. Sport<a class="headerlink" href="#sport" title="Permalink to this headline">¶</a></h3>
+<p>Sport hotel - Boolean attribute</p>
+</div>
+<div class="section" id="countryside">
+<h3>6.9.38. Countryside<a class="headerlink" href="#countryside" title="Permalink to this headline">¶</a></h3>
+<p>Countryside hotel - Boolean attribute</p>
+</div>
+<div class="section" id="rooms">
+<h3>6.9.39. Rooms<a class="headerlink" href="#rooms" title="Permalink to this headline">¶</a></h3>
+<p>The hotel rooms is a complex structure, containing a list of room elements, each with the following attributes:</p>
+<ul>
+<li><p class="first">Multiple      -  How many of the same rooms (e.g. 3 airconditioned rooms)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Beds          -  A list of tuples, each tuple has a number of beds (int) and Type of bed, with the following potential values:</dt>
+<dd><ul class="first last simple">
+<li>Twin</li>
+<li>King</li>
+<li>Queen</li>
+<li>Single</li>
+<li>Double</li>
+<li>Triple</li>
+<li>Quadruple</li>
+<li>Quintuple</li>
+<li>Sextuple</li>
+<li>Crib</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Room Type     -  The type of the room</dt>
+<dd><ul class="first last simple">
+<li>Room</li>
+<li>Family Room</li>
+<li>Suite</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Air Con       -  Air conditioning (boolean, if exists)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Internet      -  The requested data service in the room, with the following potential values:</dt>
+<dd><ul class="first last simple">
+<li>Internet service</li>
+<li>Free Internet service</li>
+<li>Wi-Fi</li>
+<li>Free Wi-Fi</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Cable         -  Cable TV in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Kitchen       -  A Kitchen in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Mini Bar      -  Mini-bar in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Tub           -  A hot tub in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Smoking       -  Either Smoking (True) or Non Smoking (False) room (boolean, if exists)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="loyalty">
+<h3>6.9.40. Loyalty<a class="headerlink" href="#loyalty" title="Permalink to this headline">¶</a></h3>
+<p>Hotal Loyalty rewards</p>
+<ul class="simple">
+<li>Accor AI Club</li>
+<li>Hilton HHonors</li>
+<li>Wyndham Rewards</li>
+<li>Starwood Starpoints</li>
+<li>InterContinental Priority Club Rewards</li>
+<li>Hyatt Gold Passport</li>
+<li>Marriott Rewards</li>
+<li>Carlson Goldpoints</li>
+<li>LaQuinta Returns</li>
+<li>BestWestern Reward Points</li>
+<li>Choice Privileges</li>
+<li>Isrotel Sun Club</li>
+</ul>
+<p>The value is an Array of the above options</p>
+</div>
+</div>
+<div class="section" id="module-core.attributes.flight">
+<span id="flight-attributes"></span><h2>6.10. Flight Attributes<a class="headerlink" href="#module-core.attributes.flight" title="Permalink to this headline">¶</a></h2>
+<p>These are attributes describing the requested flight.</p>
+<div class="section" id="redeye">
+<h3>6.10.1. Redeye<a class="headerlink" href="#redeye" title="Permalink to this headline">¶</a></h3>
+<p>A Red eye flight - Boolean attribute.</p>
+</div>
+<div class="section" id="nonstop">
+<h3>6.10.2. Nonstop<a class="headerlink" href="#nonstop" title="Permalink to this headline">¶</a></h3>
+<p>A Non stop flight -
+Boolean attribute. Nonstop is related to the location from which the flight departs and will appear under that location.</p>
+<p>In API v1.0 Nonstop will also appear in global scope-
+if it relates to all flight departure locations. This is will become obsolete in v1.1</p>
+</div>
+<div class="section" id="food">
+<h3>6.10.3. Food<a class="headerlink" href="#food" title="Permalink to this headline">¶</a></h3>
+<p>Food preferences for the flight
+Potential values are:</p>
+<ul class="simple">
+<li><strong>Religious</strong>:
+&#8216;Kosher&#8217;, &#8216;Glatt Kosher&#8217;, &#8216;Muslim&#8217;, &#8216;Hindu&#8217;,</li>
+<li><strong>Vegetarian</strong>:
+&#8216;Vegetarian&#8217;, &#8216;Vegan&#8217;, &#8216;Indian Vegetarian&#8217;, &#8216;Raw Vegetarian&#8217;, &#8216;Oriental Vegetarian&#8217;, &#8216;Lacto Ovo Vegetarian&#8217;,
+&#8216;Lacto Vegetarian&#8217;, &#8216;Ovo Vegetarian&#8217;, &#8216;Jain Vegetarian&#8217;,</li>
+<li><strong>Medical meals</strong>:
+&#8216;Bland&#8217;, &#8216;Diabetic&#8217;, &#8216;Fruit Platter&#8217;, &#8216;Gluten Free&#8217;, &#8216;Low Sodium&#8217;, &#8216;Low Calorie&#8217;, &#8216;Low Fat&#8217;, &#8216;Low Fibre&#8217;,
+&#8216;Non-Carbohydrate&#8217;, &#8216;Non-Lactose&#8217;, &#8216;Soft Fluid&#8217;, &#8216;Semi Fluid&#8217;, &#8216;Ulcer Diet&#8217;, &#8216;Nut Free&#8217;, &#8216;Low Purine&#8217;,
+&#8216;Low Protein&#8217;, &#8216;High Fibre&#8217;,</li>
+<li><strong>Infant and child</strong>:
+&#8216;Baby&#8217;, &#8216;Post Weaning&#8217;, &#8216;Child&#8217;, # In airline jargon, baby and infant &lt; 2 years. 1 year &lt; Toddler &lt; 3 years.</li>
+<li><strong>Other</strong>:
+&#8216;Seafood&#8217;, &#8216;Japanese&#8217;,</li>
+</ul>
+</div>
+<div class="section" id="seat">
+<h3>6.10.4. Seat<a class="headerlink" href="#seat" title="Permalink to this headline">¶</a></h3>
+<p>The requested seat - values are &#8220;Window&#8221; / &#8220;Aisle&#8221;.</p>
+</div>
+<div class="section" id="airline">
+<h3>6.10.5. Airline<a class="headerlink" href="#airline" title="Permalink to this headline">¶</a></h3>
+<p>Airlines are related to the location from which the flight departs and will appear under that location.</p>
+<p>A list of the Red airlines that are options requested from a given location. Each item in the list is an object with
+these attributes:</p>
+<ul class="simple">
+<li>airline - contains the official airline name</li>
+<li>iata - contains the IATA code of the airline</li>
+<li>flight_number (optional) - contains the flight number of the requested flight,</li>
+</ul>
+<blockquote>
+<div>if it is available. Otherwise this attribute is not present</div></blockquote>
+<p>In case that the airlines requested apply to all locations they will appear in EACH location.</p>
+<p>In API v1.0 all airlines will also appear in global scope. This is will become obsolete in v1.1</p>
+</div>
+<div class="section" id="alliance">
+<h3>6.10.6. Alliance<a class="headerlink" href="#alliance" title="Permalink to this headline">¶</a></h3>
+<p>A list of requested airline alliances. Each item on the list is a dictionary:</p>
+<ul class="simple">
+<li>Name - Contains the name of the alliance, currently supporting: Star Alliance, SkyTeam, Oneworld</li>
+</ul>
+</div>
+<div class="section" id="seat-class">
+<h3>6.10.7. Seat Class<a class="headerlink" href="#seat-class" title="Permalink to this headline">¶</a></h3>
+<p>Requested seat class.</p>
+<dl class="docutils">
+<dt>Values are an array of this enumeration (regardless of how the class is called by a particular airline)</dt>
+<dd><ul class="first last simple">
+<li>First</li>
+<li>Business</li>
+<li>Premium</li>
+<li>Economy</li>
+</ul>
+</dd>
+</dl>
+<p>Example: &#8220;business or first class&#8221; results in key value [Business, First]</p>
+</div>
+<div class="section" id="one-way">
+<h3>6.10.8. One-Way<a class="headerlink" href="#one-way" title="Permalink to this headline">¶</a></h3>
+<p>Specific request for one way trip.</p>
+<p>Example: &#8220;united airlines one way flights to ny&#8221;</p>
+<p>Boolean Attribute.</p>
+</div>
+<div class="section" id="two-way">
+<h3>6.10.9. Two-Way<a class="headerlink" href="#two-way" title="Permalink to this headline">¶</a></h3>
+<p>Specific request for round trip.</p>
+<p>Example: &#8220;3 ticket roundtrip from tagbilaran to manila/ 1/26/2011-1/30/2011&#8221;</p>
+</div>
+</div>
+<div class="section" id="module-core.attributes.request">
+<span id="request-attributes"></span><h2>6.11. Request Attributes<a class="headerlink" href="#module-core.attributes.request" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">There are many general request attributes that apply to the entire request and not just some portion of it.</div>
+<div class="line">Examples: &#8220;last minute deals&#8221; and &#8220;Low deposits&#8221;.</div>
+</div>
+<div class="section" id="last-minute-deals">
+<h3>6.11.1. Last Minute Deals<a class="headerlink" href="#last-minute-deals" title="Permalink to this headline">¶</a></h3>
+<p>Looking for last minute travel deals - Boolean attribute.</p>
+</div>
+<div class="section" id="low-deposit">
+<h3>6.11.2. Low Deposit<a class="headerlink" href="#low-deposit" title="Permalink to this headline">¶</a></h3>
+<p>Looking for Low Deposit travel vacations - Boolean attribute.</p>
+</div>
+<div class="section" id="transport-type">
+<h3>6.11.3. Transport Type<a class="headerlink" href="#transport-type" title="Permalink to this headline">¶</a></h3>
+<p>The requested type of transportation. It uses the following enumeration:</p>
+<ul class="simple">
+<li>Bus</li>
+<li>Train</li>
+<li>Coach</li>
+<li>Airplane</li>
+<li>Transfer</li>
+<li>Taxi</li>
+<li>Shuttle</li>
+<li>Hovercraft</li>
+<li>Cruise</li>
+</ul>
+<p>The actual value is a list of potential vehicles for the travel (e.g. &#8220;bus or taxi&#8221;).</p>
+<p>The transport type will be listed as part of the Related Location - the origin of the requested travel.</p>
+</div>
+<div class="section" id="fares">
+<h3>6.11.4. Fares<a class="headerlink" href="#fares" title="Permalink to this headline">¶</a></h3>
+<p>The GDS fares. An enumeration:</p>
+<ul class="simple">
+<li>Private (equates to a ‘:P’ modifier being added to an itinerary).</li>
+<li>Public (equates to a ‘:N’ modifier being added to an itinerary).</li>
+<li>Net (equates to a ‘:C’ modifier being added to an itinerary).</li>
+<li>Agency Private (equates to a ‘:G’ modifier being added to an itinerary).</li>
+</ul>
+</div>
+<div class="section" id="corporate-fares">
+<h3>6.11.5. Corporate Fares<a class="headerlink" href="#corporate-fares" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask to use the corporate prices - a boolean attribute</li>
+</ul>
+</div>
+<div class="section" id="travel-agent-rates">
+<h3>6.11.6. Travel Agent Rates<a class="headerlink" href="#travel-agent-rates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask to use the Travel Agency / Travel Industry rates - a dictionary with the following keys:</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="convention-rates">
+<h3>6.11.7. Convention Rates<a class="headerlink" href="#convention-rates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask to use the Convention rates - a dictionary with the following keys:</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="military-rates">
+<h3>6.11.8. Military Rates<a class="headerlink" href="#military-rates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask to use the Military rates - a dictionary with the following keys:</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="government-rates">
+<h3>6.11.9. Government Rates<a class="headerlink" href="#government-rates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask to use the Government rates - a dictionary with the following keys:</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="reservation-id">
+<h3>6.11.10. Reservation ID<a class="headerlink" href="#reservation-id" title="Permalink to this headline">¶</a></h3>
+<p>A reservation ID (e.g. &#8220;reservation # 12345&#8221;)</p>
+</div>
+<div class="section" id="refundable">
+<h3>6.11.11. Refundable<a class="headerlink" href="#refundable" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask for refundable tickets</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="flexible-dates">
+<h3>6.11.12. Flexible Dates<a class="headerlink" href="#flexible-dates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ask for  flexible dates</li>
+</ul>
+<p><strong>Requested</strong> - Boolean</p>
+</div>
+<div class="section" id="scope">
+<h3>6.11.13. Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h3>
+<p>The requested scope of the query. A dictionary with one or more of the following keys:</p>
+<ul class="simple">
+<li>&#8220;hotel&#8221;</li>
+<li>&#8220;flight&#8221;</li>
+<li>&#8220;cruise&#8221;</li>
+<li>&#8220;car&#8221;</li>
+</ul>
+<p>The value of each of the items in the dictionary is an enumeration:</p>
+<ul class="simple">
+<li>&#8220;only&#8221; - as in the request &#8220;flights only&#8221;</li>
+<li>&#8220;no&#8221; - as in the request &#8220;no hotel&#8221;</li>
+</ul>
+</div>
+<div class="section" id="sort">
+<h3>6.11.14. Sort<a class="headerlink" href="#sort" title="Permalink to this headline">¶</a></h3>
+<p>A request to sort the results. A dictionary with one or more of the following string keys:</p>
+<p><strong>Requested</strong> - Boolean</p>
+<dl class="docutils">
+<dt><strong>Order</strong> - an Enumeration with the following string values:</dt>
+<dd><ul class="first last simple">
+<li>&#8220;ascending&#8221;</li>
+<li>&#8220;descending&#8221;</li>
+<li>&#8220;reverse&#8221;</li>
+</ul>
+</dd>
+<dt><strong>By</strong> - an enumeration with the following string values:</dt>
+<dd><ul class="first last simple">
+<li>&#8220;reviews&#8221;</li>
+<li>&#8220;location&#8221;</li>
+<li>&#8220;price&#8221;</li>
+<li>&#8220;price per person&#8221;</li>
+<li>&#8220;distance&#8221;</li>
+<li>&#8220;rating&#8221;</li>
+<li>&#8220;guest rating&#8221;</li>
+<li>&#8220;stars&#8221;</li>
+<li>&#8220;time&#8221;</li>
+<li>&#8220;total time&#8221;</li>
+<li>&#8220;duration&#8221;</li>
+<li>&#8220;arrival time&#8221;</li>
+<li>&#8220;departure time&#8221;</li>
+<li>&#8220;outbound arrival time&#8221;</li>
+<li>&#8220;outbound departure time&#8221;</li>
+<li>&#8220;inbound arrival time&#8221;</li>
+<li>&#8220;inbound departure time&#8221;</li>
+<li>&#8220;airline&#8221;</li>
+<li>&#8220;operator&#8221;</li>
+<li>&#8220;cruiseline&#8221;</li>
+<li>&#8220;cruiseship&#8221;</li>
+<li>&#8220;name&#8221;</li>
+<li>&#8220;popularity&#8221;</li>
+<li>&#8220;recommendations&#8221;</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="module-core.attributes.geography">
+<span id="geo-attributes"></span><h2>6.12. Geo Attributes<a class="headerlink" href="#module-core.attributes.geography" title="Permalink to this headline">¶</a></h2>
+<p>Various attributes describing locations.</p>
+<div class="section" id="winter-sun">
+<h3>6.12.1. Winter Sun<a class="headerlink" href="#winter-sun" title="Permalink to this headline">¶</a></h3>
+<p>Locations where the sun shines in the winter (assuming northern hemisphere origin) - Boolean attribute.</p>
+</div>
+<div class="section" id="mountains">
+<h3>6.12.2. Mountains<a class="headerlink" href="#mountains" title="Permalink to this headline">¶</a></h3>
+<p>Locations in the mountains - Boolean attribute.</p>
+</div>
+<div class="section" id="hot-location">
+<h3>6.12.3. Hot Location<a class="headerlink" href="#hot-location" title="Permalink to this headline">¶</a></h3>
+<p>Somewhere hot - Boolean attribute.</p>
+</div>
+<div class="section" id="cold-location">
+<h3>6.12.4. Cold Location<a class="headerlink" href="#cold-location" title="Permalink to this headline">¶</a></h3>
+<p>Somewhere cold - Boolean attribute.</p>
+</div>
+<div class="section" id="sunny-location">
+<h3>6.12.5. Sunny Location<a class="headerlink" href="#sunny-location" title="Permalink to this headline">¶</a></h3>
+<p>Somewhere sunny - Boolean attribute.</p>
+</div>
+<div class="section" id="island">
+<h3>6.12.6. Island<a class="headerlink" href="#island" title="Permalink to this headline">¶</a></h3>
+<p>Some island destination - Boolean attribute</p>
+</div>
+<div class="section" id="nearby">
+<h3>6.12.7. Nearby<a class="headerlink" href="#nearby" title="Permalink to this headline">¶</a></h3>
+<p>Indicates requested proximity to a location.
+Related to a location and will appear in that location.
+The value is boolean.</p>
+</div>
+<div class="section" id="distance">
+<h3>6.12.8. Distance<a class="headerlink" href="#distance" title="Permalink to this headline">¶</a></h3>
+<p>Indicates a requested distance from a location.
+Related to a location and will appear in that location.
+The value is a dictionary with the following keys:</p>
+<ul>
+<li><p class="first">Quantity    - a number indicating how many units of distance are requested</p>
+</li>
+<li><dl class="first docutils">
+<dt>Units       - An enumeration with the following values:</dt>
+<dd><ul class="first last simple">
+<li>Kilometers</li>
+<li>Miles</li>
+<li>Nautical Miles</li>
+<li>City Blocks</li>
+<li>Minutes (as in &#8220;not more than a 3 hours&#8217; drive from the airport&#8221;)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Restriction - An enumeration with the following values:</dt>
+<dd><ul class="first last simple">
+<li>Less Than</li>
+<li>More Than</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Transport   - An enumerations with the following values:</dt>
+<dd><ul class="first last simple">
+<li>Walking</li>
+<li>Car</li>
+<li>Public Transportation</li>
+<li>Bus</li>
+<li>Taxi</li>
+<li>Train</li>
+<li>Airplane</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">KM Quantity - The distance in KM, regardless of the original units used. This is the easiest attribute to use.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="center">
+<h3>6.12.9. Center<a class="headerlink" href="#center" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates requested location is in the center of another, related location (e.g. hotel in &#8216;the center of Chicago&#8217;).
+Related to a location and will appear in that location.
+The value is boolean.</p>
+</div>
+<div class="section" id="downtown">
+<h3>6.12.10. Downtown<a class="headerlink" href="#downtown" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates requested location is in the downtown of another, related location (e.g. hotel in &#8216;the downtown of Chicago&#8217;).
+Related to a location and will appear in that location.
+The value is boolean.</p>
+</div>
+<div class="section" id="beach">
+<h3>6.12.11. Beach<a class="headerlink" href="#beach" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates requested location is by a beach - Boolean attribute</p>
+</div>
+<div class="section" id="nowhere">
+<h3>6.12.12. Nowhere<a class="headerlink" href="#nowhere" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates travel without a specific destination - Boolean attribute</p>
+</div>
+<div class="section" id="around-the-world">
+<h3>6.12.13. Around the World<a class="headerlink" href="#around-the-world" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates travel around the world - Boolean attribute</p>
+</div>
+<div class="section" id="airport">
+<h3>6.12.14. Airport<a class="headerlink" href="#airport" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates an Airport - Boolean attribute</p>
+</div>
+<div class="section" id="office">
+<h3>6.12.15. Office<a class="headerlink" href="#office" title="Permalink to this headline">¶</a></h3>
+<p>This attribute indicates requested location is an office of a related location (e.g. &#8216;at the Chicago office&#8217;).
+The attribute will be returned &#8220;inside&#8221; the related location of the results.
+The value is boolean.</p>
+</div>
+</div>
+<div class="section" id="module-core.attributes.cruise">
+<span id="cruise-attributes"></span><h2>6.13. Cruise Attributes<a class="headerlink" href="#module-core.attributes.cruise" title="Permalink to this headline">¶</a></h2>
+<p>These are attributes describing the requested cruise.</p>
+<div class="section" id="cruiseline">
+<h3>6.13.1. Cruiseline<a class="headerlink" href="#cruiseline" title="Permalink to this headline">¶</a></h3>
+<p>A list of the requested cruiselines. Each item in the list is a dictionary:</p>
+<ul class="simple">
+<li>Name - contains the official cruiseline name</li>
+</ul>
+</div>
+<div class="section" id="cruiseship">
+<h3>6.13.2. Cruiseship<a class="headerlink" href="#cruiseship" title="Permalink to this headline">¶</a></h3>
+<p>A list of the requested cruiseships. Each item in the list is a dictionary:</p>
+<ul class="simple">
+<li>Name - contains the official cruiseship name</li>
+</ul>
+</div>
+<div class="section" id="cabin">
+<h3>6.13.3. Cabin<a class="headerlink" href="#cabin" title="Permalink to this headline">¶</a></h3>
+<p>An enumeration of the types of cabin:</p>
+<ul class="simple">
+<li>Windowless</li>
+<li>Regular Cabin</li>
+<li>Balcony</li>
+<li>Port-Hole</li>
+<li>Picture</li>
+<li>Full Wall</li>
+<li>Balcony</li>
+<li>Internal</li>
+<li>Oceanview</li>
+<li>Window</li>
+<li>External</li>
+<li>Suite</li>
+<li>Cabin</li>
+<li>Mini Suite</li>
+<li>Family Suite</li>
+<li>Presidential Suite</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>6.13.4. Pool<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The ship has a swimming pool - an enumerated attribute:</p>
+<ul class="simple">
+<li>&#8216;Any&#8217;      - The ship needs to have a pool</li>
+<li>&#8216;Indoor&#8217;   - The ship needs to have an indoor pool</li>
+<li>&#8216;Outdoor&#8217;  - The ship needs to have a outdoor pool</li>
+<li>&#8216;Children&#8217; - The ship needs to have a children&#8217;s pool</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>6.13.5. Family<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>A family friendly cruise - Boolean attribute</p>
+</div>
+<div class="section" id="id5">
+<h3>6.13.6. Romantic<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>A Romantic cruise - Boolean attribute</p>
+</div>
+<div class="section" id="id6">
+<h3>6.13.7. Adventure<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>A cruise with an Adventure motif - Boolean attribute</p>
+</div>
+<div class="section" id="id7">
+<h3>6.13.8. Board<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>The cruise board, an enumeration with the following potential values:</p>
+<ul class="simple">
+<li>Full Board</li>
+<li>All Inclusive</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>6.13.9. Quality<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>The quality of the cruise, measure in Stars.
+The return value is a Array with 2 numbers (or null):</p>
+<ul class="simple">
+<li>Min Stars  = integer from 0 to 6</li>
+<li>Max Stars  = integer from 0 to 6</li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li>&#8220;2 to 3 stars&#8221;     -&gt; [2, 3]</li>
+<li>&#8220;At least 4 stars&#8221; -&gt; [4, null]</li>
+<li>&#8220;1 star&#8221;           -&gt; [1, 1]</li>
+<li>&#8220;Contemporary&#8221;     -&gt; [3, 4]</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>6.13.10. Child Free<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>A Child free cruise (adults only) - Boolean attribute</p>
+</div>
+<div class="section" id="yacht">
+<h3>6.13.11. Yacht<a class="headerlink" href="#yacht" title="Permalink to this headline">¶</a></h3>
+<p>A Yacht - Boolean attribute</p>
+</div>
+<div class="section" id="barge">
+<h3>6.13.12. Barge<a class="headerlink" href="#barge" title="Permalink to this headline">¶</a></h3>
+<p>A Barge - Boolean attribute</p>
+</div>
+<div class="section" id="sailing-ship">
+<h3>6.13.13. Sailing Ship<a class="headerlink" href="#sailing-ship" title="Permalink to this headline">¶</a></h3>
+<p>Sailing Ship - Boolean attribute</p>
+</div>
+<div class="section" id="river-cruise">
+<h3>6.13.14. River Cruise<a class="headerlink" href="#river-cruise" title="Permalink to this headline">¶</a></h3>
+<p>A River Cruise - Boolean attribute</p>
+</div>
+<div class="section" id="ship-size">
+<h3>6.13.15. Ship Size<a class="headerlink" href="#ship-size" title="Permalink to this headline">¶</a></h3>
+<p>A Ship Size attribute - an enumeration of:</p>
+<ul class="simple">
+<li>Small</li>
+<li>Medium</li>
+<li>Large</li>
+</ul>
+</div>
+<div class="section" id="for-singles">
+<h3>6.13.16. For Singles<a class="headerlink" href="#for-singles" title="Permalink to this headline">¶</a></h3>
+<p>A Cruise for singles - Boolean attribute</p>
+</div>
+<div class="section" id="for-gays">
+<h3>6.13.17. For Gays<a class="headerlink" href="#for-gays" title="Permalink to this headline">¶</a></h3>
+<p>A Cruise for gays - Boolean attribute</p>
+</div>
+<div class="section" id="steamboat">
+<h3>6.13.18. Steamboat<a class="headerlink" href="#steamboat" title="Permalink to this headline">¶</a></h3>
+<p>A Steamboat cruise - Boolean attribute</p>
+</div>
+<div class="section" id="id10">
+<h3>6.13.19. Pet Friendly<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>A pet friendly cruise - Boolean attribute</p>
+</div>
+<div class="section" id="yoga">
+<h3>6.13.20. Yoga<a class="headerlink" href="#yoga" title="Permalink to this headline">¶</a></h3>
+<p>A Yoga cruise - Boolean attribute</p>
+</div>
+<div class="section" id="land-tour">
+<h3>6.13.21. Land Tour<a class="headerlink" href="#land-tour" title="Permalink to this headline">¶</a></h3>
+<p>Land Tours - Boolean attribute</p>
+</div>
+<div class="section" id="id11">
+<h3>6.13.22. One-Way<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>Specific request for one way trip - Boolean attribute.</p>
+</div>
+</div>
+<div class="section" id="module-core.attributes.car">
+<span id="car-attributes"></span><h2>6.14. Car Attributes<a class="headerlink" href="#module-core.attributes.car" title="Permalink to this headline">¶</a></h2>
+<p>These are attributes describing the requested car rental.</p>
+<div class="section" id="car-rental-vendor">
+<h3>6.14.1. Car Rental Vendor<a class="headerlink" href="#car-rental-vendor" title="Permalink to this headline">¶</a></h3>
+<p>Car rental agency - a list of options of car rental agency.</p>
+<p>For each car rental agency a dictionary containing:</p>
+<ul class="simple">
+<li>&#8216;Name&#8217;  - The official name of the agency</li>
+<li>&#8216;Code&#8217;  - A string code for the agency</li>
+</ul>
+</div>
+<div class="section" id="car-rental-program">
+<h3>6.14.2. Car Rental Program<a class="headerlink" href="#car-rental-program" title="Permalink to this headline">¶</a></h3>
+<p>Car Rental Program - a list containing an enumeration of the following:</p>
+<ul class="simple">
+<li>&#8220;Avis Wizard&#8221;</li>
+<li>&#8220;Hertz Gold&#8221;</li>
+<li>&#8220;Budget RapidRez&#8221;</li>
+<li>&#8220;Budget Fast Break&#8221;</li>
+<li>&#8220;National Emerald Aisle&#8221;</li>
+<li>&#8220;Sixt Express&#8221;,</li>
+<li>&#8220;Alamo Insiders&#8221;</li>
+<li>&#8220;Dollar Express&#8221;</li>
+<li>&#8220;Enterprise Plus&#8221;</li>
+<li>&#8220;Europcar Privilege&#8221;</li>
+<li>&#8220;Thrifty Blue Chip&#8221;</li>
+</ul>
+</div>
+<div class="section" id="gps">
+<h3>6.14.3. GPS<a class="headerlink" href="#gps" title="Permalink to this headline">¶</a></h3>
+<p>Satellite navigation - Boolean attribute.</p>
+</div>
+<div class="section" id="snow-tires">
+<h3>6.14.4. Snow Tires<a class="headerlink" href="#snow-tires" title="Permalink to this headline">¶</a></h3>
+<p>Snow Tires - Boolean attribute.</p>
+</div>
+<div class="section" id="hybrid">
+<h3>6.14.5. Hybrid<a class="headerlink" href="#hybrid" title="Permalink to this headline">¶</a></h3>
+<p>A hybrid electric vehicle (HEV) - Boolean attribute</p>
+</div>
+<div class="section" id="green">
+<h3>6.14.6. Green<a class="headerlink" href="#green" title="Permalink to this headline">¶</a></h3>
+<p>A Green, environmentally friendly vehicle - Boolean attribute</p>
+</div>
+<div class="section" id="transmission">
+<h3>6.14.7. Transmission<a class="headerlink" href="#transmission" title="Permalink to this headline">¶</a></h3>
+<p>Car Transmission - an enumerated attribute:</p>
+<ul class="simple">
+<li>&#8216;Manual&#8217;     - Manual Transmission</li>
+<li>&#8216;Automatic&#8217;  - Automatic Transmission</li>
+</ul>
+</div>
+<div class="section" id="car-type">
+<h3>6.14.8. Car Type<a class="headerlink" href="#car-type" title="Permalink to this headline">¶</a></h3>
+<p>Type of car  - an enumerated attribute:</p>
+<ul class="simple">
+<li>&#8216;Mini&#8217;</li>
+<li>&#8216;Economy&#8217;</li>
+<li>&#8216;Compact&#8217;</li>
+<li>&#8216;Intermediate&#8217;</li>
+<li>&#8216;Standard&#8217;</li>
+<li>&#8216;Full Size&#8217;</li>
+<li>&#8216;Mini Van&#8217;</li>
+<li>&#8216;Luxury&#8217;</li>
+<li>&#8216;Premium&#8217;</li>
+<li>&#8216;Intermediate SUV&#8217;</li>
+<li>&#8216;Standard SUV&#8217;</li>
+<li>&#8216;Full Size SUV&#8217;</li>
+<li>&#8216;Full Size Pickup&#8217;</li>
+<li>&#8216;Convertible&#8217;</li>
+</ul>
+</div>
+<div class="section" id="air-conditioning">
+<h3>6.14.9. Air Conditioning<a class="headerlink" href="#air-conditioning" title="Permalink to this headline">¶</a></h3>
+<p>Is the car air conditioned? - Boolean attribute.</p>
+</div>
+<div class="section" id="car-doors">
+<h3>6.14.10. Car Doors<a class="headerlink" href="#car-doors" title="Permalink to this headline">¶</a></h3>
+<p>How many car doors are requested? A list of integer options.</p>
+</div>
+<div class="section" id="skoking">
+<h3>6.14.11. Skoking<a class="headerlink" href="#skoking" title="Permalink to this headline">¶</a></h3>
+<p>Smoking in the car? A Boolean attribute</p>
+</div>
+<div class="section" id="satellite-radio">
+<h3>6.14.12. Satellite Radio<a class="headerlink" href="#satellite-radio" title="Permalink to this headline">¶</a></h3>
+<p>Satellite Radio - Boolean attribute</p>
+</div>
+<div class="section" id="fuel-efficient">
+<h3>6.14.13. Fuel Efficient<a class="headerlink" href="#fuel-efficient" title="Permalink to this headline">¶</a></h3>
+<p>Fuel Efficient - Boolean attribute</p>
+</div>
+<div class="section" id="abs">
+<h3>6.14.14. ABS<a class="headerlink" href="#abs" title="Permalink to this headline">¶</a></h3>
+<p>Vehicle with ABS - Boolean attribute</p>
+</div>
+<div class="section" id="ski-rack">
+<h3>6.14.15. Ski Rack<a class="headerlink" href="#ski-rack" title="Permalink to this headline">¶</a></h3>
+<p>Vehicle with a ski rack - Boolean attribute</p>
+</div>
+<div class="section" id="roadside-assistance">
+<h3>6.14.16. Roadside Assistance<a class="headerlink" href="#roadside-assistance" title="Permalink to this headline">¶</a></h3>
+<p>Roadside Assistance requested</p>
+</div>
+<div class="section" id="car-child-seat">
+<h3>6.14.17. Car Child Seat<a class="headerlink" href="#car-child-seat" title="Permalink to this headline">¶</a></h3>
+<p>A list of requested child seat elements, each with these potential attributes:</p>
+<ul>
+<li><p class="first">Quantity - a number</p>
+</li>
+<li><dl class="first docutils">
+<dt>Direction - an enumeration with the following values:</dt>
+<dd><ul class="first last simple">
+<li>&#8220;Front Facing&#8221;</li>
+<li>&#8220;Back Facing&#8221;</li>
+<li>&#8220;Convertible&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Position - an enumeration with the following values:</dt>
+<dd><ul class="first last simple">
+<li>&#8220;Front Seat&#8221;</li>
+<li>&#8220;Back Seat&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="tranmission-type">
+<h3>6.14.18. Tranmission Type<a class="headerlink" href="#tranmission-type" title="Permalink to this headline">¶</a></h3>
+<p>Sorry about the typo. To be fixed in the next release of the API.
+An enumeration:</p>
+<ul class="simple">
+<li>Manual</li>
+<li>Automatic</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-core.attributes.activity">
+<span id="activity-attributes"></span><h2>6.15. Activity Attributes<a class="headerlink" href="#module-core.attributes.activity" title="Permalink to this headline">¶</a></h2>
+<p>These are attributes describing activities.</p>
+<p>Note: We are constantly adding activities. If you find something you wish was on the list, please let us know.</p>
+<p>Here is a list of currently supported activities:</p>
+<ul class="simple">
+<li>Climbing - Various Climbing activities.</li>
+<li>Trekking</li>
+<li>Hand Gliding</li>
+<li>Hot Air Balloon</li>
+<li>Diving</li>
+<li>Snorkeling</li>
+<li>Mountain Bike</li>
+<li>Paragliding</li>
+<li>Survival Training</li>
+<li>Martial Arts</li>
+<li>Photography</li>
+<li>Dog Sledding</li>
+<li>Bird Watching</li>
+<li>Tours</li>
+<li>Rafting</li>
+<li>White Water</li>
+<li>Walking</li>
+<li>Water Sports</li>
+<li>Volcanology</li>
+<li>Summer Camp</li>
+<li>Archaeology</li>
+<li>Horse Riding</li>
+<li>Tennis</li>
+<li>Extreme Sports</li>
+<li>Astronomy</li>
+<li>Shopping</li>
+<li>Fooding</li>
+<li>Partying</li>
+<li>Theme Parks</li>
+<li>Wine Tasting</li>
+<li>Weaving</li>
+<li>Performing Arts</li>
+</ul>
+</div>
+<div class="section" id="module-core.attributes.ski">
+<span id="ski-attributes"></span><h2>6.16. Ski Attributes<a class="headerlink" href="#module-core.attributes.ski" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ski-hire">
+<h3>6.16.1. Ski Hire<a class="headerlink" href="#ski-hire" title="Permalink to this headline">¶</a></h3>
+<p>The Ski Hire attribute is a complex structure, containing <strong>a list</strong> of equipment elements, each with the following attributes:</p>
+<ul>
+<li><p class="first">Multiple         - How many of the same equipment (e.g. 3 adult snowboards)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Equipment Type   - An enumeration:</dt>
+<dd><ul class="first last simple">
+<li>Skis</li>
+<li>Snowboard</li>
+<li>Mini Skis</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Boots           - Would you like boots with your gear?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
+<li><p class="first">Helmet          - Would you like a helmet with your gear?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
+<li><p class="first">Poles           - Would you like poles with your skis?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
+<li><dl class="first docutils">
+<dt>Quality         - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
+<dd><ul class="first last simple">
+<li>Exclusive</li>
+<li>Premium</li>
+<li>Standard</li>
+<li>Low cost</li>
+<li>Starter</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Person          - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
+<dd><ul class="first last simple">
+<li>Regular</li>
+<li>Women</li>
+<li>Teenager  : 12 - 15 years</li>
+<li>Junior    : 7  - 12 years</li>
+<li>Child     : Up to 6 years</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Guarantee       - Would you like a guarentee for your gear?</p>
+</li>
+</ul>
+<p>Boolean, appearing in response only if implicitly specified</p>
+</div>
+</div>
+<div class="section" id="module-core.warning">
+<span id="warnings"></span><h2>6.17. Warnings<a class="headerlink" href="#module-core.warning" title="Permalink to this headline">¶</a></h2>
+<p>Various Warnings provided by the system.</p>
+<div class="section" id="api-warning">
+<h3>6.17.1. API Warning<a class="headerlink" href="#api-warning" title="Permalink to this headline">¶</a></h3>
+<p>API related warnings:</p>
+<p>Unsupported Version - An unsupported API version is used, please check documentation for supported versions.</p>
+<p>Obsolete Version - An obsolete API version is used, please upgrade to a newer version.</p>
+<p>Unspecified Version - API version was unspecified - latest version is used.</p>
+</div>
+<div class="section" id="time-warning">
+<h3>6.17.2. Time Warning<a class="headerlink" href="#time-warning" title="Permalink to this headline">¶</a></h3>
+<p>Time issues related warnings:</p>
+<p>Past Date - There was some past date in the request.</p>
+<p>Bad Order - Some of the time Order may be incorrect (an earlier event specified after a later one).</p>
+<p>Dates Conflict - Two or more dates seem to refer to the same event (&#8220;Fly to NY on Monday. Depart on Tuesday&#8221;)</p>
+</div>
+<div class="section" id="parse-warning">
+<h3>6.17.3. Parse Warning<a class="headerlink" href="#parse-warning" title="Permalink to this headline">¶</a></h3>
+<p>Parsing issues:</p>
+<p>The value is an unparsed part of the text</p>
+</div>
+<div class="section" id="home-warning">
+<h3>6.17.4. Home Warning<a class="headerlink" href="#home-warning" title="Permalink to this headline">¶</a></h3>
+<p>Bad input at the home request parameter issues:</p>
+<p>Unknown Location - The string does not seem to represent any known location (ex: &#8220;home=some_strange_string&#8221;)</p>
+<p>Ambiguous Location - The string represents an ambiguous location name with no clear choice (ex: &#8220;home=arlington&#8221;)</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. The Mobile SDKs &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="next" title="3. The Eva BotKit" href="botkit.html" />
+    <link rel="prev" title="1. Introduction" href="intro.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">2. The Mobile SDKs</a><ul>
+<li><a class="reference internal" href="#overview">2.1. Overview</a></li>
+<li><a class="reference internal" href="#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li><a class="reference internal" href="#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li><a class="reference internal" href="#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="intro.html" title="Previous Chapter: 1. Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 1. Introduction</span>
+    </a>
+  </li>
+  <li>
+    <a href="botkit.html" title="Next Chapter: 3. The Eva BotKit"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. The Eva Bo... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="the-mobile-sdks">
+<span id="id1"></span><h1>2. The Mobile SDKs<a class="headerlink" href="#the-mobile-sdks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>2.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The mobile SDKs bundle Eva&#8217;s Natural Language Understanding and Dialog Management features
+with robust cloud based Speech Recognition and a Voice Chat Overlay user interface.
+Furthermore, the Eva API reply is automatically parsed and handled and the application is only called upon
+to implement applicative directives, such as <em>ShowBoardingPass</em> or <em>PerformFlightSearch</em>.</p>
+<p>Integration on all platforms consists of the following steps:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Import</strong></p>
+<p>Download the code and place it in your project.
+The detailed instructions include a validation test to make sure the application can properly connect to the SDK.</p>
+</li>
+<li><p class="first"><strong>Initialize and Configure</strong></p>
+<p>Initialize the Eva singleton component and pass along the applicative configuration.
+The default configuration is usually sufficient to proceed with the integration
+yet there are many configurations which change the behavior of the Voice interface and
+the developer / product manager are encouraged to fiddle with them later.
+For this phase you will need the credentials you received from Evature.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For <strong>free</strong> API access please register here: <a class="reference external" href="https://www.evature.com/registration/form">https://www.evature.com/registration/form</a></p>
+</div>
+<p>In the logs you will be able to see that the application was successfully authenticated by Eva.</p>
+</li>
+<li><p class="first"><strong>Add the microphone button!</strong></p>
+<p>Add a single line of code to each <em>screen</em> (e.g. Activity on Android) to add a floating microphone action-button.
+Best practice is to add a voice interface to each <em>screen</em> to enable the full power of Voice in the application.</p>
+</li>
+<li><p class="first"><strong>Mini Integration Test - Say Hi!</strong></p>
+<p>At this point you will be able to open the application, press the microphone button and say Hi to Eva.
+Eva will politely respond.</p>
+<p>A successful integration means that Speech Recognition, Natural Language Understanding and Dialog Management are working,
+but Eva doesn’t yet know anything about your application!</p>
+<p><strong>Total estimate time of getting to this point - 1 hour</strong>.</p>
+</li>
+<li><p class="first"><strong>Implement applicative callbacks</strong></p>
+<p>Eva defines many callback functions for applicative requests that may be queried by the end users.
+This is usually existing functionality within the application that the developer
+needs to &#8220;wire&#8221; to the corresponding callback function.</p>
+<p>Here are some examples:</p>
+<ul class="simple">
+<li>Perform Flight Search</li>
+<li>Perform Hotel Search</li>
+<li>Show Boarding Pass</li>
+<li>Show Itinerary</li>
+</ul>
+<p>Obviously if the application does not support such functionality you can simply ignore the non-applicable callbacks.</p>
+</li>
+<li><p class="first"><strong>Customization</strong></p>
+<p>All static content used within the SDK is fully configurable.
+Strings, icons, colors, images, layouts and sounds are collected in the platform designated locations for easy access.
+This allows the developers to integrate Voice functionality while maintaining the look and feel
+of the application.</p>
+</li>
+<li><p class="first"><strong>Platform Specific integrations</strong></p>
+<p>Some functionality is unique to a specific platform.
+An example of this is the &#8220;OK Google&#8221; integration on Android devices.
+End-users will be able to say to their phone (on any screen!):</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;OK Google. Search for New York to Tokyo on MyTravelApp&quot;
+</pre></div>
+</div>
+<p>And Android will automatically launch the MyTravelApp application and start a chat with Eva searching for &#8220;New York to Tokyo&#8221; !</p>
+</li>
+</ol>
+</div>
+<div class="section" id="voicekit-for-ios">
+<h2>2.2. VoiceKit for iOS<a class="headerlink" href="#voicekit-for-ios" title="Permalink to this headline">¶</a></h2>
+<p>A native Objective C integration of the Eva service, cloud based Speech Recognition, text-to-speech
+and a customizable iOS friendly animated chat overlay.</p>
+<p>VoiceKit for iOS lives here:
+<a class="reference external" href="https://github.com/evature/ios">https://github.com/evature/ios</a></p>
+</div>
+<div class="section" id="voicekit-for-android">
+<h2>2.3. VoiceKit for Android<a class="headerlink" href="#voicekit-for-android" title="Permalink to this headline">¶</a></h2>
+<p>A native Java integration of the Eva service, cloud based Speech Recognition, text-to-speech
+and a customizable Android Material Design animated chat overlay.</p>
+<p>VoiceKit for Android lives here:
+<a class="reference external" href="https://github.com/evature/android">https://github.com/evature/android</a></p>
+</div>
+<div class="section" id="voicekit-for-phonegap-apache-cordova">
+<h2>2.4. VoiceKit for PhoneGap (Apache Cordova)<a class="headerlink" href="#voicekit-for-phonegap-apache-cordova" title="Permalink to this headline">¶</a></h2>
+<p>A Javascript, HTML and CSS integration of the Eva service, cloud based Speech Recognition, text-to-speech
+and a customizable animated chat overlay.</p>
+<p>VoiceKit for PhoneGap (Apache Cordova) lives here:
+<a class="reference external" href="https://github.com/evature/voicekit-cordova">https://github.com/evature/voicekit-cordova</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The PhoneGap VoiceKit currently supports only the Android platform. iOS support is coming soon.</p>
+<p class="last">VoiceKit on pure mobile websites will <strong>NOT</strong> be supported due to the inability to consistently
+access the microphone from the mobile web browser.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

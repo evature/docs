@@ -1,0 +1,133 @@
+======================
+Integration Check list
+======================
+
+This check list is designed to enable developers to test various use cases and provide appropriate applicative responses. Each use case is represented by an example input sentence with some notes and explanations.
+`Example sentences presented in italics`
+
+We assume you got past sending a basic text to Eva and parse the provided reply. These are described under the "Request" and "Response" parts. 
+
+**Simple one way flight**
+	`Fly from SFO to Denver on Friday`
+	Check you handle both airports and city locations as part of the search request. 
+
+**Simple return flight**
+	`Fly from Seattle to LA on Friday. return on monday`
+	Check return flights. 
+
+**Flight with specific connections**
+	`Fly from London to LA via JFK on Friday.`
+	This includes a specific connection request. 
+    	
+**Flight class**
+	`JFK to Denver. Business class.`
+	Airline class requested. 
+	
+**Specific airlines**
+	`London to NYC with United. NYC to LA with American Airlines`
+	A specific airline is requested. Note that this can be done per segment. 
+	
+**Specific airline alliance**
+	`London to LA with Star Alliance`
+	Alliances can be used instead of airlines. 
+		
+**Lack of destination for flights**
+	`Flight from LA`
+	This is likely the 1st part of the request. If you use dialog, it should ask for a destination. 
+
+**Simple Hotel**
+	`Hotel in Madrid on Monday for 3 nights`
+	Find a hotel. 
+
+**Hotel chains**
+	`Hilton hotel in London on Friday for 2 nights`
+	Search for a specific chain. 
+
+**Multiple Hotels**
+	`Hotel in Madrid on Monday for 3 nights. Hotel in Rome for 2 nights.`
+	Find a hotel several hotels. 
+
+**Flight and hotel**
+	`Fly to NY on Monday. Hotel for 2 nights. Return`
+	A combination of flight and hotel. 
+
+**Car only**
+	`Rent a car in LA on Monday for 3 days.`
+	If no other destination is specified - car is returned in the same place as rented. 
+
+**Car rental with some attributes**
+	`Ren a car with GPS in Paris on Friday for 3 days.`
+	See you can handle the car attribute. 
+
+**Car and Hotel**
+	`Rent a car in LA on Monday. hotel in Las Vegas for 2 nights. return car in LA on Friday.`
+	A car trip with a hotel in the middle.. 
+	
+**Simple Flight and car**
+	`Fly NY to Rome on Monday. rent a car for 3 days.`
+	A flight and a car rental. 
+
+**Car then flight**
+	`Rent a car from San Jose to SFO on monday. Fly to tokyo.`
+	A scenario where you drive to the airport. 
+
+**Flight car and hotel**
+	`Fly to Las vegas on monday for 3 days. Need hotel and car.`
+	The whole combo. 
+	
+**Flight and hotel at a nearby location**
+	`Fly from LA to Boston on Friday. Hotel in Cambridge. return on Monday.`
+	Note that cambridge has no travel requested - just hotel, as its the stay place on the trip to Boston (also nice to note this is obviously Cambridge, MA and NOT Cambridge UK). 
+     
+**Identify Home with IP or GPS**
+	`Hotel tonight`
+	Try this with either IP or GPS input to get a hotel at the user's current location. 
+	
+**Search only by geo attribute**
+	`3 days island vacation in august`
+	If you support inspiration search, you should be able to handle this, otherwise, you can innitiate the dialog to ask for more details. 
+	
+**Hotel by location and geo attribute**
+	`Hotel in Chicago near the city center`
+	A related geo attribute.
+    
+**Hotel by distance from location**
+	`Hotel less than 10KM from SFO.`
+	You can also search by time distance such as `Hotel 1 hour from SFO`
+
+**Ambiguous location - many choices**
+	`Fly to Arlington`
+	There are many Arlingtons and none vary distinguished, so no way to know which. If you use dialog, you will get a question. Otherwise, note you get "ambiguity" flag and handle it in the application. 
+
+**Ambiguous location - limited choices**
+	`Fly to NY. Hotel in Arlington`
+	Same as before, only now, we mean Arlington NJ or NY - so the choice is limited. If you use dialog, notice there is a different question type. 
+
+**Flights with missing departure time**
+	`Fly from LA to Madrid`
+	You can let the Eva dialog handle it, initiate your own dialog, or choose a default. 
+    
+**Hotels with missing arrival time**
+	`Hotel in Rome for 3 nights`
+	You can let the Eva dialog handle it, initiate your own dialog, or choose a default. 
+
+**Hotel with missing duration**
+	`Hotel in LA on Monday`
+	You can let the Eva dialog handle it, initiate your own dialog, or choose a default. 
+
+**Car rental with missing pickup time**
+	`Rent a car in Chicago`
+	You can let the Eva dialog handle it, initiate your own dialog, or choose a default. 
+    
+**Car rental with missing return time**
+	`Rent a car in Chicago on Monday. Return the car in Detroit.`
+	You can let the Eva dialog handle it, initiate your own dialog, or choose a default. 
+
+**Money attributes**
+	`Return flights from Greece to London for under $500`
+	Search with some monetary requirements. 
+    
+**Passengers**
+	`Hotel in NY on Monday for 3 nights with my wife and 2 kids.`
+	see how you handle people. 
+

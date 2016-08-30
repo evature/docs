@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. API - The Request &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="next" title="6. API - The Response" href="response.html" />
+    <link rel="prev" title="4. The HTTP RESTful API" href="api.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">5. API - The Request</a><ul>
+<li><a class="reference internal" href="#input-text">5.1. input_text</a></li>
+<li><a class="reference internal" href="#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li><a class="reference internal" href="#uid">5.3. uid</a></li>
+<li><a class="reference internal" href="#scope">5.4. scope</a></li>
+<li><a class="reference internal" href="#context">5.5. context</a></li>
+<li><a class="reference internal" href="#locale">5.6. locale</a></li>
+<li><a class="reference internal" href="#bias">5.7. bias</a></li>
+<li><a class="reference internal" href="#home">5.8. home</a></li>
+<li><a class="reference internal" href="#ip-addr">5.9. ip_addr</a></li>
+<li><a class="reference internal" href="#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li><a class="reference internal" href="#time-zone">5.11. time_zone</a></li>
+<li><a class="reference internal" href="#feedback">5.12. feedback</a></li>
+<li><a class="reference internal" href="#comment">5.13. comment</a></li>
+<li><a class="reference internal" href="#session-id">5.14. session_id</a></li>
+<li><a class="reference internal" href="#dialog-response">5.15. dialog_response</a></li>
+<li><a class="reference internal" href="#from-speech">5.16. from_speech</a></li>
+<li><a class="reference internal" href="#android-ver">5.17. android_ver</a></li>
+<li><a class="reference internal" href="#device">5.18. device</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="api.html" title="Previous Chapter: 4. The HTTP RESTful API"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4. The HTTP R...</span>
+    </a>
+  </li>
+  <li>
+    <a href="response.html" title="Next Chapter: 6. API - The Response"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. API - The ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="api-the-request">
+<h1>5. API - The Request<a class="headerlink" href="#api-the-request" title="Permalink to this headline">¶</a></h1>
+<p>All text requests are handled by a Web API server, available at <cite>http://freeapi.evature.com/vX.Y</cite></p>
+<p>Please register here to get started for free: <a class="reference external" href="http://www.evature.com/registration/form">http://www.evature.com/registration/form</a></p>
+<p>Here is an example of a text request:</p>
+<p><cite>http://freeapi.evature.com/v1.0?site_code=&lt;your site_code&gt;&amp;api_key=&lt;your api_key&gt;&amp;input_text=chicago+monday</cite></p>
+<p>The text request is sent as an HTTP GET method with the following parameters:</p>
+<div class="section" id="input-text">
+<h2>5.1. input_text<a class="headerlink" href="#input-text" title="Permalink to this headline">¶</a></h2>
+<p>The input query string in URL format and UTF-8 encoded.</p>
+<p>There may be more than a single input text, for example when the source of the text is the hypotheses of a
+speech recognition engine. In this case see: <a class="reference internal" href="api.html#multiple-input-text"><span class="std std-ref">Multiple Input Texts</span></a>.</p>
+</div>
+<div class="section" id="site-code-and-api-key">
+<span id="id1"></span><h2>5.2. site_code and api_key<a class="headerlink" href="#site-code-and-api-key" title="Permalink to this headline">¶</a></h2>
+<p>Designated username/password credentials provided by Evature per customer site or application using the Web API or the Mobile SDKs.</p>
+<p>Users receive the credentials after registration.</p>
+<p>Mandatory fields.</p>
+</div>
+<div class="section" id="uid">
+<span id="id2"></span><h2>5.3. uid<a class="headerlink" href="#uid" title="Permalink to this headline">¶</a></h2>
+<p>A unique identifier to help Eva track the end user across sessions, see <a class="reference internal" href="api.html#metasessions"><span class="std std-ref">Meta-Sessions</span></a>.
+This field, while not mandatory, is very important, as it is the only way Eva can group users across sessions
+which allows for better understanding.
+On Android if you have the READ_PHONE_STATE permissions for your application you can use the deviceId</p>
+<div class="literal-block-wrapper container" id="java-snippet">
+<div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#java-snippet" title="Permalink to this code">¶</a></div>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">String</span> <span class="nf">getDeviceId</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">deviceId</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">TelephonyManager</span> <span class="n">telephonyManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">TelephonyManager</span><span class="o">)</span> <span class="n">activity</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">TELEPHONY_SERVICE</span><span class="o">);</span>
+      <span class="n">deviceId</span><span class="o">=</span><span class="n">telephonyManager</span><span class="o">.</span><span class="na">getDeviceId</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">catch</span><span class="o">(</span><span class="n">SecurityException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAg</span><span class="o">,</span> <span class="s">&quot;Can&#39;t read the Device Id because of missing READ_PHONE_STATE permission&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">deviceId</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>Another alternative may be to to use the Google Advertisement ID:</p>
+<p><a class="reference external" href="https://support.google.com/googleplay/android-developer/answer/6048248?hl=en">https://support.google.com/googleplay/android-developer/answer/6048248?hl=en</a></p>
+<p>or to generate a random string and save it to preferences.</p>
+<p><a class="reference external" href="http://stackoverflow.com/a/17625641">http://stackoverflow.com/a/17625641</a></p>
+<p>Then add it to the URL:</p>
+<div class="literal-block-wrapper container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;uid=&quot;</span> <span class="o">+</span><span class="n">getDeviceId</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="scope">
+<span id="id4"></span><h2>5.4. scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+<p>Defines the types of travel services are provided by the application/web site.</p>
+<p>The value is a concatenated string with a single letter representing each of the travel services available:</p>
+<p>f - flights</p>
+<p>h - hotels</p>
+<p>v - flight and hotel vacation packages</p>
+<p>c - car rental</p>
+<p>r - cruise</p>
+<p>s - ski</p>
+<p>e - explore (inspiration search / tours and activities within a location)</p>
+<p>t - trains</p>
+<p>p - airports</p>
+<p>If for example an application offers hotels only, you should send: scope=h,
+while a web site for flights and cruises should send: scope=fr.</p>
+</div>
+<div class="section" id="context">
+<span id="id5"></span><h2>5.5. context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<p>Defines the <strong>current</strong> state of the site/application.</p>
+<p>The value is a single letter representing current context, with the same enumeration as <a class="reference internal" href="#scope">scope</a>.</p>
+<p>For example: if an app/site supports both flights and hotels, and a user is currently viewing the flights page,
+the app/site should send &#8220;&amp;context=f&#8221; and while the user is viewing hotels - &#8220;&amp;context=h&#8221;.</p>
+<p>The result is that if the user says &#8220;New York&#8221; while in the flights context
+Eva would interpret this utterance as a <strong>flight</strong> request, either to or from New York, while if in the hotel context
+the same input would mean <strong>hotel</strong> in New York.</p>
+</div>
+<div class="section" id="locale">
+<h2>5.6. locale<a class="headerlink" href="#locale" title="Permalink to this headline">¶</a></h2>
+<p>Receives one of the values: UK, US, IL -
+specifying the date notation (10/3/2010 is March 10th in UK/IL and October 3rd in the US)
+and the days of the weekend (Sat-Sun in UK/US, Fri-Sat in IL).</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="bias">
+<h2>5.7. bias<a class="headerlink" href="#bias" title="Permalink to this headline">¶</a></h2>
+<p>Specify a list of locations to be biased as the home location of the user. Values are the location Geoname IDs.</p>
+<p>Example: bias=3017382,2510769</p>
+<p>Represents bias to France or Spain. Bias means that the departure of any trip would always be from within the bias locations.</p>
+<p>For example: &#8220;NY London Monday&#8221; would mean a flight from NY to London on Monday, but if bias was set to be UK, the same input would be interpreted as flight from London to NY on Monday.</p>
+<p>It is highly important to set bias in sites that imply the origin of the trip, for example sites that sell vacation packages originating in the UK.</p>
+<p>Note: If you define both &#8220;home&#8221; and &#8220;bias&#8221; - home must be a location within the bias (For example London and UK).</p>
+</div>
+<div class="section" id="home">
+<h2>5.8. home<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h2>
+<p>The home of the end user sending the request, if specifically known to our client (for example through registration).</p>
+<p>The value can be either the Geoname ID for the home location (see <a class="reference external" href="http://www.geonames.org/">http://www.geonames.org/</a>) OR a string for the location name</p>
+<p>Example (Geoname ID): &#8220;home=5128581&#8221; means home is New York City - <a class="reference external" href="http://www.geonames.org/5128581">http://www.geonames.org/5128581</a>.</p>
+<p>Example (name string): &#8220;home=paris&#8221; means the home is Paris, France, or &#8220;home=paris TX&#8221; means home is Paris Texas.</p>
+</div>
+<div class="section" id="ip-addr">
+<h2>5.9. ip_addr<a class="headerlink" href="#ip-addr" title="Permalink to this headline">¶</a></h2>
+<p>The end user&#8217;s IP address, if known (e.g. extracted from the META REMOTE_ADDR HTTP request parameter).
+The IP address will be used to identify the user&#8217;s home location if no better coordinates are provided.</p>
+<p>If a specific &#8216;home&#8217; was defined &#8216;ip_addr&#8217; will be ignored.</p>
+<p>Not needed if the end device (e.g. a mobile phone) is contacting Eva directly.</p>
+</div>
+<div class="section" id="longitude-and-latitude">
+<h2>5.10. longitude and latitude<a class="headerlink" href="#longitude-and-latitude" title="Permalink to this headline">¶</a></h2>
+<p>The end user&#8217;s current coordinates, when available.</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="time-zone">
+<h2>5.11. time_zone<a class="headerlink" href="#time-zone" title="Permalink to this headline">¶</a></h2>
+<p>Timezone - The end user&#8217;s timezone in respect to the Coordinated Universal Time (UTC).</p>
+<p>The timezone is very helpful in understanding expressions such as &#8220;tomorrow morning&#8221;.</p>
+<p>The value is a string representing the offset from UTC in the following format &#8220;+/-HH:MM&#8221;.</p>
+<p>HH represents the hour offset in the range -12 and 14</p>
+<p>MM represents the minutes offset</p>
+<p>Examples:</p>
+<p>&#8220;time_zone=+08:00&#8221; means the UTC+8 timezone.</p>
+<p>&#8220;time_zone=-05:30&#8221; means the UTC-5:30 timezone.</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="feedback">
+<h2>5.12. feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+<p>Enables to feedback Eva through the API regarding the parsing of a particular request.
+This field should NOT be present in regular API calls.</p>
+<p>Feedback requests should only include <a class="reference internal" href="#site-code-and-api-key"><span class="std std-ref">credentials</span></a>, an optional <a class="reference internal" href="#comment">comment</a> and
+the <a class="reference internal" href="response.html#transaction-key"><span class="std std-ref">transaction_key</span></a>.</p>
+<p>Feedback requests do NOT get parsed and return a success message only.
+The feedback is logged onto Eva for further learning and processing.</p>
+<p>Feedback values can be:</p>
+<p>0 - Parse failed.</p>
+<p>1 - Parse was partly correct.</p>
+<p>2 - Parse was correct.</p>
+</div>
+<div class="section" id="comment">
+<h2>5.13. comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
+<p>Provide a text comment to a feedback. This will ONLY be reviewed in a request that includes the <a class="reference internal" href="#feedback">feedback</a> field.</p>
+</div>
+<div class="section" id="session-id">
+<span id="id6"></span><h2>5.14. session_id<a class="headerlink" href="#session-id" title="Permalink to this headline">¶</a></h2>
+<p>A session identifier in order to maintain state for the end user. Enables Dialogs and multi-query inputs.</p>
+<p>It is both an input to Eva and an output from Eva.</p>
+<p>To start a new session send EVA a request with query parameter “session_id=1”. Eva will reply with a new session_id.
+Maintain the session state by passing back the received session_id in the following requests to EVA,
+much like an HTTP token or cookie.</p>
+<p>A session may automatically be timed out after a few minutes of inactivity, or if specifically requested by the user.</p>
+<p>For an overview see <a class="reference internal" href="api.html#maintaining-state"><span class="std std-ref">Maintaining State - Sessions and Meta-Sessions</span></a>.</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="dialog-response">
+<h2>5.15. dialog_response<a class="headerlink" href="#dialog-response" title="Permalink to this headline">¶</a></h2>
+<p>When using sessions the dialog engine may present the end user with a multiple choice question.
+When the end user selects one of these responses using a GUI,
+the application must return the choice to Eva in the <em>dialog_repsonse</em> request parameter.</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="from-speech">
+<span id="id7"></span><h2>5.16. from_speech<a class="headerlink" href="#from-speech" title="Permalink to this headline">¶</a></h2>
+<p>When the source of the text in the input_text is from a speech recognition engine,
+please add <cite>from_speech</cite> to the request parameters.
+This allows Eva to correctly overcome speech recognition blunders,
+as well as disable text-specific processing such as a spell checker, resulting in a faster, more accurate reply.</p>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="android-ver">
+<h2>5.17. android_ver<a class="headerlink" href="#android-ver" title="Permalink to this headline">¶</a></h2>
+<p>If, for some reason you are integrating Eva into an Android device using the raw API,
+it greatly helps Eva with analytics and debugging to know the Android OS version</p>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;android_ver=&quot;</span> <span class="o">+</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">RELEASE</span><span class="o">),</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+<div class="section" id="device">
+<h2>5.18. device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h2>
+<p>If, for some reason you are integrating Eva into a mobile applications,
+it greatly helps Eva with analytics and debugging to know the specific device</p>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;device=&quot;</span> <span class="o">+</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Build</span><span class="o">.</span><span class="na">MODEL</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<p>This parameter is automatically handled by <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

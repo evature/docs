@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. The Eva BotKit &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="next" title="4. The HTTP RESTful API" href="api.html" />
+    <link rel="prev" title="2. The Mobile SDKs" href="sdks.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3. The Eva BotKit</a><ul>
+<li><a class="reference internal" href="#overview">3.1. Overview</a></li>
+<li><a class="reference internal" href="#chat-service-integrations">3.2. Chat Service Integrations</a><ul>
+<li><a class="reference internal" href="#telegram-integration">3.2.1. Telegram integration</a></li>
+<li><a class="reference internal" href="#line-integration">3.2.2. Line integration</a></li>
+<li><a class="reference internal" href="#facebook-integration">3.2.3. Facebook integration</a></li>
+<li><a class="reference internal" href="#kik-integration">3.2.4. Kik integration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-webhooks">3.3. Adding Webhooks</a><ul>
+<li><a class="reference internal" href="#general">3.3.1. General</a></li>
+<li><a class="reference internal" href="#search-for-flights">3.3.2. Search for Flights</a></li>
+<li><a class="reference internal" href="#search-for-hotels">3.3.3. Search for Hotels</a></li>
+<li><a class="reference internal" href="#search-for-cars">3.3.4. Search for Cars</a></li>
+<li><a class="reference internal" href="#search-for-cruises">3.3.5. Search for Cruises</a></li>
+<li><a class="reference internal" href="#greet-the-user">3.3.6. Greet the User:</a></li>
+<li><a class="reference internal" href="#display-gate-number">3.3.7. Display Gate Number</a></li>
+<li><a class="reference internal" href="#display-departure-time">3.3.8. Display Departure Time</a></li>
+<li><a class="reference internal" href="#display-arrival-time">3.3.9. Display Arrival Time</a></li>
+<li><a class="reference internal" href="#display-boarding-time">3.3.10. Display Boarding Time</a></li>
+<li><a class="reference internal" href="#display-boarding-pass">3.3.11. Display boarding pass</a></li>
+<li><a class="reference internal" href="#display-itinerary">3.3.12. Display Itinerary</a></li>
+<li><a class="reference internal" href="#display-reservation">3.3.13. Display Reservation</a></li>
+<li><a class="reference internal" href="#cancel-reservation">3.3.14. Cancel Reservation</a></li>
+<li><a class="reference internal" href="#log-messages-between-eva-and-user">3.3.15. Log Messages between Eva and User</a></li>
+<li><a class="reference internal" href="#display-flight-status">3.3.16. Display Flight Status</a></li>
+<li><a class="reference internal" href="#interactive-messages-general">3.3.17. Interactive Messages - General</a></li>
+<li><a class="reference internal" href="#interactive-message-logging-in-end-users-oauth">3.3.18. Interactive Message - Logging In End Users - OAuth</a></li>
+<li><a class="reference internal" href="#interactive-message-transfer-chat-to-a-human-agent">3.3.19. Interactive Message - Transfer chat to a Human Agent</a></li>
+<li><a class="reference internal" href="#interactive-message-subscribe-to-list">3.3.20. Interactive Message - Subscribe to List</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="sdks.html" title="Previous Chapter: 2. The Mobile SDKs"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. The Mobile...</span>
+    </a>
+  </li>
+  <li>
+    <a href="api.html" title="Next Chapter: 4. The HTTP RESTful API"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. The HTTP R... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="the-eva-botkit">
+<span id="eva-botkit"></span><h1>3. The Eva BotKit<a class="headerlink" href="#the-eva-botkit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>3.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The Eva BotKit enables building a single AI assisted Bot for providing applicative Travel functionality across
+all messaging platforms with a bot platform API.
+Botkit bundles Eva&#8217;s Natural Language Understanding and Dialog Management features with robust cloud based spelling correction.
+Furthermore, the Eva API reply is automatically parsed and dialog is handled by Eva.
+The backend application is only called upon to implement applicative directives, such as <em>ShowBoardingPass</em> or <em>PerformFlightSearch</em>.
+Applicative integration is done via customizable webhooks.
+Eva automatically reformats the applicative webhook replies to comply with all messaging platforms so you don&#8217;t have to integrate
+separately with each one.</p>
+<p>Integration with all messaging platforms consists of the following steps:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Create a new Bot</strong></p>
+<p>Log in to  <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> using your Eva credentials.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For <strong>free</strong> API access please register here: <a class="reference external" href="https://www.evature.com/registration/form">https://www.evature.com/registration/form</a></p>
+</div>
+<p>You will be prompted to create a new Bot, proving a name, a description and a default greeting.</p>
+</li>
+<li><p class="first"><strong>Add a Chat Service Integration</strong></p>
+<p>Add a chat integration with one of the following providers:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>* Facebook
+* Telegram
+* Line
+* Slack
+* Kik
+* SMS
+* WeChat
+* Skype
+</pre></div>
+</div>
+<p>The integrations are platform specific.</p>
+</li>
+<li><p class="first"><strong>Implement applicative webhooks</strong></p>
+<p>Eva defines many webhook functions for applicative requests that may be queried by the end users.
+This is usually existing functionality in your backend servers that the developer
+needs to &#8220;wire&#8221; to the corresponding webhook function.</p>
+<p>Here are some examples:</p>
+<ul class="simple">
+<li>Perform a Flight Search</li>
+<li>Perform a Hotel Search</li>
+<li>Show a Boarding Pass</li>
+<li>Show an Itinerary</li>
+</ul>
+<p>You can simply ignore the applicative webhooks that are non-applicable to your backend.
+Eva will automatically reply to end users explicitly requesting these services with a &#8220;not supported&#8221; message.</p>
+</li>
+<li><p class="first"><strong>Add more messaging platform integrations</strong></p>
+<p>Repeat step 2 to provide additional messaging platform integrations.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="chat-service-integrations">
+<h2>3.2. Chat Service Integrations<a class="headerlink" href="#chat-service-integrations" title="Permalink to this headline">¶</a></h2>
+<p>Here is the ever growing list of Chat Service integrations.</p>
+<div class="section" id="telegram-integration">
+<h3>3.2.1. Telegram integration<a class="headerlink" href="#telegram-integration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><strong>Create a new Telegram Bot</strong></p>
+<p>Currently this can only be done by chatting with BotFather from within the Telegram application.
+BotFather is available <a class="reference external" href="https://web.telegram.org/#/im?p=&#64;BotFather">Here</a></p>
+<p>Tell him I sent you.</p>
+<p>Create a new Bot by issuing the <strong>/newbot</strong> command.</p>
+<p>Follow the in-app configuration instructions until the bot is created.
+You will be provided with an HTTP API token such as &#8220;232021539:AAGGFCHb3dRCkOIi18Vscnu7T6bDzWcb_ro&#8221;</p>
+</li>
+<li><p class="first"><strong>Create a new Telegram Integration</strong></p>
+<p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
+<p>Choose Type = Telegram.</p>
+<p>Select Full AI.</p>
+<p>Type in your Telegram HTTP API token.</p>
+</li>
+<li><p class="first"><strong>Say hi to Eva on Telegram!</strong></p>
+<p>Now try chatting with your new bot in Telegram! Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+</li>
+</ol>
+</div>
+<div class="section" id="line-integration">
+<h3>3.2.2. Line integration<a class="headerlink" href="#line-integration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><strong>Create a new Line Bot</strong></p>
+<p>Create a Line BOT API account from the LINE Business Center.
+You need to have a business account - <a class="reference external" href="https://business.line.me">https://business.line.me</a></p>
+<p>Register for a BOT API Trial Account - <a class="reference external" href="https://business.line.me/en/products/4/introduction">https://business.line.me/en/products/4/introduction</a></p>
+<p>Once you have the bot, note the following -</p>
+<ul class="simple">
+<li>Channel ID, e.g. &#8220;1476248720&#8221;</li>
+<li>Channel Secret, e.g. &#8220;0a1b2427f865b36aebf6f18d2a7b2a19&#8221;</li>
+<li>MID, e.g. &#8220;u6693abde9913e0bb699d29da0b632de0&#8221;</li>
+</ul>
+<p>You will need to copy those to Eva in the line integration.</p>
+</li>
+<li><p class="first"><strong>Create a new Line Integration</strong></p>
+<p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
+<p>Choose Type = Line.</p>
+<p>Select Full AI.</p>
+<p>Fill in your Channel ID, Channel Secret and MID.</p>
+</li>
+<li><p class="first"><strong>Configure Eva as the Line Bot</strong></p>
+<p>Set the Callback URL to &#8220;<a class="reference external" href="https://chat.evature.com:443/line">https://chat.evature.com:443/line</a>&#8220;</p>
+<p>See the <a class="reference external" href="https://developers.line.me/bot-api/getting-started-with-bot-api-trial#register_callback_url">detailed Line docs</a></p>
+</li>
+<li><p class="first"><strong>Say hi to Eva on Line!</strong></p>
+<p>Now try chatting with your new bot in Line. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+</li>
+</ol>
+</div>
+<div class="section" id="facebook-integration">
+<h3>3.2.3. Facebook integration<a class="headerlink" href="#facebook-integration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><strong>Facebook Page and App</strong></p>
+<p>Create a new Facebook App and Page or use existing ones.
+Your Facebook App can remain in sandbox mode and your Page does NOT have to be publicly visible.
+The Page profile pic and name will be used to form the &#8220;identity&#8221; of your bot and is what people will see when they engage it.
+Please note your Page &#8220;Facebook Page ID&#8221;, e.g. 135827446828726</p>
+<p>Go to your app settings and, under Product Settings, click &#8220;Add Product.&#8221; Select &#8220;Messenger.&#8221;
+In the settings you will see a Token Generation section. Select your Page and copy the generated Page Access Token.</p>
+</li>
+<li><p class="first"><strong>Create a new Facebook Integration</strong></p>
+<p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
+<p>Choose Type = Facebook.</p>
+<p>Select Full AI.</p>
+<p>Fill in the Page Access Token generated in the previous step.</p>
+<p>Fill in your Facebook Page ID.</p>
+<p>Click Save.</p>
+</li>
+<li><p class="first"><strong>Configure Eva as the Facebook bot</strong></p>
+<p>After you create Facebook Integration you will be guided on screen to go back to your Facebook Admin and do the following:</p>
+<p>Under the &#8220;PRODUCT SETTINGS&#8221; section, click on the &#8220;Messenger&#8221; product you just added,
+find the Webhooks section and click Setup Webhooks.
+Enter the following URL for a webhook - &#8220;<a class="reference external" href="https://chat.evature.com/fb">https://chat.evature.com/fb</a>&#8221;.</p>
+<p>Enter the Verify Token that will shown in Botkit&#8217;s Admin.</p>
+<p>Select all checkboxes under Subscription Fields, specifically: message_deliveries, message_echoes, message_reads, messages,
+messaging_account_linking, messaging_optins, messaging_postbacks.</p>
+<p>Verify and Save.</p>
+<p>You should see a green checkmark with the text &#8220;Completed&#8221;.</p>
+<p>In that same panel, Select your pages to subscribe your webhook to the page events in the &#8220;select a page&#8221; drop-down and
+click &#8220;Subscribe&#8221;.</p>
+</li>
+<li><p class="first"><strong>Request Permissions for your app</strong></p>
+<p>Under the &#8220;PRODUCT SETTINGS&#8221; section, click on the &#8220;Messenger&#8221; product you just added,
+find the App Review for Messenger section and click Request Permissions.</p>
+<p>Select pages_messaging</p>
+<p>Click Add 1 Item</p>
+</li>
+<li><p class="first"><strong>Say hi to Eva on Facebook Messenger!</strong></p>
+<p>Now try chatting with your new bot in Facebook Messenger. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+</li>
+</ol>
+</div>
+<div class="section" id="kik-integration">
+<h3>3.2.4. Kik integration<a class="headerlink" href="#kik-integration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><strong>Create a new Kik Bot</strong></p>
+<p>Using the Kik application scan the QR here - <a class="reference external" href="https://dev.kik.com/#/home">https://dev.kik.com/#/home</a></p>
+<p>You will start a chat with Botsworth.</p>
+<p>Note the Bot username from the chat with Botsworth.</p>
+<p>Once the bot is created Botsworth will suggest to log you in to the Bot Dashboard.</p>
+<p>In the configuration you will be able to see your API key, which looks like this: &#8220;e15ee13d-e84f-466e-b93e-d2c1eb0508f7&#8221;</p>
+</li>
+<li><p class="first"><strong>Create a new Kik Integration</strong></p>
+<p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
+<p>Choose Type = Kik.</p>
+<p>Select Full AI.</p>
+<p>Fill in the username and API Key generated in the previous step.</p>
+<p>Click Save.</p>
+</li>
+<li><p class="first"><strong>Say hi to Eva on Kik!</strong></p>
+<p>Now try chatting with your new bot in Kik. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="adding-webhooks">
+<h2>3.3. Adding Webhooks<a class="headerlink" href="#adding-webhooks" title="Permalink to this headline">¶</a></h2>
+<p>Here are the list of available applicative webhooks. The list is constantly being updated, based on the input data.
+If you would like to add functionality please contact us directly at <a class="reference external" href="mailto:info&#37;&#52;&#48;evature&#46;com">info<span>&#64;</span>evature<span>&#46;</span>com</a></p>
+<p>For each added webhook there is a demo implementation at <a class="reference external" href="https://github.com/evature/botkit-integrations">https://github.com/evature/botkit-integrations</a></p>
+<p>Evature also provides a simple repository with super simple Python demos of webhook replies:  <a class="reference external" href="https://github.com/evature/webhooks">https://github.com/evature/webhooks</a></p>
+<div class="section" id="general">
+<h3>3.3.1. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<p>All webhooks are HTTP/S POSTs with a JSON encoded body and expect a JSON formatted response.</p>
+<p>Eva provides a standardized way to access all messaging providers so you don&#8217;t need to learn how to integrate with each one.
+Eva does this by providing several generic formats of messages that can be returned by the applicative webhooks.
+These formats are automatically matched to the native formats supported by each messaging platform:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Text:</th><td class="field-body">Simple text message</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Image:</th><td class="field-body">Eva will handle format conversions, resizing and serving multiple resolutions dynamically</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">RichMessage:</th><td class="field-body">Images with buttons, clickable URLs, Title and Subtitle, optionally grouped together horizontally</td>
+</tr>
+<tr class="field-even field"><th class="field-name">HTML:</th><td class="field-body">Eva will render the HTML to an image with the optimal screen setting for each messaging provider</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">DataMessage:</th><td class="field-body">Template based pre-formatted messages that will render correctly across platforms</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raw:</th><td class="field-body">Properly formatted for the requested messaging provider</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, Eva supports returning a list of messages, which will be sent to the end user one by one.</p>
+<p>Webhooks deliver a <code class="docutils literal"><span class="pre">messagingProvider</span></code> key which signals the implementation where the request came from.
+<code class="docutils literal"><span class="pre">messagingProvider</span></code> is an enumeration for the different messaging providers, one of the Chat Service Integrations.
+This can be used by the implementation to provide unique, content specific content,
+or to apply formatting when returning Raw messages.</p>
+<p>Webhooks also deliver a globally unique <code class="docutils literal"><span class="pre">ChatKey</span></code>.
+This allows the application to asynchronously send messages to the end user by POSTing the data to
+<a class="reference external" href="https://chat.evature.com/send_botkit_message">https://chat.evature.com/send_botkit_message</a></p>
+<p>All DateTimes are in ISO 8601 format <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">https://en.wikipedia.org/wiki/ISO_8601</a> .
+DateTimes that are ranges (e.g. &#8216;next week&#8217;, or &#8216;July&#8217;) are expressed as a combination of 2 DateTimes - a &#8220;Min&#8221; and a &#8220;Max&#8221;.
+DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL DateTimes.</p>
+<p>Here is the minimal webhook reply with a single text message:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-with-single-text-message">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply with single Text message</span><a class="headerlink" href="#webhook-reply-with-single-text-message" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>When asynchronously sending messages to the end user by POSTing the data to <a class="reference external" href="https://chat.evature.com/send_botkit_message">https://chat.evature.com/send_botkit_message</a> ,
+The <code class="docutils literal"><span class="pre">ChatKey</span></code> must be included in the reply:</p>
+<div class="literal-block-wrapper container" id="single-text-message-sent-asynchronously">
+<div class="code-block-caption"><span class="caption-text">Single Text message, sent asynchronously</span><a class="headerlink" href="#single-text-message-sent-asynchronously" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441c21&quot;</span><span class="p">,</span> <span class="c1">// Is Mandatory only when asynchronously sent</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Good Morning!&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is an example of returning a picture:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-with-single-image-message">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply with single Image message</span><a class="headerlink" href="#webhook-reply-with-single-image-message" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ImageMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-url.com/url-to-img&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is an HTML message response:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-with-an-html-message">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply with an HTML message</span><a class="headerlink" href="#webhook-reply-with-an-html-message" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HtmlMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">350</span>
+      <span class="s2">&quot;html&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;h1&gt;Hello World&lt;/h1&gt; &lt;strong&gt;This&lt;/strong&gt; &lt;small&gt;is&lt;/small&gt; &lt;em&gt;HTML&lt;/em&gt;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is a Rich message response:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-with-an-rich-message">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply with an Rich message</span><a class="headerlink" href="#webhook-reply-with-an-rich-message" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://url-to-img.com/image.jpg&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;The RichMessage Title&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;subtitle&quot;</span><span class="o">:</span> <span class="s2">&quot;Subtitle will appear below the title (optional)&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-clicked.com&quot;</span><span class="p">,</span>    <span class="c1">// optional - clicking the image will open webbrowser to this url</span>
+      <span class="s2">&quot;buttons&quot;</span><span class="o">:</span> <span class="p">[</span>    <span class="c1">// optional</span>
+          <span class="p">{</span><span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ButtonMessage&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;click to open webbrowser&quot;</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://button-pressed.com&quot;</span><span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is &#8220;MultiRich&#8221; message response - horizontally scrolled list of Rich messages:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-example-with-multirichmessage">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply example with MultiRichMessage</span><a class="headerlink" href="#webhook-reply-example-with-multirichmessage" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;MultiRichMessage&quot;</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="o">:</span><span class="p">[</span>
+         <span class="p">{</span> <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span> <span class="p">...</span> <span class="nx">see</span> <span class="nx">above</span> <span class="p">...</span> <span class="p">},</span>
+         <span class="p">{</span> <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span> <span class="p">...</span> <span class="nx">see</span> <span class="nx">above</span> <span class="p">...</span> <span class="p">},</span>
+      <span class="p">]}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is a &#8220;DataMessage&#8221; template based response - for Flight Status:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-example-with-datamessage-for-flight-status">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply example with DataMessage - for Flight Status</span><a class="headerlink" href="#webhook-reply-example-with-datamessage-for-flight-status" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;DataMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;subType&quot;</span><span class="o">:</span><span class="s2">&quot;airline_update&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;asAttachment&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+      <span class="s2">&quot;jsonData&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;flight_number&quot;</span><span class="o">:</span><span class="s2">&quot;UAL123&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;departure_airport&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;terminal&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;London Heathrow&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;airport_code&quot;</span><span class="o">:</span><span class="s2">&quot;LHR&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;gate&quot;</span><span class="o">:</span><span class="s2">&quot;232&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;arrival_airport&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;terminal&quot;</span><span class="o">:</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;Washington Dulles Intl&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;airport_code&quot;</span><span class="o">:</span><span class="s2">&quot;IAD&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;gate&quot;</span><span class="o">:</span><span class="s2">&quot;C2&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;flight_schedule&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;departure_time_actual&quot;</span><span class="o">:</span><span class="s2">&quot;2016-08-09T08:16:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;arrival_time&quot;</span><span class="o">:</span><span class="s2">&quot;2016-08-09T10:51:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;departure_time&quot;</span><span class="o">:</span><span class="s2">&quot;2016-08-09T07:30:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;boarding_time&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;airline_name&quot;</span><span class="o">:</span><span class="s2">&quot;United&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;number&quot;</span><span class="o">:</span><span class="mi">123</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;introMessage&quot;</span><span class="o">:</span><span class="s2">&quot;Here is an example of a Flight Status&quot;</span>
+    <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>And here is a &#8220;DataMessage&#8221; template based response - for a Boarding Pass:</p>
+<div class="literal-block-wrapper container" id="webhook-reply-example-with-datamessage-for-boarding-pass">
+<div class="code-block-caption"><span class="caption-text">Webhook Reply example with DataMessage - for Boarding Pass</span><a class="headerlink" href="#webhook-reply-example-with-datamessage-for-boarding-pass" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;subType&quot;</span><span class="o">:</span><span class="s2">&quot;airline_boardingpass&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;DataMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;asAttachment&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;jsonData&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;seat&quot;</span><span class="o">:</span><span class="s2">&quot;75A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;travel_class&quot;</span><span class="o">:</span><span class="s2">&quot;business&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;auxiliary_fields&quot;</span><span class="o">:</span><span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Terminal&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;30OCT 19:05&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Departure&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;qr_code&quot;</span><span class="o">:</span><span class="s2">&quot;M1WEISS\\/TAL  CG4X7U nawouehgawgnapwi3jfa0wfh&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pnr_number&quot;</span><span class="o">:</span><span class="s2">&quot;CG4X7U&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logo_image_url&quot;</span><span class="o">:</span><span class="s2">&quot;https://d2hbukybm05hyt.cloudfront.net/images/airline_logos/logo_JB.png&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;passenger_name&quot;</span><span class="o">:</span><span class="s2">&quot;TAL WEISS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secondary_fields&quot;</span><span class="o">:</span><span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;18:30&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Boarding&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;D57&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Gate&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;75A&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Seat&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="s2">&quot;003&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="s2">&quot;Sec.Nr.&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;flight_info&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;arrival_airport&quot;</span><span class="o">:</span><span class="p">{</span>
+            <span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;Amsterdam&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;airport_code&quot;</span><span class="o">:</span><span class="s2">&quot;AMS&quot;</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;flight_schedule&quot;</span><span class="o">:</span><span class="p">{</span>
+            <span class="s2">&quot;arrival_time&quot;</span><span class="o">:</span><span class="s2">&quot;2016-01-05T17:30&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;departure_time&quot;</span><span class="o">:</span><span class="s2">&quot;2016-01-02T19:05&quot;</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;flight_number&quot;</span><span class="o">:</span><span class="s2">&quot;KL0642&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;departure_airport&quot;</span><span class="o">:</span><span class="p">{</span>
+            <span class="s2">&quot;terminal&quot;</span><span class="o">:</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;city&quot;</span><span class="o">:</span><span class="s2">&quot;New York&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;airport_code&quot;</span><span class="o">:</span><span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;gate&quot;</span><span class="o">:</span><span class="s2">&quot;D57&quot;</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;header_image_url&quot;</span><span class="o">:</span><span class="s2">&quot;https://d1hz6cg1a1lrv6.cloudfront.net/media/images/evature/logo4-19b0ca62fbf2b08e3bbc9d25298523ea4600422e.jpg&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;introMessage&quot;</span><span class="o">:</span><span class="s2">&quot;Here is an example of a Boarding Pass&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span><span class="s2">&quot;0.3.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Here is a generic, all inclusive example of a webhook reply that is returned by the implementation:</p>
+<div class="literal-block-wrapper container" id="generic-webhook-reply">
+<div class="code-block-caption"><span class="caption-text">Generic Webhook Reply</span><a class="headerlink" href="#generic-webhook-reply" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;1234b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ImageMessage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://url-to-img.com/image.png&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;buttons&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ButtonMessage&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;1st button text&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://button-pressed.com&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ButtonMessage&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;2nd button text&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://second-button-pressed.com&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-url.com/url-to-img&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;subtitle&quot;</span><span class="o">:</span> <span class="s2">&quot;subtitle (optional)&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;title (optional)&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://on-click-url.com/(optional)&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HtmlMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="s2">&quot;html&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;h1&gt;Hello World&lt;/h1&gt; &lt;strong&gt;This&lt;/strong&gt; &lt;small&gt;is&lt;/small&gt; &lt;em&gt;HTML&lt;/em&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mi">350</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;MultiRichMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;buttons&quot;</span><span class="o">:</span> <span class="p">[],</span>
+          <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-url.com/url-to-img-1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;subtitle&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Image 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;buttons&quot;</span><span class="o">:</span> <span class="p">[],</span>
+          <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-url.com/url-to-img-2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;subtitle&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Image 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;buttons&quot;</span><span class="o">:</span> <span class="p">[],</span>
+          <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;http://image-url.com/url-to-img-3&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;subtitle&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Image 3&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="search-for-flights">
+<h3>3.3.2. Search for Flights<a class="headerlink" href="#search-for-flights" title="Permalink to this headline">¶</a></h3>
+<p>When the dialog with the end user is done and Eva has all the required information the flight search webhook is triggered.
+Here is an example of a flight search request:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;fly from London to Moscow on Tuesday for 3 adults redeye and return 3 days later&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="flight-search-request-example">
+<div class="code-block-caption"><span class="caption-text">Flight Search Request Example</span><a class="headerlink" href="#flight-search-request-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;redeye&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;twoWay&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+ <span class="s2">&quot;departDateMax&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-05-31T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;departDateMin&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-05-31T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;returnDateMax&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-06-03T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;returnDateMin&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-06-03T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;origin&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;airports&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;LHR&quot;</span><span class="p">,</span> <span class="s2">&quot;LGW&quot;</span><span class="p">,</span> <span class="s2">&quot;LCY&quot;</span><span class="p">,</span> <span class="s2">&quot;STN&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;allAirportsCode&quot;</span><span class="o">:</span> <span class="s2">&quot;LON&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="mi">2643743</span><span class="p">,</span>
+            <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">51.50853</span><span class="p">,</span>
+            <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">0.12574</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;London, United Kingdom&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;City&quot;</span><span class="p">},</span>
+ <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;airports&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;SVO&quot;</span><span class="p">,</span> <span class="s2">&quot;DME&quot;</span><span class="p">,</span> <span class="s2">&quot;VKO&quot;</span><span class="p">,</span> <span class="s2">&quot;BKA&quot;</span><span class="p">],</span>
+                 <span class="s2">&quot;allAirportsCode&quot;</span><span class="o">:</span> <span class="s2">&quot;MOW&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="mi">524901</span><span class="p">,</span>
+                 <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">55.75222</span><span class="p">,</span>
+                 <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="mf">37.61556</span><span class="p">,</span>
+                 <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Moscow, Russia&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;City&quot;</span><span class="p">},</span>
+ <span class="s2">&quot;travelers&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;adult&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+<p>allAirportsCode is a key that exists only for cities that have a special IATA code for searching all-airports.</p>
+</div>
+<div class="section" id="search-for-hotels">
+<h3>3.3.3. Search for Hotels<a class="headerlink" href="#search-for-hotels" title="Permalink to this headline">¶</a></h3>
+<p>When the dialog with the end user is done and Eva has all the required information the hotel search webhook is triggered.
+Here is an example of a hotel search request:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;3 to 4 star Hilton in paris tomorrow 5 nights sort by price ascending for 2 adults and 3 kids&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="hotel-search-request-example">
+<div class="code-block-caption"><span class="caption-text">Hotel Search Request Example</span><a class="headerlink" href="#hotel-search-request-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;arriveDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-05-31T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+ <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;chain&quot;</span><span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;evaCode&quot;</span><span class="o">:</span> <span class="s2">&quot;EPC-47&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;gdsCode&quot;</span><span class="o">:</span> <span class="s2">&quot;HH&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;simpleName&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton&quot;</span><span class="p">}],</span>
+                <span class="s2">&quot;quality&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]},</span>
+ <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;airports&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;CDG&quot;</span><span class="p">,</span> <span class="s2">&quot;ORY&quot;</span><span class="p">,</span> <span class="s2">&quot;BVA&quot;</span><span class="p">,</span> <span class="s2">&quot;LIL&quot;</span><span class="p">],</span>
+              <span class="s2">&quot;allAirportsCode&quot;</span><span class="o">:</span> <span class="s2">&quot;PAR&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="mi">2988507</span><span class="p">,</span>
+              <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">48.85341</span><span class="p">,</span>
+              <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="mf">2.3488</span><span class="p">,</span>
+              <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Paris, France&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;City&quot;</span><span class="p">},</span>
+ <span class="s2">&quot;sortBy&quot;</span><span class="o">:</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;sortOrder&quot;</span><span class="o">:</span> <span class="s2">&quot;ascending&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;travelers&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;adult&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;child&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="search-for-cars">
+<h3>3.3.4. Search for Cars<a class="headerlink" href="#search-for-cars" title="Permalink to this headline">¶</a></h3>
+<p>When the dialog with the end user is done and Eva has all the required information the car rental search webhook is triggered.
+Here is an example of a car rental search request:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;rent an SUV with a GPS from JFK tomorrow morning return in 3 days&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="car-search-request-example">
+<div class="code-block-caption"><span class="caption-text">Car Search Request Example</span><a class="headerlink" href="#car-search-request-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;carType&quot;</span><span class="o">:</span> <span class="s2">&quot;Standard SUV&quot;</span><span class="p">,</span> <span class="s2">&quot;GPS&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+ <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;airports&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;JFK&quot;</span><span class="p">],</span>
+                 <span class="s2">&quot;allAirportsCode&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+                 <span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">40.633333</span><span class="p">,</span>
+                 <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">73.783333</span><span class="p">,</span>
+                 <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="nx">u</span><span class="s2">&quot;&#39;JFK&#39; = John F Kennedy Intl, US&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">},</span>
+ <span class="s2">&quot;origin&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;airports&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;JFK&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;allAirportsCode&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="s2">&quot;JFK&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">40.633333</span><span class="p">,</span>
+            <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">73.783333</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="nx">u</span><span class="s2">&quot;&#39;JFK&#39; = John F Kennedy Intl, US&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;Airport&quot;</span><span class="p">},</span>
+ <span class="s2">&quot;pickupDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-05-31T08:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;returnDate&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-06-03T00:00:00&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="search-for-cruises">
+<h3>3.3.5. Search for Cruises<a class="headerlink" href="#search-for-cruises" title="Permalink to this headline">¶</a></h3>
+<p>When the dialog with the end user is done and Eva has all the required information the cruise search webhook is triggered.
+Here is an example of a cruise search request:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;cruise to Alaska in the summer with Carnival&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="cruise-request-example">
+<div class="code-block-caption"><span class="caption-text">Cruise Request Example</span><a class="headerlink" href="#cruise-request-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;cruiseline&quot;</span><span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Carnival Cruises&quot;</span><span class="p">}]},</span>
+ <span class="s2">&quot;dateFrom&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-06-01T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;dateTo&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-08-30T00:00:00&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;durationMin&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+ <span class="s2">&quot;durationMax&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+ <span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;geoid&quot;</span><span class="o">:</span> <span class="mi">5879092</span><span class="p">,</span>
+        <span class="s2">&quot;latitude&quot;</span><span class="o">:</span> <span class="mf">64.00028</span><span class="p">,</span>
+        <span class="s2">&quot;longitude&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">150.00028</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Alaska, United States&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;State&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="greet-the-user">
+<h3>3.3.6. Greet the User:<a class="headerlink" href="#greet-the-user" title="Permalink to this headline">¶</a></h3>
+<p>Override the greeting to the user</p>
+</div>
+<div class="section" id="display-gate-number">
+<h3>3.3.7. Display Gate Number<a class="headerlink" href="#display-gate-number" title="Permalink to this headline">¶</a></h3>
+<p>Display the gate number to a specific user</p>
+</div>
+<div class="section" id="display-departure-time">
+<h3>3.3.8. Display Departure Time<a class="headerlink" href="#display-departure-time" title="Permalink to this headline">¶</a></h3>
+<p>Display the departure time to a specific user</p>
+</div>
+<div class="section" id="display-arrival-time">
+<h3>3.3.9. Display Arrival Time<a class="headerlink" href="#display-arrival-time" title="Permalink to this headline">¶</a></h3>
+<p>Display the arrival time to a specific user</p>
+</div>
+<div class="section" id="display-boarding-time">
+<h3>3.3.10. Display Boarding Time<a class="headerlink" href="#display-boarding-time" title="Permalink to this headline">¶</a></h3>
+<p>Display the boarding time to a specific user</p>
+</div>
+<div class="section" id="display-boarding-pass">
+<h3>3.3.11. Display boarding pass<a class="headerlink" href="#display-boarding-pass" title="Permalink to this headline">¶</a></h3>
+<p>Display the boarding pass to a specific user.</p>
+<p>You can reply with any of the message formats, such as text or images,
+but you can also use the predefined template for displaying a Boarding Pass described at</p>
+<p><a class="reference internal" href="#webhook-reply-example-with-datamessage-for-boarding-pass">Webhook Reply example with DataMessage - for Boarding Pass</a> .</p>
+</div>
+<div class="section" id="display-itinerary">
+<h3>3.3.12. Display Itinerary<a class="headerlink" href="#display-itinerary" title="Permalink to this headline">¶</a></h3>
+<p>Display the itinerary to a specific user</p>
+</div>
+<div class="section" id="display-reservation">
+<h3>3.3.13. Display Reservation<a class="headerlink" href="#display-reservation" title="Permalink to this headline">¶</a></h3>
+<p>Display the reservation to a specific user</p>
+</div>
+<div class="section" id="cancel-reservation">
+<h3>3.3.14. Cancel Reservation<a class="headerlink" href="#cancel-reservation" title="Permalink to this headline">¶</a></h3>
+<p>Please cancel my  reservation</p>
+</div>
+<div class="section" id="log-messages-between-eva-and-user">
+<h3>3.3.15. Log Messages between Eva and User<a class="headerlink" href="#log-messages-between-eva-and-user" title="Permalink to this headline">¶</a></h3>
+<p>Allows logging of all communication between Eva to the end user and helpful debug information regarding the integration.</p>
+<p>Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>To set up a simple view for this log, head over to <a class="reference external" href="https://hyperdev.com">https://hyperdev.com</a></p>
+<ul class="simple">
+<li>Log in to GitHub.</li>
+<li>Start a new project.</li>
+<li>Click on the project name, <cite>Advanced Options</cite>, <cite>Import from Github</cite> and input &#8216;iftahh/bot_logger&#8217;.</li>
+<li>Click on <cite>Show</cite> and you will see a scrolling list of logs from the BotKit.</li>
+</ul>
+<p class="last">Enter &#8220;Hi&#8221; to Eva in any messenger to see some logs.</p>
+</div>
+</div>
+<div class="section" id="display-flight-status">
+<h3>3.3.16. Display Flight Status<a class="headerlink" href="#display-flight-status" title="Permalink to this headline">¶</a></h3>
+<p>Allow the user to request the status of a specific flight:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;What is the status of United Airlines flight 123?&quot;
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="flight-status-request-example">
+<div class="code-block-caption"><span class="caption-text">Flight Status Request Example</span><a class="headerlink" href="#flight-status-request-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;IATA&quot;</span><span class="o">:</span> <span class="s2">&quot;UA&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;ICAO&quot;</span><span class="o">:</span> <span class="s2">&quot;UAL&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;United&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>You can reply with any of the message formats, such as text or images,
+but you can also use the predefined template for Flight Status described at</p>
+<p><a class="reference internal" href="#webhook-reply-example-with-datamessage-for-flight-status">Webhook Reply example with DataMessage - for Flight Status</a> .</p>
+</div>
+<div class="section" id="interactive-messages-general">
+<h3>3.3.17. Interactive Messages - General<a class="headerlink" href="#interactive-messages-general" title="Permalink to this headline">¶</a></h3>
+<p>There are several types of interactive messages that can be returned from the applicative webhooks.
+These messages are instructions to the BotKit to interact with the end users.
+The interactive message must be the last in the list of returned messages.
+There can only be a single interactive message in the list of returned messages.</p>
+<p>These are the types of interactive messages:</p>
+<ul>
+<li><p class="first">A Login request</p>
+<p>The end user needs to log into your back-end before continuing the chat.</p>
+</li>
+<li><p class="first">A Question</p>
+<p>Eva will ask the end user a question. Questions can be open, Yes / No and Multiple Choice.</p>
+</li>
+<li><p class="first">Validate Email</p>
+</li>
+<li><p class="first">Validate Phone Number</p>
+</li>
+<li><p class="first">Transfer the chat to a Human Agent</p>
+</li>
+<li><p class="first">Subscription management of Group Notifications</p>
+</li>
+</ul>
+</div>
+<div class="section" id="interactive-message-logging-in-end-users-oauth">
+<h3>3.3.18. Interactive Message - Logging In End Users - OAuth<a class="headerlink" href="#interactive-message-logging-in-end-users-oauth" title="Permalink to this headline">¶</a></h3>
+<p>When a user starts a conversation with your business, you may want to identify her as a customer who already has
+an account with your business. To help with this, we have created a platform-agnostic secured protocol to link and unlink
+the messaging end-user identity with your business user identity.</p>
+<p>OAuth-style LogIn allows you to invite users to log-in using your existing authentication flow thus to provide a more secure,
+personalized and relevant experience to users.</p>
+<p>To request a Log In return a special message of type <cite>LoginOAuthEvent</cite> from any applicative webhook.
+As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.</p>
+<p>Here is an example of such a reply:</p>
+<div class="literal-block-wrapper container" id="oauth-login-reply-example">
+<div class="code-block-caption"><span class="caption-text">OAuth LogIn Reply Example</span><a class="headerlink" href="#oauth-login-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;LoginOAuthEvent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;loginSuccessHook&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;webhook&quot;</span><span class="o">:</span> <span class="s2">&quot;flight_boarding_pass&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Please Login in first&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;webLoginUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://chat.evature.com/demo_login&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">_type:</th><td class="field-body">Must be &#8220;LoginOAuthEvent&#8221;</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">loginSuccessHook:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">a JSON object with either <cite>webhook</cite> - an enumeration of an existing webhook, or <cite>url</cite></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">text:</th><td class="field-body">any text message - mandatory.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">webLoginUrl:</th><td class="field-body">a URL to the web login page.</td>
+</tr>
+</tbody>
+</table>
+<p>The end user will be presented with a log in request. Once she clicks on it she will be redirected outside the messaging platform
+and into the a web browser window with the business specific log in process.</p>
+<p>The URL <cite>webLoginUrl</cite> will be extended with a query parameter called <cite>redirect_uri</cite>.
+If the log in is successful, redirect the browser to the <cite>redirect_uri</cite> specified in your callback to complete the flow,
+and append a new <cite>authorization_code</cite> query parameter. Eva will add the contents of <cite>authorization_code</cite> to the subsequent
+applicative webhook calls as a new key called <cite>loginData</cite>.</p>
+</div>
+<div class="section" id="interactive-message-transfer-chat-to-a-human-agent">
+<h3>3.3.19. Interactive Message - Transfer chat to a Human Agent<a class="headerlink" href="#interactive-message-transfer-chat-to-a-human-agent" title="Permalink to this headline">¶</a></h3>
+<p>When this message is returned from an applicative webhook, Eva will attempt to transfer the chat to a human agent.
+This assumes that an Agency of Human Agents has been set up in advance. The message looks like this:</p>
+<div class="literal-block-wrapper container" id="transfer-chat-to-human-agent-reply-example">
+<div class="code-block-caption"><span class="caption-text">Transfer Chat to Human Agent Reply Example</span><a class="headerlink" href="#transfer-chat-to-human-agent-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>To request a Human Agent Transfer return a special message of type <cite>HandoffToHumanEvent</cite> from any applicative webhook.
+As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.</p>
+<p>If there are no relevant agents online the end user sees a default &#8220;Sorry, no agents are online&#8221; message.</p>
+<p>If there are agents online, Eva shows the end user a choice of available chat topics.
+Chat topics are configured in the EvaChat Admin page. Only chat topics which have matching agents online are shown.
+When the user makes a Chat Topic choice the chat is transferred and the user sees &#8220;Please wait while an agent joins&#8221;
+followed (eventually) by &#8220;Agent [name] has joined&#8221;.</p>
+<p>The application can configure what happens when there are no agents online by returning the following optional parameter key:
+&#8220;noAgentsOnlineHook&#8221;. The content of this key is either a wehbook enumeration or a url.
+This follow-up webhook is activated instead of showing the default &#8220;Sorry, no agents are online&#8221;
+allowing that webhook to return a custom reply (e.g. present a phone number, and/or working hours).</p>
+<div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-webhook-reply-example">
+<div class="code-block-caption"><span class="caption-text">Specify no agents behavior with Webhook Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-webhook-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;noAgentsOnlineHook&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;webhook&quot;</span><span class="o">:</span> <span class="s2">&quot;contact_support&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;payload&quot;</span><span class="o">:</span>  <span class="p">{</span><span class="s2">&quot;whatever_payload_here&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">payload:</th><td class="field-body">an optional payload that will be delivered to the webhook</td>
+</tr>
+</tbody>
+</table>
+<p>or alternatively:</p>
+<div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-url-reply-example">
+<div class="code-block-caption"><span class="caption-text">Specify no agents behavior with URL Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-url-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;noAgentsOnlineHook&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://my-server.com/no_agents_online/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;payload&quot;</span><span class="o">:</span>  <span class="p">{</span><span class="s2">&quot;whatever_payload_here&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The application may wish to skip the choosing of Chat Topic by returning the &#8220;chooseTopic&#8221; optional key parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">chooseTopic:</th><td class="field-body">An optional string that MUST match one of the pre-configured chat-topics</td>
+</tr>
+</tbody>
+</table>
+<div class="literal-block-wrapper container" id="specify-chat-topic-reply-example">
+<div class="code-block-caption"><span class="caption-text">Specify Chat Topic Reply Example</span><a class="headerlink" href="#specify-chat-topic-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;chooseTopic&quot;</span><span class="o">:</span>  <span class="s2">&quot;Existing Booking&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>When the <code class="docutils literal"><span class="pre">chooseTopic</span></code> parameter is specified the chat topic is chosen without presenting the choices to the user.
+The end user immediately sees either the &#8220;Please wait while an agent joins&#8221; or the &#8220;Sorry, no agents are online&#8221; messages.
+This functionality is useful in cases when the handoff-to-human is activated from a webhook which already narrowed down
+the chat topic, for example the <cite>change_booking</cite> webhook may hand-off to a human with a chat topic of &#8220;Existing Booking&#8221;.</p>
+</div>
+<div class="section" id="interactive-message-subscribe-to-list">
+<h3>3.3.20. Interactive Message - Subscribe to List<a class="headerlink" href="#interactive-message-subscribe-to-list" title="Permalink to this headline">¶</a></h3>
+<p>Eva supports subscription list management for multicast notifications.
+To subscribe end users to a new or existing subscriptions list
+return the following interactive message from any applicative webhook:</p>
+<div class="literal-block-wrapper container" id="subscribe-to-list-reply-example">
+<div class="code-block-caption"><span class="caption-text">Subscribe to List Reply Example</span><a class="headerlink" href="#subscribe-to-list-reply-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;SubscribeEvent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Would you like to receive updates for this flight?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;buttonText&quot;</span><span class="o">:</span> <span class="s2">&quot;Subscribe&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;subscriptionId&quot;</span><span class="o">:</span> <span class="s2">&quot;A unique name for this subscription&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.</p>
+</div>
+</div>
+<div class="section" id="inverse-webhooks">
+<h2>3.4. Inverse Webhooks<a class="headerlink" href="#inverse-webhooks" title="Permalink to this headline">¶</a></h2>
+<p>Eva supports inverse webhooks to allow your application to send asynchronous messages to end users.
+Common use cases are sending applicative notifications to the end users, such as &#8220;Your flight is now boarding at gate D3&#8221;.</p>
+<p>There are 2 types of notifications - unicast and subscription based multicast.
+Unicast messages are sent to a single conversation,
+while subscription based multicast messages are sent to a subscription list of conversations.
+As usual, Eva handles all the formatting and glue logic for you, so you can send simple messages and the BotKit will reformat
+Them as needed for the specific messaging platforms.</p>
+<p>The format of the messages is the same as the reply from the applicative webhooks.</p>
+<p>Unicast messages are sent to the following URL:</p>
+<p><a class="reference external" href="https://chat.evature.com/send_botkit_message">https://chat.evature.com/send_botkit_message</a></p>
+<p>Subscription Multicast messages are sent to the following URL:</p>
+<p><a class="reference external" href="http://chat.evature.com/update_subscription">http://chat.evature.com/update_subscription</a></p>
+<p>All inverse webhooks are HTTPS posts with a JSON payload.
+The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#8220;apiKey&#8221; secret.</p>
+<div class="literal-block-wrapper container" id="single-text-message-sent-as-a-notification">
+<div class="code-block-caption"><span class="caption-text">Single Text message sent as a Notification</span><a class="headerlink" href="#single-text-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441c21&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Good Morning!&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>to send a message to an existing subscription:</p>
+<div class="literal-block-wrapper container" id="notification-group-message-sent-as-a-notification">
+<div class="code-block-caption"><span class="caption-text">Notification Group Message, sent as a Notification</span><a class="headerlink" href="#notification-group-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;requestType&quot;</span><span class="o">:</span> <span class="s2">&quot;send_message&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;subscriptionId&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight UA-123 January 10th&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Your flight has been delayed but here is a picture of a cute dog:&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ImageMessage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imageUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://storage.googleapis.com/linebot-1275.appspot.com/monaka1.jpg&quot;</span>
+      <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>To remove an existing subscription (delete and unsubscribe all end users) send the following:</p>
+<div class="literal-block-wrapper container" id="delete-subscription-list-sent-as-a-notification">
+<div class="code-block-caption"><span class="caption-text">Delete subscription list, sent as a Notification</span><a class="headerlink" href="#delete-subscription-list-sent-as-a-notification" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;requestType&quot;</span><span class="o">:</span> <span class="s2">&quot;remove_subscription&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;subscriptionId&quot;</span><span class="o">:</span> <span class="s2">&quot;subscription_id&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Introduction &mdash; Eva 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
+    <link rel="next" title="2. The Mobile SDKs" href="sdks.html" />
+    <link rel="prev" title="Contents:" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Evature</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-eva">1.1. What is Eva?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-limits">1.3. Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#which-should-i-use">1.4. Which should I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">6. API - The Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#top-level-response">6.2. Top Level Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#api-reply-in-depth">6.3. api_reply - in depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#money">6.7. Money</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#chat">6.8. Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.flight">6.10. Flight Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.request">6.11. Request Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.geography">6.12. Geo Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.activity">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.attributes.ski">6.16. Ski Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="response.html#module-core.warning">6.17. Warnings</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">1. Introduction</a><ul>
+<li><a class="reference internal" href="#what-is-eva">1.1. What is Eva?</a></li>
+<li><a class="reference internal" href="#audience">1.2. Audience</a></li>
+<li><a class="reference internal" href="#usage-limits">1.3. Usage Limits</a></li>
+<li><a class="reference internal" href="#which-should-i-use">1.4. Which should I use?</a></li>
+<li><a class="reference internal" href="#the-platform">1.5. The Platform</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Contents:"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Contents:</span>
+    </a>
+  </li>
+  <li>
+    <a href="sdks.html" title="Next Chapter: 2. The Mobile SDKs"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. The Mobile... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="introduction">
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-eva">
+<h2>1.1. What is Eva?<a class="headerlink" href="#what-is-eva" title="Permalink to this headline">¶</a></h2>
+<p>Eva is an AI system designed to communicate with people in natural language using text or voice.
+The Eva engine was trained with data in the Travel domain, specializing in Flights, Hotels and Car Rentals.</p>
+<p>Eva supports formal language queries, such as:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;I am looking for a weekend in Rome for less than $250 per person&quot;
+</pre></div>
+</div>
+<p>as well as queries written in &#8220;Search Language&#8221;, such as:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;NYC LV next Monday&quot;
+</pre></div>
+</div>
+<p>Eva converts those requests into a structured search query with various parameters, such as:</p>
+<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;travelers&quot;</span><span class="o">:</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;adult&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>which can then be programmatically used to perform a database search.</p>
+<p>Eva completely manages the conversation, asking questions when needed:</p>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;When would you like to return from Dallas Texas to Rome Italy?&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Eva maintains a natural, non-linear conversation, so that the reply to the above question can be any of these:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Tomorrow morning, returning on Friday&quot;
+User: &quot;Flight from DFW as late as possible on the 15th&quot;
+User: &quot;One way flight only&quot;
+</pre></div>
+</div>
+<p>Evature provides low level access to the Eva web service as an HTTPS RESTful API
+as well as fully customizable open source SDKs which bundle Eva with a speech recognition engine
+and a ready-made user interface.</p>
+</div>
+<div class="section" id="audience">
+<h2>1.2. Audience<a class="headerlink" href="#audience" title="Permalink to this headline">¶</a></h2>
+<p>This document is intended for mobile developers who wish to voice-enable their Travel application,
+Bot developers who wish to add a personalized AI travel assistant to any messaging platform
+as well as any developers who would like to simply &#8220;understand&#8221; natural language in the Travel domain.
+The documentation provides an introduction to using the web service as well as the mobile SDKs and the BotKit,
+providing examples and complete reference materials on the available parameters.</p>
+</div>
+<div class="section" id="usage-limits">
+<h2>1.3. Usage Limits<a class="headerlink" href="#usage-limits" title="Permalink to this headline">¶</a></h2>
+<p>Usage of the Eva Travel API is subject to limitations defined by the Evature License Agreement and may be limited
+in the number of requests per day.
+You can get started with Eva for free.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For FREE API access please register here: <a class="reference external" href="http://www.evature.com/registration/form">http://www.evature.com/registration/form</a></p>
+</div>
+<p>If you need a larger quota to support a prototype or a product please do not hesitate to contact us.</p>
+</div>
+<div class="section" id="which-should-i-use">
+<h2>1.4. Which should I use?<a class="headerlink" href="#which-should-i-use" title="Permalink to this headline">¶</a></h2>
+<p>If you are adding voice to a new or existing mobile applications use <a class="reference internal" href="sdks.html#the-mobile-sdks"><span class="std std-ref">The Mobile SDKs</span></a>.
+The SDKs provide the simplest integrations and the fastest time-to-market, while being fully flexible and customizable.</p>
+<p>If you are building a text based Bot use <a class="reference internal" href="botkit.html#eva-botkit"><span class="std std-ref">The Eva BotKit</span></a>.
+The BotKit provides seamless integration with all available messaging platforms, enabling applicative DRY integration.</p>
+<p>For anything else use <a class="reference internal" href="api.html#rest-api"><span class="std std-ref">The HTTP RESTful API</span></a>.</p>
+</div>
+<div class="section" id="the-platform">
+<h2>1.5. The Platform<a class="headerlink" href="#the-platform" title="Permalink to this headline">¶</a></h2>
+<p>Eva runs on top of the AWS cloud in multiple availability zones across 2 regions.
+It utilizes many Amazon components from EC2 servers to Lambda functions
+and from DynamoDB to RDS in a micro-services architecture.
+Evature R&amp;D practices continuous integration and continuous deployment,
+backed up by an extensive testing and validation platform allowing upgrades to be seamless and risk-free.
+Evature&#8217;s current velocity is 20 deployments per week.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, 2016 Evature.<br/>
+    </p>
+  </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-12901638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
