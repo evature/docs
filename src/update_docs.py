@@ -37,6 +37,31 @@ def upload_documentation():
         print(check_output(["aws", "s3", "sync", ".", "s3://docs.evature.com", "--acl", "public-read"], cwd=docs_path,
                            stderr=STDOUT))
 
+def upload_documentation_w_boto():
+    """Upload documentation to S3"""
+    print("Uploading documentation to S3")
+    import boto
+    from core.eva_setting import EVA_ROOT_PATH
+    from core.api_versions import LATEST_AND_GREATEST
+    from boto.s3.key import Key
+    # Log into Amazon S3 service:
+    s3_service = boto.connect_s3() # Credentials use environment variables
+    # Done. Getting the bucket:
+    bucket_name = "eva_docs_" + LATEST_AND_GREATEST
+    try:
+        bucket = s3_service.create_bucket(bucket_name) # Will create a bucket (if one doesn't exists)
+    except boto.exception.S3CreateError:
+        bucket = s3_service.get_bucket(bucket_name) # Will return the existing bucket (if one exists)
+    documentation_dir = os.path.join(EVA_ROOT_PATH, "docs", "_build", "html") # eva/docs/_build/html
+    a_key = Key(bucket)
+    for path, _dir, files in os.walk(documentation_dir):
+        for a_file in files:
+            a_key.key = os.path.relpath(os.path.join(path, a_file), documentation_dir)
+            a_key.set_contents_from_filename(os.path.join(path, a_file))
+            bucket.set_acl('public-read', a_key.key)
+    print("See the docs here: https://s3.amazonaws.com/eva_docs_{}/index.html".format(LATEST_AND_GREATEST))
+
+
 def main():
     """Update docs AND upload to S3"""
     validate_configuration()

@@ -293,7 +293,7 @@ Here is the minimal webhook reply with a single text message:
     :caption: Webhook Reply with single Text message
 
     {
-      "botkitVersion": "0.3.0", // Without this key the content is considered a Raw message and is passed as-is
+      "botkitVersion": "0.4.0", // Without this key the content is considered a Raw message and is passed as-is
       "messages": [
         {
           "_type": "TextMessage",
@@ -310,7 +310,7 @@ The ``ChatKey`` must be included in the reply:
     :caption: Single Text message, sent asynchronously
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "chatKey": "3648b2a2-1aee-4d5a-7ef4-13a0aa441c21", // Is Mandatory only when asynchronously sent
       "messages": [
         {
@@ -327,7 +327,7 @@ Here is an example of returning a picture:
     :caption: Webhook Reply with single Image message
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "messages": [
         {
           "_type": "ImageMessage",
@@ -344,7 +344,7 @@ Here is an HTML message response:
     :caption: Webhook Reply with an HTML message
 
     {
-      "botkitVersion": "0.3.0", // Without this key the content is considered a Raw message and is passed as-is
+      "botkitVersion": "0.4.0", // Without this key the content is considered a Raw message and is passed as-is
       "messages": [
         {
           "_type": "HtmlMessage",
@@ -361,7 +361,7 @@ Here is a Rich message response:
     :caption: Webhook Reply with an Rich message
 
     {
-      "botkitVersion": "0.3.0", // Without this key the content is considered a Raw message and is passed as-is
+      "botkitVersion": "0.4.0", // Without this key the content is considered a Raw message and is passed as-is
       "messages": [
         {
           "_type": "RichMessage",
@@ -381,7 +381,7 @@ Here is "MultiRich" message response - horizontally scrolled list of Rich messag
 .. code-block:: javascript
     :caption: Webhook Reply example with MultiRichMessage
 
-    {  "botkitVersion": "0.3.0",
+    {  "botkitVersion": "0.4.0",
        "messages": [
           { "_type":"MultiRichMessage", "messages":[
              { "_type": "RichMessage", ... see above ... },
@@ -395,7 +395,7 @@ Here is a "DataMessage" template based response - for Flight Status:
 .. code-block:: javascript
     :caption: Webhook Reply example with DataMessage - for Flight Status
 
-    {  "botkitVersion": "0.3.0",
+    {  "botkitVersion": "0.4.0",
        "messages": [
         {
           "_type":"DataMessage",
@@ -500,7 +500,7 @@ And here is a "DataMessage" template based response - for a Boarding Pass:
           "introMessage":"Here is an example of a Boarding Pass"
         }
       ],
-      "botkitVersion":"0.3.0"
+      "botkitVersion":"0.4.0"
     }
 
 
@@ -510,7 +510,7 @@ Here is a generic, all inclusive example of a webhook reply that is returned by 
     :caption: Generic Webhook Reply
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "chatKey": "1234b2a2-1aee-4d5a-7ef4-13a0aa441cb1",
       "messages": [
         {
@@ -864,7 +864,7 @@ Here is an example of such a reply:
     :caption: OAuth LogIn Reply Example
 
     {
-      "botkitVersion": "0.3.0", 
+      "botkitVersion": "0.4.0", 
       "messages": [
         {
           "_type": "LoginOAuthEvent", 
@@ -901,7 +901,7 @@ This assumes that an Agency of Human Agents has been set up in advance. The mess
     :caption: Transfer Chat to Human Agent Reply Example
 
     {
-      "botkitVersion": "0.3.0", 
+      "botkitVersion": "0.4.0", 
       "messages": [
         {
           "_type": "HandoffToHumanEvent", 
@@ -929,7 +929,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
     :caption: Specify no agents behavior with Webhook Reply Example
 
     {
-      "botkitVersion": "0.3.0", 
+      "botkitVersion": "0.4.0", 
       "_type": "HandoffToHumanEvent", 
       "noAgentsOnlineHook": {
         "webhook": "contact_support",      
@@ -945,7 +945,7 @@ or alternatively:
     :caption: Specify no agents behavior with URL Reply Example
 
     {
-      "botkitVersion": "0.3.0", 
+      "botkitVersion": "0.4.0", 
       "_type": "HandoffToHumanEvent", 
       "noAgentsOnlineHook": {
         "url": "https://my-server.com/no_agents_online/",
@@ -961,7 +961,7 @@ The application may wish to skip the choosing of Chat Topic by returning the "ch
     :caption: Specify Chat Topic Reply Example
 
     {
-      "botkitVersion": "0.3.0", 
+      "botkitVersion": "0.4.0", 
       "_type": "HandoffToHumanEvent", 
       "chooseTopic":  "Existing Booking"
     }
@@ -983,7 +983,7 @@ return the following interactive message from any applicative webhook:
     :caption: Subscribe to List Reply Example
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "messages": [
         {
           "_type": "SubscribeEvent",
@@ -996,6 +996,93 @@ return the following interactive message from any applicative webhook:
 
 As this is an interactive message it can only be the last in the list of returned messages
 and there can only be a single interactive message in the list.
+
+
+Interactive Message - questionnaires
+------------------------------------
+
+questionnaires are the ChatBot equivalent of forms,
+where user interaction is better served with simple UI elements such as buttons.
+A questionnaire is a list of questions of various types that Eva will ask the end user.
+As a questionnaire is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.
+
+To request asking the end user questions,
+return the following interactive message from any applicative webhook:
+
+.. code-block:: javascript
+    :caption: Example of questionnaire
+
+    {
+      "botkitVersion":"0.4.0",
+      "messages":[
+        {
+          "_type":"QuestionnaireEvent",
+          "questionnaireAnsweredHook":{
+            "webhook":"roadside_assistance",
+            "payload":{
+              "more_info_to_attach_to_answers":123
+            }
+          },
+          "questionnaireAbortedHook":{
+            "webhook":"roadside_assistance",
+            "payload":{
+              "validation error?":321
+            }
+          },
+          "questions":[
+            {
+              "_type":"EmailQuestion",
+              "name":"email",
+              "text":"I need to identify you, what is your email?"
+            },
+            {
+              "_type":"MultiChoiceQuestion",
+              "text":"What happened?",
+              "name":"what_happened",
+              "choices":[
+                "Accident",
+                "Mechanical problem",
+                "Other"
+              ]
+            },
+            {
+              "_type":"OpenQuestion",
+              "name":"details",
+              "text":"I need a string that starts with 'a' and is 3 or more letters",
+              "validationRegex":"a.{2}"
+            }
+          ]
+        }
+      ]
+    }
+
+The "_type" of the message is always: "QuestionnaireEvent"
+
+"questionnaireAnsweredHook" is an enumeration of the webhook to call when the questions have all been answered.
+"payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
+
+"questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook". 
+A "questionnaireAbortedHook" will be called if the validation of an open "QuestionMessage" fails three times. 
+This key is optional.
+
+Send 1 or more questions, of any of the supported types in the list of "questions". 
+In this example there are 3 questions. 
+Each question has a "name" which will be the key of the result in the payload to be delivered to the "questionnaireAnsweredHook".
+
+The 1st question in the example is an EmailQuestion.
+The open reply will be validated using a built-in regular expression for email addresses.
+
+
+.. note::
+
+   Eva will then send out an email to the designated address to make sure the submitted email is valid and owned by the end user!
+
+The 2nd question in the example is a multiple choice question, typed "MultiChoiceQuestion" with 3 choices.
+
+The 3rd question in the example is an open question for which you may request a validation regular expression.
+
+
 
 Inverse Webhooks
 ================
@@ -1027,7 +1114,7 @@ The payload is a simple JSON object with a "siteCode" key and the "apiKey" secre
     :caption: Single Text message sent as a Notification
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "siteCode": "your_site_code",
       "apiKey": "your_api_key",
       "chatKey": "3648b2a2-1aee-4d5a-7ef4-13a0aa441c21",
@@ -1047,7 +1134,7 @@ to send a message to an existing subscription:
     :caption: Notification Group Message, sent as a Notification
 
     {
-      "botkitVersion": "0.3.0",
+      "botkitVersion": "0.4.0",
       "siteCode": "your_site_code",
       "apiKey": "your_api_key",
       "requestType": "send_message",

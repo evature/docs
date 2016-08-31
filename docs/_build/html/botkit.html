@@ -183,6 +183,7 @@
 <li><a class="reference internal" href="#interactive-message-logging-in-end-users-oauth">3.3.18. Interactive Message - Logging In End Users - OAuth</a></li>
 <li><a class="reference internal" href="#interactive-message-transfer-chat-to-a-human-agent">3.3.19. Interactive Message - Transfer chat to a Human Agent</a></li>
 <li><a class="reference internal" href="#interactive-message-subscribe-to-list">3.3.20. Interactive Message - Subscribe to List</a></li>
+<li><a class="reference internal" href="#interactive-message-questionnaires">3.3.21. Interactive Message - questionnaires</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inverse-webhooks">3.4. Inverse Webhooks</a></li>
@@ -452,7 +453,7 @@ DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL Date
 <div class="literal-block-wrapper container" id="webhook-reply-with-single-text-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with single Text message</span><a class="headerlink" href="#webhook-reply-with-single-text-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span><span class="p">,</span>
@@ -468,7 +469,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <div class="literal-block-wrapper container" id="single-text-message-sent-asynchronously">
 <div class="code-block-caption"><span class="caption-text">Single Text message, sent asynchronously</span><a class="headerlink" href="#single-text-message-sent-asynchronously" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441c21&quot;</span><span class="p">,</span> <span class="c1">// Is Mandatory only when asynchronously sent</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -484,7 +485,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <div class="literal-block-wrapper container" id="webhook-reply-with-single-image-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with single Image message</span><a class="headerlink" href="#webhook-reply-with-single-image-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;ImageMessage&quot;</span><span class="p">,</span>
@@ -499,7 +500,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <div class="literal-block-wrapper container" id="webhook-reply-with-an-html-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with an HTML message</span><a class="headerlink" href="#webhook-reply-with-an-html-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HtmlMessage&quot;</span><span class="p">,</span>
@@ -516,7 +517,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <div class="literal-block-wrapper container" id="webhook-reply-with-an-rich-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with an Rich message</span><a class="headerlink" href="#webhook-reply-with-an-rich-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span>
@@ -536,7 +537,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <p>Here is &#8220;MultiRich&#8221; message response - horizontally scrolled list of Rich messages:</p>
 <div class="literal-block-wrapper container" id="webhook-reply-example-with-multirichmessage">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply example with MultiRichMessage</span><a class="headerlink" href="#webhook-reply-example-with-multirichmessage" title="Permalink to this code">¶</a></div>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
    <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span> <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;MultiRichMessage&quot;</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="o">:</span><span class="p">[</span>
          <span class="p">{</span> <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;RichMessage&quot;</span><span class="p">,</span> <span class="p">...</span> <span class="nx">see</span> <span class="nx">above</span> <span class="p">...</span> <span class="p">},</span>
@@ -550,7 +551,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <p>Here is a &#8220;DataMessage&#8221; template based response - for Flight Status:</p>
 <div class="literal-block-wrapper container" id="webhook-reply-example-with-datamessage-for-flight-status">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply example with DataMessage - for Flight Status</span><a class="headerlink" href="#webhook-reply-example-with-datamessage-for-flight-status" title="Permalink to this code">¶</a></div>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
    <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;DataMessage&quot;</span><span class="p">,</span>
@@ -652,7 +653,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
       <span class="s2">&quot;introMessage&quot;</span><span class="o">:</span><span class="s2">&quot;Here is an example of a Boarding Pass&quot;</span>
     <span class="p">}</span>
   <span class="p">],</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span><span class="s2">&quot;0.3.0&quot;</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span><span class="s2">&quot;0.4.0&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -661,7 +662,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <div class="literal-block-wrapper container" id="generic-webhook-reply">
 <div class="code-block-caption"><span class="caption-text">Generic Webhook Reply</span><a class="headerlink" href="#generic-webhook-reply" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;1234b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -974,7 +975,7 @@ and there can only be a single interactive message in the list.</p>
 <div class="literal-block-wrapper container" id="oauth-login-reply-example">
 <div class="code-block-caption"><span class="caption-text">OAuth LogIn Reply Example</span><a class="headerlink" href="#oauth-login-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;LoginOAuthEvent&quot;</span><span class="p">,</span>
@@ -1018,7 +1019,7 @@ This assumes that an Agency of Human Agents has been set up in advance. The mess
 <div class="literal-block-wrapper container" id="transfer-chat-to-human-agent-reply-example">
 <div class="code-block-caption"><span class="caption-text">Transfer Chat to Human Agent Reply Example</span><a class="headerlink" href="#transfer-chat-to-human-agent-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
@@ -1043,7 +1044,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 <div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-webhook-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify no agents behavior with Webhook Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-webhook-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
   <span class="s2">&quot;noAgentsOnlineHook&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;webhook&quot;</span><span class="o">:</span> <span class="s2">&quot;contact_support&quot;</span><span class="p">,</span>
@@ -1065,7 +1066,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 <div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-url-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify no agents behavior with URL Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-url-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
   <span class="s2">&quot;noAgentsOnlineHook&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;https://my-server.com/no_agents_online/&quot;</span><span class="p">,</span>
@@ -1087,7 +1088,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 <div class="literal-block-wrapper container" id="specify-chat-topic-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify Chat Topic Reply Example</span><a class="headerlink" href="#specify-chat-topic-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
   <span class="s2">&quot;chooseTopic&quot;</span><span class="o">:</span>  <span class="s2">&quot;Existing Booking&quot;</span>
 <span class="p">}</span>
@@ -1107,7 +1108,7 @@ return the following interactive message from any applicative webhook:</p>
 <div class="literal-block-wrapper container" id="subscribe-to-list-reply-example">
 <div class="code-block-caption"><span class="caption-text">Subscribe to List Reply Example</span><a class="headerlink" href="#subscribe-to-list-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;SubscribeEvent&quot;</span><span class="p">,</span>
@@ -1122,6 +1123,81 @@ return the following interactive message from any applicative webhook:</p>
 </div>
 <p>As this is an interactive message it can only be the last in the list of returned messages
 and there can only be a single interactive message in the list.</p>
+</div>
+<div class="section" id="interactive-message-questionnaires">
+<h3>3.3.21. Interactive Message - questionnaires<a class="headerlink" href="#interactive-message-questionnaires" title="Permalink to this headline">¶</a></h3>
+<p>questionnaires are the ChatBot equivalent of forms,
+where user interaction is better served with simple UI elements such as buttons.
+A questionnaire is a list of questions of various types that Eva will ask the end user.
+As a questionnaire is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.</p>
+<p>To request asking the end user questions,
+return the following interactive message from any applicative webhook:</p>
+<div class="literal-block-wrapper container" id="example-of-questionnaire">
+<div class="code-block-caption"><span class="caption-text">Example of questionnaire</span><a class="headerlink" href="#example-of-questionnaire" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span><span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;QuestionnaireEvent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;questionnaireAnsweredHook&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;webhook&quot;</span><span class="o">:</span><span class="s2">&quot;roadside_assistance&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;payload&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;more_info_to_attach_to_answers&quot;</span><span class="o">:</span><span class="mi">123</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;questionnaireAbortedHook&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;webhook&quot;</span><span class="o">:</span><span class="s2">&quot;roadside_assistance&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;payload&quot;</span><span class="o">:</span><span class="p">{</span>
+          <span class="s2">&quot;validation error?&quot;</span><span class="o">:</span><span class="mi">321</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;questions&quot;</span><span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;EmailQuestion&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;I need to identify you, what is your email?&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;MultiChoiceQuestion&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;What happened?&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;what_happened&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;choices&quot;</span><span class="o">:</span><span class="p">[</span>
+            <span class="s2">&quot;Accident&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Mechanical problem&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Other&quot;</span>
+          <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;_type&quot;</span><span class="o">:</span><span class="s2">&quot;OpenQuestion&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;details&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="s2">&quot;I need a string that starts with &#39;a&#39; and is 3 or more letters&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;validationRegex&quot;</span><span class="o">:</span><span class="s2">&quot;a.{2}&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The &#8220;_type&#8221; of the message is always: &#8220;QuestionnaireEvent&#8221;</p>
+<p>&#8220;questionnaireAnsweredHook&#8221; is an enumeration of the webhook to call when the questions have all been answered.
+&#8220;payload&#8221; is an object that will be added to the payload of the &#8220;questionnaireAnsweredHook&#8221;.</p>
+<p>&#8220;questionnaireAbortedHook&#8221; has the same structure of a &#8220;questionnaireAnsweredHook&#8221;.
+A &#8220;questionnaireAbortedHook&#8221; will be called if the validation of an open &#8220;QuestionMessage&#8221; fails three times.
+This key is optional.</p>
+<p>Send 1 or more questions, of any of the supported types in the list of &#8220;questions&#8221;.
+In this example there are 3 questions.
+Each question has a &#8220;name&#8221; which will be the key of the result in the payload to be delivered to the &#8220;questionnaireAnsweredHook&#8221;.</p>
+<p>The 1st question in the example is an EmailQuestion.
+The open reply will be validated using a built-in regular expression for email addresses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Eva will then send out an email to the designated address to make sure the submitted email is valid and owned by the end user!</p>
+</div>
+<p>The 2nd question in the example is a multiple choice question, typed &#8220;MultiChoiceQuestion&#8221; with 3 choices.</p>
+<p>The 3rd question in the example is an open question for which you may request a validation regular expression.</p>
 </div>
 </div>
 <div class="section" id="inverse-webhooks">
@@ -1143,7 +1219,7 @@ The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#
 <div class="literal-block-wrapper container" id="single-text-message-sent-as-a-notification">
 <div class="code-block-caption"><span class="caption-text">Single Text message sent as a Notification</span><a class="headerlink" href="#single-text-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
   <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">,</span>
   <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441c21&quot;</span><span class="p">,</span>
@@ -1161,7 +1237,7 @@ The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#
 <div class="literal-block-wrapper container" id="notification-group-message-sent-as-a-notification">
 <div class="code-block-caption"><span class="caption-text">Notification Group Message, sent as a Notification</span><a class="headerlink" href="#notification-group-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
   <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
   <span class="s2">&quot;apiKey&quot;</span><span class="o">:</span> <span class="s2">&quot;your_api_key&quot;</span><span class="p">,</span>
   <span class="s2">&quot;requestType&quot;</span><span class="o">:</span> <span class="s2">&quot;send_message&quot;</span><span class="p">,</span>
