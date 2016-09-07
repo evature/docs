@@ -717,7 +717,46 @@ Here is an example of a cruise search request::
 Greet the User:
 ---------------
 
-Override the greeting to the user
+Override the greeting to the user.
+Eva calls this webhook with information about the scenario encoded in a key called ``greeting_type``.
+The values of this key is one of the following enumeration:
+
+existing_user_sent_from_webpage
+  After clicking "send to messenger" button - for a returning user
+
+new_user_sent_from_webpage
+  After clicking "send to messenger" button - for a first time user
+
+new_user
+  First time ever that the user sends a message to the Bot
+
+requested_by_user
+  User requested, eg. typed "Start over"
+
+new_chat_after_idle
+  Eva session timeout, 
+
+new_chat_after_terminated_by_agent
+  First message after terminating chat by Agent
+
+
+Here is an example of an outgoing webhook payload greeting request:
+
+.. code-block:: javascript
+    :caption: Greeting Request Example
+
+    {
+      "chatKey":"01437b93-7089-418c-8beb-269951fae9c8",
+      "providerID":"312333852447351",
+      "greeting_type":"new_chat_after_terminated_by_agent",
+      "messagingProvider":"FACEBOOK",
+      "user":{
+        "lastName":"Weiss",
+        "firstName":"Tal"
+      }
+    }
+
+As usual, you can reply with a list of messages, such as text messages, image messages and even interacive messages.
 
 
 Display Gate Number

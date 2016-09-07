@@ -1,365 +1,303 @@
+
+
 <!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. API - The Response &mdash; Eva 1.0 documentation</title>
+  
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>6. API - The Response &mdash; Eva 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+  
+  
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="Eva 1.0 documentation" href="index.html" />
-    <link rel="prev" title="5. API - The Request" href="request.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+  
 
-  </head>
-  <body role="document">
+  
 
-  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">
-          Evature</a>
-        <span class="navbar-text navbar-version pull-left"><b></b></span>
-      </div>
+  
+  
+    
 
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
+        <link rel="prev" title="5. API - The Request" href="request.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Eva
+          
+
+          
+            
+            <img src="_static/logo4.jpg" class="logo" />
+          
+          </a>
+
+          
             
             
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="index.html">Site <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-eva">1.1. What is Eva?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#audience">1.2. Audience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#usage-limits">1.3. Usage Limits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#which-should-i-use">1.4. Which should I use?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#the-platform">1.5. The Platform</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sdks.html#overview">2.1. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-ios">2.2. VoiceKit for iOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-android">2.3. VoiceKit for Android</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sdks.html#voicekit-for-phonegap-apache-cordova">2.4. VoiceKit for PhoneGap (Apache Cordova)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="botkit.html#overview">3.1. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="botkit.html#chat-service-integrations">3.2. Chat Service Integrations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="botkit.html#adding-webhooks">3.3. Adding Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="botkit.html#inverse-webhooks">3.4. Inverse Webhooks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#location-ids">4.1. Location IDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#json">4.2. JSON</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#url-encoding">4.3. URL Encoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#versions">4.4. Versions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#maintaining-state-sessions-and-meta-sessions">4.5. Maintaining State - Sessions and Meta-Sessions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#flow">4.6. Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#multiple-input-texts">4.7. Multiple Input Texts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="request.html#input-text">5.1. input_text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#site-code-and-api-key">5.2. site_code and api_key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#uid">5.3. uid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#scope">5.4. scope</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#context">5.5. context</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#locale">5.6. locale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#bias">5.7. bias</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#home">5.8. home</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#ip-addr">5.9. ip_addr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#longitude-and-latitude">5.10. longitude and latitude</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#time-zone">5.11. time_zone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#feedback">5.12. feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#comment">5.13. comment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#session-id">5.14. session_id</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#dialog-response">5.15. dialog_response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#from-speech">5.16. from_speech</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#android-ver">5.17. android_ver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="request.html#device">5.18. device</a></li>
-</ul>
-</li>
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. API - The Response</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#top-level-response">6.2. Top Level Response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api-reply-in-depth">6.3. api_reply - in depth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#flow">6.6. Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flow">6.6. Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flight">6.6.1. Flight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#car">6.6.2. Car</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotel">6.6.3. Hotel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cruise">6.6.4. Cruise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train">6.6.5. Train</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reply">6.6.6. Reply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#statement">6.6.7. Statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#question">6.6.8. Question</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#money">6.7. Money</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#chat">6.8. Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chain">6.9.1. Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board">6.9.2. Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quality">6.9.3. Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numeric-rating">6.9.4. Numeric Rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rating">6.9.5. Rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#child-free">6.9.6. Child Free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#business">6.9.7. Business</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airport-shuttle">6.9.8. Airport Shuttle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#casino">6.9.9. Casino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fishing">6.9.10. Fishing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snow-conditions">6.9.11. Snow Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snorkeling">6.9.12. Snorkeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diving">6.9.13. Diving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activity">6.9.14. Activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ski">6.9.15. Ski</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ski-in-out">6.9.16. Ski In/Out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#golf">6.9.17. Golf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kids-for-free">6.9.18. Kids for free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#city">6.9.19. City</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#family">6.9.20. Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pet-friendly">6.9.21. Pet Friendly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#romantic">6.9.22. Romantic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adventure">6.9.23. Adventure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#designer">6.9.24. Designer:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gym">6.9.25. Gym</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quiet">6.9.26. Quiet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pool">6.9.27. Pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meeting-room">6.9.28. Meeting Room</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accommodation-type">6.9.29. Accommodation Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restaurant">6.9.30. Restaurant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gourmet">6.9.31. Gourmet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#only">6.9.32. Only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disabled">6.9.33. Disabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spa">6.9.34. Spa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parking">6.9.35. Parking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#castle">6.9.36. Castle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sport">6.9.37. Sport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#countryside">6.9.38. Countryside</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rooms">6.9.39. Rooms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loyalty">6.9.40. Loyalty</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#redeye">6.10.1. Redeye</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonstop">6.10.2. Nonstop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#food">6.10.3. Food</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seat">6.10.4. Seat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airline">6.10.5. Airline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alliance">6.10.6. Alliance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seat-class">6.10.7. Seat Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-way">6.10.8. One-Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-way">6.10.9. Two-Way</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#last-minute-deals">6.11.1. Last Minute Deals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#low-deposit">6.11.2. Low Deposit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transport-type">6.11.3. Transport Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fares">6.11.4. Fares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#corporate-fares">6.11.5. Corporate Fares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#travel-agent-rates">6.11.6. Travel Agent Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convention-rates">6.11.7. Convention Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#military-rates">6.11.8. Military Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#government-rates">6.11.9. Government Rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reservation-id">6.11.10. Reservation ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refundable">6.11.11. Refundable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flexible-dates">6.11.12. Flexible Dates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scope">6.11.13. Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sort">6.11.14. Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#winter-sun">6.12.1. Winter Sun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mountains">6.12.2. Mountains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hot-location">6.12.3. Hot Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cold-location">6.12.4. Cold Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sunny-location">6.12.5. Sunny Location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#island">6.12.6. Island</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nearby">6.12.7. Nearby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distance">6.12.8. Distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#center">6.12.9. Center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downtown">6.12.10. Downtown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beach">6.12.11. Beach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nowhere">6.12.12. Nowhere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#around-the-world">6.12.13. Around the World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airport">6.12.14. Airport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#office">6.12.15. Office</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cruiseline">6.13.1. Cruiseline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cruiseship">6.13.2. Cruiseship</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cabin">6.13.3. Cabin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.13.4. Pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.13.5. Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.13.6. Romantic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.13.7. Adventure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">6.13.8. Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.13.9. Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6.13.10. Child Free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yacht">6.13.11. Yacht</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#barge">6.13.12. Barge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sailing-ship">6.13.13. Sailing Ship</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#river-cruise">6.13.14. River Cruise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ship-size">6.13.15. Ship Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-singles">6.13.16. For Singles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-gays">6.13.17. For Gays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steamboat">6.13.18. Steamboat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">6.13.19. Pet Friendly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yoga">6.13.20. Yoga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#land-tour">6.13.21. Land Tour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">6.13.22. One-Way</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#car-rental-vendor">6.14.1. Car Rental Vendor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#car-rental-program">6.14.2. Car Rental Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gps">6.14.3. GPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snow-tires">6.14.4. Snow Tires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid">6.14.5. Hybrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#green">6.14.6. Green</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transmission">6.14.7. Transmission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#car-type">6.14.8. Car Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#air-conditioning">6.14.9. Air Conditioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#car-doors">6.14.10. Car Doors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skoking">6.14.11. Skoking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#satellite-radio">6.14.12. Satellite Radio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fuel-efficient">6.14.13. Fuel Efficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abs">6.14.14. ABS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ski-rack">6.14.15. Ski Rack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roadside-assistance">6.14.16. Roadside Assistance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#car-child-seat">6.14.17. Car Child Seat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tranmission-type">6.14.18. Tranmission Type</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.activity">6.15. Activity Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.warning">6.17. Warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ski-hire">6.16.1. Ski Hire</a></li>
 </ul>
 </li>
-</ul>
-</ul>
-</li>
-              
-                <li class="dropdown">
-  <a role="button"
-     id="dLabelLocalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Page <b class="caret"></b></a>
-  <ul class="dropdown-menu localtoc"
-      role="menu"
-      aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">6. API - The Response</a><ul>
-<li><a class="reference internal" href="#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
-<li><a class="reference internal" href="#top-level-response">6.2. Top Level Response</a></li>
-<li><a class="reference internal" href="#api-reply-in-depth">6.3. api_reply - in depth</a></li>
-<li><a class="reference internal" href="#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
-<li><a class="reference internal" href="#time-key-arrival-departure-stay">6.5. Time key (Arrival, Departure, Stay)</a></li>
-<li><a class="reference internal" href="#flow">6.6. Flow</a><ul>
-<li><a class="reference internal" href="#flight">6.6.1. Flight</a></li>
-<li><a class="reference internal" href="#car">6.6.2. Car</a></li>
-<li><a class="reference internal" href="#hotel">6.6.3. Hotel</a></li>
-<li><a class="reference internal" href="#cruise">6.6.4. Cruise</a></li>
-<li><a class="reference internal" href="#train">6.6.5. Train</a></li>
-<li><a class="reference internal" href="#reply">6.6.6. Reply</a></li>
-<li><a class="reference internal" href="#statement">6.6.7. Statement</a></li>
-<li><a class="reference internal" href="#question">6.6.8. Question</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#money">6.7. Money</a></li>
-<li><a class="reference internal" href="#chat">6.8. Chat</a></li>
-<li><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a><ul>
-<li><a class="reference internal" href="#chain">6.9.1. Chain</a></li>
-<li><a class="reference internal" href="#board">6.9.2. Board</a></li>
-<li><a class="reference internal" href="#quality">6.9.3. Quality</a></li>
-<li><a class="reference internal" href="#numeric-rating">6.9.4. Numeric Rating</a></li>
-<li><a class="reference internal" href="#rating">6.9.5. Rating</a></li>
-<li><a class="reference internal" href="#child-free">6.9.6. Child Free</a></li>
-<li><a class="reference internal" href="#business">6.9.7. Business</a></li>
-<li><a class="reference internal" href="#airport-shuttle">6.9.8. Airport Shuttle</a></li>
-<li><a class="reference internal" href="#casino">6.9.9. Casino</a></li>
-<li><a class="reference internal" href="#fishing">6.9.10. Fishing</a></li>
-<li><a class="reference internal" href="#snow-conditions">6.9.11. Snow Conditions</a></li>
-<li><a class="reference internal" href="#snorkeling">6.9.12. Snorkeling</a></li>
-<li><a class="reference internal" href="#diving">6.9.13. Diving</a></li>
-<li><a class="reference internal" href="#activity">6.9.14. Activity</a></li>
-<li><a class="reference internal" href="#ski">6.9.15. Ski</a></li>
-<li><a class="reference internal" href="#ski-in-out">6.9.16. Ski In/Out</a></li>
-<li><a class="reference internal" href="#golf">6.9.17. Golf</a></li>
-<li><a class="reference internal" href="#kids-for-free">6.9.18. Kids for free</a></li>
-<li><a class="reference internal" href="#city">6.9.19. City</a></li>
-<li><a class="reference internal" href="#family">6.9.20. Family</a></li>
-<li><a class="reference internal" href="#pet-friendly">6.9.21. Pet Friendly</a></li>
-<li><a class="reference internal" href="#romantic">6.9.22. Romantic</a></li>
-<li><a class="reference internal" href="#adventure">6.9.23. Adventure</a></li>
-<li><a class="reference internal" href="#designer">6.9.24. Designer:</a></li>
-<li><a class="reference internal" href="#gym">6.9.25. Gym</a></li>
-<li><a class="reference internal" href="#quiet">6.9.26. Quiet</a></li>
-<li><a class="reference internal" href="#pool">6.9.27. Pool</a></li>
-<li><a class="reference internal" href="#meeting-room">6.9.28. Meeting Room</a></li>
-<li><a class="reference internal" href="#accommodation-type">6.9.29. Accommodation Type</a></li>
-<li><a class="reference internal" href="#restaurant">6.9.30. Restaurant</a></li>
-<li><a class="reference internal" href="#gourmet">6.9.31. Gourmet</a></li>
-<li><a class="reference internal" href="#only">6.9.32. Only</a></li>
-<li><a class="reference internal" href="#disabled">6.9.33. Disabled</a></li>
-<li><a class="reference internal" href="#spa">6.9.34. Spa</a></li>
-<li><a class="reference internal" href="#parking">6.9.35. Parking</a></li>
-<li><a class="reference internal" href="#castle">6.9.36. Castle</a></li>
-<li><a class="reference internal" href="#sport">6.9.37. Sport</a></li>
-<li><a class="reference internal" href="#countryside">6.9.38. Countryside</a></li>
-<li><a class="reference internal" href="#rooms">6.9.39. Rooms</a></li>
-<li><a class="reference internal" href="#loyalty">6.9.40. Loyalty</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a><ul>
-<li><a class="reference internal" href="#redeye">6.10.1. Redeye</a></li>
-<li><a class="reference internal" href="#nonstop">6.10.2. Nonstop</a></li>
-<li><a class="reference internal" href="#food">6.10.3. Food</a></li>
-<li><a class="reference internal" href="#seat">6.10.4. Seat</a></li>
-<li><a class="reference internal" href="#airline">6.10.5. Airline</a></li>
-<li><a class="reference internal" href="#alliance">6.10.6. Alliance</a></li>
-<li><a class="reference internal" href="#seat-class">6.10.7. Seat Class</a></li>
-<li><a class="reference internal" href="#one-way">6.10.8. One-Way</a></li>
-<li><a class="reference internal" href="#two-way">6.10.9. Two-Way</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a><ul>
-<li><a class="reference internal" href="#last-minute-deals">6.11.1. Last Minute Deals</a></li>
-<li><a class="reference internal" href="#low-deposit">6.11.2. Low Deposit</a></li>
-<li><a class="reference internal" href="#transport-type">6.11.3. Transport Type</a></li>
-<li><a class="reference internal" href="#fares">6.11.4. Fares</a></li>
-<li><a class="reference internal" href="#corporate-fares">6.11.5. Corporate Fares</a></li>
-<li><a class="reference internal" href="#travel-agent-rates">6.11.6. Travel Agent Rates</a></li>
-<li><a class="reference internal" href="#convention-rates">6.11.7. Convention Rates</a></li>
-<li><a class="reference internal" href="#military-rates">6.11.8. Military Rates</a></li>
-<li><a class="reference internal" href="#government-rates">6.11.9. Government Rates</a></li>
-<li><a class="reference internal" href="#reservation-id">6.11.10. Reservation ID</a></li>
-<li><a class="reference internal" href="#refundable">6.11.11. Refundable</a></li>
-<li><a class="reference internal" href="#flexible-dates">6.11.12. Flexible Dates</a></li>
-<li><a class="reference internal" href="#scope">6.11.13. Scope</a></li>
-<li><a class="reference internal" href="#sort">6.11.14. Sort</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a><ul>
-<li><a class="reference internal" href="#winter-sun">6.12.1. Winter Sun</a></li>
-<li><a class="reference internal" href="#mountains">6.12.2. Mountains</a></li>
-<li><a class="reference internal" href="#hot-location">6.12.3. Hot Location</a></li>
-<li><a class="reference internal" href="#cold-location">6.12.4. Cold Location</a></li>
-<li><a class="reference internal" href="#sunny-location">6.12.5. Sunny Location</a></li>
-<li><a class="reference internal" href="#island">6.12.6. Island</a></li>
-<li><a class="reference internal" href="#nearby">6.12.7. Nearby</a></li>
-<li><a class="reference internal" href="#distance">6.12.8. Distance</a></li>
-<li><a class="reference internal" href="#center">6.12.9. Center</a></li>
-<li><a class="reference internal" href="#downtown">6.12.10. Downtown</a></li>
-<li><a class="reference internal" href="#beach">6.12.11. Beach</a></li>
-<li><a class="reference internal" href="#nowhere">6.12.12. Nowhere</a></li>
-<li><a class="reference internal" href="#around-the-world">6.12.13. Around the World</a></li>
-<li><a class="reference internal" href="#airport">6.12.14. Airport</a></li>
-<li><a class="reference internal" href="#office">6.12.15. Office</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a><ul>
-<li><a class="reference internal" href="#cruiseline">6.13.1. Cruiseline</a></li>
-<li><a class="reference internal" href="#cruiseship">6.13.2. Cruiseship</a></li>
-<li><a class="reference internal" href="#cabin">6.13.3. Cabin</a></li>
-<li><a class="reference internal" href="#id3">6.13.4. Pool</a></li>
-<li><a class="reference internal" href="#id4">6.13.5. Family</a></li>
-<li><a class="reference internal" href="#id5">6.13.6. Romantic</a></li>
-<li><a class="reference internal" href="#id6">6.13.7. Adventure</a></li>
-<li><a class="reference internal" href="#id7">6.13.8. Board</a></li>
-<li><a class="reference internal" href="#id8">6.13.9. Quality</a></li>
-<li><a class="reference internal" href="#id9">6.13.10. Child Free</a></li>
-<li><a class="reference internal" href="#yacht">6.13.11. Yacht</a></li>
-<li><a class="reference internal" href="#barge">6.13.12. Barge</a></li>
-<li><a class="reference internal" href="#sailing-ship">6.13.13. Sailing Ship</a></li>
-<li><a class="reference internal" href="#river-cruise">6.13.14. River Cruise</a></li>
-<li><a class="reference internal" href="#ship-size">6.13.15. Ship Size</a></li>
-<li><a class="reference internal" href="#for-singles">6.13.16. For Singles</a></li>
-<li><a class="reference internal" href="#for-gays">6.13.17. For Gays</a></li>
-<li><a class="reference internal" href="#steamboat">6.13.18. Steamboat</a></li>
-<li><a class="reference internal" href="#id10">6.13.19. Pet Friendly</a></li>
-<li><a class="reference internal" href="#yoga">6.13.20. Yoga</a></li>
-<li><a class="reference internal" href="#land-tour">6.13.21. Land Tour</a></li>
-<li><a class="reference internal" href="#id11">6.13.22. One-Way</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a><ul>
-<li><a class="reference internal" href="#car-rental-vendor">6.14.1. Car Rental Vendor</a></li>
-<li><a class="reference internal" href="#car-rental-program">6.14.2. Car Rental Program</a></li>
-<li><a class="reference internal" href="#gps">6.14.3. GPS</a></li>
-<li><a class="reference internal" href="#snow-tires">6.14.4. Snow Tires</a></li>
-<li><a class="reference internal" href="#hybrid">6.14.5. Hybrid</a></li>
-<li><a class="reference internal" href="#green">6.14.6. Green</a></li>
-<li><a class="reference internal" href="#transmission">6.14.7. Transmission</a></li>
-<li><a class="reference internal" href="#car-type">6.14.8. Car Type</a></li>
-<li><a class="reference internal" href="#air-conditioning">6.14.9. Air Conditioning</a></li>
-<li><a class="reference internal" href="#car-doors">6.14.10. Car Doors</a></li>
-<li><a class="reference internal" href="#skoking">6.14.11. Skoking</a></li>
-<li><a class="reference internal" href="#satellite-radio">6.14.12. Satellite Radio</a></li>
-<li><a class="reference internal" href="#fuel-efficient">6.14.13. Fuel Efficient</a></li>
-<li><a class="reference internal" href="#abs">6.14.14. ABS</a></li>
-<li><a class="reference internal" href="#ski-rack">6.14.15. Ski Rack</a></li>
-<li><a class="reference internal" href="#roadside-assistance">6.14.16. Roadside Assistance</a></li>
-<li><a class="reference internal" href="#car-child-seat">6.14.17. Car Child Seat</a></li>
-<li><a class="reference internal" href="#tranmission-type">6.14.18. Tranmission Type</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.attributes.activity">6.15. Activity Attributes</a></li>
-<li><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a><ul>
-<li><a class="reference internal" href="#ski-hire">6.16.1. Ski Hire</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-core.warning">6.17. Warnings</a><ul>
-<li><a class="reference internal" href="#api-warning">6.17.1. API Warning</a></li>
-<li><a class="reference internal" href="#time-warning">6.17.2. Time Warning</a></li>
-<li><a class="reference internal" href="#parse-warning">6.17.3. Parse Warning</a></li>
-<li><a class="reference internal" href="#home-warning">6.17.4. Home Warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-core.warning">6.17. Warnings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api-warning">6.17.1. API Warning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-warning">6.17.2. Time Warning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parse-warning">6.17.3. Parse Warning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#home-warning">6.17.4. Home Warning</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="request.html" title="Previous Chapter: 5. API - The Request"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 5. API - The ...</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-              <li class="hidden-sm"></li>
-            
-          </ul>
 
-          
             
-<form class="navbar-form navbar-right" action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
           
         </div>
-    </div>
-  </div>
+      </div>
+    </nav>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Eva</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>6. API - The Response</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
   <div class="section" id="api-the-response">
 <h1>6. API - The Response<a class="headerlink" href="#api-the-response" title="Permalink to this headline">¶</a></h1>
 <p>The response of the Eva Web API is a JSON encoded.</p>
@@ -1947,22 +1885,69 @@ Boolean, appearing in response only if implicitly specified</p>
 </div>
 
 
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="request.html" class="btn btn-neutral" title="5. API - The Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
-      
-  </div>
-</div>
+  
 
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-    </p>
+  <hr/>
+
+  <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, 2016 Evature.<br/>
+        &copy; Copyright 2015, 2016 Evature.
+
     </p>
-  </div>
+  </div> 
+
 </footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1974,5 +1959,6 @@ Boolean, appearing in response only if implicitly specified</p>
 
 </script>
 
-  </body>
+
+</body>
 </html>
