@@ -943,10 +943,15 @@ This assumes that an Agency of Human Agents has been set up in advance. The mess
       "botkitVersion": "0.4.0", 
       "messages": [
         {
-          "_type": "HandoffToHumanEvent", 
+          "_type": "HandoffToHumanEvent",
+          "noAgentsOnlineText": "text to display when no agents are online (if not using noAgentsOnlineHook)",
+          "agentsOnlineText": "Text to display"
         }
       ]
     }
+
+:noAgentsOnlineText: an optional text to be displayed
+:agentsOnlineText: an optional text to be displayed
 
 To request a Human Agent Transfer return a special message of type `HandoffToHumanEvent` from any applicative webhook.
 As this is an interactive message it can only be the last in the list of returned messages
@@ -969,7 +974,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 
     {
       "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent", 
+      "_type": "HandoffToHumanEvent",
       "noAgentsOnlineHook": {
         "webhook": "contact_support",      
         "payload":  {"whatever_payload_here": true}

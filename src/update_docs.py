@@ -8,7 +8,7 @@ from __future__ import unicode_literals, division, print_function
 import os
 from subprocess import Popen, PIPE, check_output, STDOUT
 import sphinx_bootstrap_theme
-import sphinx
+# import sphinx
 
 def validate_configuration():
     """Make sure we configured our system correctly before running the tests"""

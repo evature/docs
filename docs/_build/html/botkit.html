@@ -990,12 +990,26 @@ This assumes that an Agency of Human Agents has been set up in advance. The mess
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;HandoffToHumanEvent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;noAgentsOnlineText&quot;</span><span class="o">:</span> <span class="s2">&quot;text to display when no agents are online (if not using noAgentsOnlineHook)&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;agentsOnlineText&quot;</span><span class="o">:</span> <span class="s2">&quot;Text to display&quot;</span>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">noAgentsOnlineText:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">an optional text to be displayed</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">agentsOnlineText:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">an optional text to be displayed</td>
+</tr>
+</tbody>
+</table>
 <p>To request a Human Agent Transfer return a special message of type <cite>HandoffToHumanEvent</cite> from any applicative webhook.
 As this is an interactive message it can only be the last in the list of returned messages
 and there can only be a single interactive message in the list.</p>
