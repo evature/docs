@@ -580,6 +580,28 @@ Here is a generic, all inclusive example of a webhook reply that is returned by 
     }
 
 
+Log Messages between Eva and User
+---------------------------------
+
+Allows logging of all communication between Eva to the end user and helpful debug information regarding the integration.  
+
+Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.  
+
+.. tip::
+
+   To set up a simple view for this log, head over to https://hyperdev.com  
+   
+   * Log in to GitHub.  
+   
+   * Start a new project.  
+   
+   * Click on the project name, `Advanced Options`, `Import from Github` and input 'iftahh/bot_logger'.  
+   
+   * Click on `Show` and you will see a scrolling list of logs from the BotKit.  
+   
+   Enter "Hi" to Eva in any messenger to see some logs.  
+
+
 Search for Flights
 ------------------
 
@@ -811,28 +833,6 @@ Cancel Reservation
 ------------------
 
 Please cancel my  reservation
-
-
-Log Messages between Eva and User
----------------------------------
-
-Allows logging of all communication between Eva to the end user and helpful debug information regarding the integration.  
-
-Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.  
-
-.. tip::
-
-   To set up a simple view for this log, head over to https://hyperdev.com  
-   
-   * Log in to GitHub.  
-   
-   * Start a new project.  
-   
-   * Click on the project name, `Advanced Options`, `Import from Github` and input 'iftahh/bot_logger'.  
-   
-   * Click on `Show` and you will see a scrolling list of logs from the BotKit.  
-   
-   Enter "Hi" to Eva in any messenger to see some logs.  
 
 
 Display Flight Status
