@@ -602,6 +602,27 @@ Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.
    Enter "Hi" to Eva in any messenger to see some logs.  
 
 
+Session Storage
+---------------
+
+BotKit implements a server-side storage for developer convenience.
+This is useful for keeping dialog state and known information about the end user (eg. his PNR number or home town),
+and to avoid asking the end user the same questions again and again ("Do you like dogs?").
+An example scenario is asking the end user what her favorite hotel chain is in the implementation a hotel search webhook.
+The next time she requests a hotel search the application can use the favorite hotel chain stored in the Session Storage.
+Session Storage is a simple JSON object that is stored in Eva's database per end user.
+The sessions are stored forever with no timeout.
+
+Each webhook payload will include the Session Storage (if it is non-empty) in the ``session`` key.
+
+It is the responsibility of the webhook developers to handle the session, adding, modifying and removing information.
+For example, you may wish to remove the dialog state after the dialog is complete or a long time has passed.
+
+To remove/add/modify the contents of the Session Storage simply return the updated session in the webhook response ``session`` key.
+
+To examine the session simply check if the webhook payload has a ``session`` key and if so examine its content.
+
+
 Search for Flights
 ------------------
 
@@ -928,7 +949,7 @@ and into the a web browser window with the business specific log in process.
 The URL `webLoginUrl` will be extended with a query parameter called `redirect_uri`.
 If the log in is successful, redirect the browser to the `redirect_uri` specified in your callback to complete the flow,
 and append a new `authorization_code` query parameter. Eva will add the contents of `authorization_code` to the subsequent
-applicative webhook calls as a new key called `loginData`.
+applicative webhook calls as a new key called ``loginData``.
 
 Interactive Message - Transfer chat to a Human Agent
 ----------------------------------------------------
