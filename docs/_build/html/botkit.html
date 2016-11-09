@@ -97,26 +97,28 @@
 <li class="toctree-l2"><a class="reference internal" href="#adding-webhooks">3.3. Adding Webhooks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general">3.3.1. General</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#log-messages-between-eva-and-user">3.3.2. Log Messages between Eva and User</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#session-storage">3.3.3. Session Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-for-flights">3.3.4. Search for Flights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-for-hotels">3.3.5. Search for Hotels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-for-cars">3.3.6. Search for Cars</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#search-for-cruises">3.3.7. Search for Cruises</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#greet-the-user">3.3.8. Greet the User:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-gate-number">3.3.9. Display Gate Number</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-departure-time">3.3.10. Display Departure Time</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-arrival-time">3.3.11. Display Arrival Time</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-boarding-time">3.3.12. Display Boarding Time</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-boarding-pass">3.3.13. Display boarding pass</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-itinerary">3.3.14. Display Itinerary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-reservation">3.3.15. Display Reservation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cancel-reservation">3.3.16. Cancel Reservation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#display-flight-status">3.3.17. Display Flight Status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-messages-general">3.3.18. Interactive Messages - General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-message-logging-in-end-users-oauth">3.3.19. Interactive Message - Logging In End Users - OAuth</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-message-transfer-chat-to-a-human-agent">3.3.20. Interactive Message - Transfer chat to a Human Agent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-message-subscribe-to-list">3.3.21. Interactive Message - Subscribe to List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-message-questionnaires">3.3.22. Interactive Message - questionnaires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webhooks-health">3.3.3. Webhooks health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-storage">3.3.4. Session Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-for-flights">3.3.5. Search for Flights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-for-hotels">3.3.6. Search for Hotels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-for-cars">3.3.7. Search for Cars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-for-cruises">3.3.8. Search for Cruises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#greet-the-user">3.3.9. Greet the User:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-gate-number">3.3.10. Display Gate Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-departure-time">3.3.11. Display Departure Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-arrival-time">3.3.12. Display Arrival Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-boarding-time">3.3.13. Display Boarding Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-boarding-pass">3.3.14. Display boarding pass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-itinerary">3.3.15. Display Itinerary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-reservation">3.3.16. Display Reservation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cancel-reservation">3.3.17. Cancel Reservation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-in-to-flight">3.3.18. Check In To Flight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-flight-status">3.3.19. Display Flight Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-messages-general">3.3.20. Interactive Messages - General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-message-logging-in-end-users-oauth">3.3.21. Interactive Message - Logging In End Users - OAuth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-message-transfer-chat-to-a-human-agent">3.3.22. Interactive Message - Transfer chat to a Human Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-message-subscribe-to-list">3.3.23. Interactive Message - Subscribe to List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-message-questionnaires">3.3.24. Interactive Message - questionnaires</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#inverse-webhooks">3.4. Inverse Webhooks</a></li>
@@ -685,8 +687,14 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <p class="last">Enter &#8220;Hi&#8221; to Eva in any messenger to see some logs.</p>
 </div>
 </div>
+<div class="section" id="webhooks-health">
+<h3>3.3.3. Webhooks health<a class="headerlink" href="#webhooks-health" title="Permalink to this headline">¶</a></h3>
+<p>Please note that a webhook which fails for 5 consecutive times will be disabled.
+Use the management UI at <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> to re-enable.
+Disabled webhooks will be colored red.</p>
+</div>
 <div class="section" id="session-storage">
-<h3>3.3.3. Session Storage<a class="headerlink" href="#session-storage" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.4. Session Storage<a class="headerlink" href="#session-storage" title="Permalink to this headline">¶</a></h3>
 <p>BotKit implements a server-side storage for developer convenience.
 This is useful for keeping dialog state and known information about the end user (eg. his PNR number or home town),
 and to avoid asking the end user the same questions again and again (&#8220;Do you like dogs?&#8221;).
@@ -701,7 +709,7 @@ For example, you may wish to remove the dialog state after the dialog is complet
 <p>To examine the session simply check if the webhook payload has a <code class="docutils literal"><span class="pre">session</span></code> key and if so examine its content.</p>
 </div>
 <div class="section" id="search-for-flights">
-<h3>3.3.4. Search for Flights<a class="headerlink" href="#search-for-flights" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.5. Search for Flights<a class="headerlink" href="#search-for-flights" title="Permalink to this headline">¶</a></h3>
 <p>When the dialog with the end user is done and Eva has all the required information the flight search webhook is triggered.
 Here is an example of a flight search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;fly from London to Moscow on Tuesday for 3 adults redeye and return 3 days later&quot;
@@ -738,7 +746,7 @@ Here is an example of a flight search request:</p>
 <p>allAirportsCode is a key that exists only for cities that have a special IATA code for searching all-airports.</p>
 </div>
 <div class="section" id="search-for-hotels">
-<h3>3.3.5. Search for Hotels<a class="headerlink" href="#search-for-hotels" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.6. Search for Hotels<a class="headerlink" href="#search-for-hotels" title="Permalink to this headline">¶</a></h3>
 <p>When the dialog with the end user is done and Eva has all the required information the hotel search webhook is triggered.
 Here is an example of a hotel search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;3 to 4 star Hilton in paris tomorrow 5 nights sort by price ascending for 2 adults and 3 kids&quot;
@@ -770,7 +778,7 @@ Here is an example of a hotel search request:</p>
 </div>
 </div>
 <div class="section" id="search-for-cars">
-<h3>3.3.6. Search for Cars<a class="headerlink" href="#search-for-cars" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.7. Search for Cars<a class="headerlink" href="#search-for-cars" title="Permalink to this headline">¶</a></h3>
 <p>When the dialog with the end user is done and Eva has all the required information the car rental search webhook is triggered.
 Here is an example of a car rental search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;rent an SUV with a GPS from JFK tomorrow morning return in 3 days&quot;
@@ -802,7 +810,7 @@ Here is an example of a car rental search request:</p>
 </div>
 </div>
 <div class="section" id="search-for-cruises">
-<h3>3.3.7. Search for Cruises<a class="headerlink" href="#search-for-cruises" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.8. Search for Cruises<a class="headerlink" href="#search-for-cruises" title="Permalink to this headline">¶</a></h3>
 <p>When the dialog with the end user is done and Eva has all the required information the cruise search webhook is triggered.
 Here is an example of a cruise search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;cruise to Alaska in the summer with Carnival&quot;
@@ -827,7 +835,7 @@ Here is an example of a cruise search request:</p>
 </div>
 </div>
 <div class="section" id="greet-the-user">
-<h3>3.3.8. Greet the User:<a class="headerlink" href="#greet-the-user" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.9. Greet the User:<a class="headerlink" href="#greet-the-user" title="Permalink to this headline">¶</a></h3>
 <p>Override the greeting to the user.
 Eva calls this webhook with information about the scenario encoded in a key called <code class="docutils literal"><span class="pre">greeting_type</span></code>.
 The values of this key is one of the following enumeration:</p>
@@ -864,42 +872,46 @@ The values of this key is one of the following enumeration:</p>
 <p>As usual, you can reply with a list of messages, such as text messages, image messages and even interacive messages.</p>
 </div>
 <div class="section" id="display-gate-number">
-<h3>3.3.9. Display Gate Number<a class="headerlink" href="#display-gate-number" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.10. Display Gate Number<a class="headerlink" href="#display-gate-number" title="Permalink to this headline">¶</a></h3>
 <p>Display the gate number to a specific user</p>
 </div>
 <div class="section" id="display-departure-time">
-<h3>3.3.10. Display Departure Time<a class="headerlink" href="#display-departure-time" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.11. Display Departure Time<a class="headerlink" href="#display-departure-time" title="Permalink to this headline">¶</a></h3>
 <p>Display the departure time to a specific user</p>
 </div>
 <div class="section" id="display-arrival-time">
-<h3>3.3.11. Display Arrival Time<a class="headerlink" href="#display-arrival-time" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.12. Display Arrival Time<a class="headerlink" href="#display-arrival-time" title="Permalink to this headline">¶</a></h3>
 <p>Display the arrival time to a specific user</p>
 </div>
 <div class="section" id="display-boarding-time">
-<h3>3.3.12. Display Boarding Time<a class="headerlink" href="#display-boarding-time" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.13. Display Boarding Time<a class="headerlink" href="#display-boarding-time" title="Permalink to this headline">¶</a></h3>
 <p>Display the boarding time to a specific user</p>
 </div>
 <div class="section" id="display-boarding-pass">
-<h3>3.3.13. Display boarding pass<a class="headerlink" href="#display-boarding-pass" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.14. Display boarding pass<a class="headerlink" href="#display-boarding-pass" title="Permalink to this headline">¶</a></h3>
 <p>Display the boarding pass to a specific user.</p>
 <p>You can reply with any of the message formats, such as text or images,
 but you can also use the predefined template for displaying a Boarding Pass described at</p>
 <p><a class="reference internal" href="#webhook-reply-example-with-datamessage-for-boarding-pass">Webhook Reply example with DataMessage - for Boarding Pass</a> .</p>
 </div>
 <div class="section" id="display-itinerary">
-<h3>3.3.14. Display Itinerary<a class="headerlink" href="#display-itinerary" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.15. Display Itinerary<a class="headerlink" href="#display-itinerary" title="Permalink to this headline">¶</a></h3>
 <p>Display the itinerary to a specific user</p>
 </div>
 <div class="section" id="display-reservation">
-<h3>3.3.15. Display Reservation<a class="headerlink" href="#display-reservation" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.16. Display Reservation<a class="headerlink" href="#display-reservation" title="Permalink to this headline">¶</a></h3>
 <p>Display the reservation to a specific user</p>
 </div>
 <div class="section" id="cancel-reservation">
-<h3>3.3.16. Cancel Reservation<a class="headerlink" href="#cancel-reservation" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.17. Cancel Reservation<a class="headerlink" href="#cancel-reservation" title="Permalink to this headline">¶</a></h3>
 <p>Please cancel my  reservation</p>
 </div>
+<div class="section" id="check-in-to-flight">
+<h3>3.3.18. Check In To Flight<a class="headerlink" href="#check-in-to-flight" title="Permalink to this headline">¶</a></h3>
+<p>Try &#8220;check in to my flight&#8221;</p>
+</div>
 <div class="section" id="display-flight-status">
-<h3>3.3.17. Display Flight Status<a class="headerlink" href="#display-flight-status" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.19. Display Flight Status<a class="headerlink" href="#display-flight-status" title="Permalink to this headline">¶</a></h3>
 <p>Allow the user to request the status of a specific flight:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;What is the status of United Airlines flight 123?&quot;
 </pre></div>
@@ -921,7 +933,7 @@ but you can also use the predefined template for Flight Status described at</p>
 <p><a class="reference internal" href="#webhook-reply-example-with-datamessage-for-flight-status">Webhook Reply example with DataMessage - for Flight Status</a> .</p>
 </div>
 <div class="section" id="interactive-messages-general">
-<h3>3.3.18. Interactive Messages - General<a class="headerlink" href="#interactive-messages-general" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.20. Interactive Messages - General<a class="headerlink" href="#interactive-messages-general" title="Permalink to this headline">¶</a></h3>
 <p>There are several types of interactive messages that can be returned from the applicative webhooks.
 These messages are instructions to the BotKit to interact with the end users.
 The interactive message must be the last in the list of returned messages.
@@ -945,7 +957,7 @@ There can only be a single interactive message in the list of returned messages.
 </ul>
 </div>
 <div class="section" id="interactive-message-logging-in-end-users-oauth">
-<h3>3.3.19. Interactive Message - Logging In End Users - OAuth<a class="headerlink" href="#interactive-message-logging-in-end-users-oauth" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.21. Interactive Message - Logging In End Users - OAuth<a class="headerlink" href="#interactive-message-logging-in-end-users-oauth" title="Permalink to this headline">¶</a></h3>
 <p>When a user starts a conversation with your business, you may want to identify her as a customer who already has
 an account with your business. To help with this, we have created a platform-agnostic secured protocol to link and unlink
 the messaging end-user identity with your business user identity.</p>
@@ -996,7 +1008,7 @@ and append a new <cite>authorization_code</cite> query parameter. Eva will add t
 applicative webhook calls as a new key called <code class="docutils literal"><span class="pre">loginData</span></code>.</p>
 </div>
 <div class="section" id="interactive-message-transfer-chat-to-a-human-agent">
-<h3>3.3.20. Interactive Message - Transfer chat to a Human Agent<a class="headerlink" href="#interactive-message-transfer-chat-to-a-human-agent" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.22. Interactive Message - Transfer chat to a Human Agent<a class="headerlink" href="#interactive-message-transfer-chat-to-a-human-agent" title="Permalink to this headline">¶</a></h3>
 <p>When this message is returned from an applicative webhook, Eva will attempt to transfer the chat to a human agent.
 This assumes that an Agency of Human Agents has been set up in advance. The message looks like this:</p>
 <div class="literal-block-wrapper container" id="transfer-chat-to-human-agent-reply-example">
@@ -1098,7 +1110,7 @@ This functionality is useful in cases when the handoff-to-human is activated fro
 the chat topic, for example the <cite>change_booking</cite> webhook may hand-off to a human with a chat topic of &#8220;Existing Booking&#8221;.</p>
 </div>
 <div class="section" id="interactive-message-subscribe-to-list">
-<h3>3.3.21. Interactive Message - Subscribe to List<a class="headerlink" href="#interactive-message-subscribe-to-list" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.23. Interactive Message - Subscribe to List<a class="headerlink" href="#interactive-message-subscribe-to-list" title="Permalink to this headline">¶</a></h3>
 <p>Eva supports subscription list management for multicast notifications.
 To subscribe end users to a new or existing subscriptions list
 return the following interactive message from any applicative webhook:</p>
@@ -1122,7 +1134,7 @@ return the following interactive message from any applicative webhook:</p>
 and there can only be a single interactive message in the list.</p>
 </div>
 <div class="section" id="interactive-message-questionnaires">
-<h3>3.3.22. Interactive Message - questionnaires<a class="headerlink" href="#interactive-message-questionnaires" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.24. Interactive Message - questionnaires<a class="headerlink" href="#interactive-message-questionnaires" title="Permalink to this headline">¶</a></h3>
 <p>questionnaires are the ChatBot equivalent of forms,
 where user interaction is better served with simple UI elements such as buttons.
 A questionnaire is a list of questions of various types that Eva will ask the end user.

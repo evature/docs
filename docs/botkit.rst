@@ -602,6 +602,13 @@ Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.
    Enter "Hi" to Eva in any messenger to see some logs.  
 
 
+Webhooks health
+---------------
+
+Please note that a webhook which fails for 5 consecutive times will be disabled.
+Use the management UI at https://chat.evature.com/botkit to re-enable.
+Disabled webhooks will be colored red.
+
 Session Storage
 ---------------
 
@@ -854,6 +861,12 @@ Cancel Reservation
 ------------------
 
 Please cancel my  reservation
+
+
+Check In To Flight
+------------------
+
+Try "check in to my flight"
 
 
 Display Flight Status
