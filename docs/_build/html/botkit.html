@@ -251,31 +251,31 @@ You will be provided with an HTTP API token such as &#8220;232021539:AAGGFCHb3dR
 </div>
 <div class="section" id="line-integration">
 <h3>3.2.2. Line integration<a class="headerlink" href="#line-integration" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>On September 29 LINE announced the release of Messaging API,
+which will improve bot development and functionality as well as help better support developers.</p>
+<p class="last"><strong>All BOT API Trial Accounts are scheduled to be deleted on November 16</strong>.</p>
+</div>
+</div></blockquote>
 <ol class="arabic">
 <li><p class="first"><strong>Create a new Line Bot</strong></p>
-<p>Create a Line BOT API account from the LINE Business Center.
+<p>Create a Line messaging API account from the LINE Business Center.
 You need to have a business account - <a class="reference external" href="https://business.line.me">https://business.line.me</a></p>
-<p>Register for a BOT API Trial Account - <a class="reference external" href="https://business.line.me/en/products/4/introduction">https://business.line.me/en/products/4/introduction</a></p>
-<p>Once you have the bot, note the following -</p>
-<ul class="simple">
-<li>Channel ID, e.g. &#8220;1476248720&#8221;</li>
-<li>Channel Secret, e.g. &#8220;0a1b2427f865b36aebf6f18d2a7b2a19&#8221;</li>
-<li>MID, e.g. &#8220;u6693abde9913e0bb699d29da0b632de0&#8221;</li>
-</ul>
-<p>You will need to copy those to Eva in the line integration.</p>
 </li>
 <li><p class="first"><strong>Create a new Line Integration</strong></p>
 <p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
-<p>Choose Type = Line.</p>
+<p>Choose Type = &#8220;Line - Messaging API&#8221;.</p>
 <p>Select Full AI.</p>
-<p>Fill in your Channel ID, Channel Secret and MID.</p>
+<p>Fill in your Channel Secret and access token.</p>
 </li>
 <li><p class="first"><strong>Configure Eva as the Line Bot</strong></p>
-<p>Set the Callback URL to &#8220;<a class="reference external" href="https://chat.evature.com:443/line">https://chat.evature.com:443/line</a>&#8220;</p>
-<p>See the <a class="reference external" href="https://developers.line.me/bot-api/getting-started-with-bot-api-trial#register_callback_url">detailed Line docs</a></p>
+<p>Set the Webhook URL to the value provided after saving the &#8220;Chat integration&#8221; in Botkit admin.</p>
 </li>
 <li><p class="first"><strong>Say hi to Eva on Line!</strong></p>
-<p>Now try chatting with your new bot in Line. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+<p>Scan the QR code in Line Business center
+Now try chatting with your new bot in Line. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
 </li>
 </ol>
 </div>

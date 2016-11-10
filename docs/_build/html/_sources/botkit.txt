@@ -107,39 +107,37 @@ Telegram integration
 Line integration
 ----------------
 
+   .. note::
+
+        On September 29 LINE announced the release of Messaging API,
+        which will improve bot development and functionality as well as help better support developers.  
+        
+        **All BOT API Trial Accounts are scheduled to be deleted on November 16**.
+
+
+
 #. **Create a new Line Bot**
 
-   Create a Line BOT API account from the LINE Business Center.
+   Create a Line messaging API account from the LINE Business Center.
    You need to have a business account - https://business.line.me
-
-   Register for a BOT API Trial Account - https://business.line.me/en/products/4/introduction
-
-   Once you have the bot, note the following -
-
-   * Channel ID, e.g. "1476248720"
-   * Channel Secret, e.g. "0a1b2427f865b36aebf6f18d2a7b2a19"
-   * MID, e.g. "u6693abde9913e0bb699d29da0b632de0"
-
-   You will need to copy those to Eva in the line integration.
 
 #. **Create a new Line Integration**
 
    Head back to https://chat.evature.com/botkit and (after logging in if needed), click on the **Add Chat Integration** button.
 
-   Choose Type = Line.
+   Choose Type = "Line - Messaging API".
 
    Select Full AI.
 
-   Fill in your Channel ID, Channel Secret and MID.
+   Fill in your Channel Secret and access token.
 
 #. **Configure Eva as the Line Bot**
 
-   Set the Callback URL to "https://chat.evature.com:443/line"
-
-   See the `detailed Line docs <https://developers.line.me/bot-api/getting-started-with-bot-api-trial#register_callback_url>`_
+   Set the Webhook URL to the value provided after saving the "Chat integration" in Botkit admin.
 
 #. **Say hi to Eva on Line!**
 
+   Scan the QR code in Line Business center
    Now try chatting with your new bot in Line. Go ahead - try typing "hi" and "Who are you?"
 
 
