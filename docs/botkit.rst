@@ -282,6 +282,9 @@ Webhooks also deliver a globally unique ``ChatKey``.
 This allows the application to asynchronously send messages to the end user by POSTing the data to
 https://chat.evature.com/send_botkit_message
 
+When applicable, webhooks also deliver a ``language`` key. Value is a 2 character string with an ISO 639-1 code.
+This allows the application to send messages using the correct language.
+
 All DateTimes are in ISO 8601 format https://en.wikipedia.org/wiki/ISO_8601 .
 DateTimes that are ranges (e.g. 'next week', or 'July') are expressed as a combination of 2 DateTimes - a "Min" and a "Max".
 DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL DateTimes.

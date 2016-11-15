@@ -137,8 +137,9 @@ Line integration
 
 #. **Say hi to Eva on Line!**
 
-   Scan the QR code in Line Business center
-   Now try chatting with your new bot in Line. Go ahead - try typing "hi" and "Who are you?"
+   Scan the QR code in Line Business center.  
+   Now try chatting with your new bot in Line.
+   Go ahead - try typing "hi" and "Who are you?"
 
 
 Facebook integration
@@ -280,6 +281,9 @@ or to apply formatting when returning Raw messages.
 Webhooks also deliver a globally unique ``ChatKey``.
 This allows the application to asynchronously send messages to the end user by POSTing the data to
 https://chat.evature.com/send_botkit_message
+
+When applicable, webhooks also deliver a ``language`` key. Value is a 2 character string with an ISO 639-1 code.
+This allows the application to send messages using the correct language.
 
 All DateTimes are in ISO 8601 format https://en.wikipedia.org/wiki/ISO_8601 .
 DateTimes that are ranges (e.g. 'next week', or 'July') are expressed as a combination of 2 DateTimes - a "Min" and a "Max".

@@ -288,4 +288,8 @@ it greatly helps Eva with analytics and debugging to know the specific device
 
 This parameter is automatically handled by :ref:`the_mobile_sdks`.
 
-    
+language
+========
+
+The input language per ISO 639-1.
+ 

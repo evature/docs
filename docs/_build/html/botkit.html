@@ -274,8 +274,9 @@ You need to have a business account - <a class="reference external" href="https:
 <p>Set the Webhook URL to the value provided after saving the &#8220;Chat integration&#8221; in Botkit admin.</p>
 </li>
 <li><p class="first"><strong>Say hi to Eva on Line!</strong></p>
-<p>Scan the QR code in Line Business center
-Now try chatting with your new bot in Line. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+<p>Scan the QR code in Line Business center.
+Now try chatting with your new bot in Line.
+Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
 </li>
 </ol>
 </div>
@@ -383,6 +384,8 @@ or to apply formatting when returning Raw messages.</p>
 <p>Webhooks also deliver a globally unique <code class="docutils literal"><span class="pre">ChatKey</span></code>.
 This allows the application to asynchronously send messages to the end user by POSTing the data to
 <a class="reference external" href="https://chat.evature.com/send_botkit_message">https://chat.evature.com/send_botkit_message</a></p>
+<p>When applicable, webhooks also deliver a <code class="docutils literal"><span class="pre">language</span></code> key. Value is a 2 character string with an ISO 639-1 code.
+This allows the application to send messages using the correct language.</p>
 <p>All DateTimes are in ISO 8601 format <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">https://en.wikipedia.org/wiki/ISO_8601</a> .
 DateTimes that are ranges (e.g. &#8216;next week&#8217;, or &#8216;July&#8217;) are expressed as a combination of 2 DateTimes - a &#8220;Min&#8221; and a &#8220;Max&#8221;.
 DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL DateTimes.</p>
