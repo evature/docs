@@ -122,6 +122,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#inverse-webhooks">3.4. Inverse Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#secure-invitations">3.5. Secure Invitations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a></li>
@@ -1280,6 +1281,76 @@ The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="secure-invitations">
+<h2>3.5. Secure Invitations<a class="headerlink" href="#secure-invitations" title="Permalink to this headline">¶</a></h2>
+<p>Secure Invitations allow a Bot to invite known non-bot users to use the bot while maintaining their identity.
+If you already have a login-protected webpage for all end users,
+you may wish to use the <a class="reference internal" href="#interactive-message-logging-in-end-users-oauth">Interactive Message - Logging In End Users - OAuth</a></p>
+<p>Secure Invitations (simplified version) consist of 3 steps:</p>
+<p>1. Request a secure invitation for an end user.
+You provide your credentials and the internal-identity of the end user you wish to invite.
+We reply with a secure token.</p>
+<p>HTTPS Post to &#8220;<a class="reference external" href="https://chat.evature.com/generate_secure_invitation">https://chat.evature.com/generate_secure_invitation</a>&#8221; with this JSON payload:</p>
+<div class="literal-block-wrapper container" id="example-json-secure-invitation-request">
+<div class="code-block-caption"><span class="caption-text">Example JSON Secure Invitation Request</span><a class="headerlink" href="#example-json-secure-invitation-request" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;site_code&quot;</span><span class="o">:</span> <span class="s2">&quot;my_site_code&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;my_api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;api_key&quot;</span><span class="o">:</span> <span class="s2">&quot;my_api_key&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;facebook_page_id&quot;</span><span class="o">:</span> <span class="s2">&quot;my_facebook_page_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;telegram_channel_id&quot;</span><span class="o">:</span> <span class="s2">&quot;my_telegram_channel_id&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;private_id&quot;</span><span class="o">:</span> <span class="s2">&quot;private_id_of_an_end_user&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;already_authenticated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can only request one of <code class="docutils literal"><span class="pre">facebook_page_id</span></code> and <code class="docutils literal"><span class="pre">telegram_channel_id</span></code> at a time</p>
+</div>
+<div class="literal-block-wrapper container" id="example-json-response-for-telegram">
+<div class="code-block-caption"><span class="caption-text">Example JSON Response for Telegram</span><a class="headerlink" href="#example-json-response-for-telegram" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;referral&quot;</span><span class="o">:</span> <span class="s2">&quot;some_random_string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;referralUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://telegram.me/EvatureHotelsBot?start=some_random_string&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="example-json-response-for-facebook-messenger">
+<div class="code-block-caption"><span class="caption-text">Example JSON Response for Facebook Messenger</span><a class="headerlink" href="#example-json-response-for-facebook-messenger" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;referral&quot;</span><span class="o">:</span> <span class="s2">&quot;some_random_string&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;referralUrl&quot;</span><span class="o">:</span> <span class="s2">&quot;https://m.me/1749750371937776?ref=some_random_string&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Email or SMS the referral link to end users.</li>
+</ol>
+<p>3. When the end user clicks on the link, Facebook Messenger opens, with a privacy message, such as
+&#8220;You opened this conversation with m.me/eva.tech.demo. eva.ai can see that you used their link.&#8221;
+- This comes from Facebook, not from us, and cannot be customized.</p>
+<p>Telegram Bots present the user with a &#8220;Start&#8221; button.
+- This comes from Telegram, not from us, and cannot be customized.</p>
+<p>The Bot tells the user:
+&#8220;You have now successfully authenticated!&#8221;</p>
+<p>Every subsequent webhook call in the interaction with this specific end user will have the private internal ID
+of the person in the payload:</p>
+<div class="literal-block-wrapper container" id="simplified-payload-part-after-a-successful-secure-invitation">
+<div class="code-block-caption"><span class="caption-text">Simplified Payload-Part After A Successful Secure Invitation</span><a class="headerlink" href="#simplified-payload-part-after-a-successful-secure-invitation" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;privateId&quot;</span><span class="o">:</span> <span class="s2">&quot;private_id_of_an_end_user&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>So when this user says &#8220;Show me my boarding pass&#8221;, we notify you and you know what data to return.</p>
 </div>
 </div>
 

@@ -1245,4 +1245,81 @@ To remove an existing subscription (delete and unsubscribe all end users) send t
       "subscriptionId": "subscription_id",
     }
 
- 
+Secure Invitations
+==================
+
+Secure Invitations allow a Bot to invite known non-bot users to use the bot while maintaining their identity.
+If you already have a login-protected webpage for all end users,
+you may wish to use the `Interactive Message - Logging In End Users - OAuth`_   
+
+Secure Invitations (simplified version) consist of 3 steps:
+
+1. Request a secure invitation for an end user.
+You provide your credentials and the internal-identity of the end user you wish to invite.
+We reply with a secure token.
+
+HTTPS Post to "https://chat.evature.com/generate_secure_invitation" with this JSON payload:
+
+
+.. code-block:: javascript
+    :caption: Example JSON Secure Invitation Request
+
+    {
+      "site_code": "my_site_code",
+      "api_key": "my_api_key",
+      "api_key": "my_api_key",
+      "facebook_page_id": "my_facebook_page_id",
+      "telegram_channel_id": "my_telegram_channel_id",
+      "private_id": "private_id_of_an_end_user",
+      "already_authenticated": true,
+    }
+
+.. note::
+
+     You can only request one of ``facebook_page_id`` and ``telegram_channel_id`` at a time
+
+
+.. code-block:: javascript
+    :caption: Example JSON Response for Telegram
+
+    {
+      "referral": "some_random_string",
+      "referralUrl": "https://telegram.me/EvatureHotelsBot?start=some_random_string",
+    }
+
+
+
+.. code-block:: javascript
+    :caption: Example JSON Response for Facebook Messenger
+
+    {
+      "referral": "some_random_string",
+      "referralUrl": "https://m.me/1749750371937776?ref=some_random_string",
+    }
+
+
+2. Email or SMS the referral link to end users.
+
+3. When the end user clicks on the link, Facebook Messenger opens, with a privacy message, such as
+"You opened this conversation with m.me/eva.tech.demo. eva.ai can see that you used their link."
+- This comes from Facebook, not from us, and cannot be customized.
+
+Telegram Bots present the user with a "Start" button.
+- This comes from Telegram, not from us, and cannot be customized.
+
+The Bot tells the user:
+"You have now successfully authenticated!"
+
+Every subsequent webhook call in the interaction with this specific end user will have the private internal ID
+of the person in the payload: 
+
+.. code-block:: javascript
+    :caption: Simplified Payload-Part After A Successful Secure Invitation 
+
+    {
+      "user": {
+        "privateId": "private_id_of_an_end_user",
+      }
+    }
+
+So when this user says "Show me my boarding pass", we notify you and you know what data to return. 
