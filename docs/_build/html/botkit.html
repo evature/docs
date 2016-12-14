@@ -90,8 +90,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#chat-service-integrations">3.2. Chat Service Integrations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#telegram-integration">3.2.1. Telegram integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#line-integration">3.2.2. Line integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#facebook-integration">3.2.3. Facebook integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#facebook-messenger-integration">3.2.3. Facebook Messenger integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kik-integration">3.2.4. Kik integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skype-integration">3.2.5. Skype integration</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#adding-webhooks">3.3. Adding Webhooks</a><ul>
@@ -281,8 +282,8 @@ Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
 </li>
 </ol>
 </div>
-<div class="section" id="facebook-integration">
-<h3>3.2.3. Facebook integration<a class="headerlink" href="#facebook-integration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="facebook-messenger-integration">
+<h3>3.2.3. Facebook Messenger integration<a class="headerlink" href="#facebook-messenger-integration" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first"><strong>Facebook Page and App</strong></p>
 <p>Create a new Facebook App and Page or use existing ones.
@@ -343,6 +344,47 @@ find the App Review for Messenger section and click Request Permissions.</p>
 </li>
 <li><p class="first"><strong>Say hi to Eva on Kik!</strong></p>
 <p>Now try chatting with your new bot in Kik. Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
+</li>
+</ol>
+</div>
+<div class="section" id="skype-integration">
+<h3>3.2.5. Skype integration<a class="headerlink" href="#skype-integration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><strong>Create a new Skype Bot</strong></p>
+<p>You will need to register as a developer here:
+<a class="reference external" href="https://www.skype.com/en/developer/">https://www.skype.com/en/developer/</a></p>
+<p>Then head over to &#8220;register a bot&#8221; at <a class="reference external" href="https://dev.botframework.com/bots/new">https://dev.botframework.com/bots/new</a></p>
+<p>In the Configuration / Messaging endpoint
+please enter
+&#8220;<a class="reference external" href="https://chat.evature.com/skype">https://chat.evature.com/skype</a>&#8221;
+Press:
+Create Microsoft App ID
+Generate App ID and password
+Make sure to copy the application ID and password!</p>
+</li>
+<li><p class="first"><strong>Create a new Skype Integration</strong></p>
+<p>Head back to <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> and (after logging in if needed), click on the <strong>Add Chat Integration</strong> button.</p>
+<p>Choose Type = Skype.</p>
+<p>Select Full AI.</p>
+<p>Type in your Skype App ID and App Secret (the password).</p>
+</li>
+<li><p class="first"><strong>Make sure your endpoint is configured correctly</strong></p>
+<p>In the Bots page, <a class="reference external" href="https://dev.botframework.com/bots">https://dev.botframework.com/bots</a>
+Under &#8220;Test connection to your bot&#8221;, press the <strong>Test</strong> button.
+You should see: &#8220;Endpoint authorization succeeded&#8221;.</p>
+</li>
+<li><p class="first"><strong>Add your new bot to Skype</strong></p>
+<p>In the <a class="reference external" href="https://dev.botframework.com/bots">https://dev.botframework.com/bots</a> page, in the Channels pane next to Skype,
+press the <strong>Add to Skype</strong> button.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Skype Bots might not be available in your country yet.
+You might have to workaround this by changing your billing address, or using a pre-release client,
+such as this: <a class="reference external" href="https://community.skype.com/t5/Linux/Where-to-get-the-latest-Skype-for-Linux-Alpha/td-p/4536964">https://community.skype.com/t5/Linux/Where-to-get-the-latest-Skype-for-Linux-Alpha/td-p/4536964</a></p>
+</div>
+</li>
+<li><p class="first"><strong>Say hi to Eva on Skype!</strong></p>
+<p>Now try chatting with your new bot in Skype! Go ahead - try typing &#8220;hi&#8221; and &#8220;Who are you?&#8221;</p>
 </li>
 </ol>
 </div>
@@ -1351,6 +1393,19 @@ of the person in the payload:</p>
 </div>
 </div>
 <p>So when this user says &#8220;Show me my boarding pass&#8221;, we notify you and you know what data to return.</p>
+<hr class="docutils" />
+<p>Click - add to Skype and then add-to-contacts
+Did not work.</p>
+<p>Countries problem... I went here:
+<a class="reference external" href="https://secure.skype.com/portal/profile">https://secure.skype.com/portal/profile</a>
+Edit Profile
+United States
+I signed out and signed in on the web client</p>
+<p>I changed my billing information to the US.
+did not work</p>
+<p><a class="reference external" href="https://go.skype.com/chrome.extension/">https://go.skype.com/chrome.extension/</a></p>
+<p>## IGNORE: <a class="reference external" href="https://login.skype.com/login/microsoft?client_id=578134&amp;redirect_uri=https%3A%2F%2Fweb.skype.com%2F%3Fintcmp%3Daccountweb-_-uktrybeta">https://login.skype.com/login/microsoft?client_id=578134&amp;redirect_uri=https%3A%2F%2Fweb.skype.com%2F%3Fintcmp%3Daccountweb-_-uktrybeta</a>
+signed out from phone client</p>
 </div>
 </div>
 

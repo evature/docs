@@ -142,8 +142,8 @@ Line integration
    Go ahead - try typing "hi" and "Who are you?"
 
 
-Facebook integration
---------------------
+Facebook Messenger integration
+------------------------------
 
 #. **Facebook Page and App**
 
@@ -242,6 +242,58 @@ Kik integration
 
    Now try chatting with your new bot in Kik. Go ahead - try typing "hi" and "Who are you?"
 
+
+Skype integration
+-----------------
+
+#. **Create a new Skype Bot**
+
+   You will need to register as a developer here:
+   https://www.skype.com/en/developer/
+   
+   Then head over to "register a bot" at https://dev.botframework.com/bots/new
+   
+   In the Configuration / Messaging endpoint
+   please enter
+   "https://chat.evature.com/skype"
+   Press:
+   Create Microsoft App ID
+   Generate App ID and password
+   Make sure to copy the application ID and password!
+
+
+
+#. **Create a new Skype Integration**
+
+   Head back to https://chat.evature.com/botkit and (after logging in if needed), click on the **Add Chat Integration** button.
+
+   Choose Type = Skype.
+
+   Select Full AI.
+
+   Type in your Skype App ID and App Secret (the password).
+
+
+#. **Make sure your endpoint is configured correctly**
+
+   In the Bots page, https://dev.botframework.com/bots
+   Under "Test connection to your bot", press the **Test** button.
+   You should see: "Endpoint authorization succeeded".
+
+#. **Add your new bot to Skype**
+
+   In the https://dev.botframework.com/bots page, in the Channels pane next to Skype,
+   press the **Add to Skype** button.
+   
+   .. note::
+
+      Skype Bots might not be available in your country yet.
+      You might have to workaround this by changing your billing address, or using a pre-release client,
+      such as this: https://community.skype.com/t5/Linux/Where-to-get-the-latest-Skype-for-Linux-Alpha/td-p/4536964 
+
+#. **Say hi to Eva on Skype!**
+   
+   Now try chatting with your new bot in Skype! Go ahead - try typing "hi" and "Who are you?"
 
 
 Adding Webhooks
@@ -591,7 +643,7 @@ Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.
 
 .. tip::
 
-   To set up a simple view for this log, head over to https://hyperdev.com  
+   To set up a simple view for this log, head over to https://gomix.com/  
    
    * Log in to GitHub.  
    
@@ -1323,3 +1375,26 @@ of the person in the payload:
     }
 
 So when this user says "Show me my boarding pass", we notify you and you know what data to return. 
+
+
+--------------
+
+
+
+
+Click - add to Skype and then add-to-contacts
+Did not work.
+
+Countries problem... I went here:
+https://secure.skype.com/portal/profile
+Edit Profile
+United States
+I signed out and signed in on the web client
+
+I changed my billing information to the US.
+did not work
+
+https://go.skype.com/chrome.extension/
+
+## IGNORE: https://login.skype.com/login/microsoft?client_id=578134&redirect_uri=https%3A%2F%2Fweb.skype.com%2F%3Fintcmp%3Daccountweb-_-uktrybeta
+signed out from phone client
