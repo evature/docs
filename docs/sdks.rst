@@ -31,7 +31,7 @@ Integration on all platforms consists of the following steps:
 
    .. note::
    
-      For **free** API access please register here: https://www.evature.com/registration/form
+      For **free** API access please register here: https://w.evature.com/registration/form
    
    In the logs you will be able to see that the application was successfully authenticated by Eva.
 

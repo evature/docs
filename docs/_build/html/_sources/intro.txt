@@ -70,7 +70,7 @@ in the number of requests per day.
 You can get started with Eva for free. 
 
 .. note::
-   For FREE API access please register here: http://www.evature.com/registration/form
+   For FREE API access please register here: http://w.evature.com/registration/form
 
 If you need a larger quota to support a prototype or a product please do not hesitate to contact us.
  

@@ -35,9 +35,9 @@ They are the 7-bit ASCII alphanumerics and the mark characters "-_.!~*'()".
 Versions
 ========
 API versions are specified via the URL in the following manner:
-`http://freeapi.evature.com/v1.0?input_text=chicago`__
+`http://freeapi.evature.com/v1.1?input_text=chicago`__
 
-__ http://freeapi.evature.com/v1.0?site_code=123&api_key=456&input_text=chicago
+__ http://freeapi.evature.com/v1.1?site_code=123&api_key=456&input_text=chicago
 
 .. automodule:: core.api_versions
    :synopsis: Supported API versions
@@ -58,7 +58,7 @@ Example::
 
     User: "one way flight from JFK"
 
-http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK
+http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK
  
 .. code-block:: javascript
     :caption: Simplified Eva API Reply
@@ -104,7 +104,7 @@ To initiate a new session add a session_id request parameter with a value of '1'
 
     User: "one way flight from JFK"
 
-http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK&session_id=1
+http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK&session_id=1
 
 In this case, the API reply will change. Eva instructs the application using the Flow mechanism to ask the user
 where he wants to fly to.
@@ -148,7 +148,7 @@ If, for example the user replies with::
 
     User: "SFO"
 
-http://freeapi.evature.com/v1.0?input_text=SFO&session_id=11e5-78fa-94ba0740-8acf-22000bd848a8
+http://freeapi.evature.com/v1.1?input_text=SFO&session_id=11e5-78fa-94ba0740-8acf-22000bd848a8
 
 Eva will continue the dialog:
 
@@ -369,8 +369,8 @@ For example, assume the speech recognition engine returned these results:
 
 This is the resulting URL:
 
-`vproxy.evaws.com/v1.0?input_text=flint+to+roston&input_text=flight+to+boston&input_text=slight+to+horton`__
+`vproxy.evaws.com/v1.1?input_text=flint+to+roston&input_text=flight+to+boston&input_text=slight+to+horton`__
 
-__ https://vproxy.evaws.com/v1.0?site_code=123&api_key=456&scope=fhc&session_id=1&input_text=flint+from+jail+aviv+to+roston&input_text=flight+from+tel+aviv+to+boston&input_text=slight+from+beit+achziv+to+horton
+__ https://vproxy.evaws.com/v1.1?site_code=123&api_key=456&scope=fhc&session_id=1&input_text=flint+from+jail+aviv+to+roston&input_text=flight+from+tel+aviv+to+boston&input_text=slight+from+beit+achziv+to+horton
 
   

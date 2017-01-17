@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. The HTTP RESTful API &mdash; Eva 1.0 documentation</title>
+  <title>4. The HTTP RESTful API &mdash; Eva 1.1 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
+    <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
         <link rel="next" title="5. API - The Request" href="request.html"/>
         <link rel="prev" title="3. The Eva BotKit" href="botkit.html"/> 
 
@@ -93,9 +93,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#versions">4.4. Versions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#v1-0">4.4.1. v1.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#v1-1">4.4.2. v1.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#from-future">4.4.3. From Future</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ffi-chains">4.4.3.1. ffi_chains</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ffi-statement">4.4.3.2. ffi_statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v1-2">4.4.3. v1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-future">4.4.4. From Future</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ffi-chains-already-part-of-v1-1">4.4.4.1. ffi_chains (already part of V1.1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ffi-statement-already-part-of-v1-1">4.4.4.2. ffi_statement (already part of V1.1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ffi-airports-are-a-list">4.4.4.3. ffi_airports_are_a_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ffi-breakdown-location-name">4.4.4.4. ffi_breakdown_location_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ffi-flight-status-action">4.4.4.5. ffi_flight_status_action</a></li>
 </ul>
 </li>
 </ul>
@@ -182,45 +186,49 @@ They are the 7-bit ASCII alphanumerics and the mark characters &#8220;-_.!~*&#82
 <div class="section" id="versions">
 <h2>4.4. Versions<a class="headerlink" href="#versions" title="Permalink to this headline">¶</a></h2>
 <p>API versions are specified via the URL in the following manner:
-<a class="reference external" href="http://freeapi.evature.com/v1.0?site_code=123&amp;api_key=456&amp;input_text=chicago">http://freeapi.evature.com/v1.0?input_text=chicago</a></p>
+<a class="reference external" href="http://freeapi.evature.com/v1.1?site_code=123&amp;api_key=456&amp;input_text=chicago">http://freeapi.evature.com/v1.1?input_text=chicago</a></p>
 <span class="target" id="module-core.api_versions"></span><p>These are the currently supported API versions:</p>
 <div class="section" id="v1-0">
 <h3>4.4.1. v1.0<a class="headerlink" href="#v1-0" title="Permalink to this headline">¶</a></h3>
-<p>Base commercial API version.</p>
+<p>The previous release.</p>
 </div>
 <div class="section" id="v1-1">
 <h3>4.4.2. v1.1<a class="headerlink" href="#v1-1" title="Permalink to this headline">¶</a></h3>
+<p>Base commercial API version.</p>
+</div>
+<div class="section" id="v1-2">
+<h3>4.4.3. v1.2<a class="headerlink" href="#v1-2" title="Permalink to this headline">¶</a></h3>
 <p>This version is under active development,
 yet you can (and should!) preview it on a feature by feature basis by using the <a class="reference internal" href="#from-future">From Future</a> flags</p>
 </div>
 <div class="section" id="from-future">
-<h3>4.4.3. From Future<a class="headerlink" href="#from-future" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4. From Future<a class="headerlink" href="#from-future" title="Permalink to this headline">¶</a></h3>
 <p>To preview and easily integrate with the latest API, the developer has access to &#8220;from future&#8221; flags,
 using which she can turn the various changes in the next release on / off one by one.
 Example:</p>
-<p><a class="reference external" href="http://freeapi.evature.com/v1.0?site_code=123&amp;api_key=456&amp;input_text=chicago&amp;ffi_statement">evature.com/v1.0?input_text=chicago&amp;ffi_statement</a>.</p>
-<p>Here is the list of features that are implemented in the V1.1 release, yet you may (and should!) use in the V1.0 release:</p>
-<div class="section" id="ffi-chains">
-<h4>4.4.3.1. ffi_chains<a class="headerlink" href="#ffi-chains" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.1?site_code=123&amp;api_key=456&amp;input_text=chicago&amp;ffi_breakdown_location_name">evature.com/v1.1?input_text=chicago&amp;ffi_breakdown_location_name</a></p>
+<p>Here is the list of features that are implemented in the V1.2 release, yet you may (and should!) use in the V1.1 release:</p>
+<div class="section" id="ffi-chains-already-part-of-v1-1">
+<h4>4.4.4.1. ffi_chains (already part of V1.1)<a class="headerlink" href="#ffi-chains-already-part-of-v1-1" title="Permalink to this headline">¶</a></h4>
 <p>In V1.0 the understanding of a hotel chain looked like this:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Looking for a hilton&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
+<div class="literal-block-wrapper docutils container" id="simplified-eva-api-reply">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Hotel Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">&quot;Chain&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span>
-    <span class="p">},</span> 
+    <span class="p">},</span>
     <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
-      <span class="p">},</span> 
+      <span class="p">},</span>
       <span class="p">{</span>
         <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
           <span class="s2">&quot;Get Accommodation&quot;</span>
         <span class="p">]</span>
       <span class="p">}</span>
-    <span class="p">],</span> 
+    <span class="p">],</span>
     <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton hotel&quot;</span>
   <span class="p">}</span>
 </pre></div>
@@ -228,53 +236,53 @@ Example:</p>
 </div>
 <p>The actual chain value is a simple String.</p>
 <p>In V1.1, or when using ffi_chains hotel chains are returned like this:</p>
-<div class="literal-block-wrapper container" id="id4">
+<div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
-      <span class="p">},</span> 
+      <span class="p">},</span>
       <span class="p">{</span>
         <span class="s2">&quot;Hotel Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
           <span class="s2">&quot;Chain&quot;</span><span class="o">:</span> <span class="p">[</span>
             <span class="p">{</span>
-              <span class="s2">&quot;gds_code&quot;</span><span class="o">:</span> <span class="s2">&quot;HH&quot;</span><span class="p">,</span> 
-              <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span><span class="p">,</span> 
-              <span class="s2">&quot;eva_code&quot;</span><span class="o">:</span> <span class="s2">&quot;EPC-47&quot;</span><span class="p">,</span> 
+              <span class="s2">&quot;gds_code&quot;</span><span class="o">:</span> <span class="s2">&quot;HH&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton Hotels&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;eva_code&quot;</span><span class="o">:</span> <span class="s2">&quot;EPC-47&quot;</span><span class="p">,</span>
               <span class="s2">&quot;simple_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton&quot;</span>
             <span class="p">}</span>
           <span class="p">]</span>
-        <span class="p">},</span> 
+        <span class="p">},</span>
         <span class="s2">&quot;Actions&quot;</span><span class="o">:</span> <span class="p">[</span>
           <span class="s2">&quot;Get Accommodation&quot;</span>
-        <span class="p">],</span> 
+        <span class="p">],</span>
       <span class="p">}</span>
-    <span class="p">],</span> 
+    <span class="p">],</span>
     <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hilton hotel&quot;</span>
   <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="ffi-statement">
-<h4>4.4.3.2. ffi_statement<a class="headerlink" href="#ffi-statement" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="ffi-statement-already-part-of-v1-1">
+<h4>4.4.4.2. ffi_statement (already part of V1.1)<a class="headerlink" href="#ffi-statement-already-part-of-v1-1" title="Permalink to this headline">¶</a></h4>
 <p>In V1.0 the reply to:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Hello&quot;
 </pre></div>
 </div>
 <p>looked like this:</p>
-<div class="literal-block-wrapper container" id="id5">
+<div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
-        <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Informative&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span> 
-        <span class="s2">&quot;QuestionSubCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Chat&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QuestionCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Informative&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QuestionSubCategory&quot;</span><span class="o">:</span> <span class="s2">&quot;Chat&quot;</span><span class="p">,</span>
         <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Hello to you too. How may I help?&quot;</span>
       <span class="p">}</span>
-    <span class="p">],</span> 
+    <span class="p">],</span>
     <span class="s2">&quot;Chat&quot;</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">&quot;Hello&quot;</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">}</span>
@@ -283,7 +291,7 @@ Example:</p>
 </div>
 </div>
 <p>In V1.1, or when using ffi_statement Eva added a new Flow Action called a Statement. Now the reply to the above looks like this:</p>
-<div class="literal-block-wrapper container" id="id6">
+<div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -296,6 +304,116 @@ Example:</p>
     <span class="s2">&quot;Chat&quot;</span><span class="o">:</span> <span class="p">{</span>
       <span class="s2">&quot;Hello&quot;</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ffi-airports-are-a-list">
+<h4>4.4.4.3. ffi_airports_are_a_list<a class="headerlink" href="#ffi-airports-are-a-list" title="Permalink to this headline">¶</a></h4>
+<p>In V1.1 the reply to:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Chicago&quot;
+</pre></div>
+</div>
+<p>looked like this:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="s2">&quot;ORD,MDW,MKE,SBN&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In V1.2, or when using ffi_airports_are_a_list the reply to the above looks like this:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Airports&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;ORD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MDW&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;MKE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SBN&quot;</span>
+        <span class="p">],</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ffi-breakdown-location-name">
+<h4>4.4.4.4. ffi_breakdown_location_name<a class="headerlink" href="#ffi-breakdown-location-name" title="Permalink to this headline">¶</a></h4>
+<p>In V1.1 the reply to:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Chicago&quot;
+</pre></div>
+</div>
+<p>looked like this:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Chicago, Illinois, United States (GID=4887398)&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In V1.2, or when using ffi_breakdown_location_name the reply to the above looks like this:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Locations&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stateName&quot;</span><span class="o">:</span> <span class="s2">&quot;Illinois&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;countryName&quot;</span><span class="o">:</span> <span class="s2">&quot;United States&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Geoid&quot;</span><span class="o">:</span> <span class="mi">4887398</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ffi-flight-status-action">
+<h4>4.4.4.5. ffi_flight_status_action<a class="headerlink" href="#ffi-flight-status-action" title="Permalink to this headline">¶</a></h4>
+<p>In V1.1 the reply to:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;Flight status&quot;
+</pre></div>
+</div>
+<p>looked like this:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;AttributeKey&quot;</span><span class="o">:</span> <span class="s2">&quot;FlightStatus&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Reply&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AttributeType&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight Attributes&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In V1.2, or when using ffi_flight_status_action Eva added a new Flow Action called &#8220;Flight Status&#8221;.
+Now the reply to the above looks like this:</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Flight Status&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
   <span class="p">}</span>
 </pre></div>
 </div>
@@ -316,9 +434,9 @@ Example:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;one way flight from JFK&quot;
 </pre></div>
 </div>
-<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK">http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK</a></p>
-<div class="literal-block-wrapper container" id="id7">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK">http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK</a></p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
       <span class="p">{</span>
@@ -362,11 +480,11 @@ Example:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;one way flight from JFK&quot;
 </pre></div>
 </div>
-<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK&amp;session_id=1">http://freeapi.evature.com/v1.0?input_text=one+way+flight+from+JFK&amp;session_id=1</a></p>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK&amp;session_id=1">http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK&amp;session_id=1</a></p>
 <p>In this case, the API reply will change. Eva instructs the application using the Flow mechanism to ask the user
 where he wants to fly to.</p>
-<div class="literal-block-wrapper container" id="id8">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;session_id&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-78fa-94ba0740-8acf-22000bd848a8&quot;</span><span class="p">,</span>
 <span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;Flight Attributes&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -405,10 +523,10 @@ If, for example the user replies with:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;SFO&quot;
 </pre></div>
 </div>
-<p><a class="reference external" href="http://freeapi.evature.com/v1.0?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8">http://freeapi.evature.com/v1.0?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8</a></p>
+<p><a class="reference external" href="http://freeapi.evature.com/v1.1?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8">http://freeapi.evature.com/v1.1?input_text=SFO&amp;session_id=11e5-78fa-94ba0740-8acf-22000bd848a8</a></p>
 <p>Eva will continue the dialog:</p>
-<div class="literal-block-wrapper container" id="id9">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;session_id&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-78fa-94ba0740-8acf-22000bd848a8&quot;</span><span class="p">,</span>
 <span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;QuestionAnswered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -472,8 +590,8 @@ When using the raw API directly (not via the SDK) Eva instructs the application 
 such as asking the user a question, or performing a cruise-search.
 The instructions to the application are gathered in a section of the reply called the Flow.
 The Flow is a list of Flow Actions, such as:</p>
-<div class="literal-block-wrapper container" id="id10">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;QuestionType&quot;</span><span class="o">:</span> <span class="s2">&quot;Open&quot;</span><span class="p">,</span>
@@ -606,7 +724,7 @@ This will need to be corrected in case Eva selects a different input when Eva re
 <li>&#8220;slight to horton&#8221;</li>
 </ul>
 <p>This is the resulting URL:</p>
-<p><a class="reference external" href="https://vproxy.evaws.com/v1.0?site_code=123&amp;api_key=456&amp;scope=fhc&amp;session_id=1&amp;input_text=flint+from+jail+aviv+to+roston&amp;input_text=flight+from+tel+aviv+to+boston&amp;input_text=slight+from+beit+achziv+to+horton">vproxy.evaws.com/v1.0?input_text=flint+to+roston&amp;input_text=flight+to+boston&amp;input_text=slight+to+horton</a></p>
+<p><a class="reference external" href="https://vproxy.evaws.com/v1.1?site_code=123&amp;api_key=456&amp;scope=fhc&amp;session_id=1&amp;input_text=flint+from+jail+aviv+to+roston&amp;input_text=flight+from+tel+aviv+to+boston&amp;input_text=slight+from+beit+achziv+to+horton">vproxy.evaws.com/v1.1?input_text=flint+to+roston&amp;input_text=flight+to+boston&amp;input_text=slight+to+horton</a></p>
 </div>
 </div>
 
@@ -629,7 +747,7 @@ This will need to be corrected in case Eva selects a different input when Eva re
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, 2016 Evature.
+        &copy; Copyright 2015, 2016, 2017 Evature.
 
     </p>
   </div> 
@@ -650,7 +768,7 @@ This will need to be corrected in case Eva selects a different input when Eva re
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

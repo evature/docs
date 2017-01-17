@@ -26,7 +26,7 @@ Integration with all messaging platforms consists of the following steps:
 
    .. note::
 
-      For **free** API access please register here: https://www.evature.com/registration/form
+      For **free** API access please register here: https://w.evature.com/registration/form
 
    You will be prompted to create a new Bot, proving a name, a description and a default greeting.
 

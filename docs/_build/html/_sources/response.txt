@@ -275,7 +275,7 @@ A list of locations representing the trip requested. Each location item may have
 
 **Home**
     Applicable only to the 1st (Home) location on the list. Defines the source of the information about the home location.
-    It appears in v1.0 and a copy of "Derived From" value. It will become obsolete in v1.1
+    It appears in v1.1 and is a copy of "Derived From" value. It will become obsolete in v1.2
     
 **Arrival**
     Time of arrival to location (see Time key explained bellow).

@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Eva'
-copyright = u'2015, 2016 Evature' # @ReservedAssignment
+copyright = u'2015, 2016, 2017 Evature' # @ReservedAssignment
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

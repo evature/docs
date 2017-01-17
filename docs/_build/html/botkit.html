@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. The Eva BotKit &mdash; Eva 1.0 documentation</title>
+  <title>3. The Eva BotKit &mdash; Eva 1.1 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
+    <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
         <link rel="next" title="4. The HTTP RESTful API" href="api.html"/>
         <link rel="prev" title="2. The Mobile SDKs" href="sdks.html"/> 
 
@@ -189,7 +189,7 @@ separately with each one.</p>
 <p>Log in to  <a class="reference external" href="https://chat.evature.com/botkit">https://chat.evature.com/botkit</a> using your Eva credentials.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For <strong>free</strong> API access please register here: <a class="reference external" href="https://www.evature.com/registration/form">https://www.evature.com/registration/form</a></p>
+<p class="last">For <strong>free</strong> API access please register here: <a class="reference external" href="https://w.evature.com/registration/form">https://w.evature.com/registration/form</a></p>
 </div>
 <p>You will be prompted to create a new Bot, proving a name, a description and a default greeting.</p>
 </li>
@@ -433,7 +433,7 @@ This allows the application to send messages using the correct language.</p>
 DateTimes that are ranges (e.g. &#8216;next week&#8217;, or &#8216;July&#8217;) are expressed as a combination of 2 DateTimes - a &#8220;Min&#8221; and a &#8220;Max&#8221;.
 DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL DateTimes.</p>
 <p>Here is the minimal webhook reply with a single text message:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-with-single-text-message">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-with-single-text-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with single Text message</span><a class="headerlink" href="#webhook-reply-with-single-text-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
@@ -449,7 +449,7 @@ DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL Date
 </div>
 <p>When asynchronously sending messages to the end user by POSTing the data to <a class="reference external" href="https://chat.evature.com/send_botkit_message">https://chat.evature.com/send_botkit_message</a> ,
 The <code class="docutils literal"><span class="pre">ChatKey</span></code> must be included in the reply:</p>
-<div class="literal-block-wrapper container" id="single-text-message-sent-asynchronously">
+<div class="literal-block-wrapper docutils container" id="single-text-message-sent-asynchronously">
 <div class="code-block-caption"><span class="caption-text">Single Text message, sent asynchronously</span><a class="headerlink" href="#single-text-message-sent-asynchronously" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -465,7 +465,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is an example of returning a picture:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-with-single-image-message">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-with-single-image-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with single Image message</span><a class="headerlink" href="#webhook-reply-with-single-image-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -480,7 +480,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is an HTML message response:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-with-an-html-message">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-with-an-html-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with an HTML message</span><a class="headerlink" href="#webhook-reply-with-an-html-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
@@ -497,7 +497,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is a Rich message response:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-with-an-rich-message">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-with-an-rich-message">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply with an Rich message</span><a class="headerlink" href="#webhook-reply-with-an-rich-message" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span> <span class="c1">// Without this key the content is considered a Raw message and is passed as-is</span>
@@ -518,7 +518,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is &#8220;MultiRich&#8221; message response - horizontally scrolled list of Rich messages:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-example-with-multirichmessage">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-example-with-multirichmessage">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply example with MultiRichMessage</span><a class="headerlink" href="#webhook-reply-example-with-multirichmessage" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
    <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -532,7 +532,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is a &#8220;DataMessage&#8221; template based response - for Flight Status:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-example-with-datamessage-for-flight-status">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-example-with-datamessage-for-flight-status">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply example with DataMessage - for Flight Status</span><a class="headerlink" href="#webhook-reply-example-with-datamessage-for-flight-status" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
    <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -571,7 +571,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>And here is a &#8220;DataMessage&#8221; template based response - for a Boarding Pass:</p>
-<div class="literal-block-wrapper container" id="webhook-reply-example-with-datamessage-for-boarding-pass">
+<div class="literal-block-wrapper docutils container" id="webhook-reply-example-with-datamessage-for-boarding-pass">
 <div class="code-block-caption"><span class="caption-text">Webhook Reply example with DataMessage - for Boarding Pass</span><a class="headerlink" href="#webhook-reply-example-with-datamessage-for-boarding-pass" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;messages&quot;</span><span class="o">:</span><span class="p">[</span>
@@ -642,7 +642,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 </div>
 </div>
 <p>Here is a generic, all inclusive example of a webhook reply that is returned by the implementation:</p>
-<div class="literal-block-wrapper container" id="generic-webhook-reply">
+<div class="literal-block-wrapper docutils container" id="generic-webhook-reply">
 <div class="code-block-caption"><span class="caption-text">Generic Webhook Reply</span><a class="headerlink" href="#generic-webhook-reply" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -723,7 +723,7 @@ The <code class="docutils literal"><span class="pre">ChatKey</span></code> must 
 <p>Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p>To set up a simple view for this log, head over to <a class="reference external" href="https://hyperdev.com">https://hyperdev.com</a></p>
+<p>To set up a simple view for this log, head over to <a class="reference external" href="https://gomix.com/">https://gomix.com/</a></p>
 <ul class="simple">
 <li>Log in to GitHub.</li>
 <li>Start a new project.</li>
@@ -761,7 +761,7 @@ Here is an example of a flight search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;fly from London to Moscow on Tuesday for 3 adults redeye and return 3 days later&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="flight-search-request-example">
+<div class="literal-block-wrapper docutils container" id="flight-search-request-example">
 <div class="code-block-caption"><span class="caption-text">Flight Search Request Example</span><a class="headerlink" href="#flight-search-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
@@ -798,7 +798,7 @@ Here is an example of a hotel search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;3 to 4 star Hilton in paris tomorrow 5 nights sort by price ascending for 2 adults and 3 kids&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="hotel-search-request-example">
+<div class="literal-block-wrapper docutils container" id="hotel-search-request-example">
 <div class="code-block-caption"><span class="caption-text">Hotel Search Request Example</span><a class="headerlink" href="#hotel-search-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
@@ -830,7 +830,7 @@ Here is an example of a car rental search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;rent an SUV with a GPS from JFK tomorrow morning return in 3 days&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="car-search-request-example">
+<div class="literal-block-wrapper docutils container" id="car-search-request-example">
 <div class="code-block-caption"><span class="caption-text">Car Search Request Example</span><a class="headerlink" href="#car-search-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
@@ -862,7 +862,7 @@ Here is an example of a cruise search request:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;cruise to Alaska in the summer with Carnival&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="cruise-request-example">
+<div class="literal-block-wrapper docutils container" id="cruise-request-example">
 <div class="code-block-caption"><span class="caption-text">Cruise Request Example</span><a class="headerlink" href="#cruise-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;cruiseline&quot;</span><span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Carnival Cruises&quot;</span><span class="p">}]},</span>
  <span class="s2">&quot;dateFrom&quot;</span><span class="o">:</span> <span class="s2">&quot;2016-06-01T00:00:00&quot;</span><span class="p">,</span>
@@ -900,7 +900,7 @@ The values of this key is one of the following enumeration:</p>
 <dd>First message after terminating chat by Agent</dd>
 </dl>
 <p>Here is an example of an outgoing webhook payload greeting request:</p>
-<div class="literal-block-wrapper container" id="greeting-request-example">
+<div class="literal-block-wrapper docutils container" id="greeting-request-example">
 <div class="code-block-caption"><span class="caption-text">Greeting Request Example</span><a class="headerlink" href="#greeting-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span><span class="s2">&quot;01437b93-7089-418c-8beb-269951fae9c8&quot;</span><span class="p">,</span>
@@ -962,7 +962,7 @@ but you can also use the predefined template for displaying a Boarding Pass desc
 <div class="highlight-none"><div class="highlight"><pre><span></span>User: &quot;What is the status of United Airlines flight 123?&quot;
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="flight-status-request-example">
+<div class="literal-block-wrapper docutils container" id="flight-status-request-example">
 <div class="code-block-caption"><span class="caption-text">Flight Status Request Example</span><a class="headerlink" href="#flight-status-request-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;messagingProvider&quot;</span><span class="o">:</span> <span class="s2">&quot;FACEBOOK&quot;</span><span class="p">,</span>
  <span class="s2">&quot;chatKey&quot;</span><span class="o">:</span> <span class="s2">&quot;3648b2a2-1aee-4d5a-7ef4-13a0aa441cb1&quot;</span><span class="p">,</span>
@@ -1013,7 +1013,7 @@ personalized and relevant experience to users.</p>
 As this is an interactive message it can only be the last in the list of returned messages
 and there can only be a single interactive message in the list.</p>
 <p>Here is an example of such a reply:</p>
-<div class="literal-block-wrapper container" id="oauth-login-reply-example">
+<div class="literal-block-wrapper docutils container" id="oauth-login-reply-example">
 <div class="code-block-caption"><span class="caption-text">OAuth LogIn Reply Example</span><a class="headerlink" href="#oauth-login-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1057,7 +1057,7 @@ applicative webhook calls as a new key called <code class="docutils literal"><sp
 <h3>3.3.22. Interactive Message - Transfer chat to a Human Agent<a class="headerlink" href="#interactive-message-transfer-chat-to-a-human-agent" title="Permalink to this headline">¶</a></h3>
 <p>When this message is returned from an applicative webhook, Eva will attempt to transfer the chat to a human agent.
 This assumes that an Agency of Human Agents has been set up in advance. The message looks like this:</p>
-<div class="literal-block-wrapper container" id="transfer-chat-to-human-agent-reply-example">
+<div class="literal-block-wrapper docutils container" id="transfer-chat-to-human-agent-reply-example">
 <div class="code-block-caption"><span class="caption-text">Transfer Chat to Human Agent Reply Example</span><a class="headerlink" href="#transfer-chat-to-human-agent-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1096,7 +1096,7 @@ followed (eventually) by &#8220;Agent [name] has joined&#8221;.</p>
 &#8220;noAgentsOnlineHook&#8221;. The content of this key is either a wehbook enumeration or a url.
 This follow-up webhook is activated instead of showing the default &#8220;Sorry, no agents are online&#8221;
 allowing that webhook to return a custom reply (e.g. present a phone number, and/or working hours).</p>
-<div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-webhook-reply-example">
+<div class="literal-block-wrapper docutils container" id="specify-no-agents-behavior-with-webhook-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify no agents behavior with Webhook Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-webhook-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1118,7 +1118,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 </tbody>
 </table>
 <p>or alternatively:</p>
-<div class="literal-block-wrapper container" id="specify-no-agents-behavior-with-url-reply-example">
+<div class="literal-block-wrapper docutils container" id="specify-no-agents-behavior-with-url-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify no agents behavior with URL Reply Example</span><a class="headerlink" href="#specify-no-agents-behavior-with-url-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1140,7 +1140,7 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
 </tr>
 </tbody>
 </table>
-<div class="literal-block-wrapper container" id="specify-chat-topic-reply-example">
+<div class="literal-block-wrapper docutils container" id="specify-chat-topic-reply-example">
 <div class="code-block-caption"><span class="caption-text">Specify Chat Topic Reply Example</span><a class="headerlink" href="#specify-chat-topic-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1160,7 +1160,7 @@ the chat topic, for example the <cite>change_booking</cite> webhook may hand-off
 <p>Eva supports subscription list management for multicast notifications.
 To subscribe end users to a new or existing subscriptions list
 return the following interactive message from any applicative webhook:</p>
-<div class="literal-block-wrapper container" id="subscribe-to-list-reply-example">
+<div class="literal-block-wrapper docutils container" id="subscribe-to-list-reply-example">
 <div class="code-block-caption"><span class="caption-text">Subscribe to List Reply Example</span><a class="headerlink" href="#subscribe-to-list-reply-example" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1188,7 +1188,7 @@ As a questionnaire is an interactive message it can only be the last in the list
 and there can only be a single interactive message in the list.</p>
 <p>To request asking the end user questions,
 return the following interactive message from any applicative webhook:</p>
-<div class="literal-block-wrapper container" id="example-of-questionnaire">
+<div class="literal-block-wrapper docutils container" id="example-of-questionnaire">
 <div class="code-block-caption"><span class="caption-text">Example of questionnaire</span><a class="headerlink" href="#example-of-questionnaire" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span><span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1271,7 +1271,7 @@ Them as needed for the specific messaging platforms.</p>
 <p><a class="reference external" href="http://chat.evature.com/update_subscription">http://chat.evature.com/update_subscription</a></p>
 <p>All inverse webhooks are HTTPS posts with a JSON payload.
 The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#8220;apiKey&#8221; secret.</p>
-<div class="literal-block-wrapper container" id="single-text-message-sent-as-a-notification">
+<div class="literal-block-wrapper docutils container" id="single-text-message-sent-as-a-notification">
 <div class="code-block-caption"><span class="caption-text">Single Text message sent as a Notification</span><a class="headerlink" href="#single-text-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1289,7 +1289,7 @@ The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#
 </div>
 </div>
 <p>to send a message to an existing subscription:</p>
-<div class="literal-block-wrapper container" id="notification-group-message-sent-as-a-notification">
+<div class="literal-block-wrapper docutils container" id="notification-group-message-sent-as-a-notification">
 <div class="code-block-caption"><span class="caption-text">Notification Group Message, sent as a Notification</span><a class="headerlink" href="#notification-group-message-sent-as-a-notification" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
@@ -1312,7 +1312,7 @@ The payload is a simple JSON object with a &#8220;siteCode&#8221; key and the &#
 </div>
 </div>
 <p>To remove an existing subscription (delete and unsubscribe all end users) send the following:</p>
-<div class="literal-block-wrapper container" id="delete-subscription-list-sent-as-a-notification">
+<div class="literal-block-wrapper docutils container" id="delete-subscription-list-sent-as-a-notification">
 <div class="code-block-caption"><span class="caption-text">Delete subscription list, sent as a Notification</span><a class="headerlink" href="#delete-subscription-list-sent-as-a-notification" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;siteCode&quot;</span><span class="o">:</span> <span class="s2">&quot;your_site_code&quot;</span><span class="p">,</span>
@@ -1334,7 +1334,7 @@ you may wish to use the <a class="reference internal" href="#interactive-message
 You provide your credentials and the internal-identity of the end user you wish to invite.
 We reply with a secure token.</p>
 <p>HTTPS Post to &#8220;<a class="reference external" href="https://chat.evature.com/generate_secure_invitation">https://chat.evature.com/generate_secure_invitation</a>&#8221; with this JSON payload:</p>
-<div class="literal-block-wrapper container" id="example-json-secure-invitation-request">
+<div class="literal-block-wrapper docutils container" id="example-json-secure-invitation-request">
 <div class="code-block-caption"><span class="caption-text">Example JSON Secure Invitation Request</span><a class="headerlink" href="#example-json-secure-invitation-request" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;site_code&quot;</span><span class="o">:</span> <span class="s2">&quot;my_site_code&quot;</span><span class="p">,</span>
@@ -1352,7 +1352,7 @@ We reply with a secure token.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">You can only request one of <code class="docutils literal"><span class="pre">facebook_page_id</span></code> and <code class="docutils literal"><span class="pre">telegram_channel_id</span></code> at a time</p>
 </div>
-<div class="literal-block-wrapper container" id="example-json-response-for-telegram">
+<div class="literal-block-wrapper docutils container" id="example-json-response-for-telegram">
 <div class="code-block-caption"><span class="caption-text">Example JSON Response for Telegram</span><a class="headerlink" href="#example-json-response-for-telegram" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;referral&quot;</span><span class="o">:</span> <span class="s2">&quot;some_random_string&quot;</span><span class="p">,</span>
@@ -1361,7 +1361,7 @@ We reply with a secure token.</p>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper container" id="example-json-response-for-facebook-messenger">
+<div class="literal-block-wrapper docutils container" id="example-json-response-for-facebook-messenger">
 <div class="code-block-caption"><span class="caption-text">Example JSON Response for Facebook Messenger</span><a class="headerlink" href="#example-json-response-for-facebook-messenger" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;referral&quot;</span><span class="o">:</span> <span class="s2">&quot;some_random_string&quot;</span><span class="p">,</span>
@@ -1382,7 +1382,7 @@ We reply with a secure token.</p>
 &#8220;You have now successfully authenticated!&#8221;</p>
 <p>Every subsequent webhook call in the interaction with this specific end user will have the private internal ID
 of the person in the payload:</p>
-<div class="literal-block-wrapper container" id="simplified-payload-part-after-a-successful-secure-invitation">
+<div class="literal-block-wrapper docutils container" id="simplified-payload-part-after-a-successful-secure-invitation">
 <div class="code-block-caption"><span class="caption-text">Simplified Payload-Part After A Successful Secure Invitation</span><a class="headerlink" href="#simplified-payload-part-after-a-successful-secure-invitation" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -1428,7 +1428,7 @@ signed out from phone client</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, 2016 Evature.
+        &copy; Copyright 2015, 2016, 2017 Evature.
 
     </p>
   </div> 
@@ -1449,7 +1449,7 @@ signed out from phone client</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

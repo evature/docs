@@ -4,11 +4,11 @@ API - The Request
 
 All text requests are handled by a Web API server, available at `http://freeapi.evature.com/vX.Y`
 
-Please register here to get started for free: http://www.evature.com/registration/form 
+Please register here to get started for free: http://w.evature.com/registration/form 
 
 Here is an example of a text request:
 
-`http://freeapi.evature.com/v1.0?site_code=<your site_code>&api_key=<your api_key>&input_text=chicago+monday`                                 
+`http://freeapi.evature.com/v1.1?site_code=<your site_code>&api_key=<your api_key>&input_text=chicago+monday`                                 
 
 The text request is sent as an HTTP GET method with the following parameters:
 
