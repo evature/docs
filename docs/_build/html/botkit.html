@@ -1240,7 +1240,7 @@ return the following interactive message from any applicative webhook:</p>
 <p>&#8220;questionnaireAnsweredHook&#8221; is an enumeration of the webhook to call when the questions have all been answered.
 &#8220;payload&#8221; is an object that will be added to the payload of the &#8220;questionnaireAnsweredHook&#8221;.</p>
 <p>&#8220;questionnaireAbortedHook&#8221; has the same structure of a &#8220;questionnaireAnsweredHook&#8221;.
-A &#8220;questionnaireAbortedHook&#8221; will be called if the validation of an open &#8220;QuestionMessage&#8221; fails three times.
+A &#8220;questionnaireAbortedHook&#8221; will be called if the validation of an &#8220;OpenQuestion&#8221; fails two times.
 This key is optional.</p>
 <p>Send 1 or more questions, of any of the supported types in the list of &#8220;questions&#8221;.
 In this example there are 3 questions.

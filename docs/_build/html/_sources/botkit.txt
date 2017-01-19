@@ -1195,7 +1195,7 @@ The "_type" of the message is always: "QuestionnaireEvent"
 "payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
 
 "questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook". 
-A "questionnaireAbortedHook" will be called if the validation of an open "QuestionMessage" fails three times. 
+A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times. 
 This key is optional.
 
 Send 1 or more questions, of any of the supported types in the list of "questions". 
