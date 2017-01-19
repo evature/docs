@@ -94,8 +94,6 @@ Telegram integration
 
    Choose Type = Telegram.
 
-   Select Full AI.
-
    Type in your Telegram HTTP API token.
 
 
@@ -126,8 +124,6 @@ Line integration
    Head back to https://chat.evature.com/botkit and (after logging in if needed), click on the **Add Chat Integration** button.
 
    Choose Type = "Line - Messaging API".
-
-   Select Full AI.
 
    Fill in your Channel Secret and access token.
 
@@ -161,8 +157,6 @@ Facebook Messenger integration
    Head back to https://chat.evature.com/botkit and (after logging in if needed), click on the **Add Chat Integration** button.
 
    Choose Type = Facebook.
-
-   Select Full AI.
 
    Fill in the Page Access Token generated in the previous step.
 
@@ -231,8 +225,6 @@ Kik integration
 
    Choose Type = Kik.
 
-   Select Full AI.
-
    Fill in the username and API Key generated in the previous step.
 
    Click Save.
@@ -268,8 +260,6 @@ Skype integration
    Head back to https://chat.evature.com/botkit and (after logging in if needed), click on the **Add Chat Integration** button.
 
    Choose Type = Skype.
-
-   Select Full AI.
 
    Type in your Skype App ID and App Secret (the password).
 
