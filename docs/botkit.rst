@@ -1366,25 +1366,3 @@ of the person in the payload:
 
 So when this user says "Show me my boarding pass", we notify you and you know what data to return. 
 
-
---------------
-
-
-
-
-Click - add to Skype and then add-to-contacts
-Did not work.
-
-Countries problem... I went here:
-https://secure.skype.com/portal/profile
-Edit Profile
-United States
-I signed out and signed in on the web client
-
-I changed my billing information to the US.
-did not work
-
-https://go.skype.com/chrome.extension/
-
-## IGNORE: https://login.skype.com/login/microsoft?client_id=578134&redirect_uri=https%3A%2F%2Fweb.skype.com%2F%3Fintcmp%3Daccountweb-_-uktrybeta
-signed out from phone client
