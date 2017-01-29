@@ -286,8 +286,8 @@ Skype integration
    Now try chatting with your new bot in Skype! Go ahead - try typing "hi" and "Who are you?"
 
 
-Adding Webhooks
-===============
+Applicative Webhooks
+====================
 
 Here are the list of available applicative webhooks. The list is constantly being updated, based on the input data.
 If you would like to add functionality please contact us directly at info@evature.com
@@ -674,6 +674,390 @@ To remove/add/modify the contents of the Session Storage simply return the updat
 To examine the session simply check if the webhook payload has a ``session`` key and if so examine its content.
 
 
+Interactive Messages - General
+------------------------------
+There are several types of interactive messages that can be returned from the applicative webhooks.
+These messages are instructions to the BotKit to interact with the end users.
+The interactive message must be the last in the list of returned messages.
+There can only be a single interactive message in the list of returned messages.
+
+These are the types of interactive messages:
+
+* A Login request
+
+  The end user needs to log into your back-end before continuing the chat.
+* A Question
+
+  Eva will ask the end user a question. Questions can be open, Yes / No and Multiple Choice.
+* Validate Email
+* Validate Phone Number
+* Transfer the chat to a Human Agent
+* Subscription management of Group Notifications
+
+
+Interactive Message - Logging In End Users - OAuth
+--------------------------------------------------
+
+When a user starts a conversation with your business, you may want to identify her as a customer who already has
+an account with your business. To help with this, we have created a platform-agnostic secured protocol to link and unlink
+the messaging end-user identity with your business user identity.
+
+OAuth-style LogIn allows you to invite users to log-in using your existing authentication flow thus to provide a more secure,
+personalized and relevant experience to users.
+
+To request a Log In return a special message of type `LoginOAuthEvent` from any applicative webhook.
+As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.
+
+Here is an example of such a reply:
+
+.. code-block:: javascript
+    :caption: OAuth LogIn Reply Example
+
+    {
+      "botkitVersion": "0.4.0", 
+      "messages": [
+        {
+          "_type": "LoginOAuthEvent", 
+          "loginSuccessHook": {
+            "webhook": "flight_boarding_pass"
+          }, 
+          "text": "Please Login in first", 
+          "webLoginUrl": "https://chat.evature.com/demo_login"
+        }
+      ]
+    }
+
+
+:_type: Must be "LoginOAuthEvent"
+:loginSuccessHook: a JSON object with either `webhook` - an enumeration of an existing webhook, or `url`
+:text: any text message - mandatory.
+:webLoginUrl: a URL to the web login page.
+
+The end user will be presented with a log in request. Once she clicks on it she will be redirected outside the messaging platform
+and into the a web browser window with the business specific log in process.  
+
+The URL `webLoginUrl` will be extended with a query parameter called `redirect_uri`.
+If the log in is successful, redirect the browser to the `redirect_uri` specified in your callback to complete the flow,
+and append a new `authorization_code` query parameter. Eva will add the contents of `authorization_code` to the subsequent
+applicative webhook calls as a new key called ``loginData``.
+
+Interactive Message - Transfer chat to a Human Agent
+----------------------------------------------------
+
+When this message is returned from an applicative webhook, Eva will attempt to transfer the chat to a human agent.
+This assumes that an Agency of Human Agents has been set up in advance. The message looks like this:
+
+.. code-block:: javascript
+    :caption: Transfer Chat to Human Agent Reply Example
+
+    {
+      "botkitVersion": "0.4.0", 
+      "messages": [
+        {
+          "_type": "HandoffToHumanEvent",
+          "noAgentsOnlineText": "text to display when no agents are online (if not using noAgentsOnlineHook)",
+          "agentsOnlineText": "Text to display"
+        }
+      ]
+    }
+
+:noAgentsOnlineText: an optional text to be displayed
+:agentsOnlineText: an optional text to be displayed
+
+To request a Human Agent Transfer return a special message of type `HandoffToHumanEvent` from any applicative webhook.
+As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.
+
+If there are no relevant agents online the end user sees a default "Sorry, no agents are online" message.
+
+If there are agents online, Eva shows the end user a choice of available chat topics. 
+Chat topics are configured in the EvaChat Admin page. Only chat topics which have matching agents online are shown.
+When the user makes a Chat Topic choice the chat is transferred and the user sees "Please wait while an agent joins"
+followed (eventually) by "Agent [name] has joined".
+
+The application can configure what happens when there are no agents online by returning the following optional parameter key:
+"noAgentsOnlineHook". The content of this key is either a wehbook enumeration or a url.
+This follow-up webhook is activated instead of showing the default "Sorry, no agents are online"
+allowing that webhook to return a custom reply (e.g. present a phone number, and/or working hours).
+
+.. code-block:: javascript
+    :caption: Specify no agents behavior with Webhook Reply Example
+
+    {
+      "botkitVersion": "0.4.0", 
+      "_type": "HandoffToHumanEvent",
+      "noAgentsOnlineHook": {
+        "webhook": "contact_support",      
+        "payload":  {"whatever_payload_here": true}
+      }
+    }
+
+:payload: an optional payload that will be delivered to the webhook
+
+or alternatively:
+
+.. code-block:: javascript
+    :caption: Specify no agents behavior with URL Reply Example
+
+    {
+      "botkitVersion": "0.4.0", 
+      "_type": "HandoffToHumanEvent", 
+      "noAgentsOnlineHook": {
+        "url": "https://my-server.com/no_agents_online/",
+        "payload":  {"whatever_payload_here": true}
+      }
+    }
+
+The application may wish to skip the choosing of Chat Topic by returning the "chooseTopic" optional key parameter. 
+
+:chooseTopic: An optional string that MUST match one of the pre-configured chat-topics
+
+.. code-block:: javascript
+    :caption: Specify Chat Topic Reply Example
+
+    {
+      "botkitVersion": "0.4.0", 
+      "_type": "HandoffToHumanEvent", 
+      "chooseTopic":  "Existing Booking"
+    }
+
+When the ``chooseTopic`` parameter is specified the chat topic is chosen without presenting the choices to the user.
+The end user immediately sees either the "Please wait while an agent joins" or the "Sorry, no agents are online" messages.
+This functionality is useful in cases when the handoff-to-human is activated from a webhook which already narrowed down
+the chat topic, for example the `change_booking` webhook may hand-off to a human with a chat topic of "Existing Booking".
+
+
+Interactive Message - Subscribe to List
+---------------------------------------
+
+Eva supports subscription list management for multicast notifications.
+To subscribe end users to a new or existing subscriptions list
+return the following interactive message from any applicative webhook:
+
+.. code-block:: javascript
+    :caption: Subscribe to List Reply Example
+
+    {
+      "botkitVersion": "0.4.0",
+      "messages": [
+        {
+          "_type": "SubscribeEvent",
+          "text": "Would you like to receive updates for this flight?",
+          "buttonText": "Subscribe",
+          "subscriptionId": "A unique name for this subscription"
+        }
+      ]
+    }
+
+As this is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.
+
+
+Interactive Message - questionnaires
+------------------------------------
+
+questionnaires are the ChatBot equivalent of forms,
+where user interaction is better served with simple UI elements such as buttons.
+A questionnaire is a list of questions of various types that Eva will ask the end user.
+As a questionnaire is an interactive message it can only be the last in the list of returned messages
+and there can only be a single interactive message in the list.
+
+To request asking the end user questions,
+return the following interactive message from any applicative webhook:
+
+.. code-block:: javascript
+    :caption: Example of questionnaire
+
+    {
+      "botkitVersion":"0.4.0",
+      "messages":[
+        {
+          "_type":"QuestionnaireEvent",
+          "questionnaireAnsweredHook":{
+            "webhook":"roadside_assistance",
+            "payload":{
+              "more_info_to_attach_to_answers":123
+            }
+          },
+          "questionnaireAbortedHook":{
+            "webhook":"roadside_assistance",
+            "payload":{
+              "validation error?":321
+            }
+          },
+          "questions":[
+            {
+              "_type":"EmailQuestion",
+              "name":"email",
+              "text":"I need to identify you, what is your email?"
+            },
+            {
+              "_type":"MultiChoiceQuestion",
+              "text":"What happened?",
+              "name":"what_happened",
+              "choices":[
+                "Accident",
+                "Mechanical problem",
+                "Other"
+              ]
+            },
+            {
+              "_type":"OpenQuestion",
+              "name":"details",
+              "text":"I need a string that starts with 'a' and is 3 or more letters",
+              "validationRegex":"a.{2}"
+            }
+          ]
+        }
+      ]
+    }
+
+The "_type" of the message is always: "QuestionnaireEvent"
+
+"questionnaireAnsweredHook" is an enumeration of the webhook to call when the questions have all been answered.
+"payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
+
+"questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook". 
+A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times. 
+This key is optional.
+
+Send 1 or more questions, of any of the supported types in the list of "questions". 
+In this example there are 3 questions. 
+Each question has a "name" which will be the key of the result in the payload to be delivered to the "questionnaireAnsweredHook".
+
+The 1st question in the example is an EmailQuestion.
+The open reply will be validated using a built-in regular expression for email addresses.
+
+
+.. note::
+
+   Eva will then send out an email to the designated address to make sure the submitted email is valid and owned by the end user!
+
+The 2nd question in the example is a multiple choice question, typed "MultiChoiceQuestion" with 3 choices.
+
+The 3rd question in the example is an open question for which you may request a validation regular expression.
+
+
+Interactive Message - Quick Replies
+-----------------------------------
+
+Quick replies are an interactive message requesting input from the end user
+(hence, it must be the last message in the list of messages).
+It is presented to the user as buttons or a special keyboard, depending on the messaging platform.
+
+.. figure:: images/Screenshot1.png
+    :align: center
+    :alt: Simple Quick Replies
+
+Here is the simplest Quick Reply message:
+
+.. code-block:: javascript
+    :caption: Simple Quick Replies Example
+
+    {
+      "botkitVersion": "0.4.0", // Without this key the content is considered a Raw message and is passed as-is
+      "messages": [
+        {
+          "_type": "QuickRepliesEvent",
+          "message": "How much is 2+3?",
+          "choices": ["4", "7"]
+        }
+      ]
+    }
+
+When the button is pressed, the text that is displayed is sent off to Eva for Natural Language Understanding
+and continuing the dialog, while the buttons are removed from the display.
+Button texts have different length limitations on each of the platforms, for example a 20 character limit on Facebook Messenger.  
+
+The string list in the ``choices`` key is a simplification.
+Here is a more generic, slightly more verbose approach which enables displaying a different text on the button
+than the text that ends up being sent to Eva (the string value of the ``inputText`` key).
+
+.. code-block:: javascript
+    :caption: Simple Quick Replies Example #2
+
+    {
+        "botkitVersion": "0.4.0",
+        "messages": [
+            {
+                "_type": "QuickRepliesEvent",
+                "choices": [
+                    {
+                        "action": {
+                            "_type": "InputTextAction",
+                            "inputText": "This is cool"
+                        },
+                        "text": "This is cool"
+                    },
+                    {
+                        "action": {
+                            "_type": "InputTextAction",
+                            "inputText": "Tell me a joke"
+                        },
+                        "text": "A surprise"
+                    }
+                ],
+                "message": "how awesome am I?"
+            }
+        ]
+    }
+
+This functionality is achieved by an ``Action`` of type ``InputTextAction``.
+Here are a few more actions you can provided as choices for Quick Reply messages.
+
+.. code-block:: javascript
+    :caption: Simple Quick Replies Example #3
+
+    {
+        "botkitVersion": "0.4.0",
+        "messages": [
+            {
+                "_type": "QuickRepliesEvent",
+                "choices": [
+                    {
+                        "action": {
+                            "_type": "HandoffToHumanChooseTopicAction",
+                            "noAgentsOnlineText": "Sorrrrry! no agents online! (optional)",
+                            "topic": "Other",
+                            "waitForAgentText": "Let me check if someone is available (optional)"
+                        },
+                        "text": "HUMAN - NOW!"
+                    },
+                    {
+                        "action": {
+                            "_type": "OutputMessagesAction",
+                            "messages": [
+                                {
+                                    "_type": "TextMessage",
+                                    "text": "I don't really DO anything, but here is a fish"
+                                },
+                                {
+                                    "_type": "ImageMessage",
+                                    "imageUrl": "http://pngimg.com/upload/fish_PNG10538.png"
+                                }
+                            ]
+                        },
+                        "text": "Just 'print' stuff"
+                    }
+                ],
+                "message": "What would you like me to do?"
+            }
+        ]
+    }
+
+A ``HandoffToHumanChooseTopicAction`` will try to handoff the conversation to a human representative, if available.
+You can customize the texts and choose the topic of the conversation.
+
+An ``OutputMessagesAction`` is simply a list of messages, which will be printed to the chat.
+
+
+
+
+Specific Webhooks
+=================
+
+
 Search for Flights
 ------------------
 
@@ -940,269 +1324,6 @@ but you can also use the predefined template for Flight Status described at
 
 
 
-Interactive Messages - General
-------------------------------
-There are several types of interactive messages that can be returned from the applicative webhooks.
-These messages are instructions to the BotKit to interact with the end users.
-The interactive message must be the last in the list of returned messages.
-There can only be a single interactive message in the list of returned messages.
-
-These are the types of interactive messages:
-
-* A Login request
-
-  The end user needs to log into your back-end before continuing the chat.
-* A Question
-
-  Eva will ask the end user a question. Questions can be open, Yes / No and Multiple Choice.
-* Validate Email
-* Validate Phone Number
-* Transfer the chat to a Human Agent
-* Subscription management of Group Notifications
-
-
-Interactive Message - Logging In End Users - OAuth
---------------------------------------------------
-
-When a user starts a conversation with your business, you may want to identify her as a customer who already has
-an account with your business. To help with this, we have created a platform-agnostic secured protocol to link and unlink
-the messaging end-user identity with your business user identity.
-
-OAuth-style LogIn allows you to invite users to log-in using your existing authentication flow thus to provide a more secure,
-personalized and relevant experience to users.
-
-To request a Log In return a special message of type `LoginOAuthEvent` from any applicative webhook.
-As this is an interactive message it can only be the last in the list of returned messages
-and there can only be a single interactive message in the list.
-
-Here is an example of such a reply:
-
-.. code-block:: javascript
-    :caption: OAuth LogIn Reply Example
-
-    {
-      "botkitVersion": "0.4.0", 
-      "messages": [
-        {
-          "_type": "LoginOAuthEvent", 
-          "loginSuccessHook": {
-            "webhook": "flight_boarding_pass"
-          }, 
-          "text": "Please Login in first", 
-          "webLoginUrl": "https://chat.evature.com/demo_login"
-        }
-      ]
-    }
-
-
-:_type: Must be "LoginOAuthEvent"
-:loginSuccessHook: a JSON object with either `webhook` - an enumeration of an existing webhook, or `url`
-:text: any text message - mandatory.
-:webLoginUrl: a URL to the web login page.
-
-The end user will be presented with a log in request. Once she clicks on it she will be redirected outside the messaging platform
-and into the a web browser window with the business specific log in process.  
-
-The URL `webLoginUrl` will be extended with a query parameter called `redirect_uri`.
-If the log in is successful, redirect the browser to the `redirect_uri` specified in your callback to complete the flow,
-and append a new `authorization_code` query parameter. Eva will add the contents of `authorization_code` to the subsequent
-applicative webhook calls as a new key called ``loginData``.
-
-Interactive Message - Transfer chat to a Human Agent
-----------------------------------------------------
-
-When this message is returned from an applicative webhook, Eva will attempt to transfer the chat to a human agent.
-This assumes that an Agency of Human Agents has been set up in advance. The message looks like this:
-
-.. code-block:: javascript
-    :caption: Transfer Chat to Human Agent Reply Example
-
-    {
-      "botkitVersion": "0.4.0", 
-      "messages": [
-        {
-          "_type": "HandoffToHumanEvent",
-          "noAgentsOnlineText": "text to display when no agents are online (if not using noAgentsOnlineHook)",
-          "agentsOnlineText": "Text to display"
-        }
-      ]
-    }
-
-:noAgentsOnlineText: an optional text to be displayed
-:agentsOnlineText: an optional text to be displayed
-
-To request a Human Agent Transfer return a special message of type `HandoffToHumanEvent` from any applicative webhook.
-As this is an interactive message it can only be the last in the list of returned messages
-and there can only be a single interactive message in the list.
-
-If there are no relevant agents online the end user sees a default "Sorry, no agents are online" message.
-
-If there are agents online, Eva shows the end user a choice of available chat topics. 
-Chat topics are configured in the EvaChat Admin page. Only chat topics which have matching agents online are shown.
-When the user makes a Chat Topic choice the chat is transferred and the user sees "Please wait while an agent joins"
-followed (eventually) by "Agent [name] has joined".
-
-The application can configure what happens when there are no agents online by returning the following optional parameter key:
-"noAgentsOnlineHook". The content of this key is either a wehbook enumeration or a url.
-This follow-up webhook is activated instead of showing the default "Sorry, no agents are online"
-allowing that webhook to return a custom reply (e.g. present a phone number, and/or working hours).
-
-.. code-block:: javascript
-    :caption: Specify no agents behavior with Webhook Reply Example
-
-    {
-      "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent",
-      "noAgentsOnlineHook": {
-        "webhook": "contact_support",      
-        "payload":  {"whatever_payload_here": true}
-      }
-    }
-
-:payload: an optional payload that will be delivered to the webhook
-
-or alternatively:
-
-.. code-block:: javascript
-    :caption: Specify no agents behavior with URL Reply Example
-
-    {
-      "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent", 
-      "noAgentsOnlineHook": {
-        "url": "https://my-server.com/no_agents_online/",
-        "payload":  {"whatever_payload_here": true}
-      }
-    }
-
-The application may wish to skip the choosing of Chat Topic by returning the "chooseTopic" optional key parameter. 
-
-:chooseTopic: An optional string that MUST match one of the pre-configured chat-topics
-
-.. code-block:: javascript
-    :caption: Specify Chat Topic Reply Example
-
-    {
-      "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent", 
-      "chooseTopic":  "Existing Booking"
-    }
-
-When the ``chooseTopic`` parameter is specified the chat topic is chosen without presenting the choices to the user.
-The end user immediately sees either the "Please wait while an agent joins" or the "Sorry, no agents are online" messages.
-This functionality is useful in cases when the handoff-to-human is activated from a webhook which already narrowed down
-the chat topic, for example the `change_booking` webhook may hand-off to a human with a chat topic of "Existing Booking".
-
-
-Interactive Message - Subscribe to List
----------------------------------------
-
-Eva supports subscription list management for multicast notifications.
-To subscribe end users to a new or existing subscriptions list
-return the following interactive message from any applicative webhook:
-
-.. code-block:: javascript
-    :caption: Subscribe to List Reply Example
-
-    {
-      "botkitVersion": "0.4.0",
-      "messages": [
-        {
-          "_type": "SubscribeEvent",
-          "text": "Would you like to receive updates for this flight?",
-          "buttonText": "Subscribe",
-          "subscriptionId": "A unique name for this subscription"
-        }
-      ]
-    }
-
-As this is an interactive message it can only be the last in the list of returned messages
-and there can only be a single interactive message in the list.
-
-
-Interactive Message - questionnaires
-------------------------------------
-
-questionnaires are the ChatBot equivalent of forms,
-where user interaction is better served with simple UI elements such as buttons.
-A questionnaire is a list of questions of various types that Eva will ask the end user.
-As a questionnaire is an interactive message it can only be the last in the list of returned messages
-and there can only be a single interactive message in the list.
-
-To request asking the end user questions,
-return the following interactive message from any applicative webhook:
-
-.. code-block:: javascript
-    :caption: Example of questionnaire
-
-    {
-      "botkitVersion":"0.4.0",
-      "messages":[
-        {
-          "_type":"QuestionnaireEvent",
-          "questionnaireAnsweredHook":{
-            "webhook":"roadside_assistance",
-            "payload":{
-              "more_info_to_attach_to_answers":123
-            }
-          },
-          "questionnaireAbortedHook":{
-            "webhook":"roadside_assistance",
-            "payload":{
-              "validation error?":321
-            }
-          },
-          "questions":[
-            {
-              "_type":"EmailQuestion",
-              "name":"email",
-              "text":"I need to identify you, what is your email?"
-            },
-            {
-              "_type":"MultiChoiceQuestion",
-              "text":"What happened?",
-              "name":"what_happened",
-              "choices":[
-                "Accident",
-                "Mechanical problem",
-                "Other"
-              ]
-            },
-            {
-              "_type":"OpenQuestion",
-              "name":"details",
-              "text":"I need a string that starts with 'a' and is 3 or more letters",
-              "validationRegex":"a.{2}"
-            }
-          ]
-        }
-      ]
-    }
-
-The "_type" of the message is always: "QuestionnaireEvent"
-
-"questionnaireAnsweredHook" is an enumeration of the webhook to call when the questions have all been answered.
-"payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
-
-"questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook". 
-A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times. 
-This key is optional.
-
-Send 1 or more questions, of any of the supported types in the list of "questions". 
-In this example there are 3 questions. 
-Each question has a "name" which will be the key of the result in the payload to be delivered to the "questionnaireAnsweredHook".
-
-The 1st question in the example is an EmailQuestion.
-The open reply will be validated using a built-in regular expression for email addresses.
-
-
-.. note::
-
-   Eva will then send out an email to the designated address to make sure the submitted email is valid and owned by the end user!
-
-The 2nd question in the example is a multiple choice question, typed "MultiChoiceQuestion" with 3 choices.
-
-The 3rd question in the example is an open question for which you may request a validation regular expression.
 
 
 
@@ -1366,3 +1487,84 @@ of the person in the payload:
 
 So when this user says "Show me my boarding pass", we notify you and you know what data to return. 
 
+
+Confidence
+==========
+
+Eva based bots automatically measure their confidence in their ability to successfully comprehend end users.
+Each transaction in a dialog is rated on a scale of 0 to 1 and BotKit allows your bots to take action
+if and when the confidence drops below a user-configurable threshold.
+Confidence may drop as a result of many variables, such as very bad spelling mistakes,
+repeated unanswered questions, "strange" locations or times or misunderstood parts of the input.
+An automatic Bot action can be:
+
+
+   * Please Rephrase: "I'm sorry but I'm not sure I understood you correctly. Would you please rephrase your request?"
+   * Restart Session: "Can we please start over?"
+   * Transfer to Human: "Would you like me to hand off the conversation to a service professional?"
+   * Any combination of the above, including actually **ASKING** the end user which of the above she prefers.
+
+.. figure:: images/Screenshot6.png
+    :align: center
+    :alt: Low Confidence in Action
+
+Confidence also allows service professionals using
+`Eva Chat <http://www.evature.com/eva-chat>`_
+to sort the ongoing Bot conversations by confidence,
+listen in on them and even take them over, allowing better usage of their time and attention.
+
+.. figure:: images/Screenshot8.png
+    :align: center
+    :alt: Low Confidence in Eva Chat
+
+Setup
+-----
+Setup of configurable Low Confidence behavior consists of two steps:
+
+#. Set your desired Low Confidence threshold, on a scale of 0 to 1.
+#. Configure the desired behavior for your Bots.
+
+.. figure:: images/Screenshot2.png
+    :align: center
+    :alt: Low Confidence threshold configuration
+
+    In your `BotKit admin page <https://chat.evature.com/botkit>`_, select Eva Settings.
+
+.. figure:: images/Screenshot3.png
+    :align: center
+    :alt: Low Confidence threshold configuration
+
+    You can set the low confidence threshold for your bots anywhere between 0 and 1.
+
+Customize the webhook behavior just like any other webhook, using simple text replies,
+Customizable Static Replies, Programmable Replies or use the pre-programmed (no coding required)
+Customizable Low Confidence Handler, which allows you to configure the results using
+a simple JSON structure in our web-based JSON editor.
+
+.. figure:: images/Screenshot4.png
+    :align: center
+    :alt: Low Confidence Webhook Configuration 
+
+    Customize as with any webhook OR use our pre-configured handler
+
+This is an example of the JSON editor for the contents or the Customizable Low Confidence Handler.
+The code returns messages (of any supported message type, such as text or an image)
+and asks the end user how she would like to proceed. The "Quick Replies" question displays up to 3 configurable choices -
+Restart the session, Handoff the conversation to a human representative or continue chatting with the bot.
+
+.. figure:: images/Screenshot5.png
+    :align: center
+    :alt: JSON Low Confidence Webhook Configuration 
+
+How it works
+------------
+
+Confidence is a supervised machine learning algorithm that runs in parallel to the entire NLU and Business Logic stacks.
+The algorithm learns based on the input data to assess the probability that Eva is on track with the dialog
+and that the conversation will successfully converge.
+
+.. figure:: images/Screenshot7.png
+    :align: center
+    :alt: Confidence at the Raw NLU API output 
+
+    Confidence is also available in the `Raw NLU API <http://docs.evature.com/api.html>`_.
