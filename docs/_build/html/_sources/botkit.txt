@@ -1051,7 +1051,148 @@ You can customize the texts and choose the topic of the conversation.
 
 An ``OutputMessagesAction`` is simply a list of messages, which will be printed to the chat.
 
+Here are a few more examples:
 
+
+.. code-block:: javascript
+    :caption: Simple Quick Replies Example #4
+
+    {
+        "botkitVersion": "0.4.0",
+        "messages": [
+            {
+                "_type": "QuickRepliesEvent",
+                "choices": [
+                    {
+                        "action": {
+                            "_type": "PostbackAction",
+                             "webhookEnum": "flight_arrival_time"
+                        },
+                        "text": "Postback example"
+                    },
+                    {
+                        "action": {
+                            "_type": "SubscribeAgreedAction",
+                            "subscribeId": "test123", 
+                            "onSubscribeText": "You are now subscribed!"
+                        },
+                        "text": "M-cast subscription"
+                    }
+                ],
+                "message": "What would you like me to do?"
+            }
+        ]
+    }
+
+A ``PostbackAction`` will, upon the end user clicking on this button call the requested webhook,
+to allow the application to implement a "flow", or a state machine.
+
+Here is the list of available webhook enumerations:
+
+* search_flight
+* search_car
+* search_hotel
+* search_cruise
+* chat_greeting
+* flight_gate_number
+* flight_departure_time
+* flight_arrival_time
+* flight_boarding_time
+* flight_boarding_pass
+* flight_itinerary
+* logout
+* roadside_assistance
+* reservation_cancel
+* flight_status
+* contact_support
+* airport_navigation
+* change_booking
+* arrivals
+* departures
+* show_hotel
+* show_help
+* reservation_show
+* ask_time
+* ask_weather
+* book_hotel_room
+* capabilities
+* message_logger
+* room_checkin
+* flight_checkin
+* who_are_you
+* who_made_you
+* how_are_you
+* whats_your_name
+* where_are_you
+* unconfigured_webhook
+* misunderstanding
+* baggage
+* collect_user_information
+* select_credit_card
+* low_confidence
+
+A ``PostbackAction`` can accept a generic ``url`` key **instead** of the ``webhookEnum`` key.
+Regardless of which you use, this action also has an optional ``payload`` key,
+which can take either a JSON object **or** JSON encoded in a string. 
+
+
+A ``SubscribeAgreedAction`` adds the user to a subscription list for multicast pushes, as described in
+:ref:`label-for-inverse-webhooks`.
+
+The `subscribeId` field is a mandatory string, while the `onSubscribeText` field is an optional one that will be displayed to the
+end user as a text message upon subscription.
+
+We can even change the language of the chat:
+
+.. code-block:: javascript
+    :caption: Simple Quick Replies Example #4
+
+    {
+      "messages": [
+        {
+          "_type": "QuickRepliesEvent",
+          "message": "What would you like me to do?",
+          "choices": [
+            {
+              "action": {
+                "_type": "SetChatLanguageAction",
+                "afterSetAction": {
+                  "_type": "OutputMessagesAction",
+                  "messages": [
+                    {
+                      "text": "All set for Norwegian!",
+                      "_type": "TextMessage"
+                    }
+                  ]
+                },
+                "language": "no"
+              },
+              "text": "Lang -> Norwegian 🇳🇴"
+            },
+            {
+              "action": {
+                "_type": "SetChatLanguageAction",
+                "afterSetAction": {
+                  "_type": "OutputMessagesAction",
+                  "messages": [
+                    {
+                      "text": "All set for English!",
+                      "_type": "TextMessage"
+                    }
+                  ]
+                },
+                "language": "en"
+              },
+              "text": "Lang -> English 🇺🇸"
+            }
+          ]
+        }
+      ],
+      "botkitVersion": "0.4.0"
+    }
+
+The `SetChatLanguageAction` changes the language of the chat, where `language` is a 2 character ISO 639-1 key.
+`afterSetAction` is an **optional** action following the language setup.
 
 
 Specific Webhooks
@@ -1326,6 +1467,7 @@ but you can also use the predefined template for Flight Status described at
 
 
 
+.. _label-for-inverse-webhooks:
 
 Inverse Webhooks
 ================

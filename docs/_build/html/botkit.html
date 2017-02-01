@@ -1140,6 +1140,142 @@ Here are a few more actions you can provided as choices for Quick Reply messages
 <p>A <code class="docutils literal"><span class="pre">HandoffToHumanChooseTopicAction</span></code> will try to handoff the conversation to a human representative, if available.
 You can customize the texts and choose the topic of the conversation.</p>
 <p>An <code class="docutils literal"><span class="pre">OutputMessagesAction</span></code> is simply a list of messages, which will be printed to the chat.</p>
+<p>Here are a few more examples:</p>
+<div class="literal-block-wrapper docutils container" id="simple-quick-replies-example-4">
+<div class="code-block-caption"><span class="caption-text">Simple Quick Replies Example #4</span><a class="headerlink" href="#simple-quick-replies-example-4" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;QuickRepliesEvent&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;PostbackAction&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;webhookEnum&quot;</span><span class="o">:</span> <span class="s2">&quot;flight_arrival_time&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Postback example&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;SubscribeAgreedAction&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;subscribeId&quot;</span><span class="o">:</span> <span class="s2">&quot;test123&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;onSubscribeText&quot;</span><span class="o">:</span> <span class="s2">&quot;You are now subscribed!&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;M-cast subscription&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;What would you like me to do?&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>A <code class="docutils literal"><span class="pre">PostbackAction</span></code> will, upon the end user clicking on this button call the requested webhook,
+to allow the application to implement a &#8220;flow&#8221;, or a state machine.</p>
+<p>Here is the list of available webhook enumerations:</p>
+<ul class="simple">
+<li>search_flight</li>
+<li>search_car</li>
+<li>search_hotel</li>
+<li>search_cruise</li>
+<li>chat_greeting</li>
+<li>flight_gate_number</li>
+<li>flight_departure_time</li>
+<li>flight_arrival_time</li>
+<li>flight_boarding_time</li>
+<li>flight_boarding_pass</li>
+<li>flight_itinerary</li>
+<li>logout</li>
+<li>roadside_assistance</li>
+<li>reservation_cancel</li>
+<li>flight_status</li>
+<li>contact_support</li>
+<li>airport_navigation</li>
+<li>change_booking</li>
+<li>arrivals</li>
+<li>departures</li>
+<li>show_hotel</li>
+<li>show_help</li>
+<li>reservation_show</li>
+<li>ask_time</li>
+<li>ask_weather</li>
+<li>book_hotel_room</li>
+<li>capabilities</li>
+<li>message_logger</li>
+<li>room_checkin</li>
+<li>flight_checkin</li>
+<li>who_are_you</li>
+<li>who_made_you</li>
+<li>how_are_you</li>
+<li>whats_your_name</li>
+<li>where_are_you</li>
+<li>unconfigured_webhook</li>
+<li>misunderstanding</li>
+<li>baggage</li>
+<li>collect_user_information</li>
+<li>select_credit_card</li>
+<li>low_confidence</li>
+</ul>
+<p>A <code class="docutils literal"><span class="pre">PostbackAction</span></code> can accept a generic <code class="docutils literal"><span class="pre">url</span></code> key <strong>instead</strong> of the <code class="docutils literal"><span class="pre">webhookEnum</span></code> key.
+Regardless of which you use, this action also has an optional <code class="docutils literal"><span class="pre">payload</span></code> key,
+which can take either a JSON object <strong>or</strong> JSON encoded in a string.</p>
+<p>A <code class="docutils literal"><span class="pre">SubscribeAgreedAction</span></code> adds the user to a subscription list for multicast pushes, as described in
+<a class="reference internal" href="#label-for-inverse-webhooks"><span class="std std-ref">Inverse Webhooks</span></a>.</p>
+<p>The <cite>subscribeId</cite> field is a mandatory string, while the <cite>onSubscribeText</cite> field is an optional one that will be displayed to the
+end user as a text message upon subscription.</p>
+<p>We can even change the language of the chat:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Simple Quick Replies Example #4</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;QuickRepliesEvent&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;What would you like me to do?&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;choices&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;SetChatLanguageAction&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;afterSetAction&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;OutputMessagesAction&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;All set for Norwegian!&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;language&quot;</span><span class="o">:</span> <span class="s2">&quot;no&quot;</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Lang -&gt; Norwegian 🇳🇴&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;SetChatLanguageAction&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;afterSetAction&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;OutputMessagesAction&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;messages&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;All set for English!&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;TextMessage&quot;</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;language&quot;</span><span class="o">:</span> <span class="s2">&quot;en&quot;</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;Lang -&gt; English 🇺🇸&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;botkitVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The <cite>SetChatLanguageAction</cite> changes the language of the chat, where <cite>language</cite> is a 2 character ISO 639-1 key.
+<cite>afterSetAction</cite> is an <strong>optional</strong> action following the language setup.</p>
 </div>
 </div>
 <div class="section" id="specific-webhooks">
@@ -1370,7 +1506,7 @@ but you can also use the predefined template for Flight Status described at</p>
 </div>
 </div>
 <div class="section" id="inverse-webhooks">
-<h2>3.5. Inverse Webhooks<a class="headerlink" href="#inverse-webhooks" title="Permalink to this headline">¶</a></h2>
+<span id="label-for-inverse-webhooks"></span><h2>3.5. Inverse Webhooks<a class="headerlink" href="#inverse-webhooks" title="Permalink to this headline">¶</a></h2>
 <p>Eva supports inverse webhooks to allow your application to send asynchronous messages to end users.
 Common use cases are sending applicative notifications to the end users, such as &#8220;Your flight is now boarding at gate D3&#8221;.</p>
 <p>There are 2 types of notifications - unicast and subscription based multicast.
@@ -1541,11 +1677,11 @@ listen in on them and even take them over, allowing better usage of their time a
 <li>Set your desired Low Confidence threshold, on a scale of 0 to 1.</li>
 <li>Configure the desired behavior for your Bots.</li>
 </ol>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id2">
 <img alt="Low Confidence threshold configuration" src="_images/Screenshot2.png" />
 <p class="caption"><span class="caption-text">In your <a class="reference external" href="https://chat.evature.com/botkit">BotKit admin page</a>, select Eva Settings.</span></p>
 </div>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <img alt="Low Confidence threshold configuration" src="_images/Screenshot3.png" />
 <p class="caption"><span class="caption-text">You can set the low confidence threshold for your bots anywhere between 0 and 1.</span></p>
 </div>
@@ -1553,7 +1689,7 @@ listen in on them and even take them over, allowing better usage of their time a
 Customizable Static Replies, Programmable Replies or use the pre-programmed (no coding required)
 Customizable Low Confidence Handler, which allows you to configure the results using
 a simple JSON structure in our web-based JSON editor.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <img alt="Low Confidence Webhook Configuration" src="_images/Screenshot4.png" />
 <p class="caption"><span class="caption-text">Customize as with any webhook OR use our pre-configured handler</span></p>
 </div>
@@ -1570,7 +1706,7 @@ Restart the session, Handoff the conversation to a human representative or conti
 <p>Confidence is a supervised machine learning algorithm that runs in parallel to the entire NLU and Business Logic stacks.
 The algorithm learns based on the input data to assess the probability that Eva is on track with the dialog
 and that the conversation will successfully converge.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <img alt="Confidence at the Raw NLU API output" src="_images/Screenshot7.png" />
 <p class="caption"><span class="caption-text">Confidence is also available in the <a class="reference external" href="http://docs.evature.com/api.html">Raw NLU API</a>.</span></p>
 </div>
