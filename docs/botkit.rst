@@ -108,8 +108,8 @@ Line integration
    .. note::
 
         On September 29 LINE announced the release of Messaging API,
-        which will improve bot development and functionality as well as help better support developers.  
-        
+        which will improve bot development and functionality as well as help better support developers.
+
         **All BOT API Trial Accounts are scheduled to be deleted on November 16**.
 
 
@@ -133,7 +133,7 @@ Line integration
 
 #. **Say hi to Eva on Line!**
 
-   Scan the QR code in Line Business center.  
+   Scan the QR code in Line Business center.
    Now try chatting with your new bot in Line.
    Go ahead - try typing "hi" and "Who are you?"
 
@@ -181,7 +181,7 @@ Facebook Messenger integration
    Verify and Save.
 
    You should see a green checkmark with the text "Completed".
-   
+
    In that same panel, Select your pages to subscribe your webhook to the page events in the "select a page" drop-down and
    click "Subscribe".
 
@@ -242,9 +242,9 @@ Skype integration
 
    You will need to register as a developer here:
    https://www.skype.com/en/developer/
-   
+
    Then head over to "register a bot" at https://dev.botframework.com/bots/new
-   
+
    In the Configuration / Messaging endpoint
    please enter
    "https://chat.evature.com/skype"
@@ -274,15 +274,15 @@ Skype integration
 
    In the https://dev.botframework.com/bots page, in the Channels pane next to Skype,
    press the **Add to Skype** button.
-   
+
    .. note::
 
       Skype Bots might not be available in your country yet.
       You might have to workaround this by changing your billing address, or using a pre-release client,
-      such as this: https://community.skype.com/t5/Linux/Where-to-get-the-latest-Skype-for-Linux-Alpha/td-p/4536964 
+      such as this: https://community.skype.com/t5/Linux/Where-to-get-the-latest-Skype-for-Linux-Alpha/td-p/4536964
 
 #. **Say hi to Eva on Skype!**
-   
+
    Now try chatting with your new bot in Skype! Go ahead - try typing "hi" and "Who are you?"
 
 
@@ -627,23 +627,23 @@ Here is a generic, all inclusive example of a webhook reply that is returned by 
 Log Messages between Eva and User
 ---------------------------------
 
-Allows logging of all communication between Eva to the end user and helpful debug information regarding the integration.  
+Allows logging of all communication between Eva to the end user and helpful debug information regarding the integration.
 
-Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.  
+Eva BotKit logs all activity to this Webhook as simple JSON HTTP POSTs.
 
 .. tip::
 
-   To set up a simple view for this log, head over to https://gomix.com/  
-   
-   * Log in to GitHub.  
-   
-   * Start a new project.  
-   
-   * Click on the project name, `Advanced Options`, `Import from Github` and input 'iftahh/bot_logger'.  
-   
-   * Click on `Show` and you will see a scrolling list of logs from the BotKit.  
-   
-   Enter "Hi" to Eva in any messenger to see some logs.  
+   To set up a simple view for this log, head over to https://gomix.com/
+
+   * Log in to GitHub.
+
+   * Start a new project.
+
+   * Click on the project name, `Advanced Options`, `Import from Github` and input 'iftahh/bot_logger'.
+
+   * Click on `Show` and you will see a scrolling list of logs from the BotKit.
+
+   Enter "Hi" to Eva in any messenger to see some logs.
 
 
 Webhooks health
@@ -715,14 +715,14 @@ Here is an example of such a reply:
     :caption: OAuth LogIn Reply Example
 
     {
-      "botkitVersion": "0.4.0", 
+      "botkitVersion": "0.4.0",
       "messages": [
         {
-          "_type": "LoginOAuthEvent", 
+          "_type": "LoginOAuthEvent",
           "loginSuccessHook": {
             "webhook": "flight_boarding_pass"
-          }, 
-          "text": "Please Login in first", 
+          },
+          "text": "Please Login in first",
           "webLoginUrl": "https://chat.evature.com/demo_login"
         }
       ]
@@ -735,7 +735,7 @@ Here is an example of such a reply:
 :webLoginUrl: a URL to the web login page.
 
 The end user will be presented with a log in request. Once she clicks on it she will be redirected outside the messaging platform
-and into the a web browser window with the business specific log in process.  
+and into the a web browser window with the business specific log in process.
 
 The URL `webLoginUrl` will be extended with a query parameter called `redirect_uri`.
 If the log in is successful, redirect the browser to the `redirect_uri` specified in your callback to complete the flow,
@@ -752,7 +752,7 @@ This assumes that an Agency of Human Agents has been set up in advance. The mess
     :caption: Transfer Chat to Human Agent Reply Example
 
     {
-      "botkitVersion": "0.4.0", 
+      "botkitVersion": "0.4.0",
       "messages": [
         {
           "_type": "HandoffToHumanEvent",
@@ -771,7 +771,7 @@ and there can only be a single interactive message in the list.
 
 If there are no relevant agents online the end user sees a default "Sorry, no agents are online" message.
 
-If there are agents online, Eva shows the end user a choice of available chat topics. 
+If there are agents online, Eva shows the end user a choice of available chat topics.
 Chat topics are configured in the EvaChat Admin page. Only chat topics which have matching agents online are shown.
 When the user makes a Chat Topic choice the chat is transferred and the user sees "Please wait while an agent joins"
 followed (eventually) by "Agent [name] has joined".
@@ -785,10 +785,10 @@ allowing that webhook to return a custom reply (e.g. present a phone number, and
     :caption: Specify no agents behavior with Webhook Reply Example
 
     {
-      "botkitVersion": "0.4.0", 
+      "botkitVersion": "0.4.0",
       "_type": "HandoffToHumanEvent",
       "noAgentsOnlineHook": {
-        "webhook": "contact_support",      
+        "webhook": "contact_support",
         "payload":  {"whatever_payload_here": true}
       }
     }
@@ -801,15 +801,15 @@ or alternatively:
     :caption: Specify no agents behavior with URL Reply Example
 
     {
-      "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent", 
+      "botkitVersion": "0.4.0",
+      "_type": "HandoffToHumanEvent",
       "noAgentsOnlineHook": {
         "url": "https://my-server.com/no_agents_online/",
         "payload":  {"whatever_payload_here": true}
       }
     }
 
-The application may wish to skip the choosing of Chat Topic by returning the "chooseTopic" optional key parameter. 
+The application may wish to skip the choosing of Chat Topic by returning the "chooseTopic" optional key parameter.
 
 :chooseTopic: An optional string that MUST match one of the pre-configured chat-topics
 
@@ -817,8 +817,8 @@ The application may wish to skip the choosing of Chat Topic by returning the "ch
     :caption: Specify Chat Topic Reply Example
 
     {
-      "botkitVersion": "0.4.0", 
-      "_type": "HandoffToHumanEvent", 
+      "botkitVersion": "0.4.0",
+      "_type": "HandoffToHumanEvent",
       "chooseTopic":  "Existing Booking"
     }
 
@@ -854,7 +854,7 @@ As this is an interactive message it can only be the last in the list of returne
 and there can only be a single interactive message in the list.
 
 
-Interactive Message - questionnaires
+Interactive Message - questionnaires:
 ------------------------------------
 
 questionnaires are the ChatBot equivalent of forms,
@@ -918,12 +918,12 @@ The "_type" of the message is always: "QuestionnaireEvent"
 "questionnaireAnsweredHook" is an enumeration of the webhook to call when the questions have all been answered.
 "payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
 
-"questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook". 
-A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times. 
+"questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook".
+A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times.
 This key is optional.
 
-Send 1 or more questions, of any of the supported types in the list of "questions". 
-In this example there are 3 questions. 
+Send 1 or more questions, of any of the supported types in the list of "questions".
+In this example there are 3 questions.
 Each question has a "name" which will be the key of the result in the payload to be delivered to the "questionnaireAnsweredHook".
 
 The 1st question in the example is an EmailQuestion.
@@ -968,7 +968,7 @@ Here is the simplest Quick Reply message:
 
 When the button is pressed, the text that is displayed is sent off to Eva for Natural Language Understanding
 and continuing the dialog, while the buttons are removed from the display.
-Button texts have different length limitations on each of the platforms, for example a 20 character limit on Facebook Messenger.  
+Button texts have different length limitations on each of the platforms, for example a 20 character limit on Facebook Messenger.
 
 The string list in the ``choices`` key is a simplification.
 Here is a more generic, slightly more verbose approach which enables displaying a different text on the button
@@ -1073,7 +1073,7 @@ Here are a few more examples:
                     {
                         "action": {
                             "_type": "SubscribeAgreedAction",
-                            "subscribeId": "test123", 
+                            "subscribeId": "test123",
                             "onSubscribeText": "You are now subscribed!"
                         },
                         "text": "M-cast subscription"
@@ -1133,7 +1133,7 @@ Here is the list of available webhook enumerations:
 
 A ``PostbackAction`` can accept a generic ``url`` key **instead** of the ``webhookEnum`` key.
 Regardless of which you use, this action also has an optional ``payload`` key,
-which can take either a JSON object **or** JSON encoded in a string. 
+which can take either a JSON object **or** JSON encoded in a string.
 
 
 A ``SubscribeAgreedAction`` adds the user to a subscription list for multicast pushes, as described in
@@ -1353,7 +1353,7 @@ requested_by_user
   User requested, eg. typed "Start over"
 
 new_chat_after_idle
-  Eva session timeout, 
+  Eva session timeout,
 
 new_chat_after_terminated_by_agent
   First message after terminating chat by Agent
@@ -1408,7 +1408,7 @@ Display boarding pass
 Display the boarding pass to a specific user.
 
 You can reply with any of the message formats, such as text or images,
-but you can also use the predefined template for displaying a Boarding Pass described at 
+but you can also use the predefined template for displaying a Boarding Pass described at
 
 `Webhook Reply example with DataMessage - for Boarding Pass`_ .
 
@@ -1459,7 +1459,7 @@ Allow the user to request the status of a specific flight::
      }
 
 You can reply with any of the message formats, such as text or images,
-but you can also use the predefined template for Flight Status described at 
+but you can also use the predefined template for Flight Status described at
 
 `Webhook Reply example with DataMessage - for Flight Status`_ .
 
@@ -1555,7 +1555,7 @@ Secure Invitations
 
 Secure Invitations allow a Bot to invite known non-bot users to use the bot while maintaining their identity.
 If you already have a login-protected webpage for all end users,
-you may wish to use the `Interactive Message - Logging In End Users - OAuth`_   
+you may wish to use the `Interactive Message - Logging In End Users - OAuth`_
 
 Secure Invitations (simplified version) consist of 3 steps:
 
@@ -1616,10 +1616,10 @@ The Bot tells the user:
 "You have now successfully authenticated!"
 
 Every subsequent webhook call in the interaction with this specific end user will have the private internal ID
-of the person in the payload: 
+of the person in the payload:
 
 .. code-block:: javascript
-    :caption: Simplified Payload-Part After A Successful Secure Invitation 
+    :caption: Simplified Payload-Part After A Successful Secure Invitation
 
     {
       "user": {
@@ -1627,7 +1627,7 @@ of the person in the payload:
       }
     }
 
-So when this user says "Show me my boarding pass", we notify you and you know what data to return. 
+So when this user says "Show me my boarding pass", we notify you and you know what data to return.
 
 
 Confidence
@@ -1685,7 +1685,7 @@ a simple JSON structure in our web-based JSON editor.
 
 .. figure:: images/Screenshot4.png
     :align: center
-    :alt: Low Confidence Webhook Configuration 
+    :alt: Low Confidence Webhook Configuration
 
     Customize as with any webhook OR use our pre-configured handler
 
@@ -1696,7 +1696,7 @@ Restart the session, Handoff the conversation to a human representative or conti
 
 .. figure:: images/Screenshot5.png
     :align: center
-    :alt: JSON Low Confidence Webhook Configuration 
+    :alt: JSON Low Confidence Webhook Configuration
 
 How it works
 ------------
@@ -1707,6 +1707,6 @@ and that the conversation will successfully converge.
 
 .. figure:: images/Screenshot7.png
     :align: center
-    :alt: Confidence at the Raw NLU API output 
+    :alt: Confidence at the Raw NLU API output
 
     Confidence is also available in the `Raw NLU API <http://docs.evature.com/api.html>`_.
