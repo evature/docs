@@ -854,7 +854,7 @@ As this is an interactive message it can only be the last in the list of returne
 and there can only be a single interactive message in the list.
 
 
-Interactive Message - questionnaires:
+Interactive Message - questionnaires
 ------------------------------------
 
 questionnaires are the ChatBot equivalent of forms,
@@ -906,7 +906,8 @@ return the following interactive message from any applicative webhook:
               "_type":"OpenQuestion",
               "name":"details",
               "text":"I need a string that starts with 'a' and is 3 or more letters",
-              "validationRegex":"a.{2}"
+              "validationRegex":"a.{2}",
+              "validationFailText": "Sorry, must be start with 'a' or more letters."
             }
           ]
         }
@@ -915,11 +916,11 @@ return the following interactive message from any applicative webhook:
 
 The "_type" of the message is always: "QuestionnaireEvent"
 
-"questionnaireAnsweredHook" is an enumeration of the webhook to call when the questions have all been answered.
+"questionnaireAnsweredHook" is an must contain "url" or "webhook" which enumeration of the webhook to call when the questions have all been answered.
 "payload" is an object that will be added to the payload of the "questionnaireAnsweredHook".
 
 "questionnaireAbortedHook" has the same structure of a "questionnaireAnsweredHook".
-A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times.
+A "questionnaireAbortedHook" will be called if the validation of an "OpenQuestion" fails two times, or if the user requests to cancel.
 This key is optional.
 
 Send 1 or more questions, of any of the supported types in the list of "questions".
@@ -935,8 +936,137 @@ The open reply will be validated using a built-in regular expression for email a
    Eva will then send out an email to the designated address to make sure the submitted email is valid and owned by the end user!
 
 The 2nd question in the example is a multiple choice question, typed "MultiChoiceQuestion" with 3 choices.
+You can also optionally add `"allowOther": true` which will tell the Botkit to accept an answer that isn't one of the choices.
 
 The 3rd question in the example is an open question for which you may request a validation regular expression.
+
+
+If, for example you send:
+
+.. code-block:: javascript
+    :caption: Example of questionnaire  (with comments)
+
+    {
+      "messages": [
+        {
+          "_type": "QuestionnaireEvent",
+          "questionnaireAnsweredHook": {
+            "url": "https://seed-gem.gomix.me/questionnaire_answered",
+            "payload": {                  /*  optional */
+              "something_extra": 12345
+            }
+          },
+          "questionnaireAbortedHook": {  /*  optional */
+            "url": "https://seed-gem.gomix.me/questionnaire_aborted",
+            "payload": {                 /* optional */
+              "some_other_thing": 7890
+            }
+          },
+          "questions": [
+            {
+              "_type": "OpenQuestion",
+              "text": "What is your last name?",
+              "name": "last_name",
+              "validationRegex": "\\S{3,}",   /*  optional */
+              "validationFailText": "Name must be 3 or more letters."  /*  optional */
+            },
+            {
+              "_type": "OpenQuestion",
+              "text": "What is your first name?",
+              "name": "first_name"
+            },
+            {
+              "_type": "MultiChoiceQuestion",   /*  present quick-respones of answers (limited by 20 chars per choice) */
+              "name": "favorite_color",
+              "text": "What is your favorite color?",
+              "choices": [
+                "Red",
+                "Blue",
+                "Yellow"
+              ],
+              "allowOther": true    /*  optional - if true it will accept an answer that is not one of the choices */
+                                    /* also you can add validationRegex,  validationFailText */
+            }
+          ]
+        }
+      ],
+      "botkitVersion": "0.4.0"
+    }
+
+
+Botkit will present the questions and finally send to the questionnaireAnsweredHook the following JSON  (comments in blue):
+
+.. code-block:: javascript
+    :caption: questionnaireAnsweredHook input (with comments)
+
+    {
+    /* this is the result of the questionnaire   (key is the question name,  value is the answer by the user) */
+      "first_name": "James",
+      "last_name": "Jones",
+      "favorite_color": "Green",
+      "something_extra": 12345,
+    /* below this is the usual payload of webhook input */
+      "language": "en",
+      "chatKey": "e62e9088-b6a3-4310-9d9a-1371aebae3c8",
+      "providerID": "1749750371937776",
+      "user": {
+        "lastName": "Jones",
+        "firstName": "James"
+      },
+      "messagingProvider": "FACEBOOK"
+    }
+
+In case the user aborts the questionnaire - either by answering an invalid answer multiple times, or in case he requests to cancel  (eg. types something along "start over", "cancel", etc..)
+the questionnaireAbortedHook will be called.
+
+If the user repeatedly answered invalid question, the hook will be called with a JSON similar to -
+
+.. code-block:: javascript
+    :caption: questionnaireAbortedHook input (with comments)
+
+    {
+      "last_name": "M",
+      "lastQuestionIndex": 0,
+      "lastQuestionName": "last_name",
+      "lastAnswer": "M",
+      "some_other_thing": 7890,
+      "abortedSayIt": "Please try again later.",
+      "abortedReason": "Multiple invalid answers",
+    /* below this is the usual payload of webhook input */
+      "language": "en",
+      "chatKey": "e62e9088-b6a3-4310-9d9a-1371aebae3c8",
+      "providerID": "1749750371937776",
+      "user": {
+        "lastName": "Jones",
+        "firstName": "James"
+      },
+      "messagingProvider": "FACEBOOK"
+    }
+
+If the user requested to start over, the hook will be called with a JSON similar to -
+
+.. code-block:: javascript
+    :caption: questionnaireAbortedHook input (with comments)
+
+    {
+      "first_name": "start over",
+      "last_name": "Jones",
+      "some_other_thing": 7890,
+      "abortedSayIt": "Ok",
+      "abortedReason": "Other action requested: chat_greeting",
+      "lastAnswer": "start over",
+      "lastQuestionIndex": 1,
+      "lastQuestionName": "first_name",
+    /* below this is the usual payload of webhook input */
+      "language": "en",
+      "chatKey": "e62e9088-b6a3-4310-9d9a-1371aebae3c8",
+      "providerID": "1749750371937776",
+      "user": {
+        "lastName": "Haimovitch",
+        "firstName": "Iftah"
+      },
+      "messagingProvider": "FACEBOOK"
+    }
 
 
 Interactive Message - Quick Replies

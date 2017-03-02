@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. API - The Request &mdash; Eva 1.1 documentation</title>
+  <title>5. API - The Request &mdash; Eva 1.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
         <link rel="next" title="6. API - The Response" href="response.html"/>
         <link rel="prev" title="4. The HTTP RESTful API" href="api.html"/> 
 
@@ -177,7 +177,7 @@ speech recognition engine. In this case see: <a class="reference internal" href=
 This field, while not mandatory, is very important, as it is the only way Eva can group users across sessions
 which allows for better understanding.
 On Android if you have the READ_PHONE_STATE permissions for your application you can use the deviceId</p>
-<div class="literal-block-wrapper docutils container" id="java-snippet">
+<div class="literal-block-wrapper container" id="java-snippet">
 <div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#java-snippet" title="Permalink to this code">¶</a></div>
 <div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">String</span> <span class="nf">getDeviceId</span><span class="o">()</span> <span class="o">{</span>
   <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">deviceId</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
@@ -199,7 +199,7 @@ On Android if you have the READ_PHONE_STATE permissions for your application you
 <p>or to generate a random string and save it to preferences.</p>
 <p><a class="reference external" href="http://stackoverflow.com/a/17625641">http://stackoverflow.com/a/17625641</a></p>
 <p>Then add it to the URL:</p>
-<div class="literal-block-wrapper docutils container" id="id3">
+<div class="literal-block-wrapper container" id="id3">
 <div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;uid=&quot;</span> <span class="o">+</span><span class="n">getDeviceId</span><span class="o">();</span>
 </pre></div>
@@ -327,7 +327,7 @@ as well as disable text-specific processing such as a spell checker, resulting i
 <h2>5.17. android_ver<a class="headerlink" href="#android-ver" title="Permalink to this headline">¶</a></h2>
 <p>If, for some reason you are integrating Eva into an Android device using the raw API,
 it greatly helps Eva with analytics and debugging to know the Android OS version</p>
-<div class="literal-block-wrapper docutils container" id="id8">
+<div class="literal-block-wrapper container" id="id8">
 <div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;android_ver=&quot;</span> <span class="o">+</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">RELEASE</span><span class="o">),</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
 </pre></div>
@@ -339,7 +339,7 @@ it greatly helps Eva with analytics and debugging to know the Android OS version
 <h2>5.18. device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h2>
 <p>If, for some reason you are integrating Eva into a mobile applications,
 it greatly helps Eva with analytics and debugging to know the specific device</p>
-<div class="literal-block-wrapper docutils container" id="id9">
+<div class="literal-block-wrapper container" id="id9">
 <div class="code-block-caption"><span class="caption-text">Java snippet</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">evatureUrl</span> <span class="o">+=</span> <span class="s">&quot;&amp;device=&quot;</span> <span class="o">+</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Build</span><span class="o">.</span><span class="na">MODEL</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
 </pre></div>
@@ -393,7 +393,7 @@ it greatly helps Eva with analytics and debugging to know the specific device</p
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.1',
+            VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

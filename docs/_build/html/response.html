@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. API - The Response &mdash; Eva 1.1 documentation</title>
+  <title>6. API - The Response &mdash; Eva 1.0 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
+    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
         <link rel="prev" title="5. API - The Request" href="request.html"/> 
 
   
@@ -149,18 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#loyalty">6.9.40. Loyalty</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.flight">6.10. Flight Attributes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#redeye">6.10.1. Redeye</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nonstop">6.10.2. Nonstop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#food">6.10.3. Food</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#seat">6.10.4. Seat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#airline">6.10.5. Airline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#alliance">6.10.6. Alliance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#seat-class">6.10.7. Seat Class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#one-way">6.10.8. One-Way</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#two-way">6.10.9. Two-Way</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#flight-attributes">6.10. Flight Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#last-minute-deals">6.11.1. Last Minute Deals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#low-deposit">6.11.2. Low Deposit</a></li>
@@ -218,7 +207,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id10">6.13.19. Pet Friendly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#yoga">6.13.20. Yoga</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#land-tour">6.13.21. Land Tour</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">6.13.22. One-Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-way">6.13.22. One-Way</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a><ul>
@@ -397,7 +386,7 @@ Instead, use the confidence field in the API reply.</p>
 such as</p>
 </dd>
 </dl>
-<div class="literal-block-wrapper docutils container" id="simplified-eva-api-reply">
+<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;transaction_key&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-60ea-df167fe3-8a1c-22000bda434f&quot;</span>
 </pre></div>
@@ -420,7 +409,7 @@ per the last utterance and accumulating over the entire session.
 Numeric scope is is a float between 0.0 and 1.0,
 while categories are a string enumeration with values &#8216;Low&#8217;, &#8216;Medium&#8217; and &#8216;High&#8217;. For example:</dd>
 </dl>
-<div class="literal-block-wrapper docutils container" id="id1">
+<div class="literal-block-wrapper container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;confidence&quot;</span><span class="o">:</span> <span class="p">{</span>
    <span class="s2">&quot;accumulated&quot;</span><span class="o">:</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span>
@@ -709,10 +698,10 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </ul>
 </dd>
 <dt><strong>QuestionSubCategory</strong> - Additional key describing the sub category of the question.</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><dl class="first docutils">
 <dt>For the Missing Date Category the following sub categories exist:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Pickup Car    - missing date of pickup car.</li>
 <li>Return Car    - missing date of return car.</li>
 <li>Arrival       - missing date of arrival.</li>
@@ -724,7 +713,7 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </li>
 <li><dl class="first docutils">
 <dt>For the Informative Category the following sub categories exist:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Understanding - Eva did not understand the input.</li>
 <li>Chat          - A dialog with the end-user.</li>
 <li>Unsupported   - The requested travel search category is unsupported based on site_code definition and the &#8216;scope&#8217; query parameter.</li>
@@ -735,7 +724,7 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </li>
 <li><dl class="first docutils">
 <dt>For the Missing Duration Category the following sub categories exist:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Stay - missing duration of stay, relevant to accommodation requests.</li>
 </ul>
 </dd>
@@ -1043,11 +1032,12 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 <div class="section" id="rooms">
 <h3>6.9.39. Rooms<a class="headerlink" href="#rooms" title="Permalink to this headline">¶</a></h3>
 <p>The hotel rooms is a complex structure, containing a list of room elements, each with the following attributes:</p>
-<ul class="simple">
-<li>Multiple      -  How many of the same rooms (e.g. 3 airconditioned rooms)</li>
+<ul>
+<li><p class="first">Multiple      -  How many of the same rooms (e.g. 3 airconditioned rooms)</p>
+</li>
 <li><dl class="first docutils">
 <dt>Beds          -  A list of tuples, each tuple has a number of beds (int) and Type of bed, with the following potential values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Twin</li>
 <li>King</li>
 <li>Queen</li>
@@ -1064,7 +1054,7 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </li>
 <li><dl class="first docutils">
 <dt>Room Type     -  The type of the room</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Room</li>
 <li>Family Room</li>
 <li>Suite</li>
@@ -1072,10 +1062,11 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </dd>
 </dl>
 </li>
-<li>Air Con       -  Air conditioning (boolean, if exists)</li>
+<li><p class="first">Air Con       -  Air conditioning (boolean, if exists)</p>
+</li>
 <li><dl class="first docutils">
 <dt>Internet      -  The requested data service in the room, with the following potential values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Internet service</li>
 <li>Free Internet service</li>
 <li>Wi-Fi</li>
@@ -1084,11 +1075,16 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </dd>
 </dl>
 </li>
-<li>Cable         -  Cable TV in the room (boolean, if exists)</li>
-<li>Kitchen       -  A Kitchen in the room (boolean, if exists)</li>
-<li>Mini Bar      -  Mini-bar in the room (boolean, if exists)</li>
-<li>Tub           -  A hot tub in the room (boolean, if exists)</li>
-<li>Smoking       -  Either Smoking (True) or Non Smoking (False) room (boolean, if exists)</li>
+<li><p class="first">Cable         -  Cable TV in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Kitchen       -  A Kitchen in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Mini Bar      -  Mini-bar in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Tub           -  A hot tub in the room (boolean, if exists)</p>
+</li>
+<li><p class="first">Smoking       -  Either Smoking (True) or Non Smoking (False) room (boolean, if exists)</p>
+</li>
 </ul>
 </div>
 <div class="section" id="loyalty">
@@ -1111,92 +1107,8 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 <p>The value is an Array of the above options</p>
 </div>
 </div>
-<div class="section" id="module-core.attributes.flight">
-<span id="flight-attributes"></span><h2>6.10. Flight Attributes<a class="headerlink" href="#module-core.attributes.flight" title="Permalink to this headline">¶</a></h2>
-<p>These are attributes describing the requested flight.</p>
-<div class="section" id="redeye">
-<h3>6.10.1. Redeye<a class="headerlink" href="#redeye" title="Permalink to this headline">¶</a></h3>
-<p>A Red eye flight - Boolean attribute.</p>
-</div>
-<div class="section" id="nonstop">
-<h3>6.10.2. Nonstop<a class="headerlink" href="#nonstop" title="Permalink to this headline">¶</a></h3>
-<p>A Non stop flight -
-Boolean attribute. Nonstop is related to the location from which the flight departs and will appear under that location.</p>
-<p>In API v1.0 Nonstop will also appear in global scope-
-if it relates to all flight departure locations. This is will become obsolete in v1.1</p>
-</div>
-<div class="section" id="food">
-<h3>6.10.3. Food<a class="headerlink" href="#food" title="Permalink to this headline">¶</a></h3>
-<p>Food preferences for the flight
-Potential values are:</p>
-<ul class="simple">
-<li><strong>Religious</strong>:
-&#8216;Kosher&#8217;, &#8216;Glatt Kosher&#8217;, &#8216;Muslim&#8217;, &#8216;Hindu&#8217;,</li>
-<li><strong>Vegetarian</strong>:
-&#8216;Vegetarian&#8217;, &#8216;Vegan&#8217;, &#8216;Indian Vegetarian&#8217;, &#8216;Raw Vegetarian&#8217;, &#8216;Oriental Vegetarian&#8217;, &#8216;Lacto Ovo Vegetarian&#8217;,
-&#8216;Lacto Vegetarian&#8217;, &#8216;Ovo Vegetarian&#8217;, &#8216;Jain Vegetarian&#8217;,</li>
-<li><strong>Medical meals</strong>:
-&#8216;Bland&#8217;, &#8216;Diabetic&#8217;, &#8216;Fruit Platter&#8217;, &#8216;Gluten Free&#8217;, &#8216;Low Sodium&#8217;, &#8216;Low Calorie&#8217;, &#8216;Low Fat&#8217;, &#8216;Low Fibre&#8217;,
-&#8216;Non-Carbohydrate&#8217;, &#8216;Non-Lactose&#8217;, &#8216;Soft Fluid&#8217;, &#8216;Semi Fluid&#8217;, &#8216;Ulcer Diet&#8217;, &#8216;Nut Free&#8217;, &#8216;Low Purine&#8217;,
-&#8216;Low Protein&#8217;, &#8216;High Fibre&#8217;,</li>
-<li><strong>Infant and child</strong>:
-&#8216;Baby&#8217;, &#8216;Post Weaning&#8217;, &#8216;Child&#8217;, # In airline jargon, baby and infant &lt; 2 years. 1 year &lt; Toddler &lt; 3 years.</li>
-<li><strong>Other</strong>:
-&#8216;Seafood&#8217;, &#8216;Japanese&#8217;,</li>
-</ul>
-</div>
-<div class="section" id="seat">
-<h3>6.10.4. Seat<a class="headerlink" href="#seat" title="Permalink to this headline">¶</a></h3>
-<p>The requested seat - values are &#8220;Window&#8221; / &#8220;Aisle&#8221;.</p>
-</div>
-<div class="section" id="airline">
-<h3>6.10.5. Airline<a class="headerlink" href="#airline" title="Permalink to this headline">¶</a></h3>
-<p>Airlines are related to the location from which the flight departs and will appear under that location.</p>
-<p>A list of the Red airlines that are options requested from a given location. Each item in the list is an object with
-these attributes:</p>
-<ul class="simple">
-<li>airline - contains the official airline name</li>
-<li>iata - contains the IATA code of the airline</li>
-<li>flight_number (optional) - contains the flight number of the requested flight,</li>
-</ul>
-<blockquote>
-<div>if it is available. Otherwise this attribute is not present</div></blockquote>
-<p>In case that the airlines requested apply to all locations they will appear in EACH location.</p>
-<p>In API v1.0 all airlines will also appear in global scope. This is will become obsolete in v1.1</p>
-</div>
-<div class="section" id="alliance">
-<h3>6.10.6. Alliance<a class="headerlink" href="#alliance" title="Permalink to this headline">¶</a></h3>
-<p>A list of requested airline alliances. Each item on the list is a dictionary:</p>
-<ul class="simple">
-<li>Name - Contains the name of the alliance, currently supporting: Star Alliance, SkyTeam, Oneworld</li>
-</ul>
-</div>
-<div class="section" id="seat-class">
-<h3>6.10.7. Seat Class<a class="headerlink" href="#seat-class" title="Permalink to this headline">¶</a></h3>
-<p>Requested seat class.</p>
-<dl class="docutils">
-<dt>Values are an array of this enumeration (regardless of how the class is called by a particular airline)</dt>
-<dd><ul class="first last simple">
-<li>First</li>
-<li>Business</li>
-<li>Premium</li>
-<li>Economy</li>
-</ul>
-</dd>
-</dl>
-<p>Example: &#8220;business or first class&#8221; results in key value [Business, First]</p>
-</div>
-<div class="section" id="one-way">
-<h3>6.10.8. One-Way<a class="headerlink" href="#one-way" title="Permalink to this headline">¶</a></h3>
-<p>Specific request for one way trip.</p>
-<p>Example: &#8220;united airlines one way flights to ny&#8221;</p>
-<p>Boolean Attribute.</p>
-</div>
-<div class="section" id="two-way">
-<h3>6.10.9. Two-Way<a class="headerlink" href="#two-way" title="Permalink to this headline">¶</a></h3>
-<p>Specific request for round trip.</p>
-<p>Example: &#8220;3 ticket roundtrip from tagbilaran to manila/ 1/26/2011-1/30/2011&#8221;</p>
-</div>
+<div class="section" id="flight-attributes">
+<h2>6.10. Flight Attributes<a class="headerlink" href="#flight-attributes" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.attributes.request">
 <span id="request-attributes"></span><h2>6.11. Request Attributes<a class="headerlink" href="#module-core.attributes.request" title="Permalink to this headline">¶</a></h2>
@@ -1387,11 +1299,12 @@ The value is boolean.</p>
 <p>Indicates a requested distance from a location.
 Related to a location and will appear in that location.
 The value is a dictionary with the following keys:</p>
-<ul class="simple">
-<li>Quantity    - a number indicating how many units of distance are requested</li>
+<ul>
+<li><p class="first">Quantity    - a number indicating how many units of distance are requested</p>
+</li>
 <li><dl class="first docutils">
 <dt>Units       - An enumeration with the following values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Kilometers</li>
 <li>Miles</li>
 <li>Nautical Miles</li>
@@ -1403,7 +1316,7 @@ The value is a dictionary with the following keys:</p>
 </li>
 <li><dl class="first docutils">
 <dt>Restriction - An enumeration with the following values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Less Than</li>
 <li>More Than</li>
 </ul>
@@ -1412,7 +1325,7 @@ The value is a dictionary with the following keys:</p>
 </li>
 <li><dl class="first docutils">
 <dt>Transport   - An enumerations with the following values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Walking</li>
 <li>Car</li>
 <li>Public Transportation</li>
@@ -1424,7 +1337,8 @@ The value is a dictionary with the following keys:</p>
 </dd>
 </dl>
 </li>
-<li>KM Quantity - The distance in KM, regardless of the original units used. This is the easiest attribute to use.</li>
+<li><p class="first">KM Quantity - The distance in KM, regardless of the original units used. This is the easiest attribute to use.</p>
+</li>
 </ul>
 </div>
 <div class="section" id="center">
@@ -1600,8 +1514,8 @@ The return value is a Array with 2 numbers (or null):</p>
 <h3>6.13.21. Land Tour<a class="headerlink" href="#land-tour" title="Permalink to this headline">¶</a></h3>
 <p>Land Tours - Boolean attribute</p>
 </div>
-<div class="section" id="id11">
-<h3>6.13.22. One-Way<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="one-way">
+<h3>6.13.22. One-Way<a class="headerlink" href="#one-way" title="Permalink to this headline">¶</a></h3>
 <p>Specific request for one way trip - Boolean attribute.</p>
 </div>
 </div>
@@ -1713,11 +1627,12 @@ The return value is a Array with 2 numbers (or null):</p>
 <div class="section" id="car-child-seat">
 <h3>6.14.17. Car Child Seat<a class="headerlink" href="#car-child-seat" title="Permalink to this headline">¶</a></h3>
 <p>A list of requested child seat elements, each with these potential attributes:</p>
-<ul class="simple">
-<li>Quantity - a number</li>
+<ul>
+<li><p class="first">Quantity - a number</p>
+</li>
 <li><dl class="first docutils">
 <dt>Direction - an enumeration with the following values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>&#8220;Front Facing&#8221;</li>
 <li>&#8220;Back Facing&#8221;</li>
 <li>&#8220;Convertible&#8221;</li>
@@ -1727,7 +1642,7 @@ The return value is a Array with 2 numbers (or null):</p>
 </li>
 <li><dl class="first docutils">
 <dt>Position - an enumeration with the following values:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>&#8220;Front Seat&#8221;</li>
 <li>&#8220;Back Seat&#8221;</li>
 </ul>
@@ -1791,11 +1706,12 @@ An enumeration:</p>
 <div class="section" id="ski-hire">
 <h3>6.16.1. Ski Hire<a class="headerlink" href="#ski-hire" title="Permalink to this headline">¶</a></h3>
 <p>The Ski Hire attribute is a complex structure, containing <strong>a list</strong> of equipment elements, each with the following attributes:</p>
-<ul class="simple">
-<li>Multiple         - How many of the same equipment (e.g. 3 adult snowboards)</li>
+<ul>
+<li><p class="first">Multiple         - How many of the same equipment (e.g. 3 adult snowboards)</p>
+</li>
 <li><dl class="first docutils">
 <dt>Equipment Type   - An enumeration:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Skis</li>
 <li>Snowboard</li>
 <li>Mini Skis</li>
@@ -1803,15 +1719,18 @@ An enumeration:</p>
 </dd>
 </dl>
 </li>
-<li>Boots           - Would you like boots with your gear?
-Boolean, appearing in response only if implicitly specified</li>
-<li>Helmet          - Would you like a helmet with your gear?
-Boolean, appearing in response only if implicitly specified</li>
-<li>Poles           - Would you like poles with your skis?
-Boolean, appearing in response only if implicitly specified</li>
+<li><p class="first">Boots           - Would you like boots with your gear?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
+<li><p class="first">Helmet          - Would you like a helmet with your gear?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
+<li><p class="first">Poles           - Would you like poles with your skis?
+Boolean, appearing in response only if implicitly specified</p>
+</li>
 <li><dl class="first docutils">
 <dt>Quality         - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Exclusive</li>
 <li>Premium</li>
 <li>Standard</li>
@@ -1823,7 +1742,7 @@ Boolean, appearing in response only if implicitly specified</li>
 </li>
 <li><dl class="first docutils">
 <dt>Person          - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Regular</li>
 <li>Women</li>
 <li>Teenager  : 12 - 15 years</li>
@@ -1833,7 +1752,8 @@ Boolean, appearing in response only if implicitly specified</li>
 </dd>
 </dl>
 </li>
-<li>Guarantee       - Would you like a guarentee for your gear?</li>
+<li><p class="first">Guarantee       - Would you like a guarentee for your gear?</p>
+</li>
 </ul>
 <p>Boolean, appearing in response only if implicitly specified</p>
 </div>
@@ -1907,7 +1827,7 @@ Boolean, appearing in response only if implicitly specified</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.1',
+            VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
