@@ -8,12 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. API - The Response &mdash; Eva 1.0 documentation</title>
+  <title>6. API - The Response &mdash; Eva 1.1 documentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
   
 
   
@@ -32,7 +34,8 @@
   
 
   
-    <link rel="top" title="Eva 1.0 documentation" href="index.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
         <link rel="prev" title="5. API - The Request" href="request.html"/> 
 
   
@@ -42,6 +45,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,14 +85,17 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdks.html">2. The Mobile SDKs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="botkit.html">3. The Eva BotKit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">4. The HTTP RESTful API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="request.html">5. API - The Request</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. API - The Response</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.eva_return_codes">6.1. HTTP Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#http-status-codes">6.1. HTTP Status Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#top-level-response">6.2. Top Level Response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api-reply-in-depth">6.3. api_reply - in depth</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#locations-alt-locations">6.4. Locations (Alt Locations)</a></li>
@@ -106,7 +113,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#money">6.7. Money</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#chat">6.8. Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.hotel">6.9. Hotel Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hotel-attributes">6.9. Hotel Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#chain">6.9.1. Chain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#board">6.9.2. Board</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quality">6.9.3. Quality</a></li>
@@ -149,8 +156,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#loyalty">6.9.40. Loyalty</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#flight-attributes">6.10. Flight Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.request">6.11. Request Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#flight-attributes">6.10. Flight Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#redeye">6.10.1. Redeye</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonstop">6.10.2. Nonstop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#food">6.10.3. Food</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seat">6.10.4. Seat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airline">6.10.5. Airline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alliance">6.10.6. Alliance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seat-class">6.10.7. Seat Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-way">6.10.8. One-Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-way">6.10.9. Two-Way</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#request-attributes">6.11. Request Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#last-minute-deals">6.11.1. Last Minute Deals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#low-deposit">6.11.2. Low Deposit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#transport-type">6.11.3. Transport Type</a></li>
@@ -167,7 +185,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#sort">6.11.14. Sort</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.geography">6.12. Geo Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geo-attributes">6.12. Geo Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#winter-sun">6.12.1. Winter Sun</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mountains">6.12.2. Mountains</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hot-location">6.12.3. Hot Location</a></li>
@@ -185,17 +203,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#office">6.12.15. Office</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.cruise">6.13. Cruise Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cruise-attributes">6.13. Cruise Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cruiseline">6.13.1. Cruiseline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cruiseship">6.13.2. Cruiseship</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cabin">6.13.3. Cabin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">6.13.4. Pool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">6.13.5. Family</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">6.13.6. Romantic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">6.13.7. Adventure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">6.13.8. Board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">6.13.9. Quality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.13.10. Child Free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.13.4. Pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.13.5. Family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.13.6. Romantic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.13.7. Adventure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.13.8. Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">6.13.9. Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">6.13.10. Child Free</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#yacht">6.13.11. Yacht</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#barge">6.13.12. Barge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sailing-ship">6.13.13. Sailing Ship</a></li>
@@ -204,13 +222,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#for-singles">6.13.16. For Singles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#for-gays">6.13.17. For Gays</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#steamboat">6.13.18. Steamboat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">6.13.19. Pet Friendly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6.13.19. Pet Friendly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#yoga">6.13.20. Yoga</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#land-tour">6.13.21. Land Tour</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#one-way">6.13.22. One-Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">6.13.22. One-Way</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.car">6.14. Car Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#car-attributes">6.14. Car Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#car-rental-vendor">6.14.1. Car Rental Vendor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#car-rental-program">6.14.2. Car Rental Program</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gps">6.14.3. GPS</a></li>
@@ -231,12 +249,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#tranmission-type">6.14.18. Tranmission Type</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.activity">6.15. Activity Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.attributes.ski">6.16. Ski Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#activity-attributes">6.15. Activity Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ski-attributes">6.16. Ski Attributes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ski-hire">6.16.1. Ski Hire</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-core.warning">6.17. Warnings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#warnings">6.17. Warnings</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#api-warning">6.17.1. API Warning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#time-warning">6.17.2. Time Warning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parse-warning">6.17.3. Parse Warning</a></li>
@@ -257,8 +275,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Eva</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Eva</a>
+        
       </nav>
 
 
@@ -267,21 +287,38 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>6. API - The Response</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>6. API - The Response</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -290,9 +327,10 @@
   <div class="section" id="api-the-response">
 <h1>6. API - The Response<a class="headerlink" href="#api-the-response" title="Permalink to this headline">¶</a></h1>
 <p>The response of the Eva Web API is a JSON encoded.</p>
-<div class="section" id="module-core.eva_return_codes">
-<span id="http-status-codes"></span><h2>6.1. HTTP Status Codes<a class="headerlink" href="#module-core.eva_return_codes" title="Permalink to this headline">¶</a></h2>
-<p>The following is a list of the codes Eva returns:</p>
+<div class="section" id="http-status-codes">
+<h2>6.1. HTTP Status Codes<a class="headerlink" href="#http-status-codes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The following is a list of the codes Eva returns:</p>
 <ul>
 <li><p class="first">200 OK = The request has succeeded.</p>
 </li>
@@ -312,6 +350,7 @@ Please check your <a class="reference internal" href="request.html#site-code-and
 </li>
 </ul>
 <p>Please make sure your application can handle these return codes.</p>
+</div></blockquote>
 </div>
 <div class="section" id="top-level-response">
 <h2>6.2. Top Level Response<a class="headerlink" href="#top-level-response" title="Permalink to this headline">¶</a></h2>
@@ -386,8 +425,8 @@ Instead, use the confidence field in the API reply.</p>
 such as</p>
 </dd>
 </dl>
-<div class="literal-block-wrapper container" id="simplified-eva-api-reply">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;transaction_key&quot;</span><span class="o">:</span> <span class="s2">&quot;11e5-60ea-df167fe3-8a1c-22000bda434f&quot;</span>
 </pre></div>
 </div>
@@ -409,8 +448,8 @@ per the last utterance and accumulating over the entire session.
 Numeric scope is is a float between 0.0 and 1.0,
 while categories are a string enumeration with values &#8216;Low&#8217;, &#8216;Medium&#8217; and &#8216;High&#8217;. For example:</dd>
 </dl>
-<div class="literal-block-wrapper container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;confidence&quot;</span><span class="o">:</span> <span class="p">{</span>
    <span class="s2">&quot;accumulated&quot;</span><span class="o">:</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span>
    <span class="s2">&quot;last_utterance_score&quot;</span><span class="o">:</span> <span class="mf">0.5794277</span><span class="p">,</span>
@@ -604,8 +643,8 @@ This position is the 17th character in <em>ProcessedText</em></dd>
 </dl>
 </div>
 <div class="section" id="flow">
-<span id="id2"></span><h2>6.6. Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-core.dialog.eva_flow_docs"></span><p>Flow is a high level API reply element, describing the to-do list for the application developers.
+<span id="id1"></span><h2>6.6. Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<p>Flow is a high level API reply element, describing the to-do list for the application developers.
 It consists of a List of Actions, ordered by &#8220;Travel Logic&#8221; (for example, search for flights first, hotels later).
 There are several possible Flow Actions, identified by a Type.</p>
 <p>Each Flow Action is a Dictionary object containing the following keys:</p>
@@ -698,10 +737,10 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </ul>
 </dd>
 <dt><strong>QuestionSubCategory</strong> - Additional key describing the sub category of the question.</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li><dl class="first docutils">
 <dt>For the Missing Date Category the following sub categories exist:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Pickup Car    - missing date of pickup car.</li>
 <li>Return Car    - missing date of return car.</li>
 <li>Arrival       - missing date of arrival.</li>
@@ -713,7 +752,7 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </li>
 <li><dl class="first docutils">
 <dt>For the Informative Category the following sub categories exist:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Understanding - Eva did not understand the input.</li>
 <li>Chat          - A dialog with the end-user.</li>
 <li>Unsupported   - The requested travel search category is unsupported based on site_code definition and the &#8216;scope&#8217; query parameter.</li>
@@ -724,7 +763,7 @@ In addition to the above keys, Question Flow Actions contain:</p>
 </li>
 <li><dl class="first docutils">
 <dt>For the Missing Duration Category the following sub categories exist:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Stay - missing duration of stay, relevant to accommodation requests.</li>
 </ul>
 </dd>
@@ -749,7 +788,7 @@ If the user selects from this list the response needs to be sent back to Eva as 
             <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span>
             <span class="s2">&quot;SayIt&quot;</span><span class="o">:</span> <span class="s2">&quot;Which Arlington did you mean?&quot;</span>
         <span class="p">}</span>
-    <span class="p">],</span> 
+    <span class="p">],</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -817,8 +856,8 @@ If the user selects from this list the response needs to be sent back to Eva as 
 <p>If a chat type has value, the value will be given (Example: &#8220;my name is Joe&#8221; results in &#8220;Name&#8221;: &#8220;Joe&#8221;) otherwise
 the value will be <em>true</em> (Example: &#8220;hello&#8221; results in &#8220;Hello&#8221;: true).</p>
 </div>
-<div class="section" id="module-core.attributes.hotel">
-<span id="hotel-attributes"></span><h2>6.9. Hotel Attributes<a class="headerlink" href="#module-core.attributes.hotel" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hotel-attributes">
+<h2>6.9. Hotel Attributes<a class="headerlink" href="#hotel-attributes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="chain">
 <h3>6.9.1. Chain<a class="headerlink" href="#chain" title="Permalink to this headline">¶</a></h3>
 <p>The chain of the hotel (e.g. Sheraton)</p>
@@ -1032,12 +1071,11 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 <div class="section" id="rooms">
 <h3>6.9.39. Rooms<a class="headerlink" href="#rooms" title="Permalink to this headline">¶</a></h3>
 <p>The hotel rooms is a complex structure, containing a list of room elements, each with the following attributes:</p>
-<ul>
-<li><p class="first">Multiple      -  How many of the same rooms (e.g. 3 airconditioned rooms)</p>
-</li>
+<ul class="simple">
+<li>Multiple      -  How many of the same rooms (e.g. 3 airconditioned rooms)</li>
 <li><dl class="first docutils">
 <dt>Beds          -  A list of tuples, each tuple has a number of beds (int) and Type of bed, with the following potential values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Twin</li>
 <li>King</li>
 <li>Queen</li>
@@ -1054,7 +1092,7 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </li>
 <li><dl class="first docutils">
 <dt>Room Type     -  The type of the room</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Room</li>
 <li>Family Room</li>
 <li>Suite</li>
@@ -1062,11 +1100,10 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </dd>
 </dl>
 </li>
-<li><p class="first">Air Con       -  Air conditioning (boolean, if exists)</p>
-</li>
+<li>Air Con       -  Air conditioning (boolean, if exists)</li>
 <li><dl class="first docutils">
 <dt>Internet      -  The requested data service in the room, with the following potential values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Internet service</li>
 <li>Free Internet service</li>
 <li>Wi-Fi</li>
@@ -1075,16 +1112,11 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </dd>
 </dl>
 </li>
-<li><p class="first">Cable         -  Cable TV in the room (boolean, if exists)</p>
-</li>
-<li><p class="first">Kitchen       -  A Kitchen in the room (boolean, if exists)</p>
-</li>
-<li><p class="first">Mini Bar      -  Mini-bar in the room (boolean, if exists)</p>
-</li>
-<li><p class="first">Tub           -  A hot tub in the room (boolean, if exists)</p>
-</li>
-<li><p class="first">Smoking       -  Either Smoking (True) or Non Smoking (False) room (boolean, if exists)</p>
-</li>
+<li>Cable         -  Cable TV in the room (boolean, if exists)</li>
+<li>Kitchen       -  A Kitchen in the room (boolean, if exists)</li>
+<li>Mini Bar      -  Mini-bar in the room (boolean, if exists)</li>
+<li>Tub           -  A hot tub in the room (boolean, if exists)</li>
+<li>Smoking       -  Either Smoking (True) or Non Smoking (False) room (boolean, if exists)</li>
 </ul>
 </div>
 <div class="section" id="loyalty">
@@ -1109,9 +1141,105 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </div>
 <div class="section" id="flight-attributes">
 <h2>6.10. Flight Attributes<a class="headerlink" href="#flight-attributes" title="Permalink to this headline">¶</a></h2>
+<p>These are attributes describing the requested flight.</p>
+<div class="section" id="redeye">
+<h3>6.10.1. Redeye<a class="headerlink" href="#redeye" title="Permalink to this headline">¶</a></h3>
+<p>A Red eye flight - Boolean attribute.</p>
 </div>
-<div class="section" id="module-core.attributes.request">
-<span id="request-attributes"></span><h2>6.11. Request Attributes<a class="headerlink" href="#module-core.attributes.request" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nonstop">
+<h3>6.10.2. Nonstop<a class="headerlink" href="#nonstop" title="Permalink to this headline">¶</a></h3>
+<p>A Non stop flight -
+Boolean attribute. Nonstop is related to the location from which the flight departs and will appear under that location.</p>
+<p>In API v1.0 Nonstop will also appear in global scope-
+if it relates to all flight departure locations. This is will become obsolete in v1.1</p>
+</div>
+<div class="section" id="food">
+<h3>6.10.3. Food<a class="headerlink" href="#food" title="Permalink to this headline">¶</a></h3>
+<p>Food preferences for the flight
+Potential values are:</p>
+<ul class="simple">
+<li><strong>Religious</strong>:</li>
+</ul>
+<blockquote>
+<div>&#8216;Kosher&#8217;, &#8216;Glatt Kosher&#8217;, &#8216;Muslim&#8217;, &#8216;Hindu&#8217;,</div></blockquote>
+<ul class="simple">
+<li><strong>Vegetarian</strong>:</li>
+</ul>
+<blockquote>
+<div>&#8216;Vegetarian&#8217;, &#8216;Vegan&#8217;, &#8216;Indian Vegetarian&#8217;, &#8216;Raw Vegetarian&#8217;, &#8216;Oriental Vegetarian&#8217;, &#8216;Lacto Ovo Vegetarian&#8217;,
+&#8216;Lacto Vegetarian&#8217;, &#8216;Ovo Vegetarian&#8217;, &#8216;Jain Vegetarian&#8217;,</div></blockquote>
+<ul class="simple">
+<li><strong>Medical meals</strong>:</li>
+</ul>
+<blockquote>
+<div>&#8216;Bland&#8217;, &#8216;Diabetic&#8217;, &#8216;Fruit Platter&#8217;, &#8216;Gluten Free&#8217;, &#8216;Low Sodium&#8217;, &#8216;Low Calorie&#8217;, &#8216;Low Fat&#8217;, &#8216;Low Fibre&#8217;,
+&#8216;Non-Carbohydrate&#8217;, &#8216;Non-Lactose&#8217;, &#8216;Soft Fluid&#8217;, &#8216;Semi Fluid&#8217;, &#8216;Ulcer Diet&#8217;, &#8216;Nut Free&#8217;, &#8216;Low Purine&#8217;,
+&#8216;Low Protein&#8217;, &#8216;High Fibre&#8217;,</div></blockquote>
+<ul class="simple">
+<li><strong>Infant and child</strong>:</li>
+</ul>
+<blockquote>
+<div>&#8216;Baby&#8217;, &#8216;Post Weaning&#8217;, &#8216;Child&#8217;, # In airline jargon, baby and infant &lt; 2 years. 1 year &lt; Toddler &lt; 3 years.</div></blockquote>
+<ul class="simple">
+<li><strong>Other</strong>:</li>
+</ul>
+<blockquote>
+<div>&#8216;Seafood&#8217;, &#8216;Japanese&#8217;,</div></blockquote>
+</div>
+<div class="section" id="seat">
+<h3>6.10.4. Seat<a class="headerlink" href="#seat" title="Permalink to this headline">¶</a></h3>
+<p>The requested seat - values are &#8220;Window&#8221; / &#8220;Aisle&#8221;.</p>
+</div>
+<div class="section" id="airline">
+<h3>6.10.5. Airline<a class="headerlink" href="#airline" title="Permalink to this headline">¶</a></h3>
+<p>Airlines are related to the location from which the flight departs and will appear under that location.</p>
+<p>A list of the Red airlines that are options requested from a given location. Each item in the list is an object with
+these attributes:</p>
+<ul class="simple">
+<li>airline - contains the official airline name</li>
+<li>iata - contains the IATA code of the airline</li>
+<li>flight_number (optional) - contains the flight number of the requested flight,</li>
+</ul>
+<p>if it is available. Otherwise this attribute is not present</p>
+<p>In case that the airlines requested apply to all locations they will appear in EACH location.</p>
+<p>In API v1.0 all airlines will also appear in global scope. This is will become obsolete in v1.1</p>
+</div>
+<div class="section" id="alliance">
+<h3>6.10.6. Alliance<a class="headerlink" href="#alliance" title="Permalink to this headline">¶</a></h3>
+<p>A list of requested airline alliances. Each item on the list is a dictionary:</p>
+<ul class="simple">
+<li>Name - Contains the name of the alliance, currently supporting: Star Alliance, SkyTeam, Oneworld</li>
+</ul>
+</div>
+<div class="section" id="seat-class">
+<h3>6.10.7. Seat Class<a class="headerlink" href="#seat-class" title="Permalink to this headline">¶</a></h3>
+<p>Requested seat class.</p>
+<dl class="docutils">
+<dt>Values are an array of this enumeration (regardless of how the class is called by a particular airline)</dt>
+<dd><ul class="first last simple">
+<li>First</li>
+<li>Business</li>
+<li>Premium</li>
+<li>Economy</li>
+</ul>
+</dd>
+</dl>
+<p>Example: &#8220;business or first class&#8221; results in key value [Business, First]</p>
+</div>
+<div class="section" id="one-way">
+<h3>6.10.8. One-Way<a class="headerlink" href="#one-way" title="Permalink to this headline">¶</a></h3>
+<p>Specific request for one way trip.</p>
+<p>Example: &#8220;united airlines one way flights to ny&#8221;</p>
+<p>Boolean Attribute.</p>
+</div>
+<div class="section" id="two-way">
+<h3>6.10.9. Two-Way<a class="headerlink" href="#two-way" title="Permalink to this headline">¶</a></h3>
+<p>Specific request for round trip.</p>
+<p>Example: &#8220;3 ticket roundtrip from tagbilaran to manila/ 1/26/2011-1/30/2011&#8221;</p>
+</div>
+</div>
+<div class="section" id="request-attributes">
+<h2>6.11. Request Attributes<a class="headerlink" href="#request-attributes" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">There are many general request attributes that apply to the entire request and not just some portion of it.</div>
 <div class="line">Examples: &#8220;last minute deals&#8221; and &#8220;Low deposits&#8221;.</div>
@@ -1261,8 +1389,8 @@ This is the result of expressions such as &#8221;...with a review score of 7.6 o
 </dl>
 </div>
 </div>
-<div class="section" id="module-core.attributes.geography">
-<span id="geo-attributes"></span><h2>6.12. Geo Attributes<a class="headerlink" href="#module-core.attributes.geography" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geo-attributes">
+<h2>6.12. Geo Attributes<a class="headerlink" href="#geo-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Various attributes describing locations.</p>
 <div class="section" id="winter-sun">
 <h3>6.12.1. Winter Sun<a class="headerlink" href="#winter-sun" title="Permalink to this headline">¶</a></h3>
@@ -1299,12 +1427,11 @@ The value is boolean.</p>
 <p>Indicates a requested distance from a location.
 Related to a location and will appear in that location.
 The value is a dictionary with the following keys:</p>
-<ul>
-<li><p class="first">Quantity    - a number indicating how many units of distance are requested</p>
-</li>
+<ul class="simple">
+<li>Quantity    - a number indicating how many units of distance are requested</li>
 <li><dl class="first docutils">
 <dt>Units       - An enumeration with the following values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Kilometers</li>
 <li>Miles</li>
 <li>Nautical Miles</li>
@@ -1316,7 +1443,7 @@ The value is a dictionary with the following keys:</p>
 </li>
 <li><dl class="first docutils">
 <dt>Restriction - An enumeration with the following values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Less Than</li>
 <li>More Than</li>
 </ul>
@@ -1325,7 +1452,7 @@ The value is a dictionary with the following keys:</p>
 </li>
 <li><dl class="first docutils">
 <dt>Transport   - An enumerations with the following values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Walking</li>
 <li>Car</li>
 <li>Public Transportation</li>
@@ -1337,8 +1464,7 @@ The value is a dictionary with the following keys:</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">KM Quantity - The distance in KM, regardless of the original units used. This is the easiest attribute to use.</p>
-</li>
+<li>KM Quantity - The distance in KM, regardless of the original units used. This is the easiest attribute to use.</li>
 </ul>
 </div>
 <div class="section" id="center">
@@ -1376,8 +1502,8 @@ The attribute will be returned &#8220;inside&#8221; the related location of the 
 The value is boolean.</p>
 </div>
 </div>
-<div class="section" id="module-core.attributes.cruise">
-<span id="cruise-attributes"></span><h2>6.13. Cruise Attributes<a class="headerlink" href="#module-core.attributes.cruise" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cruise-attributes">
+<h2>6.13. Cruise Attributes<a class="headerlink" href="#cruise-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These are attributes describing the requested cruise.</p>
 <div class="section" id="cruiseline">
 <h3>6.13.1. Cruiseline<a class="headerlink" href="#cruiseline" title="Permalink to this headline">¶</a></h3>
@@ -1415,8 +1541,8 @@ The value is boolean.</p>
 <li>Presidential Suite</li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3>6.13.4. Pool<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>6.13.4. Pool<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The ship has a swimming pool - an enumerated attribute:</p>
 <ul class="simple">
 <li>&#8216;Any&#8217;      - The ship needs to have a pool</li>
@@ -1425,28 +1551,28 @@ The value is boolean.</p>
 <li>&#8216;Children&#8217; - The ship needs to have a children&#8217;s pool</li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h3>6.13.5. Family<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>6.13.5. Family<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>A family friendly cruise - Boolean attribute</p>
 </div>
-<div class="section" id="id5">
-<h3>6.13.6. Romantic<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>6.13.6. Romantic<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>A Romantic cruise - Boolean attribute</p>
 </div>
-<div class="section" id="id6">
-<h3>6.13.7. Adventure<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>6.13.7. Adventure<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>A cruise with an Adventure motif - Boolean attribute</p>
 </div>
-<div class="section" id="id7">
-<h3>6.13.8. Board<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>6.13.8. Board<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The cruise board, an enumeration with the following potential values:</p>
 <ul class="simple">
 <li>Full Board</li>
 <li>All Inclusive</li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>6.13.9. Quality<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>6.13.9. Quality<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>The quality of the cruise, measure in Stars.
 The return value is a Array with 2 numbers (or null):</p>
 <ul class="simple">
@@ -1461,8 +1587,8 @@ The return value is a Array with 2 numbers (or null):</p>
 <li>&#8220;Contemporary&#8221;     -&gt; [3, 4]</li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>6.13.10. Child Free<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>6.13.10. Child Free<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>A Child free cruise (adults only) - Boolean attribute</p>
 </div>
 <div class="section" id="yacht">
@@ -1502,8 +1628,8 @@ The return value is a Array with 2 numbers (or null):</p>
 <h3>6.13.18. Steamboat<a class="headerlink" href="#steamboat" title="Permalink to this headline">¶</a></h3>
 <p>A Steamboat cruise - Boolean attribute</p>
 </div>
-<div class="section" id="id10">
-<h3>6.13.19. Pet Friendly<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>6.13.19. Pet Friendly<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>A pet friendly cruise - Boolean attribute</p>
 </div>
 <div class="section" id="yoga">
@@ -1514,13 +1640,13 @@ The return value is a Array with 2 numbers (or null):</p>
 <h3>6.13.21. Land Tour<a class="headerlink" href="#land-tour" title="Permalink to this headline">¶</a></h3>
 <p>Land Tours - Boolean attribute</p>
 </div>
-<div class="section" id="one-way">
-<h3>6.13.22. One-Way<a class="headerlink" href="#one-way" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>6.13.22. One-Way<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>Specific request for one way trip - Boolean attribute.</p>
 </div>
 </div>
-<div class="section" id="module-core.attributes.car">
-<span id="car-attributes"></span><h2>6.14. Car Attributes<a class="headerlink" href="#module-core.attributes.car" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="car-attributes">
+<h2>6.14. Car Attributes<a class="headerlink" href="#car-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These are attributes describing the requested car rental.</p>
 <div class="section" id="car-rental-vendor">
 <h3>6.14.1. Car Rental Vendor<a class="headerlink" href="#car-rental-vendor" title="Permalink to this headline">¶</a></h3>
@@ -1627,12 +1753,11 @@ The return value is a Array with 2 numbers (or null):</p>
 <div class="section" id="car-child-seat">
 <h3>6.14.17. Car Child Seat<a class="headerlink" href="#car-child-seat" title="Permalink to this headline">¶</a></h3>
 <p>A list of requested child seat elements, each with these potential attributes:</p>
-<ul>
-<li><p class="first">Quantity - a number</p>
-</li>
+<ul class="simple">
+<li>Quantity - a number</li>
 <li><dl class="first docutils">
 <dt>Direction - an enumeration with the following values:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>&#8220;Front Facing&#8221;</li>
 <li>&#8220;Back Facing&#8221;</li>
 <li>&#8220;Convertible&#8221;</li>
@@ -1640,15 +1765,9 @@ The return value is a Array with 2 numbers (or null):</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Position - an enumeration with the following values:</dt>
-<dd><ul class="first last simple">
-<li>&#8220;Front Seat&#8221;</li>
-<li>&#8220;Back Seat&#8221;</li>
-</ul>
-</dd>
-</dl>
-</li>
+<li>Position - an enumeration with the following values:
++ &#8220;Front Seat&#8221;
++ &#8220;Back Seat&#8221;</li>
 </ul>
 </div>
 <div class="section" id="tranmission-type">
@@ -1661,8 +1780,8 @@ An enumeration:</p>
 </ul>
 </div>
 </div>
-<div class="section" id="module-core.attributes.activity">
-<span id="activity-attributes"></span><h2>6.15. Activity Attributes<a class="headerlink" href="#module-core.attributes.activity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="activity-attributes">
+<h2>6.15. Activity Attributes<a class="headerlink" href="#activity-attributes" title="Permalink to this headline">¶</a></h2>
 <p>These are attributes describing activities.</p>
 <p>Note: We are constantly adding activities. If you find something you wish was on the list, please let us know.</p>
 <p>Here is a list of currently supported activities:</p>
@@ -1701,48 +1820,41 @@ An enumeration:</p>
 <li>Performing Arts</li>
 </ul>
 </div>
-<div class="section" id="module-core.attributes.ski">
-<span id="ski-attributes"></span><h2>6.16. Ski Attributes<a class="headerlink" href="#module-core.attributes.ski" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ski-attributes">
+<h2>6.16. Ski Attributes<a class="headerlink" href="#ski-attributes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ski-hire">
 <h3>6.16.1. Ski Hire<a class="headerlink" href="#ski-hire" title="Permalink to this headline">¶</a></h3>
 <p>The Ski Hire attribute is a complex structure, containing <strong>a list</strong> of equipment elements, each with the following attributes:</p>
-<ul>
-<li><p class="first">Multiple         - How many of the same equipment (e.g. 3 adult snowboards)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Equipment Type   - An enumeration:</dt>
-<dd><ul class="first last simple">
-<li>Skis</li>
-<li>Snowboard</li>
-<li>Mini Skis</li>
+<ul class="simple">
+<li>Multiple         - How many of the same equipment (e.g. 3 adult snowboards)</li>
+<li>Equipment Type   - An enumeration:
++ Skis
++ Snowboard
++ Mini Skis</li>
+<li>Boots           - Would you like boots with your gear?</li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">Boots           - Would you like boots with your gear?
-Boolean, appearing in response only if implicitly specified</p>
-</li>
-<li><p class="first">Helmet          - Would you like a helmet with your gear?
-Boolean, appearing in response only if implicitly specified</p>
-</li>
-<li><p class="first">Poles           - Would you like poles with your skis?
-Boolean, appearing in response only if implicitly specified</p>
-</li>
-<li><dl class="first docutils">
-<dt>Quality         - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
-<dd><ul class="first last simple">
-<li>Exclusive</li>
-<li>Premium</li>
-<li>Standard</li>
-<li>Low cost</li>
-<li>Starter</li>
+<blockquote>
+<div>Boolean, appearing in response only if implicitly specified</div></blockquote>
+<ul class="simple">
+<li>Helmet          - Would you like a helmet with your gear?</li>
 </ul>
-</dd>
-</dl>
-</li>
+<blockquote>
+<div>Boolean, appearing in response only if implicitly specified</div></blockquote>
+<ul class="simple">
+<li>Poles           - Would you like poles with your skis?</li>
+</ul>
+<blockquote>
+<div>Boolean, appearing in response only if implicitly specified</div></blockquote>
+<ul class="simple">
+<li>Quality         - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):
++ Exclusive
++ Premium
++ Standard
++ Low cost
++ Starter</li>
 <li><dl class="first docutils">
 <dt>Person          - An enumeration (based on definitions from <a class="reference external" href="http://www.snowrental.net/">http://www.snowrental.net/</a>):</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Regular</li>
 <li>Women</li>
 <li>Teenager  : 12 - 15 years</li>
@@ -1752,14 +1864,13 @@ Boolean, appearing in response only if implicitly specified</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">Guarantee       - Would you like a guarentee for your gear?</p>
-</li>
+<li>Guarantee       - Would you like a guarentee for your gear?</li>
 </ul>
 <p>Boolean, appearing in response only if implicitly specified</p>
 </div>
 </div>
-<div class="section" id="module-core.warning">
-<span id="warnings"></span><h2>6.17. Warnings<a class="headerlink" href="#module-core.warning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="warnings">
+<h2>6.17. Warnings<a class="headerlink" href="#warnings" title="Permalink to this headline">¶</a></h2>
 <p>Various Warnings provided by the system.</p>
 <div class="section" id="api-warning">
 <h3>6.17.1. API Warning<a class="headerlink" href="#api-warning" title="Permalink to this headline">¶</a></h3>
@@ -1791,13 +1902,16 @@ Boolean, appearing in response only if implicitly specified</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="request.html" class="btn btn-neutral" title="5. API - The Request" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="request.html" class="btn btn-neutral" title="5. API - The Request" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1827,10 +1941,11 @@ Boolean, appearing in response only if implicitly specified</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

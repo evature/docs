@@ -331,6 +331,10 @@ All DateTimes are in ISO 8601 format https://en.wikipedia.org/wiki/ISO_8601 .
 DateTimes that are ranges (e.g. 'next week', or 'July') are expressed as a combination of 2 DateTimes - a "Min" and a "Max".
 DateTimes that are NOT ranges are expressed as a combination of 2 IDENTICAL DateTimes.
 
+The Botkit will show a 'Bot is typing' indication in platforms that support it. The inidication will be turned on before activating the webhook
+and will be turned off when the webhook response is returned. To keep the typing indication turned on even after the webhook has returned,
+pass ``"keepTyping": true`` field in the response.
+
 Here is the minimal webhook reply with a single text message:
 
 .. code-block:: javascript

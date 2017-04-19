@@ -8,8 +8,8 @@ The HTTP RESTful API
 
 Location IDs
 ============
-Locations returned by Eva are identified using the `Geonames <http://www.geonames.org/about.html>`_ tagging system. 
-Geoname IDs are integers. 
+Locations returned by Eva are identified using the `Geonames <http://www.geonames.org/about.html>`_ tagging system.
+Geoname IDs are integers.
 
 Eva also provides a list of prioritized airports for each location in the API reply.
 Airports are identified by their
@@ -23,14 +23,14 @@ The web service reply is `JSON <http://en.wikipedia.org/wiki/Json>`_ (an acronym
 
 URL Encoding
 ============
-The parameters for the web service have to be both UTF-8 and URL encoded. 
-If you call the web service with "New York" you have to URL encode "New York", otherwise our service 
-will search for "New" and the rest of the sentence, as well as all the other parameters will be lost. 
-When URL encoding, "New York" becomes "New+York". With UTF-8 encoding ö becomes %C3%B6. 
+The parameters for the web service have to be both UTF-8 and URL encoded.
+If you call the web service with "New York" you have to URL encode "New York", otherwise our service
+will search for "New" and the rest of the sentence, as well as all the other parameters will be lost.
+When URL encoding, "New York" becomes "New+York". With UTF-8 encoding ö becomes %C3%B6.
 
-URL Encoding replaces spaces with "+" signs, and unsafe ASCII characters with "%" followed by their hex equivalent. 
-Safe characters are defined in RFC2396. 
-They are the 7-bit ASCII alphanumerics and the mark characters "-_.!~*'()". 
+URL Encoding replaces spaces with "+" signs, and unsafe ASCII characters with "%" followed by their hex equivalent.
+Safe characters are defined in RFC2396.
+They are the 7-bit ASCII alphanumerics and the mark characters "-_.!~*'()".
 
 Versions
 ========
@@ -39,8 +39,252 @@ API versions are specified via the URL in the following manner:
 
 __ http://freeapi.evature.com/v1.1?site_code=123&api_key=456&input_text=chicago
 
-.. automodule:: core.api_versions
-   :synopsis: Supported API versions
+These are the currently supported API versions:
+
+v1.0
+----
+
+The previous release.
+
+
+v1.1
+----
+
+Base commercial API version.
+
+
+v1.2
+----
+
+This version is under active development,
+yet you can (and should!) preview it on a feature by feature basis by using the `From Future`_ flags
+
+
+From Future
+-----------
+To preview and easily integrate with the latest API, the developer has access to "from future" flags,
+using which she can turn the various changes in the next release on / off one by one.
+Example:
+
+`evature.com/v1.1?input_text=chicago&ffi_breakdown_location_name`__
+
+__ http://freeapi.evature.com/v1.1?site_code=123&api_key=456&input_text=chicago&ffi_breakdown_location_name
+
+
+Here is the list of features that are implemented in the V1.2 release, yet you may (and should!) use in the V1.1 release:
+
+
+ffi_chains (already part of V1.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In V1.0 the understanding of a hotel chain looked like this::
+
+   User: "Looking for a hilton"
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Hotel Attributes": {
+         "Chain": "Hilton Hotels"
+       },
+       "Locations": [
+         {
+         },
+         {
+           "Actions": [
+             "Get Accommodation"
+           ]
+         }
+       ],
+       "SayIt": "Hilton hotel"
+     }
+
+The actual chain value is a simple String.
+
+
+In V1.1, or when using ffi_chains hotel chains are returned like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Locations": [
+         {
+         },
+         {
+           "Hotel Attributes": {
+             "Chain": [
+               {
+                 "gds_code": "HH",
+                 "Name": "Hilton Hotels",
+                 "eva_code": "EPC-47",
+                 "simple_name": "Hilton"
+               }
+             ]
+           },
+           "Actions": [
+             "Get Accommodation"
+           ],
+         }
+       ],
+       "SayIt": "Hilton hotel"
+     }
+
+
+ffi_statement (already part of V1.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In V1.0 the reply to::
+
+   User: "Hello"
+
+looked like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Flow": [
+         {
+           "QuestionType": "Open",
+           "QuestionCategory": "Informative",
+           "Type": "Question",
+           "QuestionSubCategory": "Chat",
+           "SayIt": "Hello to you too. How may I help?"
+         }
+       ],
+       "Chat": {
+         "Hello": true
+       }
+     }
+
+In V1.1, or when using ffi_statement Eva added a new Flow Action called a Statement. Now the reply to the above looks like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Flow": [
+         {
+           "StatementType": "Chat",
+           "Type": "Statement",
+           "SayIt": "Hello, nice to meet you. How may I help?"
+         }
+       ],
+       "Chat": {
+         "Hello": true
+       }
+     }
+
+
+ffi_airports_are_a_list
+^^^^^^^^^^^^^^^^^^^^^^^
+In V1.1 the reply to::
+
+   User: "Chicago"
+
+looked like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Locations": [
+         {
+           "Airports": "ORD,MDW,MKE,SBN",
+         }
+       ],
+     }
+
+In V1.2, or when using ffi_airports_are_a_list the reply to the above looks like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Locations": [
+         {
+           "Airports": [
+               "ORD",
+               "MDW",
+               "MKE",
+               "SBN"
+           ],
+         }
+       ],
+     }
+
+
+ffi_breakdown_location_name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In V1.1 the reply to::
+
+   User: "Chicago"
+
+looked like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Locations": [
+         {
+           "Name": "Chicago, Illinois, United States (GID=4887398)",
+         }
+       ],
+     }
+
+In V1.2, or when using ffi_breakdown_location_name the reply to the above looks like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Locations": [
+         {
+           "Name": "Chicago",
+           "stateName": "Illinois",
+           "countryName": "United States",
+           "Geoid": 4887398,
+         }
+       ],
+     }
+
+ffi_flight_status_action
+^^^^^^^^^^^^^^^^^^^^^^^^
+In V1.1 the reply to::
+
+   User: "Flight status"
+
+looked like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Flow": [
+         {
+           "AttributeKey": "FlightStatus",
+           "Type": "Reply",
+           "AttributeType": "Flight Attributes",
+         }
+       ],
+     }
+
+In V1.2, or when using ffi_flight_status_action Eva added a new Flow Action called "Flight Status".
+Now the reply to the above looks like this:
+
+.. code-block:: javascript
+   :caption: Simplified Eva API Reply
+
+   "api_reply": {
+       "Flow": [
+         {
+             "Type": "Flight Status",
+         }
+       ],
+     }
+
+
 
 .. _maintaining_state:
 
@@ -59,42 +303,42 @@ Example::
     User: "one way flight from JFK"
 
 http://freeapi.evature.com/v1.1?input_text=one+way+flight+from+JFK
- 
+
 .. code-block:: javascript
     :caption: Simplified Eva API Reply
 
     "api_reply": {
         "Flow": [
           {
-            "SayIt": "One way flights from John F Kennedy International Airport New York", 
-            "Type": "Flight", 
+            "SayIt": "One way flights from John F Kennedy International Airport New York",
+            "Type": "Flight",
             "RelatedLocations": [
-              0, 
+              0,
               1
             ]
           }
-        ], 
+        ],
         "Locations": [
           {
-            "Airports": "JFK", 
-            "Name": "'JFK' = John F Kennedy Intl, US", 
+            "Airports": "JFK",
+            "Name": "'JFK' = John F Kennedy Intl, US",
             "Request Attributes": {
               "Transport Type": [
                 "Airplane"
               ]
-            }, 
-            "Type": "Airport", 
-          }, 
+            },
+            "Type": "Airport",
+          },
           {
             "Actions": [
               "Get There"
             ]
           }
-        ], 
+        ],
         "Flight Attributes": {
           "One-Way": true
-        }, 
-      }  
+        },
+      }
 
 Basically, what Eva is telling the application is that the end user is requesting a flight from JFK airport heading "somewhere".
 
@@ -112,34 +356,34 @@ where he wants to fly to.
 .. code-block:: javascript
     :caption: Simplified Eva API Reply
 
-    "session_id": "11e5-78fa-94ba0740-8acf-22000bd848a8", 
+    "session_id": "11e5-78fa-94ba0740-8acf-22000bd848a8",
     "api_reply": {
         "Flight Attributes": {
           "One-Way": true
-        }, 
+        },
         "Flow": [
           {
-            "Type": "Question", 
+            "Type": "Question",
             "SayIt": "Where would you like to fly to?"
           }
-        ], 
+        ],
         "Locations": [
           {
-            "Airports": "JFK", 
-            "Name": "'JFK' = John F Kennedy Intl, US", 
+            "Airports": "JFK",
+            "Name": "'JFK' = John F Kennedy Intl, US",
             "Request Attributes": {
               "Transport Type": [
                 "Airplane"
               ]
-            }, 
-            "Type": "Airport", 
-          }, 
+            },
+            "Type": "Airport",
+          },
           {
             "Actions": [
               "Get There"
             ]
           }
-        ], 
+        ],
       }
 
 You will also notice that Eva returns a new session_id.
@@ -155,42 +399,42 @@ Eva will continue the dialog:
 .. code-block:: javascript
     :caption: Simplified Eva API Reply
 
-    "session_id": "11e5-78fa-94ba0740-8acf-22000bd848a8", 
+    "session_id": "11e5-78fa-94ba0740-8acf-22000bd848a8",
     "api_reply": {
-        "QuestionAnswered": true, 
+        "QuestionAnswered": true,
         "Flight Attributes": {
           "One-Way": true
-        }, 
+        },
         "Flow": [
           {
-            "Type": "Question", 
+            "Type": "Question",
             "SayIt": "Please specify, When would you like to depart from John F Kennedy International Airport New York to San Francisco International Airport California?"
           }
-        ], 
+        ],
         "Locations": [
           {
-            "Airports": "JFK", 
-            "Name": "'JFK' = John F Kennedy Intl, US", 
+            "Airports": "JFK",
+            "Name": "'JFK' = John F Kennedy Intl, US",
             "Request Attributes": {
               "Transport Type": [
                 "Airplane"
               ]
-            }, 
-            "Type": "Airport", 
-          }, 
+            },
+            "Type": "Airport",
+          },
           {
-            "Airports": "SFO", 
-            "Name": "'SFO' = San Francisco International, US", 
+            "Airports": "SFO",
+            "Name": "'SFO' = San Francisco International, US",
             "Actions": [
               "Get There"
-            ], 
-            "Type": "Airport", 
+            ],
+            "Type": "Airport",
           }
-        ], 
+        ],
       }
 
 Here is an example of accumulating state::
-    
+
     User: "Hotels in Los Angeles tomorrow for 2 nights"
      - Eva instructs the application to show a list of hotels in Los Angeles
     User: "3 stars"
@@ -227,28 +471,28 @@ The Flow is a list of Flow Actions, such as:
 
     "Flow": [
       {
-        "QuestionType": "Open", 
-        "Type": "Question", 
+        "QuestionType": "Open",
+        "Type": "Question",
         "RelatedLocations": [
           0
-        ], 
-        "QuestionSubCategory": "Departure", 
-        "ActionType": "Flight", 
-        "QuestionCategory": "Missing Date", 
+        ],
+        "QuestionSubCategory": "Departure",
+        "ActionType": "Flight",
+        "QuestionCategory": "Missing Date",
         "SayIt": "Please specify, When would you like to depart from John F Kennedy International Airport New York to San Francisco International Airport California?"
       }
     ]
 
 The Flow is the main integration point for the application with the Eva API reply.
 
-Internally, the Flow is created by the following Eva logic blocks: 
+Internally, the Flow is created by the following Eva logic blocks:
 
-#. **Utterance Classifier** 
-   
+#. **Utterance Classifier**
+
    Analyzes the input utterances and classifies them into various categories
-   such as a 'Hotel Search', 'Rental Car Search', 'Flight Search', 
-   as well as 'Chat', 'Itinerary Request', 'Question', 'Answer' or a combination of the above. 
-   For example, an input of "3 nights in NY" would be classified as a Hotel Search, 
+   such as a 'Hotel Search', 'Rental Car Search', 'Flight Search',
+   as well as 'Chat', 'Itinerary Request', 'Question', 'Answer' or a combination of the above.
+   For example, an input of "3 nights in NY" would be classified as a Hotel Search,
    while an input of "United Airlines to Boston" would be classified as a Flight Search.
    The utterance classification is the key input to Eva's Desires (motivational state and applicative objective).
    Other inputs to the classification are the utterance metadata, such as :ref:`context`.
@@ -257,9 +501,9 @@ Internally, the Flow is created by the following Eva logic blocks:
    while the same utterance would be categorized as a Rental Car Search if the end user is looking at the rental cars page.
 
 #. **Desire Manager**
-   
+
    Desires represent Eva's motivational state.
-   They represent objectives that Eva would like to accomplish or bring about. Examples of desires may be: 
+   They represent objectives that Eva would like to accomplish or bring about. Examples of desires may be:
 
    * Flight Search
    * Hotel Search
@@ -268,11 +512,11 @@ Internally, the Flow is created by the following Eva logic blocks:
    There may be multiple desires in a single session (e.g. "Chicago flights and hotel"),
    however Eva maintains a single Goal in the Dialog Manager as it goes through the desires until they are met.
    This is consistent with the behavior of a human Travel Agent, which usually anchors the flights and then
-   moves on to finding accommodations and ground transportation. 
+   moves on to finding accommodations and ground transportation.
    Desires are maintained in the server session state to allow for Dialog.
 
-#. **Belief Manager** 
-   
+#. **Belief Manager**
+
    Manages Eva's beliefs inside the session state with respect to the predefined abilities and requirements of the application
    and the Travel search engine.
    Using the term `belief` rather than `knowledge` recognizes that what Eva believes in may not necessarily be true
@@ -293,19 +537,19 @@ Internally, the Flow is created by the following Eva logic blocks:
         - Eva instructs the application to show a list of hotels in Paris, France
        User: "I meant Paris Texas"
         - Eva instructs the application to show a list of hotels in Paris, Texas
-   
+
    Based on the classification of the input, Eva may realize that key information is missing to achieve the Goal.
    Examples of missing information pieces are 'Missing Date', 'Missing Location' and 'Missing Duration'.
    For example, let's assume the booking engine needs an explicit Duration for hotel searches
    and the user requested "Hotel in Madrid tomorrow".
    The Belief Manager will identify the Duration as a missing requirement, which leads to the:
 
-#. **Dialog Manager** 
-   
+#. **Dialog Manager**
+
    Facilitates a non-linear state-full dialog with the user for clarifications, questions and answers, disambiguation and so on.
    The Dialog manager chooses a Goal (a single active Desire) and reviews the Beliefs related to achieving this goal,
    asking questions when necessary and reviewing the received information.
-   
+
    **Example of questions**::
 
       User: "Flights to NY"
@@ -322,12 +566,12 @@ Internally, the Flow is created by the following Eva logic blocks:
       - Eva instructs the application to show a list of one-way flights from Chicago to SFO departing July 23rd
 
 
-#. **Flow Engine** 
+#. **Flow Engine**
 
-   Orchestrates the Utterance Classifier, the Desire and Belief Managers and the Dialog Manager to returns a Flow of Actions. 
-   This Actions Flow is ordered by "Travel Logic" (for example, search for flights first, hotels later). 
-   
-   The Flow Actions can be 'Answer', 'Question', 'Greeting', 'Statement', 'Hotel', 'Car', 'Flight'. 
+   Orchestrates the Utterance Classifier, the Desire and Belief Managers and the Dialog Manager to returns a Flow of Actions.
+   This Actions Flow is ordered by "Travel Logic" (for example, search for flights first, hotels later).
+
+   The Flow Actions can be 'Answer', 'Question', 'Greeting', 'Statement', 'Hotel', 'Car', 'Flight'.
    The Flow Actions are a simple Todo list for the application to implement, e.g.:
 
    * Search for flights from Boston to New York City
@@ -337,7 +581,7 @@ Internally, the Flow is created by the following Eva logic blocks:
 
    Each Action has its own SayIt to feed into the Text-to-Speech engine.
 
-See :ref:`flow` for details.   
+See :ref:`flow` for details.
 
 .. _multiple_input_text:
 
@@ -372,5 +616,3 @@ This is the resulting URL:
 `vproxy.evaws.com/v1.1?input_text=flint+to+roston&input_text=flight+to+boston&input_text=slight+to+horton`__
 
 __ https://vproxy.evaws.com/v1.1?site_code=123&api_key=456&scope=fhc&session_id=1&input_text=flint+from+jail+aviv+to+roston&input_text=flight+from+tel+aviv+to+boston&input_text=slight+from+beit+achziv+to+horton
-
-  
