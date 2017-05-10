@@ -15,8 +15,6 @@
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   
-  
-  
 
   
 
@@ -34,7 +32,6 @@
   
 
   
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Eva 1.1 documentation" href="index.html"/>
         <link rel="next" title="2. The Mobile SDKs" href="sdks.html"/>
         <link rel="prev" title="Contents:" href="index.html"/> 
@@ -46,7 +43,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -86,10 +82,7 @@
           
             
             
-              
-            
-            
-              <ul class="current">
+                <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-eva">1.1. What is Eva?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#audience">1.2. Audience</a></li>
@@ -115,10 +108,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Eva</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Eva</a>
       </nav>
 
 
@@ -127,38 +118,21 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>1. Introduction</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>1. Introduction</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -179,8 +153,8 @@ The Eva engine was trained with data in the Travel domain, specializing in Fligh
 </pre></div>
 </div>
 <p>Eva converts those requests into a structured search query with various parameters, such as:</p>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="simplified-eva-api-reply">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#simplified-eva-api-reply" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;travelers&quot;</span><span class="o">:</span>
     <span class="p">{</span>
@@ -192,8 +166,8 @@ The Eva engine was trained with data in the Travel domain, specializing in Fligh
 </div>
 <p>which can then be programmatically used to perform a database search.</p>
 <p>Eva completely manages the conversation, asking questions when needed:</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Simplified Eva API Reply</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span>    <span class="s2">&quot;api_reply&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;Flow&quot;</span><span class="o">:</span> <span class="p">[</span>
           <span class="p">{</span>
@@ -227,10 +201,6 @@ providing examples and complete reference materials on the available parameters.
 <p>Usage of the Eva Travel API is subject to limitations defined by the Evature License Agreement and may be limited
 in the number of requests per day.
 You can get started with Eva for free.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For FREE API access please register here: <a class="reference external" href="http://w.evature.com/registration/form">http://w.evature.com/registration/form</a></p>
-</div>
 <p>If you need a larger quota to support a prototype or a product please do not hesitate to contact us.</p>
 </div>
 <div class="section" id="which-should-i-use">
@@ -254,18 +224,15 @@ Evature&#8217;s current velocity is 20 deployments per week.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sdks.html" class="btn btn-neutral float-right" title="2. The Mobile SDKs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sdks.html" class="btn btn-neutral float-right" title="2. The Mobile SDKs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Contents:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Contents:" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -298,8 +265,7 @@ Evature&#8217;s current velocity is 20 deployments per week.</p>
             VERSION:'1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

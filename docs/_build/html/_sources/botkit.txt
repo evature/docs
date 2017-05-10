@@ -24,10 +24,6 @@ Integration with all messaging platforms consists of the following steps:
 
    Log in to  https://chat.evature.com/botkit using your Eva credentials.
 
-   .. note::
-
-      For **free** API access please register here: https://w.evature.com/registration/form
-
    You will be prompted to create a new Bot, proving a name, a description and a default greeting.
 
 
@@ -744,7 +740,7 @@ and into the a web browser window with the business specific log in process.
 The URL `webLoginUrl` will be extended with a query parameter called `redirect_uri`.
 If the log in is successful, redirect the browser to the `redirect_uri` specified in your callback to complete the flow,
 and append a new `authorization_code` query parameter. Eva will add the contents of `authorization_code` to the subsequent
-applicative webhook calls as a new key called ``loginData``.
+applicative webhook calls as a new key called ``privateId``.
 
 Interactive Message - Transfer chat to a Human Agent
 ----------------------------------------------------
@@ -1509,7 +1505,9 @@ Here is an example of an outgoing webhook payload greeting request:
       }
     }
 
-As usual, you can reply with a list of messages, such as text messages, image messages and even interacive messages.
+As usual, you can reply with a list of messages, such as text messages, image messages and even interactive messages.
+
+
 
 
 Display Gate Number
@@ -1684,8 +1682,21 @@ To remove an existing subscription (delete and unsubscribe all end users) send t
       "subscriptionId": "subscription_id",
     }
 
+Personalizing your Bots
+=======================
+
+Some of the bot functionality is generic.
+
+    User: "What's the weather in paris tonight"
+
+or:
+
+    User: "What time is it in Rome?"
+
+Other functionalities 
+
 Secure Invitations
-==================
+------------------
 
 Secure Invitations allow a Bot to invite known non-bot users to use the bot while maintaining their identity.
 If you already have a login-protected webpage for all end users,

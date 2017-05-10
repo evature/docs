@@ -29,10 +29,6 @@ Integration on all platforms consists of the following steps:
    the developer / product manager are encouraged to fiddle with them later.
    For this phase you will need the credentials you received from Evature.
 
-   .. note::
-   
-      For **free** API access please register here: https://w.evature.com/registration/form
-   
    In the logs you will be able to see that the application was successfully authenticated by Eva.
 
 #. **Add the microphone button!**
